@@ -1,0 +1,27 @@
+{
+  "hero": {
+    "headline": "Staviam aplikácie od A po Z.",
+    "subline": "iOS, Android, web a backend — postavené poriadne a naraz, s produkčnými vzormi, ktoré používam pri reálnej práci pre klientov.",
+    "cta": "Ozvite sa mi",
+    "cv": "Stiahnuť CV"
+  },
+  "showcases": {
+    "title": "Ukážky",
+    "subtitle": "Živé ukážky vzorov, ktoré dodávam — zdroják teraz, nasadené aplikácie čoskoro.",
+    "code": "Kód",
+    "app": "Aplikácia",
+    "appComingSoon": "Aplikácia čoskoro",
+    "viewCode": "Zobraziť kód {name}",
+    "openApp": "Otvoriť aplikáciu {name}",
+    "kmpDesc": "iOS + Android, zdieľaná biznis logika",
+    "androidDesc": "Natívny Android, Jetpack Compose",
+    "rnDesc": "Multiplatformový mobil",
+    "webDesc": "React + TypeScript SPA"
+  },
+  "techStack": {
+    "title": "Technológie"
+  },
+  "common": {
+    "language": "Jazyk"
+  }
+}

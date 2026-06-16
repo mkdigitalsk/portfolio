@@ -1,0 +1,27 @@
+{
+  "hero": {
+    "headline": "Komplette Apps aus einer Hand.",
+    "subline": "iOS, Android, Web und Backend — einmal richtig gebaut, mit den produktionsreifen Mustern, die ich in echten Kundenprojekten einsetze.",
+    "cta": "Kontakt aufnehmen",
+    "cv": "Lebenslauf herunterladen"
+  },
+  "showcases": {
+    "title": "Showcases",
+    "subtitle": "Live-Demos der Muster, die ich liefere — Quellcode jetzt, deployte Apps in Kürze.",
+    "code": "Code",
+    "app": "App",
+    "appComingSoon": "App folgt in Kürze",
+    "viewCode": "Code von {name} ansehen",
+    "openApp": "{name}-App öffnen",
+    "kmpDesc": "iOS + Android, gemeinsame Business-Logik",
+    "androidDesc": "Natives Android, Jetpack Compose",
+    "rnDesc": "Plattformübergreifend mobil",
+    "webDesc": "React + TypeScript SPA"
+  },
+  "techStack": {
+    "title": "Tech-Stack"
+  },
+  "common": {
+    "language": "Sprache"
+  }
+}

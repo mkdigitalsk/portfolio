@@ -7,6 +7,8 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v16-appRouter'
 import { ThemeProvider } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import CssBaseline from '@mui/material/CssBaseline'
+import { NextIntlClientProvider } from 'next-intl'
+import { getLocale, getMessages } from 'next-intl/server'
 import { ColorSchemeScript, Footer, NavBar } from '@/shared/components'
 import { theme } from '@/shared/theme'
 import './globals.css'
@@ -17,21 +19,26 @@ export const metadata: Metadata = {
     'I build cross-platform apps end to end — iOS, Android, web, and backend — with clean architecture and production-grade patterns.',
 }
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const locale = await getLocale()
+  const messages = await getMessages()
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body>
-        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-          <ColorSchemeScript />
-          <ThemeProvider theme={theme} defaultMode="system">
-            <CssBaseline />
-            <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100dvh' }}>
-              <NavBar />
-              <Box sx={{ flex: 1 }}>{children}</Box>
-              <Footer />
-            </Box>
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+            <ColorSchemeScript />
+            <ThemeProvider theme={theme} defaultMode="system">
+              <CssBaseline />
+              <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100dvh' }}>
+                <NavBar />
+                <Box sx={{ flex: 1 }}>{children}</Box>
+                <Footer />
+              </Box>
+            </ThemeProvider>
+          </AppRouterCacheProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   )

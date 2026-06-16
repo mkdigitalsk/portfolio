@@ -1,0 +1,27 @@
+{
+  "hero": {
+    "headline": "I build apps end to end.",
+    "subline": "iOS, Android, web, and backend — built once, properly, with the production patterns I use on real client work.",
+    "cta": "Let's talk",
+    "cv": "Download CV"
+  },
+  "showcases": {
+    "title": "Showcases",
+    "subtitle": "Live demos of the patterns I ship — source now, deployed apps soon.",
+    "code": "Code",
+    "app": "App",
+    "appComingSoon": "App coming soon",
+    "viewCode": "View {name} code",
+    "openApp": "Open {name} app",
+    "kmpDesc": "iOS + Android, shared business logic",
+    "androidDesc": "Native Android, Jetpack Compose",
+    "rnDesc": "Cross-platform mobile",
+    "webDesc": "React + TypeScript SPA"
+  },
+  "techStack": {
+    "title": "Tech stack"
+  },
+  "common": {
+    "language": "Language"
+  }
+}
