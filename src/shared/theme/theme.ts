@@ -109,6 +109,21 @@ export const theme = createTheme({
     borderRadius: 8,
   },
   components: {
+    // Smooth fade when the theme (light/dark) flips — colors ease across instead
+    // of snapping. Lives in the MUI CSS layer so component transitions (button
+    // hover, ripples) keep their own; only color properties get the shared fade.
+    MuiCssBaseline: {
+      styleOverrides: {
+        '*, *::before, *::after': {
+          transition: 'background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, fill 0.2s ease',
+        },
+        '@media (prefers-reduced-motion: reduce)': {
+          '*, *::before, *::after': {
+            transition: 'none',
+          },
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
