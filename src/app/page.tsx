@@ -1,47 +1,60 @@
 import { Download, Mail } from '@mui/icons-material'
 import { Box, Stack } from '@mui/material'
-import { Button, TextBody1Neutral60, TextH1Bold, TextH4Bold } from '@/shared/components'
-import { SkillGroup, type SkillItem } from '@/features/home/SkillGroup'
+import { Button, Chip, TextBody1Neutral60, TextH1Bold, TextH4Bold } from '@/shared/components'
+import { ShowcaseList, type Showcase } from '@/features/home/ShowcaseList'
 
 const GITHUB = 'https://github.com/KusnirM'
 
-// Skills grouped by delivery area. Chips with `href` link to that platform's
-// live showcase (GitHub repo for now; swap to deployed demos later). Tech names
-// are proper nouns kept untranslated across locales.
-const skillGroups: { title: string; items: SkillItem[] }[] = [
+// The main pillars — each a live showcase project. `repoUrl` exists now; `appUrl`
+// (deployed demo / artifact) gets wired once the apps are hosted.
+const showcases: Showcase[] = [
   {
-    title: 'Mobile',
-    items: [
-      { label: 'Kotlin Multiplatform', href: `${GITHUB}/kmp-showcase` },
-      { label: 'Android', href: `${GITHUB}/android-showcase` },
-      { label: 'React Native', href: `${GITHUB}/rn-showcase` },
-      { label: 'iOS' },
-      { label: 'Compose Multiplatform' },
-      { label: 'Jetpack Compose' },
-      { label: 'SwiftUI' },
-      { label: 'Flutter' },
-      { label: 'Kotlin' },
-      { label: 'Swift' },
-      { label: 'Dart' },
-    ],
+    platform: 'kotlin',
+    label: 'Kotlin Multiplatform',
+    description: 'iOS + Android, shared business logic',
+    repoUrl: `${GITHUB}/kmp-showcase`,
   },
   {
-    title: 'Web',
-    items: [{ label: 'React', href: `${GITHUB}/kmp-showcase/tree/master/web` }, { label: 'TypeScript' }],
+    platform: 'android',
+    label: 'Android',
+    description: 'Native Android, Jetpack Compose',
+    repoUrl: `${GITHUB}/android-showcase`,
   },
-  { title: 'Backend', items: [{ label: 'Ktor' }, { label: 'PostgreSQL' }, { label: 'REST APIs' }] },
   {
-    title: 'Foundations',
-    items: [
-      { label: 'Clean Architecture' },
-      { label: 'MVVM' },
-      { label: 'Koin' },
-      { label: 'SQLDelight' },
-      { label: 'CI/CD' },
-      { label: 'Firebase' },
-      { label: 'AI-assisted development' },
-    ],
+    platform: 'react',
+    label: 'React Native',
+    description: 'Cross-platform mobile',
+    repoUrl: `${GITHUB}/rn-showcase`,
   },
+  {
+    platform: 'typescript',
+    label: 'Web',
+    description: 'React + TypeScript SPA',
+    repoUrl: `${GITHUB}/kmp-showcase/tree/master/web`,
+  },
+]
+
+// Everything else — supporting tech, shown as a flat tag cloud.
+const techStack = [
+  'iOS',
+  'Compose Multiplatform',
+  'Jetpack Compose',
+  'SwiftUI',
+  'Flutter',
+  'Kotlin',
+  'Swift',
+  'Dart',
+  'TypeScript',
+  'Ktor',
+  'PostgreSQL',
+  'REST APIs',
+  'Clean Architecture',
+  'MVVM',
+  'Koin',
+  'SQLDelight',
+  'CI/CD',
+  'Firebase',
+  'AI-assisted development',
 ]
 
 export default function HomePage() {
@@ -64,13 +77,21 @@ export default function HomePage() {
         </Stack>
       </Box>
 
-      {/* Skills + showcases */}
+      {/* Showcases — the main pillars as a list (platform logo + code/app actions). */}
+      <Box sx={{ maxWidth: 880, mx: 'auto', px: 3, pb: { xs: 6, md: 8 } }}>
+        <TextH4Bold sx={{ mb: 1 }}>Showcases</TextH4Bold>
+        <TextBody1Neutral60 sx={{ mb: 2 }}>
+          Live demos of the patterns I ship — source now, deployed apps soon.
+        </TextBody1Neutral60>
+        <ShowcaseList items={showcases} />
+      </Box>
+
+      {/* Tech stack — supporting tech as pills. */}
       <Box sx={{ maxWidth: 880, mx: 'auto', px: 3, pb: { xs: 8, md: 12 } }}>
-        <TextH4Bold sx={{ mb: 1 }}>What I work with</TextH4Bold>
-        <TextBody1Neutral60 sx={{ mb: 3 }}>Tags marked ↗ open the showcase.</TextBody1Neutral60>
-        <Stack spacing={2}>
-          {skillGroups.map((group) => (
-            <SkillGroup key={group.title} title={group.title} items={group.items} />
+        <TextH4Bold sx={{ mb: 2 }}>Tech stack</TextH4Bold>
+        <Stack direction="row" useFlexGap spacing={1} sx={{ flexWrap: 'wrap' }}>
+          {techStack.map((tech) => (
+            <Chip key={tech} label={tech} variant="outlined" />
           ))}
         </Stack>
       </Box>
