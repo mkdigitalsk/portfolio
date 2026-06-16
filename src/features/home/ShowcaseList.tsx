@@ -1,3 +1,5 @@
+'use client'
+
 import { Download, GitHub } from '@mui/icons-material'
 import { Box, List, ListItem, ListItemIcon, ListItemText, Stack, Tooltip } from '@mui/material'
 import { Chip } from '@/shared/components'
