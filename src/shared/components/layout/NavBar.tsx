@@ -4,6 +4,7 @@ import Box from '@mui/material/Box'
 import Link from 'next/link'
 import { TextH6Bold } from '../text'
 import { ThemeModeToggle } from '../ThemeModeToggle'
+import { LocaleSwitcher } from '../LocaleSwitcher'
 
 export function NavBar() {
   return (
@@ -32,7 +33,10 @@ export function NavBar() {
         <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
           <TextH6Bold>Miroslav Kušnír</TextH6Bold>
         </Link>
-        <ThemeModeToggle />
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+          <LocaleSwitcher />
+          <ThemeModeToggle />
+        </Box>
       </Box>
     </Box>
   )

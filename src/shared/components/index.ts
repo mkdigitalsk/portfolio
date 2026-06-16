@@ -1,5 +1,6 @@
 export { Button } from './Button'
 export { ThemeModeToggle } from './ThemeModeToggle'
+export { LocaleSwitcher } from './LocaleSwitcher'
 
 // Layout
 export { NavBar, Footer, ColorSchemeScript } from './layout'
