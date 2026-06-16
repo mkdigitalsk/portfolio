@@ -18,6 +18,15 @@ interface ShowcaseListProps {
   items: Showcase[]
 }
 
+// Hover affordance for the link pills. The Chip stays a plain (non-clickable)
+// chip; the surrounding anchor carries the navigation — this avoids MUI's
+// clickable Chip-as-link path, which mismatches between SSR and client.
+const linkChipSx = {
+  cursor: 'pointer',
+  transition: 'border-color 0.15s ease, background-color 0.15s ease',
+  '&:hover': { borderColor: 'primary.main', backgroundColor: 'action.hover' },
+}
+
 export function ShowcaseList({ items }: ShowcaseListProps) {
   return (
     <List disablePadding>
@@ -28,30 +37,27 @@ export function ShowcaseList({ items }: ShowcaseListProps) {
           </ListItemIcon>
           <ListItemText primary={item.label} secondary={item.description} sx={{ flex: 1, my: 0 }} />
           <Stack direction="row" spacing={0.75} sx={{ flexShrink: 0 }}>
-            <Chip
-              icon={<GitHub />}
-              label="Code"
-              variant="outlined"
-              size="small"
-              clickable
+            <Box
               component="a"
               href={item.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-            />
+              aria-label={`View ${item.label} code`}
+              sx={{ textDecoration: 'none' }}
+            >
+              <Chip icon={<GitHub />} label="Code" variant="outlined" size="small" sx={linkChipSx} />
+            </Box>
             {item.appUrl ? (
-              <Chip
-                icon={<Download />}
-                label="App"
-                color="primary"
-                variant="outlined"
-                size="small"
-                clickable
+              <Box
                 component="a"
                 href={item.appUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-              />
+                aria-label={`Open ${item.label} app`}
+                sx={{ textDecoration: 'none' }}
+              >
+                <Chip icon={<Download />} label="App" color="primary" variant="outlined" size="small" sx={linkChipSx} />
+              </Box>
             ) : (
               <Tooltip title="App coming soon">
                 <Box component="span">
