@@ -2,7 +2,7 @@ export { Button } from './Button'
 export { ThemeModeToggle } from './ThemeModeToggle'
 
 // Layout
-export { NavBar, Footer } from './layout'
+export { NavBar, Footer, ColorSchemeScript } from './layout'
 
 // Text components
 export {

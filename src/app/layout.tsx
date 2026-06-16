@@ -7,8 +7,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v16-appRouter'
 import { ThemeProvider } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import CssBaseline from '@mui/material/CssBaseline'
-import InitColorSchemeScript from '@mui/material/InitColorSchemeScript'
-import { Footer, NavBar } from '@/shared/components'
+import { ColorSchemeScript, Footer, NavBar } from '@/shared/components'
 import { theme } from '@/shared/theme'
 import './globals.css'
 
@@ -22,8 +21,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <InitColorSchemeScript defaultMode="system" />
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+          <ColorSchemeScript />
           <ThemeProvider theme={theme} defaultMode="system">
             <CssBaseline />
             <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100dvh' }}>
