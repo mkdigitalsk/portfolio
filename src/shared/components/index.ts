@@ -1,11 +1,7 @@
 export { Button } from './Button'
 export { ThemeModeToggle } from './ThemeModeToggle'
 export { LocaleSwitcher } from './LocaleSwitcher'
-
-// Layout
 export { NavBar, Footer, ColorSchemeScript } from './layout'
-
-// Text components
 export {
   TextH1Bold,
   TextH1BoldPrimary,
@@ -21,9 +17,5 @@ export {
   TextBody1Neutral60,
   TextBody1Primary,
 } from './text'
-
-// Chip components
 export { Chip, FilterChip } from './chips/Chip'
-
-// Dividers
 export { Divider, DividerPrimary } from './dividers/Divider'

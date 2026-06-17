@@ -1,7 +1,5 @@
 import SvgIcon, { type SvgIconProps } from '@mui/material/SvgIcon'
 
-// Brand logos from Simple Icons (https://simpleicons.org, CC0). Kept behind one
-// wrapper so pages depend on the `platform` abstraction, never on raw SVG (DIP).
 const PLATFORMS = {
   kotlin: {
     title: 'Kotlin',

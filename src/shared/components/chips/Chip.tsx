@@ -1,8 +1,6 @@
 import { Chip as MuiChip, type ChipProps as MuiChipProps } from '@mui/material'
 import { type ElementType } from 'react'
 
-// Allow the chip to render as a link (component="a" + href) for showcase links,
-// while keeping the simple wrapper API for plain chips.
 type ChipProps = MuiChipProps & {
   component?: ElementType
   href?: string

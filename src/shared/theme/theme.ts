@@ -2,7 +2,6 @@
 
 import { createTheme } from '@mui/material/styles'
 
-// Extend MUI palette types
 declare module '@mui/material/styles' {
   interface Palette {
     neutral: {
@@ -26,7 +25,6 @@ declare module '@mui/material/styles' {
   }
 }
 
-// Light theme colors
 const Neutral0Light = '#FFFFFF'
 const Neutral20Light = '#C8C8C8'
 const Neutral40Light = '#919191'
@@ -40,7 +38,6 @@ const ErrorLight = '#FF1A1A'
 const SuccessLight = '#4CAF50'
 const WarningLight = '#FF9800'
 
-// Dark theme colors
 const Neutral0Dark = '#121212'
 const Neutral20Dark = '#2C2C2C'
 const Neutral40Dark = '#717171'
@@ -97,7 +94,6 @@ export const theme = createTheme({
   },
   typography: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-    // Oversized, tight hero headline — responsive via clamp (modern, punchy).
     h1: {
       fontSize: 'clamp(2.5rem, 6vw, 4.25rem)',
       fontWeight: 700,
@@ -109,9 +105,6 @@ export const theme = createTheme({
     borderRadius: 8,
   },
   components: {
-    // Smooth fade when the theme (light/dark) flips — colors ease across instead
-    // of snapping. Lives in the MUI CSS layer so component transitions (button
-    // hover, ripples) keep their own; only color properties get the shared fade.
     MuiCssBaseline: {
       styleOverrides: {
         '*, *::before, *::after': {
