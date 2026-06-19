@@ -7,12 +7,9 @@
   },
   "showcases": {
     "title": "Ukážky",
-    "subtitle": "Živé ukážky vzorov, ktoré dodávam — zdroják teraz, nasadené aplikácie čoskoro.",
+    "subtitle": "Produkčné vzory, ktoré dodávam — pozri zdroják.",
     "code": "Kód",
-    "app": "Aplikácia",
-    "appComingSoon": "Aplikácia čoskoro",
     "viewCode": "Zobraziť kód {name}",
-    "openApp": "Otvoriť aplikáciu {name}",
     "kmpDesc": "iOS + Android, zdieľaná biznis logika",
     "androidDesc": "Natívny Android, Jetpack Compose",
     "rnDesc": "Multiplatformový mobil",

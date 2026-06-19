@@ -7,12 +7,9 @@
   },
   "showcases": {
     "title": "Showcases",
-    "subtitle": "Live-Demos der Muster, die ich liefere — Quellcode jetzt, deployte Apps in Kürze.",
+    "subtitle": "Produktionsreife Muster, die ich liefere — sieh dir den Code an.",
     "code": "Code",
-    "app": "App",
-    "appComingSoon": "App folgt in Kürze",
     "viewCode": "Code von {name} ansehen",
-    "openApp": "{name}-App öffnen",
     "kmpDesc": "iOS + Android, gemeinsame Business-Logik",
     "androidDesc": "Natives Android, Jetpack Compose",
     "rnDesc": "Plattformübergreifend mobil",

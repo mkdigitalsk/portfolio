@@ -7,12 +7,9 @@
   },
   "showcases": {
     "title": "Ukázky",
-    "subtitle": "Živé ukázky vzorů, které dodávám — zdroják teď, nasazené aplikace brzy.",
+    "subtitle": "Produkční vzory, které dodávám — prohlédni zdroják.",
     "code": "Kód",
-    "app": "Aplikace",
-    "appComingSoon": "Aplikace brzy",
     "viewCode": "Zobrazit kód {name}",
-    "openApp": "Otevřít aplikaci {name}",
     "kmpDesc": "iOS + Android, sdílená byznys logika",
     "androidDesc": "Nativní Android, Jetpack Compose",
     "rnDesc": "Multiplatformní mobil",

@@ -7,12 +7,9 @@
   },
   "showcases": {
     "title": "Showcases",
-    "subtitle": "Live demos of the patterns I ship — source now, deployed apps soon.",
+    "subtitle": "Production patterns I ship — explore the source.",
     "code": "Code",
-    "app": "App",
-    "appComingSoon": "App coming soon",
     "viewCode": "View {name} code",
-    "openApp": "Open {name} app",
     "kmpDesc": "iOS + Android, shared business logic",
     "androidDesc": "Native Android, Jetpack Compose",
     "rnDesc": "Cross-platform mobile",
