@@ -1,6 +1,7 @@
 export { Button } from './Button'
 export { ThemeModeToggle } from './ThemeModeToggle'
 export { LocaleSwitcher } from './LocaleSwitcher'
+export { Reveal } from './Reveal'
 export { NavBar, Footer, ColorSchemeScript } from './layout'
 export {
   TextH1Bold,
