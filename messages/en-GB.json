@@ -19,7 +19,11 @@
     "webDesc": "React + TypeScript SPA"
   },
   "techStack": {
-    "title": "Tech stack"
+    "title": "Tech stack",
+    "mobile": "Mobile",
+    "web": "Web",
+    "backend": "Backend",
+    "foundations": "Foundations"
   },
   "common": {
     "language": "Language"

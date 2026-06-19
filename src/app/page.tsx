@@ -18,26 +18,17 @@ const showcases: Showcase[] = [
   },
 ]
 
-const techStack = [
-  'iOS',
-  'Compose Multiplatform',
-  'Jetpack Compose',
-  'SwiftUI',
-  'Flutter',
-  'Kotlin',
-  'Swift',
-  'Dart',
-  'TypeScript',
-  'Ktor',
-  'PostgreSQL',
-  'REST APIs',
-  'Clean Architecture',
-  'MVVM',
-  'Koin',
-  'SQLDelight',
-  'CI/CD',
-  'Firebase',
-  'AI-assisted development',
+const techGroups = [
+  {
+    labelKey: 'techStack.mobile',
+    items: ['Kotlin', 'Swift', 'Dart', 'iOS', 'Compose Multiplatform', 'Jetpack Compose', 'SwiftUI', 'Flutter'],
+  },
+  { labelKey: 'techStack.web', items: ['TypeScript'] },
+  { labelKey: 'techStack.backend', items: ['Ktor', 'PostgreSQL', 'REST APIs'] },
+  {
+    labelKey: 'techStack.foundations',
+    items: ['Clean Architecture', 'MVVM', 'Koin', 'SQLDelight', 'CI/CD', 'Firebase', 'AI-assisted development'],
+  },
 ]
 
 export default async function HomePage() {
@@ -80,13 +71,20 @@ export default async function HomePage() {
         <Reveal>
           <TextH4Bold sx={{ mb: 2 }}>{t('techStack.title')}</TextH4Bold>
         </Reveal>
-        <Reveal delay={0.06}>
-          <Stack direction="row" useFlexGap spacing={1} sx={{ flexWrap: 'wrap' }}>
-            {techStack.map((tech) => (
-              <Chip key={tech} label={tech} variant="outlined" />
-            ))}
-          </Stack>
-        </Reveal>
+        <Stack spacing={2.5}>
+          {techGroups.map((group, index) => (
+            <Reveal key={group.labelKey} delay={0.06 * index}>
+              <Box>
+                <TextBody1Neutral60 sx={{ mb: 1 }}>{t(group.labelKey)}</TextBody1Neutral60>
+                <Stack direction="row" useFlexGap spacing={1} sx={{ flexWrap: 'wrap' }}>
+                  {group.items.map((tech) => (
+                    <Chip key={tech} label={tech} variant="outlined" />
+                  ))}
+                </Stack>
+              </Box>
+            </Reveal>
+          ))}
+        </Stack>
       </Box>
     </Box>
   )

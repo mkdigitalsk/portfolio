@@ -19,7 +19,11 @@
     "webDesc": "React + TypeScript SPA"
   },
   "techStack": {
-    "title": "Technológie"
+    "title": "Technológie",
+    "mobile": "Mobil",
+    "web": "Web",
+    "backend": "Backend",
+    "foundations": "Základy"
   },
   "common": {
     "language": "Jazyk"
