@@ -28,10 +28,17 @@ export function TechStack({ groups }: { groups: TechGroup[] }) {
                 {group.items.map((tech) => (
                   <Chip
                     key={tech}
-                    label={tech}
                     variant="outlined"
-                    icon={group.withIcons ? <TechIcon tech={tech} /> : undefined}
-                    sx={group.withIcons ? { '&& .MuiChip-icon': { ml: 1.25 } } : undefined}
+                    label={
+                      group.withIcons ? (
+                        <Box component="span" sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.75 }}>
+                          <TechIcon tech={tech} />
+                          {tech}
+                        </Box>
+                      ) : (
+                        tech
+                      )
+                    }
                   />
                 ))}
               </Stack>
