@@ -30,7 +30,19 @@ export function ShowcaseList({ items }: ShowcaseListProps) {
   return (
     <List disablePadding>
       {items.map((item) => (
-        <ListItem key={item.label} divider disableGutters sx={{ gap: 1 }}>
+        <ListItem
+          key={item.label}
+          divider
+          disableGutters
+          sx={{
+            gap: 1,
+            px: 1.5,
+            mx: -1.5,
+            borderRadius: 1,
+            transition: 'background-color 0.2s ease',
+            '&:hover': { backgroundColor: 'action.hover' },
+          }}
+        >
           <ListItemIcon sx={{ minWidth: 44 }}>
             <PlatformIcon platform={item.platform} />
           </ListItemIcon>
