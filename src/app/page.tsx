@@ -21,7 +21,19 @@ const showcases: Showcase[] = [
 const techGroups = [
   {
     labelKey: 'techStack.mobile',
-    items: ['Kotlin', 'Swift', 'Dart', 'iOS', 'Compose Multiplatform', 'Jetpack Compose', 'SwiftUI', 'Flutter'],
+    items: [
+      'React Native',
+      'iOS',
+      'Android',
+      'Flutter',
+      'Kotlin Multiplatform',
+      'Compose Multiplatform',
+      'Jetpack Compose',
+      'SwiftUI',
+      'Kotlin',
+      'Swift',
+      'Dart',
+    ],
   },
   { labelKey: 'techStack.web', items: ['TypeScript'] },
   { labelKey: 'techStack.backend', items: ['Ktor', 'PostgreSQL', 'REST APIs'] },
