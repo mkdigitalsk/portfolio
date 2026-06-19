@@ -1,8 +1,9 @@
 import { Download, Mail } from '@mui/icons-material'
 import { Box, Stack } from '@mui/material'
 import { getTranslations } from 'next-intl/server'
-import { Button, Chip, Reveal, TextBody1Neutral60, TextH1Bold, TextH4Bold } from '@/shared/components'
+import { Button, Reveal, TextBody1Neutral60, TextH1Bold, TextH4Bold } from '@/shared/components'
 import { ShowcaseList, type Showcase } from '@/features/home/ShowcaseList'
+import { TechStack, type TechGroup } from '@/features/home/TechStack'
 
 const GITHUB = 'https://github.com/KusnirM'
 
@@ -18,28 +19,32 @@ const showcases: Showcase[] = [
   },
 ]
 
-const techGroups = [
+const techGroups: TechGroup[] = [
   {
     labelKey: 'techStack.mobile',
+    withIcons: true,
     items: [
-      'React Native',
       'iOS',
       'Android',
-      'Flutter',
       'Kotlin Multiplatform',
       'Compose Multiplatform',
-      'Jetpack Compose',
+      'Flutter',
+      'React Native',
       'SwiftUI',
       'Kotlin',
       'Swift',
-      'Dart',
     ],
   },
-  { labelKey: 'techStack.web', items: ['TypeScript'] },
-  { labelKey: 'techStack.backend', items: ['Ktor', 'PostgreSQL', 'REST APIs'] },
+  {
+    labelKey: 'techStack.web',
+    withIcons: true,
+    items: ['React', 'Next.js', 'TypeScript', 'Material UI', 'Tailwind CSS', 'TanStack Query'],
+  },
+  { labelKey: 'techStack.backend', withIcons: true, items: ['Ktor', 'PostgreSQL', 'Firebase'] },
+  { labelKey: 'techStack.devops', withIcons: true, items: ['Docker', 'Vercel', 'GitHub Actions'] },
   {
     labelKey: 'techStack.foundations',
-    items: ['Clean Architecture', 'MVVM', 'Koin', 'SQLDelight', 'CI/CD', 'Firebase', 'AI-assisted development'],
+    items: ['AI-assisted development', 'Clean Architecture', 'MVVM', 'Hook Pattern', 'CI/CD', 'Deployment'],
   },
 ]
 
@@ -80,23 +85,7 @@ export default async function HomePage() {
       </Box>
 
       <Box sx={{ maxWidth: 880, mx: 'auto', px: 3, pb: { xs: 8, md: 12 } }}>
-        <Reveal>
-          <TextH4Bold sx={{ mb: 2 }}>{t('techStack.title')}</TextH4Bold>
-        </Reveal>
-        <Stack spacing={2.5}>
-          {techGroups.map((group, index) => (
-            <Reveal key={group.labelKey} delay={0.06 * index}>
-              <Box>
-                <TextBody1Neutral60 sx={{ mb: 1 }}>{t(group.labelKey)}</TextBody1Neutral60>
-                <Stack direction="row" useFlexGap spacing={1} sx={{ flexWrap: 'wrap' }}>
-                  {group.items.map((tech) => (
-                    <Chip key={tech} label={tech} variant="outlined" />
-                  ))}
-                </Stack>
-              </Box>
-            </Reveal>
-          ))}
-        </Stack>
+        <TechStack groups={techGroups} />
       </Box>
     </Box>
   )
