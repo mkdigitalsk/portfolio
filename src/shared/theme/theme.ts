@@ -117,18 +117,6 @@ export const theme = createTheme({
     borderRadius: 8,
   },
   components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        '*, *::before, *::after': {
-          transition: 'background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, fill 0.2s ease',
-        },
-        '@media (prefers-reduced-motion: reduce)': {
-          '*, *::before, *::after': {
-            transition: 'none',
-          },
-        },
-      },
-    },
     MuiButton: {
       styleOverrides: {
         root: {

@@ -3,9 +3,13 @@
 import { DarkMode, LightMode } from '@mui/icons-material'
 import { Box, IconButton, Tooltip } from '@mui/material'
 import { useColorScheme } from '@mui/material/styles'
+import { useMotion } from '@/shared/context/MotionContext'
+import { useViewTransition } from '@/shared/hooks/useViewTransition'
 
 export function ThemeModeToggle() {
   const { mode, systemMode, setMode } = useColorScheme()
+  const { motionEnabled } = useMotion()
+  const startViewTransition = useViewTransition()
 
   if (!mode) {
     return (
@@ -21,7 +25,12 @@ export function ThemeModeToggle() {
 
   const handleToggle = () => {
     const opposite = systemMode === 'dark' ? 'light' : 'dark'
-    setMode(isSystem ? opposite : 'system')
+    const next = isSystem ? opposite : 'system'
+    if (motionEnabled) {
+      startViewTransition(() => setMode(next))
+    } else {
+      setMode(next)
+    }
   }
 
   const tooltip = isSystem ? `Following system · ${resolved}` : `${resolved} · tap to follow system`

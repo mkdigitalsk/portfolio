@@ -7,3 +7,16 @@ body {
 * {
   box-sizing: border-box;
 }
+
+/* Smooth full-page crossfade when the theme toggles (View Transitions API). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.35s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
