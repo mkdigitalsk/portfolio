@@ -23,18 +23,19 @@ export const iconAnimations: Record<IconAnimation, IconAnimationConfig> = {
   fly: {
     variants: {
       rest: { x: 0, y: 0, rotate: 0, scale: 1, opacity: 1 },
-      // Hover: natural takeoff (longer along X, then steeper) out through the
-      // top-right corner, then off-screen around the OUTSIDE of the card to park
-      // bottom-left (invisible, no fade). On unhover it flies back in from the
-      // bottom-left to home (Framer reverses to rest).
+      // Real takeoff profile (FAA: ground roll -> rotation -> climb-out). First a flat,
+      // accelerating runway roll (y stays ~0 while x speeds up), then a smooth rotation
+      // knee, then a steady climb-out off-card. Densely sampled so it reads as a curve,
+      // not a polygon. The plane keeps climbing far off-card while the reveal finishes;
+      // the card's overflow clips it, so it "flies on" unseen.
       active: {
-        x: [0, 95, 240, 240, -240],
-        y: [0, -30, -180, 300, 200],
-        rotate: [0, 12, 26, 26, 20],
-        scale: [1, 0.9, 0.7, 0.7, 0.7],
+        x: [0, 18, 50, 100, 170, 255, 355, 470, 600],
+        y: [0, 0, -2, -12, -45, -110, -210, -345, -510],
+        rotate: [0, 0, 1, 4, 12, 20, 27, 32, 35],
+        scale: [1, 1, 0.99, 0.96, 0.9, 0.8, 0.7, 0.6, 0.52],
       },
     },
-    transition: { duration: 1.2, ease: 'easeInOut', times: [0, 0.25, 0.5, 0.72, 1] },
+    transition: { duration: 1.2, ease: 'linear' },
   },
   wind: {
     variants: {

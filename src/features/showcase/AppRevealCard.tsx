@@ -1,7 +1,7 @@
 'use client'
 
 import Box from '@mui/material/Box'
-import { motion, useReducedMotion } from 'motion/react'
+import { motion, useAnimationControls, useReducedMotion, type TargetAndTransition } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef, type KeyboardEvent } from 'react'
 import { TextCaptionNeutral60, TextH6Bold } from '@/shared/components'
@@ -9,7 +9,7 @@ import { useMotion } from '@/shared/context/MotionContext'
 import { HeartBeat } from './HeartBeat'
 import { fasterClose } from './closeTransition'
 import { iconAnimations } from './iconAnimations'
-import { revealAnimations } from './revealAnimations'
+import { planePaths, revealAnimations } from './revealAnimations'
 import type { ShowcaseApp } from './apps'
 
 const CARD_RADIUS = 12
@@ -18,6 +18,17 @@ const REVEAL_DURATION_MS = 550
 // Start playback this long BEFORE the reveal finishes, so the video is already
 // in motion by the moment it becomes visible.
 const PLAY_OFFSET_MS = 130
+
+// Close (unhover): the plane flies back IN from the bottom-left corner along a curve at
+// constant speed, down to home — a different path from the takeoff (so it's driven
+// imperatively, not by reversing the hover variant).
+const PLANE_FLY_IN: TargetAndTransition = {
+  x: [-260, -150, -55, 0],
+  y: [210, 145, 55, 0],
+  rotate: [10, 6, 2, 0],
+  scale: [0.55, 0.72, 0.9, 1],
+}
+const PLANE_FLY_IN_TRANSITION = { duration: 0.85, ease: 'linear' } as const
 
 interface AppRevealCardProps {
   app: ShowcaseApp
@@ -38,6 +49,9 @@ export function AppRevealCard({ app, hint, ariaLabel, onActivate, height = 240 }
   const playTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const iconAnim = iconAnimations[iconAnimation]
   const reveal = revealAnimations[iconAnimation]
+  const isFly = iconAnimation === 'fly'
+  const clipId = `plane-reveal-${app.id}`
+  const flyControls = useAnimationControls()
 
   const clearPlayTimer = () => {
     if (playTimerRef.current) {
@@ -98,6 +112,16 @@ export function AppRevealCard({ app, hint, ariaLabel, onActivate, height = 240 }
         initial="rest"
         animate="rest"
         whileHover={animate ? 'active' : undefined}
+        onHoverStart={() => {
+          if (isFly && animate) {
+            flyControls.start({ ...(iconAnim.variants.active as TargetAndTransition), transition: iconAnim.transition })
+          }
+        }}
+        onHoverEnd={() => {
+          if (isFly && animate) {
+            flyControls.start({ ...PLANE_FLY_IN, transition: PLANE_FLY_IN_TRANSITION })
+          }
+        }}
         style={{ position: 'relative', width: '100%', height: '100%', borderRadius: CARD_RADIUS, overflow: 'hidden' }}
       >
         <Box
@@ -111,7 +135,40 @@ export function AppRevealCard({ app, hint, ariaLabel, onActivate, height = 240 }
           }}
         />
 
-        {previewSrc && (
+        {previewSrc && isFly && (
+          <>
+            <svg aria-hidden width={0} height={0} style={{ position: 'absolute' }}>
+              <defs>
+                <clipPath id={clipId} clipPathUnits="objectBoundingBox">
+                  <motion.path
+                    d={planePaths[0]}
+                    variants={{
+                      rest: { d: planePaths[0], transition: fasterClose(reveal.transition) },
+                      active: { d: planePaths, transition: reveal.transition },
+                    }}
+                  />
+                </clipPath>
+              </defs>
+            </svg>
+            <Box
+              sx={{ position: 'absolute', inset: 0, clipPath: `url(#${clipId})`, WebkitClipPath: `url(#${clipId})` }}
+            >
+              <Box
+                component="video"
+                ref={videoRef}
+                src={previewSrc}
+                muted
+                loop
+                playsInline
+                preload="auto"
+                aria-hidden
+                sx={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+            </Box>
+          </>
+        )}
+
+        {previewSrc && !isFly && (
           <motion.div
             variants={{
               rest: { ...reveal.rest, transition: fasterClose(reveal.transition) },
@@ -144,6 +201,22 @@ export function AppRevealCard({ app, hint, ariaLabel, onActivate, height = 240 }
         >
           {iconAnimation === 'heart' ? (
             <HeartBeat accent={accent} />
+          ) : isFly ? (
+            <motion.div
+              initial={{ x: 0, y: 0, rotate: 0, scale: 1 }}
+              animate={flyControls}
+              style={{
+                width: 76,
+                height: 76,
+                borderRadius: '50%',
+                display: 'grid',
+                placeItems: 'center',
+                color: accent,
+                backgroundColor: `${accent}1A`,
+              }}
+            >
+              <Icon sx={{ fontSize: 38 }} />
+            </motion.div>
           ) : (
             <motion.div
               variants={{
