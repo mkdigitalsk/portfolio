@@ -12,6 +12,7 @@
     "reviewHeading": "Anfrage prüfen",
     "reviewSubtitle": "Ihre {app}-App mit diesen Funktionen:",
     "sendCta": "Per E-Mail senden",
+    "consent": "Mit dem Senden stimmen Sie unserer <link>Datenschutzerklärung</link> zu.",
     "back": "Zurück",
     "emailLabel": "Ihre E-Mail",
     "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
@@ -60,7 +61,8 @@
   },
   "common": {
     "language": "Sprache",
-    "animations": "Animationen"
+    "animations": "Animationen",
+    "privacy": "Datenschutz"
   },
   "apps": {
     "custom": { "label": "Ihre Idee", "tagline": "Keine der Apps oben? Sagen Sie uns, was Sie vorhaben — wählen Sie gängige Funktionen oder beschreiben Sie es einfach.", "features": { "accounts": { "label": "Benutzerkonten & Login", "benefit": "Sichere Registrierung, Login und Profile" }, "payments": { "label": "In-App-Zahlungen", "benefit": "Karten- und Wallet-Zahlungen sicher annehmen" }, "notifications": { "label": "Push-Benachrichtigungen", "benefit": "Nutzer mit zeitnahen Hinweisen zurückholen" }, "chat": { "label": "In-App-Chat & Support", "benefit": "Nutzer erreichen Sie, ohne die App zu verlassen" }, "search": { "label": "Suche & Filter", "benefit": "Nutzer finden schnell, was sie brauchen" }, "adminDashboard": { "label": "Admin-Dashboard", "benefit": "Inhalte, Nutzer und Bestellungen an einem Ort verwalten" }, "analytics": { "label": "Analytik & Einblicke", "benefit": "Sehen Sie, wie Menschen Ihr Produkt nutzen" }, "multiLanguage": { "label": "Mehrsprachiger Support", "benefit": "Erreichen Sie Kunden in ihrer Sprache" }, "offline": { "label": "Offline-Modus", "benefit": "Funktioniert auch ohne Verbindung" } } },

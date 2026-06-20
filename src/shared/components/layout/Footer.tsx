@@ -3,6 +3,8 @@
 import { GitHub, LinkedIn, WhatsApp } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
+import { useTranslations } from 'next-intl'
+import Link from 'next/link'
 import { TextBody1Neutral60 } from '../text'
 import { GitHubDark, GitHubLight, LinkedInBlue, WhatsAppGreen } from '../../theme/socialColors'
 
@@ -13,6 +15,8 @@ const socials = [
 ]
 
 export function Footer() {
+  const t = useTranslations()
+
   return (
     <Box component="footer" sx={{ borderTop: '1px solid', borderColor: 'divider' }}>
       <Box
@@ -28,7 +32,22 @@ export function Footer() {
           justifyContent: 'space-between',
         }}
       >
-        <TextBody1Neutral60>© 2026 MK Digital s.r.o.</TextBody1Neutral60>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flexWrap: 'wrap' }}>
+          <TextBody1Neutral60>© 2026 MK Digital s.r.o.</TextBody1Neutral60>
+          <Box
+            component={Link}
+            href="/privacy"
+            sx={{
+              fontSize: '0.875rem',
+              color: 'text.secondary',
+              textDecoration: 'none',
+              transition: 'color 0.2s ease',
+              '&:hover': { color: 'primary.main' },
+            }}
+          >
+            {t('common.privacy')}
+          </Box>
+        </Box>
         <Box sx={{ display: 'flex', gap: 0.5 }}>
           {socials.map(({ label, href, Icon, brand }) => (
             <IconButton

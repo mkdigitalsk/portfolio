@@ -339,6 +339,18 @@ export function AppDetail({ appId }: AppDetailProps) {
           >
             {selectedFeatures.length > 0 ? `${t('home.sendCta')} (${selectedFeatures.length})` : t('home.sendCta')}
           </Button>
+
+          <Box sx={{ mt: 1.5 }}>
+            <TextCaptionNeutral60>
+              {t.rich('home.consent', {
+                link: (chunks) => (
+                  <Box component={Link} href="/privacy" sx={{ color: 'primary.main', textDecoration: 'none' }}>
+                    {chunks}
+                  </Box>
+                ),
+              })}
+            </TextCaptionNeutral60>
+          </Box>
         </>
       )}
     </Box>

@@ -12,6 +12,7 @@
     "reviewHeading": "Skontrolujte požiadavku",
     "reviewSubtitle": "Vaša {app} aplikácia s týmito funkciami:",
     "sendCta": "Odoslať e-mailom",
+    "consent": "Odoslaním súhlasíte s našimi <link>zásadami ochrany osobných údajov</link>.",
     "back": "Späť",
     "emailLabel": "Váš e-mail",
     "emailInvalid": "Zadajte platnú e-mailovú adresu.",
@@ -60,7 +61,8 @@
   },
   "common": {
     "language": "Jazyk",
-    "animations": "Animácie"
+    "animations": "Animácie",
+    "privacy": "Ochrana osobných údajov"
   },
   "apps": {
     "custom": { "label": "Váš nápad", "tagline": "Nie je to žiadna z appiek vyššie? Napíšte nám, čo máte v pláne — vyberte si bežné funkcie, alebo to len opíšte.", "features": { "accounts": { "label": "Používateľské účty a prihlásenie", "benefit": "Bezpečná registrácia, prihlásenie a profily" }, "payments": { "label": "Platby v aplikácii", "benefit": "Bezpečne prijímajte platby kartou a peňaženkou" }, "notifications": { "label": "Push notifikácie", "benefit": "Vráťte používateľov včasnými upozorneniami" }, "chat": { "label": "Chat a podpora v aplikácii", "benefit": "Nechajte používateľov ozvať sa bez opustenia aplikácie" }, "search": { "label": "Vyhľadávanie a filtre", "benefit": "Pomôžte používateľom rýchlo nájsť, čo hľadajú" }, "adminDashboard": { "label": "Admin dashboard", "benefit": "Spravujte obsah, používateľov a objednávky na jednom mieste" }, "analytics": { "label": "Analytika a prehľady", "benefit": "Vidíte, ako ľudia používajú váš produkt" }, "multiLanguage": { "label": "Podpora viacerých jazykov", "benefit": "Oslovte zákazníkov v ich jazyku" }, "offline": { "label": "Offline režim", "benefit": "Funguje aj bez pripojenia" } } },

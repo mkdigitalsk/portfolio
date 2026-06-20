@@ -12,6 +12,7 @@
     "reviewHeading": "Review your request",
     "reviewSubtitle": "Your {app} app with these features:",
     "sendCta": "Send via email",
+    "consent": "By sending, you agree to our <link>Privacy Policy</link>.",
     "back": "Back",
     "emailLabel": "Your email",
     "emailInvalid": "Please enter a valid email address.",
@@ -60,7 +61,8 @@
   },
   "common": {
     "language": "Language",
-    "animations": "Animations"
+    "animations": "Animations",
+    "privacy": "Privacy Policy"
   },
   "apps": {
     "custom": { "label": "Your idea", "tagline": "Not one of the apps above? Tell us what you have in mind — pick any common features, or just describe it.", "features": { "accounts": { "label": "User accounts & login", "benefit": "Secure sign-up, login, and profiles" }, "payments": { "label": "In-app payments", "benefit": "Take card and wallet payments securely" }, "notifications": { "label": "Push notifications", "benefit": "Re-engage users with timely updates" }, "chat": { "label": "In-app chat & support", "benefit": "Let users reach you without leaving the app" }, "search": { "label": "Search & filters", "benefit": "Help users find what they need fast" }, "adminDashboard": { "label": "Admin dashboard", "benefit": "Manage content, users, and orders in one place" }, "analytics": { "label": "Analytics & insights", "benefit": "See how people use your product" }, "multiLanguage": { "label": "Multi-language support", "benefit": "Reach customers in their own language" }, "offline": { "label": "Offline mode", "benefit": "Keep working without a connection" } } },

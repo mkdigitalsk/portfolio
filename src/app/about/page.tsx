@@ -62,7 +62,7 @@ export default async function AboutPage() {
         </Reveal>
         <Reveal delay={0.16}>
           <Stack direction="row" useFlexGap spacing={1.5} sx={{ flexWrap: 'wrap' }}>
-            <Button variant="primary" startIcon={<Mail />} href="mailto:mir.kusnir@gmail.com">
+            <Button variant="primary" startIcon={<Mail />} href="mailto:mk.digital.sro@gmail.com">
               {t('hero.cta')}
             </Button>
           </Stack>
