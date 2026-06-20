@@ -1,4 +1,14 @@
 {
+  "home": {
+    "headline": "Die App, die Ihr Unternehmen braucht.",
+    "subline": "Wählen Sie einen Produkttyp und sehen Sie ihn lebendig werden — jeder von A bis Z gebaut, über Mobile, Web und Backend hinweg.",
+    "cardHint": "Für Vorschau darüberfahren",
+    "previewSoon": "Live-Demo bald verfügbar",
+    "openDetail": "Details zu {name} ansehen",
+    "detailHeading": "Was Ihre App enthalten könnte",
+    "detailCta": "Ihre App bauen",
+    "close": "Schließen"
+  },
   "hero": {
     "headline": "Komplette Apps aus einer Hand.",
     "subline": "iOS, Android, Web und Backend — einmal richtig gebaut, mit den produktionsreifen Mustern, die ich in echten Kundenprojekten einsetze.",

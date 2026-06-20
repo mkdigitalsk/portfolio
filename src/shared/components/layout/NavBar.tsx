@@ -1,12 +1,47 @@
 'use client'
 
+import { Home } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import type { ReactNode } from 'react'
 import { TextH6Bold } from '../text'
 import { ThemeModeToggle } from '../ThemeModeToggle'
 import { LocaleSwitcher } from '../LocaleSwitcher'
 
+interface NavItemProps {
+  href: string
+  active: boolean
+  ariaLabel?: string
+  children: ReactNode
+}
+
+function NavItem({ href, active, ariaLabel, children }: NavItemProps) {
+  return (
+    <Box
+      component={Link}
+      href={href}
+      aria-label={ariaLabel}
+      aria-current={active ? 'page' : undefined}
+      sx={{
+        position: 'relative',
+        display: 'inline-flex',
+        alignItems: 'center',
+        textDecoration: 'none',
+        color: active ? 'primary.main' : 'text.primary',
+        transition: 'color 0.2s ease',
+        py: 0.5,
+        '&:hover': { color: 'primary.main' },
+      }}
+    >
+      {children}
+    </Box>
+  )
+}
+
 export function NavBar() {
+  const pathname = usePathname()
+
   return (
     <Box
       component="header"
@@ -30,10 +65,13 @@ export function NavBar() {
           justifyContent: 'space-between',
         }}
       >
-        <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-          <TextH6Bold>Miroslav Kušnír</TextH6Bold>
-        </Link>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+        <NavItem href="/" active={pathname === '/'} ariaLabel="Home">
+          <Home />
+        </NavItem>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+          <NavItem href="/about" active={pathname === '/about'}>
+            <TextH6Bold>About</TextH6Bold>
+          </NavItem>
           <LocaleSwitcher />
           <ThemeModeToggle />
         </Box>

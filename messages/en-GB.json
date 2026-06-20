@@ -1,4 +1,14 @@
 {
+  "home": {
+    "headline": "The app your business needs.",
+    "subline": "Pick a product type and watch it come to life — each one built end to end, across mobile, web, and backend.",
+    "cardHint": "Hover to preview",
+    "previewSoon": "Live demo coming soon",
+    "openDetail": "View {name} details",
+    "detailHeading": "What your app could include",
+    "detailCta": "Let's build yours",
+    "close": "Close"
+  },
   "hero": {
     "headline": "I build apps end to end.",
     "subline": "iOS, Android, web, and backend — built once, properly, with the production patterns I use on real client work.",

@@ -1,4 +1,14 @@
 {
+  "home": {
+    "headline": "Aplikácia, ktorú vaše podnikanie potrebuje.",
+    "subline": "Vyberte typ produktu a sledujte, ako ožíva — každý postavený od A po Z, naprieč mobilom, webom aj backendom.",
+    "cardHint": "Ukážka pri prejdení myšou",
+    "previewSoon": "Živá ukážka už čoskoro",
+    "openDetail": "Zobraziť detail {name}",
+    "detailHeading": "Čo všetko môže vaša aplikácia obsahovať",
+    "detailCta": "Poďme postaviť tú vašu",
+    "close": "Zavrieť"
+  },
   "hero": {
     "headline": "Staviam aplikácie od A po Z.",
     "subline": "iOS, Android, web a backend — postavené poriadne a naraz, s produkčnými vzormi, ktoré používam pri reálnej práci pre klientov.",

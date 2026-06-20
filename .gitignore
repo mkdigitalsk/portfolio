@@ -42,3 +42,6 @@ next-env.d.ts
 
 # local-only working files (session notes, scratch, secrets)
 /.claude
+
+# Placeholder preview videos (swap for real app videos)
+/public/previews/
