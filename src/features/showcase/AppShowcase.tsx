@@ -2,22 +2,22 @@
 
 import Box from '@mui/material/Box'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { Reveal, TextBody1Neutral60, TextH1Bold } from '@/shared/components'
-import { AppDetailDialog } from './AppDetailDialog'
 import { AppRevealCard } from './AppRevealCard'
 import { BankFlip } from './BankFlip'
 import { FlipRevealCard } from './FlipRevealCard'
 import { FoodFlip } from './FoodFlip'
 import { MoreIdeasCard } from './MoreIdeasCard'
-import { showcaseApps, type ShowcaseApp } from './apps'
+import { showcaseApps } from './apps'
 
 const STAGGER_STEP = 0.06
 const STAGGER_MAX = 0.3
 
 export function AppShowcase() {
   const t = useTranslations()
-  const [selectedApp, setSelectedApp] = useState<ShowcaseApp | null>(null)
+  const router = useRouter()
+  const open = (id: string) => router.push(`/app/${id}`)
 
   return (
     <Box
@@ -49,7 +49,7 @@ export function AppShowcase() {
                 app={app}
                 hint={t('home.cardHint')}
                 ariaLabel={t('home.openDetail', { name: t(`apps.${app.id}.label`) })}
-                onActivate={() => setSelectedApp(app)}
+                onActivate={() => open(app.id)}
                 frontIcon={<BankFlip accent={app.accent} flipSign={-1} />}
                 flipSign={-1}
               />
@@ -58,7 +58,7 @@ export function AppShowcase() {
                 app={app}
                 hint={t('home.cardHint')}
                 ariaLabel={t('home.openDetail', { name: t(`apps.${app.id}.label`) })}
-                onActivate={() => setSelectedApp(app)}
+                onActivate={() => open(app.id)}
                 frontIcon={<FoodFlip accent={app.accent} flipSign={1} />}
                 flipSign={1}
               />
@@ -67,7 +67,7 @@ export function AppShowcase() {
                 app={app}
                 hint={t('home.cardHint')}
                 ariaLabel={t('home.openDetail', { name: t(`apps.${app.id}.label`) })}
-                onActivate={() => setSelectedApp(app)}
+                onActivate={() => open(app.id)}
               />
             )}
           </Reveal>
@@ -77,8 +77,6 @@ export function AppShowcase() {
       <Reveal delay={0.1}>
         <MoreIdeasCard />
       </Reveal>
-
-      <AppDetailDialog app={selectedApp} open={selectedApp !== null} onClose={() => setSelectedApp(null)} />
     </Box>
   )
 }
