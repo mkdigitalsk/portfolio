@@ -10,6 +10,7 @@ import { HeartBeat } from './HeartBeat'
 import { fasterClose } from './closeTransition'
 import { iconAnimations } from './iconAnimations'
 import { planePaths, revealAnimations } from './revealAnimations'
+import { APP_PREVIEWS } from './previews'
 import type { ShowcaseApp } from './apps'
 
 const CARD_RADIUS = 12
@@ -40,6 +41,7 @@ interface AppRevealCardProps {
 
 export function AppRevealCard({ app, hint, ariaLabel, onActivate, height = 240 }: AppRevealCardProps) {
   const { Icon, accent, previewSrc, iconAnimation } = app
+  const Preview = APP_PREVIEWS[app.id]
   const t = useTranslations()
   const label = t(`apps.${app.id}.label`)
   const reduceMotion = useReducedMotion()
@@ -153,17 +155,21 @@ export function AppRevealCard({ app, hint, ariaLabel, onActivate, height = 240 }
             <Box
               sx={{ position: 'absolute', inset: 0, clipPath: `url(#${clipId})`, WebkitClipPath: `url(#${clipId})` }}
             >
-              <Box
-                component="video"
-                ref={videoRef}
-                src={previewSrc}
-                muted
-                loop
-                playsInline
-                preload="auto"
-                aria-hidden
-                sx={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
-              />
+              {Preview ? (
+                <Preview accent={accent} />
+              ) : (
+                <Box
+                  component="video"
+                  ref={videoRef}
+                  src={previewSrc}
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  aria-hidden
+                  sx={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              )}
             </Box>
           </>
         )}
@@ -176,17 +182,21 @@ export function AppRevealCard({ app, hint, ariaLabel, onActivate, height = 240 }
             }}
             style={{ position: 'absolute', inset: 0 }}
           >
-            <Box
-              component="video"
-              ref={videoRef}
-              src={previewSrc}
-              muted
-              loop
-              playsInline
-              preload="auto"
-              aria-hidden
-              sx={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
-            />
+            {Preview ? (
+              <Preview accent={accent} />
+            ) : (
+              <Box
+                component="video"
+                ref={videoRef}
+                src={previewSrc}
+                muted
+                loop
+                playsInline
+                preload="auto"
+                aria-hidden
+                sx={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+            )}
           </motion.div>
         )}
 

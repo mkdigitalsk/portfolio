@@ -7,6 +7,7 @@ import { useEffect, useRef, type KeyboardEvent, type ReactNode } from 'react'
 import { TextCaptionNeutral60, TextH6Bold } from '@/shared/components'
 import { useMotion } from '@/shared/context/MotionContext'
 import { CARD_FLIP_CLOSE_S, CARD_FLIP_S, FLIP_EASE, ICON_FLIP_S } from './flipTiming'
+import { APP_PREVIEWS } from './previews'
 import type { ShowcaseApp } from './apps'
 
 const CARD_RADIUS = 12
@@ -43,6 +44,7 @@ export function FlipRevealCard({
   height = 240,
 }: FlipRevealCardProps) {
   const { accent, previewSrc } = app
+  const Preview = APP_PREVIEWS[app.id]
   const t = useTranslations()
   const label = t(`apps.${app.id}.label`)
   const reduceMotion = useReducedMotion()
@@ -153,18 +155,22 @@ export function FlipRevealCard({
         </Box>
 
         <Box sx={{ ...faceStyle, transform: `rotateX(${flipTo}deg)`, bgcolor: 'background.paper' }}>
-          {previewSrc && (
-            <Box
-              component="video"
-              ref={videoRef}
-              src={previewSrc}
-              muted
-              loop
-              playsInline
-              preload="auto"
-              aria-hidden
-              sx={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
-            />
+          {Preview ? (
+            <Preview accent={accent} />
+          ) : (
+            previewSrc && (
+              <Box
+                component="video"
+                ref={videoRef}
+                src={previewSrc}
+                muted
+                loop
+                playsInline
+                preload="auto"
+                aria-hidden
+                sx={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+            )
           )}
         </Box>
       </motion.div>
