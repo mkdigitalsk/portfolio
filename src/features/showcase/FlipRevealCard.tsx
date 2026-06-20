@@ -3,8 +3,8 @@
 import Box from '@mui/material/Box'
 import { motion, useReducedMotion } from 'motion/react'
 import { useTranslations } from 'next-intl'
-import { useEffect, useRef, type KeyboardEvent, type ReactNode } from 'react'
-import { TextCaptionNeutral60, TextH6Bold } from '@/shared/components'
+import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react'
+import { TextH6Bold } from '@/shared/components'
 import { useMotion } from '@/shared/context/MotionContext'
 import { CARD_FLIP_CLOSE_S, CARD_FLIP_S, FLIP_EASE, ICON_FLIP_S } from './flipTiming'
 import { APP_PREVIEWS } from './previews'
@@ -24,7 +24,6 @@ const faceStyle = {
 
 interface FlipRevealCardProps {
   app: ShowcaseApp
-  hint: string
   ariaLabel: string
   onActivate: () => void
   // The animated icon shown on the front face — it flips first, e.g. BankFlip / FoodFlip.
@@ -36,7 +35,6 @@ interface FlipRevealCardProps {
 
 export function FlipRevealCard({
   app,
-  hint,
   ariaLabel,
   onActivate,
   frontIcon,
@@ -53,6 +51,18 @@ export function FlipRevealCard({
   const videoRef = useRef<HTMLVideoElement>(null)
   const playTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const flipTo = 180 * flipSign
+  // Drive the flip from hover state tracked on the STABLE outer container — never via
+  // whileHover on the rotating card itself: mid-flip the 3D card turns edge-on, the
+  // browser fires pointerleave, and Framer would think hover ended and reverse/stall.
+  const [hovered, setHovered] = useState(false)
+  const onEnter = () => {
+    setHovered(true)
+    schedulePlay()
+  }
+  const onLeave = () => {
+    setHovered(false)
+    stopPreview()
+  }
 
   const clearPlayTimer = () => {
     if (playTimerRef.current) {
@@ -91,8 +101,8 @@ export function FlipRevealCard({
       aria-label={ariaLabel}
       onClick={onActivate}
       onKeyDown={handleKeyDown}
-      onMouseEnter={schedulePlay}
-      onMouseLeave={stopPreview}
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
       sx={{
         height,
         cursor: 'pointer',
@@ -112,8 +122,7 @@ export function FlipRevealCard({
     >
       <motion.div
         initial="rest"
-        animate="rest"
-        whileHover={animate ? 'active' : undefined}
+        animate={animate && hovered ? 'active' : 'rest'}
         variants={{
           // Close: the card flips back first (no delay, a touch quicker), then the icon flips.
           rest: { rotateX: 0, transition: { duration: CARD_FLIP_CLOSE_S, delay: 0, ease: FLIP_EASE } },
@@ -150,7 +159,6 @@ export function FlipRevealCard({
             }}
           >
             <TextH6Bold>{label}</TextH6Bold>
-            <TextCaptionNeutral60>{hint}</TextCaptionNeutral60>
           </Box>
         </Box>
 

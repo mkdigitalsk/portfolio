@@ -15,7 +15,7 @@ import { PreviewScreen, type PreviewProps } from './PreviewKit'
 const R = 12 // medium, sporty radius
 
 const STATS = [
-  { Icon: DirectionsRun, value: '8,240', key: 'steps' },
+  { Icon: DirectionsRun, value: '14,820', key: 'steps' },
   { Icon: LocalFireDepartment, value: '540', key: 'kcal' },
   { Icon: Timer, value: '47', key: 'min' },
 ]

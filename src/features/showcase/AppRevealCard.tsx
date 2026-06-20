@@ -4,7 +4,7 @@ import Box from '@mui/material/Box'
 import { motion, useAnimationControls, useReducedMotion, type TargetAndTransition } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef, type KeyboardEvent } from 'react'
-import { TextCaptionNeutral60, TextH6Bold } from '@/shared/components'
+import { TextH6Bold } from '@/shared/components'
 import { useMotion } from '@/shared/context/MotionContext'
 import { HeartBeat } from './HeartBeat'
 import { fasterClose } from './closeTransition'
@@ -33,13 +33,12 @@ const PLANE_FLY_IN_TRANSITION = { duration: 0.85, ease: 'linear' } as const
 
 interface AppRevealCardProps {
   app: ShowcaseApp
-  hint: string
   ariaLabel: string
   onActivate: () => void
   height?: number
 }
 
-export function AppRevealCard({ app, hint, ariaLabel, onActivate, height = 240 }: AppRevealCardProps) {
+export function AppRevealCard({ app, ariaLabel, onActivate, height = 240 }: AppRevealCardProps) {
   const { Icon, accent, previewSrc, iconAnimation } = app
   const Preview = APP_PREVIEWS[app.id]
   const t = useTranslations()
@@ -264,7 +263,6 @@ export function AppRevealCard({ app, hint, ariaLabel, onActivate, height = 240 }
           }}
         >
           <TextH6Bold>{label}</TextH6Bold>
-          <TextCaptionNeutral60>{hint}</TextCaptionNeutral60>
         </motion.div>
       </motion.div>
     </Box>

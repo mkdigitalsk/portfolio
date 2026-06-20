@@ -56,7 +56,7 @@ export function EcommerceFlow({ accent }: PreviewProps) {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -10 }}
               transition={{ duration: 0.3 }}
-              style={{ padding: '0 14px' }}
+              style={{ padding: '6px 14px 0' }}
             >
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1.5 }}>
                 <Box
@@ -162,7 +162,7 @@ export function EcommerceFlow({ accent }: PreviewProps) {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 10 }}
               transition={{ duration: 0.3 }}
-              style={{ padding: '0 14px' }}
+              style={{ padding: '6px 14px 0' }}
             >
               <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 0.5 }}>
                 <Box

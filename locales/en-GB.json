@@ -2,7 +2,6 @@
   "home": {
     "headline": "The app your business needs.",
     "subline": "Pick a product type and watch it come to life — each one built end to end, across mobile, web, and backend.",
-    "cardHint": "Hover to preview",
     "previewSoon": "Live demo coming soon",
     "openDetail": "View {name} details",
     "detailHeading": "What your app could include",
@@ -167,19 +166,15 @@
       "salary": "Salary"
     },
     "food": {
-      "previews": {
-        "food": {
-          "restaurantsNearYou": "Restaurants near you",
-          "dish": {
-            "pizza": "Margherita",
-            "burger": "Classic Burger",
-            "ramen": "Ramen Bowl"
-          },
-          "onTheWay": "On the way",
-          "driver": "Driver",
-          "kmAway": "{distance} km away"
-        }
-      }
+      "restaurantsNearYou": "Restaurants near you",
+      "dish": {
+        "pizza": "Margherita",
+        "burger": "Classic Burger",
+        "ramen": "Ramen Bowl"
+      },
+      "onTheWay": "On the way",
+      "driver": "Driver",
+      "kmAway": "{distance} km away"
     },
     "ecommerce": {
       "searchProducts": "Search products",

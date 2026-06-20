@@ -46,27 +46,21 @@ export function AppShowcase() {
           <Reveal key={app.id} delay={Math.min(index * STAGGER_STEP, STAGGER_MAX)}>
             {app.iconAnimation === 'flip' ? (
               <FlipRevealCard
-                app={app}
-                hint={t('home.cardHint')}
-                ariaLabel={t('home.openDetail', { name: t(`apps.${app.id}.label`) })}
+                app={app}                ariaLabel={t('home.openDetail', { name: t(`apps.${app.id}.label`) })}
                 onActivate={() => open(app.id)}
                 frontIcon={<BankFlip accent={app.accent} flipSign={-1} />}
                 flipSign={-1}
               />
             ) : app.iconAnimation === 'food' ? (
               <FlipRevealCard
-                app={app}
-                hint={t('home.cardHint')}
-                ariaLabel={t('home.openDetail', { name: t(`apps.${app.id}.label`) })}
+                app={app}                ariaLabel={t('home.openDetail', { name: t(`apps.${app.id}.label`) })}
                 onActivate={() => open(app.id)}
                 frontIcon={<FoodFlip accent={app.accent} flipSign={1} />}
                 flipSign={1}
               />
             ) : (
               <AppRevealCard
-                app={app}
-                hint={t('home.cardHint')}
-                ariaLabel={t('home.openDetail', { name: t(`apps.${app.id}.label`) })}
+                app={app}                ariaLabel={t('home.openDetail', { name: t(`apps.${app.id}.label`) })}
                 onActivate={() => open(app.id)}
               />
             )}

@@ -2,7 +2,6 @@
   "home": {
     "headline": "Die App, die Ihr Unternehmen braucht.",
     "subline": "Wählen Sie einen Produkttyp und sehen Sie ihn lebendig werden — jeder von A bis Z gebaut, über Mobile, Web und Backend hinweg.",
-    "cardHint": "Für Vorschau darüberfahren",
     "previewSoon": "Live-Demo bald verfügbar",
     "openDetail": "Details zu {name} ansehen",
     "detailHeading": "Was Ihre App enthalten könnte",
@@ -83,19 +82,15 @@
       "salary": "Gehalt"
     },
     "food": {
-      "previews": {
-        "food": {
-          "restaurantsNearYou": "Restaurants in der Nähe",
-          "dish": {
-            "pizza": "Margherita",
-            "burger": "Klassischer Burger",
-            "ramen": "Ramen-Schüssel"
-          },
-          "onTheWay": "Unterwegs",
-          "driver": "Fahrer",
-          "kmAway": "{distance} km entfernt"
-        }
-      }
+      "restaurantsNearYou": "Restaurants in der Nähe",
+      "dish": {
+        "pizza": "Margherita",
+        "burger": "Klassischer Burger",
+        "ramen": "Ramen-Schüssel"
+      },
+      "onTheWay": "Unterwegs",
+      "driver": "Fahrer",
+      "kmAway": "{distance} km entfernt"
     },
     "ecommerce": {
       "searchProducts": "Produkte suchen",

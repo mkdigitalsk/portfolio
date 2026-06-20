@@ -2,7 +2,6 @@
   "home": {
     "headline": "Aplikácia, ktorú vaše podnikanie potrebuje.",
     "subline": "Vyberte typ produktu a sledujte, ako ožíva — každý postavený od A po Z, naprieč mobilom, webom aj backendom.",
-    "cardHint": "Ukážka pri prejdení myšou",
     "previewSoon": "Živá ukážka už čoskoro",
     "openDetail": "Zobraziť detail {name}",
     "detailHeading": "Čo všetko môže vaša aplikácia obsahovať",
@@ -83,19 +82,15 @@
       "salary": "Mzda"
     },
     "food": {
-      "previews": {
-        "food": {
-          "restaurantsNearYou": "Reštaurácie v okolí",
-          "dish": {
-            "pizza": "Margherita",
-            "burger": "Klasický burger",
-            "ramen": "Ramen miska"
-          },
-          "onTheWay": "Na ceste",
-          "driver": "Kuriér",
-          "kmAway": "{distance} km od vás"
-        }
-      }
+      "restaurantsNearYou": "Reštaurácie v okolí",
+      "dish": {
+        "pizza": "Margherita",
+        "burger": "Klasický burger",
+        "ramen": "Ramen miska"
+      },
+      "onTheWay": "Na ceste",
+      "driver": "Kuriér",
+      "kmAway": "{distance} km od vás"
     },
     "ecommerce": {
       "searchProducts": "Hľadať produkty",
