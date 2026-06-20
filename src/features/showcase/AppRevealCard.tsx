@@ -2,6 +2,7 @@
 
 import Box from '@mui/material/Box'
 import { motion, useReducedMotion } from 'motion/react'
+import { useTranslations } from 'next-intl'
 import { useEffect, useRef, type KeyboardEvent } from 'react'
 import { TextCaptionNeutral60, TextH6Bold } from '@/shared/components'
 import { useMotion } from '@/shared/context/MotionContext'
@@ -27,7 +28,9 @@ interface AppRevealCardProps {
 }
 
 export function AppRevealCard({ app, hint, ariaLabel, onActivate, height = 240 }: AppRevealCardProps) {
-  const { Icon, label, accent, previewSrc, iconAnimation } = app
+  const { Icon, accent, previewSrc, iconAnimation } = app
+  const t = useTranslations()
+  const label = t(`apps.${app.id}.label`)
   const reduceMotion = useReducedMotion()
   const { motionEnabled } = useMotion()
   const animate = !reduceMotion && motionEnabled

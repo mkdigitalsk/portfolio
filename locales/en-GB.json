@@ -1,0 +1,141 @@
+{
+  "home": {
+    "headline": "The app your business needs.",
+    "subline": "Pick a product type and watch it come to life — each one built end to end, across mobile, web, and backend.",
+    "cardHint": "Hover to preview",
+    "previewSoon": "Live demo coming soon",
+    "openDetail": "View {name} details",
+    "detailHeading": "What your app could include",
+    "detailHint": "Tap the features you'd want — we'll build exactly that.",
+    "mailSubject": "App enquiry: {app}",
+    "mailIntro": "Hi, I'd like a {app} app with these features:",
+    "reviewHeading": "Review your request",
+    "reviewSubtitle": "Your {app} app with these features:",
+    "sendCta": "Send via email",
+    "back": "Back",
+    "detailCta": "Let's build yours",
+    "close": "Close",
+    "moreText": "Either your idea is covered above, or it's something unique — share it and we'll help bring it to life.",
+    "moreCta": "Get in touch"
+  },
+  "hero": {
+    "headline": "We build apps end to end.",
+    "subline": "iOS, Android, web, and backend — built once, properly, with the production patterns we use on real client work.",
+    "cta": "Get in touch",
+    "cv": "Download CV"
+  },
+  "showcases": {
+    "title": "Showcases",
+    "subtitle": "Production patterns we ship — explore the source.",
+    "code": "Code",
+    "viewCode": "View {name} code",
+    "kmpDesc": "iOS + Android, shared business logic",
+    "androidDesc": "Native Android, Jetpack Compose",
+    "rnDesc": "Cross-platform mobile",
+    "webDesc": "React + TypeScript SPA"
+  },
+  "techStack": {
+    "title": "Tech stack",
+    "mobile": "Mobile",
+    "web": "Web",
+    "backend": "Backend",
+    "devops": "DevOps",
+    "foundations": "Foundations"
+  },
+  "common": {
+    "language": "Language",
+    "animations": "Animations"
+  },
+  "apps": {
+    "food": {
+      "label": "Food delivery",
+      "tagline": "Everything your customers need to order, track, and reorder with ease.",
+      "features": {
+        "liveTracking": { "label": "Live order tracking", "benefit": "Customers watch their driver arrive in real time" },
+        "favourites": { "label": "Favourites & reorder", "benefit": "One-tap reordering brings customers back faster" },
+        "payments": { "label": "In-app payments", "benefit": "Cards, wallets, and cash all supported securely" },
+        "scheduled": { "label": "Scheduled delivery", "benefit": "Let customers pick their ideal delivery time" },
+        "menuFilters": { "label": "Smart menu filters", "benefit": "Find dishes by diet, allergens, or price" },
+        "ratings": { "label": "Ratings & reviews", "benefit": "Build trust with honest customer feedback" },
+        "promos": { "label": "Promo codes & loyalty", "benefit": "Reward regulars and boost repeat orders" },
+        "multiLanguage": { "label": "Multi-language support", "benefit": "Reach every customer in their own language" },
+        "supportChat": { "label": "In-app support chat", "benefit": "Resolve order issues without leaving the app" }
+      }
+    },
+    "fintech": {
+      "label": "Banking & Fintech",
+      "tagline": "Everything your customers need to bank with confidence.",
+      "features": {
+        "biometricLogin": { "label": "Biometric login", "benefit": "Secure access with face or fingerprint" },
+        "instantTransfers": { "label": "Instant transfers", "benefit": "Send and receive money in seconds" },
+        "cardControls": { "label": "Card freeze & controls", "benefit": "Lock cards and set limits instantly" },
+        "spendingInsights": { "label": "Spending insights", "benefit": "Clear view of where money goes" },
+        "multiCurrency": { "label": "Multi-currency accounts", "benefit": "Hold and spend in many currencies" },
+        "savingsGoals": { "label": "Savings goals", "benefit": "Help customers save toward what matters" },
+        "realtimeAlerts": { "label": "Real-time alerts", "benefit": "Instant notifications on every transaction" },
+        "fastOnboarding": { "label": "Fast onboarding", "benefit": "Verify identity and open accounts in minutes" },
+        "billSplitting": { "label": "Bill splitting", "benefit": "Share costs with friends effortlessly" }
+      }
+    },
+    "ecommerce": {
+      "label": "E-commerce",
+      "tagline": "A shopping app that turns browsers into loyal buyers.",
+      "features": {
+        "search": { "label": "Smart search & filters", "benefit": "Shoppers find the right product fast" },
+        "recommendations": { "label": "Personalised recommendations", "benefit": "Tailored picks that lift every order" },
+        "wishlist": { "label": "Wishlist & stock alerts", "benefit": "Saved items bring shoppers back" },
+        "guestCheckout": { "label": "Fast guest checkout", "benefit": "Fewer abandoned carts, more sales" },
+        "payments": { "label": "Multiple payment methods", "benefit": "Pay by card, wallet, or instalments" },
+        "orderTracking": { "label": "Order tracking", "benefit": "Customers follow deliveries with confidence" },
+        "reviews": { "label": "Reviews & ratings", "benefit": "Real feedback builds buyer trust" },
+        "cartReminders": { "label": "Abandoned-cart reminders", "benefit": "Win back nearly-completed purchases" },
+        "loyalty": { "label": "Loyalty & rewards", "benefit": "Repeat customers spend more over time" }
+      }
+    },
+    "booking": {
+      "label": "Booking & Travel",
+      "tagline": "Turn every search into a confident, completed booking.",
+      "features": {
+        "search": { "label": "Smart search & filters", "benefit": "Customers find the right option in seconds" },
+        "availability": { "label": "Availability calendar", "benefit": "Live dates and prices, never double-booked" },
+        "instantBooking": { "label": "Instant booking", "benefit": "Reserve in a few quick taps" },
+        "mapView": { "label": "Map view", "benefit": "See exactly where everything is located" },
+        "payments": { "label": "Secure payments", "benefit": "Trusted checkout protects every transaction" },
+        "manage": { "label": "Booking management", "benefit": "View, change or cancel trips easily" },
+        "reviews": { "label": "Ratings & reviews", "benefit": "Real feedback builds buyer confidence" },
+        "multiLangCurrency": { "label": "Multi-language & currency", "benefit": "Welcome travellers from anywhere in the world" },
+        "reminders": { "label": "Trip reminders", "benefit": "Timely alerts keep customers on schedule" }
+      }
+    },
+    "marketplace": {
+      "label": "Marketplace",
+      "tagline": "Everything buyers and sellers need to trade with confidence.",
+      "features": {
+        "sellerListings": { "label": "Easy seller listings", "benefit": "Sellers list items in seconds with photos" },
+        "search": { "label": "Smart search & filters", "benefit": "Buyers find the right item fast" },
+        "chat": { "label": "In-app chat", "benefit": "Buyers and sellers talk before buying" },
+        "escrow": { "label": "Secure escrow payments", "benefit": "Money released only when buyers are happy" },
+        "buyerProtection": { "label": "Buyer protection", "benefit": "Refunds and dispute support build trust" },
+        "reviews": { "label": "Ratings & reviews", "benefit": "Honest feedback rewards trustworthy users" },
+        "verification": { "label": "Identity verification", "benefit": "Verified accounts keep out fraud" },
+        "shipping": { "label": "Shipping integration", "benefit": "Labels and tracking handled inside the app" },
+        "pushOffers": { "label": "Push offers & alerts", "benefit": "Bring shoppers back with timely deals" }
+      }
+    },
+    "health": {
+      "label": "Health & Fitness",
+      "tagline": "Help your users move more, eat better, and stay motivated.",
+      "features": {
+        "activityTracking": { "label": "Activity tracking", "benefit": "Logs steps, runs, and workouts automatically" },
+        "wearableSync": { "label": "Wearable sync", "benefit": "Connects Apple Watch, Fitbit, and Garmin" },
+        "workoutPlans": { "label": "Personalised workout plans", "benefit": "Routines tailored to each user's goals" },
+        "nutrition": { "label": "Nutrition logging", "benefit": "Easy meal and calorie tracking" },
+        "progressCharts": { "label": "Progress charts", "benefit": "See improvement at a glance" },
+        "goalReminders": { "label": "Goal reminders", "benefit": "Gentle nudges keep users on track" },
+        "challenges": { "label": "Social challenges", "benefit": "Friendly competition drives daily engagement" },
+        "sleep": { "label": "Sleep & recovery", "benefit": "Track rest for healthier results" },
+        "privacy": { "label": "Private health data", "benefit": "Personal information stays safe and secure" }
+      }
+    }
+  }
+}

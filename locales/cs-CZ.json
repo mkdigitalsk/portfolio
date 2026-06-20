@@ -1,0 +1,57 @@
+{
+  "home": {
+    "headline": "Aplikace, kterou vaše firma potřebuje.",
+    "subline": "Vyberte typ produktu a sledujte, jak ožívá — každý postavený od A do Z, napříč mobilem, webem i backendem.",
+    "cardHint": "Náhled při najetí myší",
+    "previewSoon": "Živá ukázka už brzy",
+    "openDetail": "Zobrazit detail {name}",
+    "detailHeading": "Co všechno může vaše aplikace obsahovat",
+    "detailHint": "Naklikejte funkce co chcete — postavíme přesně to.",
+    "mailSubject": "Poptávka na aplikaci: {app}",
+    "mailIntro": "Dobrý den, mám zájem o {app} aplikaci s těmito funkcemi:",
+    "reviewHeading": "Zkontrolujte požadavek",
+    "reviewSubtitle": "Vaše {app} aplikace s těmito funkcemi:",
+    "sendCta": "Odeslat e-mailem",
+    "back": "Zpět",
+    "detailCta": "Pojďme postavit tu vaši",
+    "close": "Zavřít",
+    "moreText": "Váš nápad je buď mezi těmi výše, nebo je jedinečný — napište nám a pomůžeme ho přivést k životu.",
+    "moreCta": "Ozvěte se nám"
+  },
+  "hero": {
+    "headline": "Stavíme aplikace od A do Z.",
+    "subline": "iOS, Android, web a backend — postavené pořádně a najednou, s produkčními vzory, které používáme při reálné práci pro klienty.",
+    "cta": "Ozvěte se nám",
+    "cv": "Stáhnout CV"
+  },
+  "showcases": {
+    "title": "Ukázky",
+    "subtitle": "Produkční vzory, které dodáváme — prohlédni zdroják.",
+    "code": "Kód",
+    "viewCode": "Zobrazit kód {name}",
+    "kmpDesc": "iOS + Android, sdílená byznys logika",
+    "androidDesc": "Nativní Android, Jetpack Compose",
+    "rnDesc": "Multiplatformní mobil",
+    "webDesc": "React + TypeScript SPA"
+  },
+  "techStack": {
+    "title": "Technologie",
+    "mobile": "Mobil",
+    "web": "Web",
+    "backend": "Backend",
+    "devops": "DevOps",
+    "foundations": "Základy"
+  },
+  "common": {
+    "language": "Jazyk",
+    "animations": "Animace"
+  },
+  "apps": {
+    "food": { "label": "Rozvoz jídla", "tagline": "Vše, co vaši zákazníci potřebují k objednání, sledování a snadnému opakování objednávek.", "features": { "liveTracking": { "label": "Sledování objednávky naživo", "benefit": "Zákazníci sledují příjezd kurýra v reálném čase" }, "favourites": { "label": "Oblíbené a opakování", "benefit": "Opakování objednávky jedním klepnutím vrací zákazníky rychleji" }, "payments": { "label": "Platby v aplikaci", "benefit": "Karty, peněženky i hotovost bezpečně podporovány" }, "scheduled": { "label": "Naplánovaný rozvoz", "benefit": "Nechte zákazníky vybrat si ideální čas doručení" }, "menuFilters": { "label": "Chytré filtry menu", "benefit": "Najděte jídla podle diety, alergenů či ceny" }, "ratings": { "label": "Hodnocení a recenze", "benefit": "Budujte důvěru díky upřímné zpětné vazbě zákazníků" }, "promos": { "label": "Promo kódy a věrnost", "benefit": "Odměňte stálé zákazníky a zvyšte opakované objednávky" }, "multiLanguage": { "label": "Podpora více jazyků", "benefit": "Oslovte každého zákazníka v jeho jazyce" }, "supportChat": { "label": "Podpora v aplikaci", "benefit": "Vyřešte problémy s objednávkou bez opuštění aplikace" } } },
+    "fintech": { "label": "Bankovnictví a fintech", "tagline": "Vše, co vaši zákazníci potřebují k bankovnictví s jistotou.", "features": { "biometricLogin": { "label": "Biometrické přihlášení", "benefit": "Bezpečný přístup obličejem nebo otiskem prstu" }, "instantTransfers": { "label": "Okamžité převody", "benefit": "Posílejte a přijímejte peníze během několika sekund" }, "cardControls": { "label": "Zmrazení a správa karty", "benefit": "Zablokujte karty a nastavte limity okamžitě" }, "spendingInsights": { "label": "Přehled výdajů", "benefit": "Jasný pohled na to, kam peníze plynou" }, "multiCurrency": { "label": "Vícemenové účty", "benefit": "Držte a utrácejte v mnoha měnách" }, "savingsGoals": { "label": "Spořicí cíle", "benefit": "Pomozte zákazníkům spořit na to, na čem záleží" }, "realtimeAlerts": { "label": "Upozornění v reálném čase", "benefit": "Okamžitá oznámení o každé transakci" }, "fastOnboarding": { "label": "Rychlá registrace", "benefit": "Ověřte identitu a otevřete účet během několika minut" }, "billSplitting": { "label": "Dělení účtů", "benefit": "Snadno sdílejte náklady s přáteli" } } },
+    "ecommerce": { "label": "E-commerce", "tagline": "Nákupní aplikace, která mění návštěvníky ve věrné zákazníky.", "features": { "search": { "label": "Chytré vyhledávání a filtry", "benefit": "Zákazníci najdou správný produkt rychle" }, "recommendations": { "label": "Personalizovaná doporučení", "benefit": "Tipy na míru, které zvedají každou objednávku" }, "wishlist": { "label": "Seznam přání a upozornění na sklad", "benefit": "Uložené položky vrací zákazníky zpět" }, "guestCheckout": { "label": "Rychlý nákup bez registrace", "benefit": "Méně opuštěných košíků, více prodejů" }, "payments": { "label": "Více platebních metod", "benefit": "Platba kartou, peněženkou nebo na splátky" }, "orderTracking": { "label": "Sledování objednávky", "benefit": "Zákazníci sledují doručení s jistotou" }, "reviews": { "label": "Recenze a hodnocení", "benefit": "Skutečná zpětná vazba buduje důvěru kupujících" }, "cartReminders": { "label": "Připomínky opuštěného košíku", "benefit": "Získejte zpět téměř dokončené nákupy" }, "loyalty": { "label": "Věrnost a odměny", "benefit": "Stálí zákazníci časem utrácejí více" } } },
+    "booking": { "label": "Rezervace a cestování", "tagline": "Proměňte každé hledání v sebejistou, dokončenou rezervaci.", "features": { "search": { "label": "Chytré vyhledávání a filtry", "benefit": "Zákazníci najdou tu správnou možnost během sekund" }, "availability": { "label": "Kalendář dostupnosti", "benefit": "Aktuální termíny a ceny, nikdy dvojí rezervace" }, "instantBooking": { "label": "Okamžitá rezervace", "benefit": "Rezervujte několika rychlými klepnutími" }, "mapView": { "label": "Zobrazení na mapě", "benefit": "Uvidíte přesně, kde se vše nachází" }, "payments": { "label": "Bezpečné platby", "benefit": "Důvěryhodná pokladna chrání každou transakci" }, "manage": { "label": "Správa rezervací", "benefit": "Snadno zobrazte, změňte nebo zrušte cesty" }, "reviews": { "label": "Hodnocení a recenze", "benefit": "Skutečná zpětná vazba buduje důvěru kupujících" }, "multiLangCurrency": { "label": "Více jazyků a měn", "benefit": "Přivítejte cestovatele odkudkoli na světě" }, "reminders": { "label": "Připomínky cest", "benefit": "Včasná upozornění udrží zákazníky v plánu" } } },
+    "marketplace": { "label": "Tržiště", "tagline": "Vše, co kupující i prodávající potřebují k obchodování s jistotou.", "features": { "sellerListings": { "label": "Snadné inzeráty prodejců", "benefit": "Prodejci inzerují položky s fotkami během sekund" }, "search": { "label": "Chytré vyhledávání a filtry", "benefit": "Kupující najdou tu správnou položku rychle" }, "chat": { "label": "Chat v aplikaci", "benefit": "Kupující a prodávající si promluví před nákupem" }, "escrow": { "label": "Bezpečné úschovní platby", "benefit": "Peníze se uvolní, až když jsou kupující spokojeni" }, "buyerProtection": { "label": "Ochrana kupujícího", "benefit": "Vrácení peněz a podpora sporů budují důvěru" }, "reviews": { "label": "Hodnocení a recenze", "benefit": "Upřímná zpětná vazba odměňuje důvěryhodné uživatele" }, "verification": { "label": "Ověření identity", "benefit": "Ověřené účty drží podvodníky dál" }, "shipping": { "label": "Integrace dopravy", "benefit": "Štítky a sledování zařízené přímo v aplikaci" }, "pushOffers": { "label": "Push nabídky a upozornění", "benefit": "Vraťte zákazníky včasnými akcemi" } } },
+    "health": { "label": "Zdraví a fitness", "tagline": "Pomozte svým uživatelům více se hýbat, lépe jíst a zůstat motivovaní.", "features": { "activityTracking": { "label": "Sledování aktivity", "benefit": "Automaticky zaznamenává kroky, běhy a tréninky" }, "wearableSync": { "label": "Synchronizace s chytrými hodinkami", "benefit": "Propojí Apple Watch, Fitbit a Garmin" }, "workoutPlans": { "label": "Personalizované tréninkové plány", "benefit": "Rutiny na míru cílům každého uživatele" }, "nutrition": { "label": "Záznam stravy", "benefit": "Snadné sledování jídel a kalorií" }, "progressCharts": { "label": "Grafy pokroku", "benefit": "Zlepšení uvidíte na první pohled" }, "goalReminders": { "label": "Připomínky cílů", "benefit": "Jemná pošťouchnutí udrží uživatele v kurzu" }, "challenges": { "label": "Společné výzvy", "benefit": "Přátelské soupeření pohání každodenní zapojení" }, "sleep": { "label": "Spánek a regenerace", "benefit": "Sledujte odpočinek pro zdravější výsledky" }, "privacy": { "label": "Soukromá zdravotní data", "benefit": "Osobní údaje zůstávají v bezpečí" } } }
+  }
+}

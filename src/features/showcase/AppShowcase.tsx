@@ -48,7 +48,7 @@ export function AppShowcase() {
               <FlipRevealCard
                 app={app}
                 hint={t('home.cardHint')}
-                ariaLabel={t('home.openDetail', { name: app.label })}
+                ariaLabel={t('home.openDetail', { name: t(`apps.${app.id}.label`) })}
                 onActivate={() => setSelectedApp(app)}
                 frontIcon={<BankFlip accent={app.accent} flipSign={-1} />}
                 flipSign={-1}
@@ -57,7 +57,7 @@ export function AppShowcase() {
               <FlipRevealCard
                 app={app}
                 hint={t('home.cardHint')}
-                ariaLabel={t('home.openDetail', { name: app.label })}
+                ariaLabel={t('home.openDetail', { name: t(`apps.${app.id}.label`) })}
                 onActivate={() => setSelectedApp(app)}
                 frontIcon={<FoodFlip accent={app.accent} flipSign={1} />}
                 flipSign={1}
@@ -66,7 +66,7 @@ export function AppShowcase() {
               <AppRevealCard
                 app={app}
                 hint={t('home.cardHint')}
-                ariaLabel={t('home.openDetail', { name: app.label })}
+                ariaLabel={t('home.openDetail', { name: t(`apps.${app.id}.label`) })}
                 onActivate={() => setSelectedApp(app)}
               />
             )}
