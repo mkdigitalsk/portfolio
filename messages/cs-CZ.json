@@ -36,6 +36,7 @@
     "foundations": "Základy"
   },
   "common": {
-    "language": "Jazyk"
+    "language": "Jazyk",
+    "animations": "Animace"
   }
 }

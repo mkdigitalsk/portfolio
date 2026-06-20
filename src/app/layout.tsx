@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
-import '@fontsource/roboto/300.css'
-import '@fontsource/roboto/400.css'
-import '@fontsource/roboto/500.css'
-import '@fontsource/roboto/700.css'
+import '@fontsource/inter/400.css'
+import '@fontsource/inter/500.css'
+import '@fontsource/inter/600.css'
+import '@fontsource/inter/700.css'
+import '@fontsource/plus-jakarta-sans/600.css'
+import '@fontsource/plus-jakarta-sans/700.css'
+import '@fontsource/plus-jakarta-sans/800.css'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v16-appRouter'
 import { ThemeProvider } from '@mui/material/styles'
 import Box from '@mui/material/Box'
@@ -10,6 +13,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
 import { ColorSchemeScript, Footer, NavBar } from '@/shared/components'
+import { MotionProvider } from '@/shared/context/MotionContext'
 import { theme } from '@/shared/theme'
 import './globals.css'
 
@@ -31,11 +35,13 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
             <ColorSchemeScript />
             <ThemeProvider theme={theme} defaultMode="system">
               <CssBaseline />
-              <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100dvh' }}>
-                <NavBar />
-                <Box sx={{ flex: 1 }}>{children}</Box>
-                <Footer />
-              </Box>
+              <MotionProvider>
+                <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100dvh' }}>
+                  <NavBar />
+                  <Box sx={{ flex: 1 }}>{children}</Box>
+                  <Footer />
+                </Box>
+              </MotionProvider>
             </ThemeProvider>
           </AppRouterCacheProvider>
         </NextIntlClientProvider>

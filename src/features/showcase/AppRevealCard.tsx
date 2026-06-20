@@ -4,6 +4,7 @@ import Box from '@mui/material/Box'
 import { motion, useReducedMotion } from 'motion/react'
 import { useEffect, useRef, type KeyboardEvent } from 'react'
 import { TextCaptionNeutral60, TextH6Bold } from '@/shared/components'
+import { useMotion } from '@/shared/context/MotionContext'
 import { HeartBeat } from './HeartBeat'
 import { fasterClose } from './closeTransition'
 import { iconAnimations } from './iconAnimations'
@@ -28,6 +29,8 @@ interface AppRevealCardProps {
 export function AppRevealCard({ app, hint, ariaLabel, onActivate, height = 240 }: AppRevealCardProps) {
   const { Icon, label, accent, previewSrc, iconAnimation } = app
   const reduceMotion = useReducedMotion()
+  const { motionEnabled } = useMotion()
+  const animate = !reduceMotion && motionEnabled
   const videoRef = useRef<HTMLVideoElement>(null)
   const playTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const iconAnim = iconAnimations[iconAnimation]
@@ -40,7 +43,7 @@ export function AppRevealCard({ app, hint, ariaLabel, onActivate, height = 240 }
     }
   }
   const schedulePlay = () => {
-    if (!previewSrc) return
+    if (!previewSrc || !animate) return
     clearPlayTimer()
     playTimerRef.current = setTimeout(() => {
       videoRef.current?.play().catch(() => undefined)
@@ -91,7 +94,7 @@ export function AppRevealCard({ app, hint, ariaLabel, onActivate, height = 240 }
       <motion.div
         initial="rest"
         animate="rest"
-        whileHover={reduceMotion ? undefined : 'active'}
+        whileHover={animate ? 'active' : undefined}
         style={{ position: 'relative', width: '100%', height: '100%', borderRadius: CARD_RADIUS, overflow: 'hidden' }}
       >
         <Box

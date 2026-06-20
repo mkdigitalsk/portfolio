@@ -36,6 +36,7 @@
     "foundations": "Grundlagen"
   },
   "common": {
-    "language": "Sprache"
+    "language": "Sprache",
+    "animations": "Animationen"
   }
 }

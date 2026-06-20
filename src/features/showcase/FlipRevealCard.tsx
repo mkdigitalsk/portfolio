@@ -4,6 +4,7 @@ import Box from '@mui/material/Box'
 import { motion, useReducedMotion } from 'motion/react'
 import { useEffect, useRef, type KeyboardEvent, type ReactNode } from 'react'
 import { TextCaptionNeutral60, TextH6Bold } from '@/shared/components'
+import { useMotion } from '@/shared/context/MotionContext'
 import { CARD_FLIP_CLOSE_S, CARD_FLIP_S, FLIP_EASE, ICON_FLIP_S } from './flipTiming'
 import type { ShowcaseApp } from './apps'
 
@@ -42,6 +43,8 @@ export function FlipRevealCard({
 }: FlipRevealCardProps) {
   const { accent, label, previewSrc } = app
   const reduceMotion = useReducedMotion()
+  const { motionEnabled } = useMotion()
+  const animate = !reduceMotion && motionEnabled
   const videoRef = useRef<HTMLVideoElement>(null)
   const playTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const flipTo = 180 * flipSign
@@ -53,7 +56,7 @@ export function FlipRevealCard({
     }
   }
   const schedulePlay = () => {
-    if (!previewSrc) return
+    if (!previewSrc || !animate) return
     clearPlayTimer()
     playTimerRef.current = setTimeout(() => {
       videoRef.current?.play().catch(() => undefined)
@@ -105,7 +108,7 @@ export function FlipRevealCard({
       <motion.div
         initial="rest"
         animate="rest"
-        whileHover={reduceMotion ? undefined : 'active'}
+        whileHover={animate ? 'active' : undefined}
         variants={{
           // Close: the card flips back first (no delay, a touch quicker), then the icon flips.
           rest: { rotateX: 0, transition: { duration: CARD_FLIP_CLOSE_S, delay: 0, ease: FLIP_EASE } },

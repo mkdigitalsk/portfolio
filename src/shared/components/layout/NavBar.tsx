@@ -8,6 +8,7 @@ import type { ReactNode } from 'react'
 import { TextH6Bold } from '../text'
 import { ThemeModeToggle } from '../ThemeModeToggle'
 import { LocaleSwitcher } from '../LocaleSwitcher'
+import { MotionToggle } from '../MotionToggle'
 
 interface NavItemProps {
   href: string
@@ -73,6 +74,7 @@ export function NavBar() {
             <TextH6Bold>About</TextH6Bold>
           </NavItem>
           <LocaleSwitcher />
+          <MotionToggle />
           <ThemeModeToggle />
         </Box>
       </Box>

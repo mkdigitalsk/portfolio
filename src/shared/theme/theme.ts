@@ -51,6 +51,9 @@ const ErrorDark = '#CF6679'
 const SuccessDark = '#81C784'
 const WarningDark = '#FFB74D'
 
+const BodyFont = '"Inter", "Helvetica", "Arial", sans-serif'
+const HeadingFont = '"Plus Jakarta Sans", "Inter", "Helvetica", sans-serif'
+
 export const theme = createTheme({
   colorSchemes: {
     light: {
@@ -93,13 +96,19 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: BodyFont,
     h1: {
+      fontFamily: HeadingFont,
       fontSize: 'clamp(2.5rem, 6vw, 4.25rem)',
       fontWeight: 700,
       lineHeight: 1.08,
       letterSpacing: '-0.02em',
     },
+    h2: { fontFamily: HeadingFont },
+    h3: { fontFamily: HeadingFont },
+    h4: { fontFamily: HeadingFont },
+    h5: { fontFamily: HeadingFont },
+    h6: { fontFamily: HeadingFont },
   },
   shape: {
     borderRadius: 8,
