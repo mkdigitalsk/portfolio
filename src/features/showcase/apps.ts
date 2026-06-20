@@ -5,6 +5,7 @@ import {
   FlightTakeoff,
   MonitorHeart,
   Restaurant,
+  RocketLaunchOutlined,
   ShoppingBag,
   Storefront,
 } from '@mui/icons-material'
@@ -131,3 +132,25 @@ export const showcaseApps: ShowcaseApp[] = [
     ],
   },
 ]
+
+// Not part of the home grid — the "Your idea" / Get-in-touch flow opens this in the
+// configurator with generic, cross-product features that start UNSELECTED (blank slate).
+export const customApp: ShowcaseApp = {
+  id: 'custom',
+  Icon: RocketLaunchOutlined,
+  accent: '#6200EE',
+  iconAnimation: 'drop',
+  featureKeys: [
+    'accounts',
+    'payments',
+    'notifications',
+    'chat',
+    'search',
+    'adminDashboard',
+    'analytics',
+    'multiLanguage',
+    'offline',
+  ],
+}
+
+export const detailApps: ShowcaseApp[] = [...showcaseApps, customApp]

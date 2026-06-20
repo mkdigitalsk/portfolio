@@ -14,6 +14,12 @@
     "sendCta": "Odoslať e-mailom",
     "back": "Späť",
     "emailLabel": "Váš e-mail",
+    "emailInvalid": "Zadajte platnú e-mailovú adresu.",
+    "nameLabel": "Meno alebo firma",
+    "messageLabel": "Ešte niečo?",
+    "messagePlaceholder": "Nie je to v zozname? Aj to vieme — napíšte nám.",
+    "noteLabel": "Poznámka",
+    "phoneLabel": "Telefón",
     "sentHeading": "Požiadavka odoslaná!",
     "sentBody": "Ďakujeme — čoskoro sa vám ozveme.",
     "sendError": "Niečo sa pokazilo. Skúste to prosím znova.",
@@ -22,7 +28,12 @@
     "detailCta": "Poďme postaviť tú vašu",
     "close": "Zavrieť",
     "moreText": "Váš nápad je buď medzi tými hore, alebo je jedinečný — napíšte nám a pomôžeme ho priviesť k životu.",
-    "moreCta": "Ozvite sa nám"
+    "moreCta": "Ozvite sa nám",
+    "moreExisting": "Už máte produkt? Spravíme rebrand, pridáme funkcie a vdýchneme mu nový život.",
+    "customIntro": "Dobrý deň, rád by som postavil aplikáciu na mieru.",
+    "platformsLabel": "Čo potrebujete?",
+    "platformWeb": "Web",
+    "platformMobile": "Mobilná aplikácia"
   },
   "hero": {
     "headline": "Staviame aplikácie od A po Z.",
@@ -53,6 +64,7 @@
     "animations": "Animácie"
   },
   "apps": {
+    "custom": { "label": "Váš nápad", "tagline": "Nie je to žiadna z appiek vyššie? Napíšte nám, čo máte v pláne — vyberte si bežné funkcie, alebo to len opíšte.", "features": { "accounts": { "label": "Používateľské účty a prihlásenie", "benefit": "Bezpečná registrácia, prihlásenie a profily" }, "payments": { "label": "Platby v aplikácii", "benefit": "Bezpečne prijímajte platby kartou a peňaženkou" }, "notifications": { "label": "Push notifikácie", "benefit": "Vráťte používateľov včasnými upozorneniami" }, "chat": { "label": "Chat a podpora v aplikácii", "benefit": "Nechajte používateľov ozvať sa bez opustenia aplikácie" }, "search": { "label": "Vyhľadávanie a filtre", "benefit": "Pomôžte používateľom rýchlo nájsť, čo hľadajú" }, "adminDashboard": { "label": "Admin dashboard", "benefit": "Spravujte obsah, používateľov a objednávky na jednom mieste" }, "analytics": { "label": "Analytika a prehľady", "benefit": "Vidíte, ako ľudia používajú váš produkt" }, "multiLanguage": { "label": "Podpora viacerých jazykov", "benefit": "Oslovte zákazníkov v ich jazyku" }, "offline": { "label": "Offline režim", "benefit": "Funguje aj bez pripojenia" } } },
     "food": { "label": "Donáška jedla", "tagline": "Všetko, čo vaši zákazníci potrebujú na pohodlné objednávanie, sledovanie a opakovanie objednávok.", "features": { "liveTracking": { "label": "Sledovanie objednávky naživo", "benefit": "Zákazníci sledujú príchod kuriéra v reálnom čase" }, "favourites": { "label": "Obľúbené a opakovanie", "benefit": "Opakovanie objednávky jedným ťuknutím privedie zákazníkov späť rýchlejšie" }, "payments": { "label": "Platby v aplikácii", "benefit": "Karty, peňaženky aj hotovosť bezpečne podporované" }, "scheduled": { "label": "Naplánovaná donáška", "benefit": "Nechajte zákazníkov vybrať si ideálny čas donášky" }, "menuFilters": { "label": "Inteligentné filtre menu", "benefit": "Nájdite jedlá podľa diéty, alergénov či ceny" }, "ratings": { "label": "Hodnotenia a recenzie", "benefit": "Budujte dôveru úprimnou spätnou väzbou zákazníkov" }, "promos": { "label": "Promo kódy a vernosť", "benefit": "Odmeňte stálych zákazníkov a zvýšte počet opakovaných objednávok" }, "multiLanguage": { "label": "Podpora viacerých jazykov", "benefit": "Oslovte každého zákazníka v jeho vlastnom jazyku" }, "supportChat": { "label": "Podpora v aplikácii", "benefit": "Vyriešte problémy s objednávkou bez opustenia aplikácie" } } },
     "fintech": { "label": "Bankovníctvo a Fintech", "tagline": "Všetko, čo vaši zákazníci potrebujú na bankovníctvo s istotou.", "features": { "biometricLogin": { "label": "Biometrické prihlásenie", "benefit": "Bezpečný prístup tvárou alebo odtlačkom prsta" }, "instantTransfers": { "label": "Okamžité prevody", "benefit": "Posielajte a prijímajte peniaze v priebehu sekúnd" }, "cardControls": { "label": "Zmrazenie a správa kariet", "benefit": "Okamžite uzamknite karty a nastavte limity" }, "spendingInsights": { "label": "Prehľad výdavkov", "benefit": "Jasný prehľad o tom, kam idú peniaze" }, "multiCurrency": { "label": "Účty vo viacerých menách", "benefit": "Držte a míňajte v mnohých menách" }, "savingsGoals": { "label": "Sporiace ciele", "benefit": "Pomôžte zákazníkom sporiť na to, na čom záleží" }, "realtimeAlerts": { "label": "Upozornenia v reálnom čase", "benefit": "Okamžité notifikácie o každej transakcii" }, "fastOnboarding": { "label": "Rýchla registrácia", "benefit": "Overte identitu a otvorte účty v priebehu minút" }, "billSplitting": { "label": "Delenie účtov", "benefit": "Bez námahy zdieľajte náklady s priateľmi" } } },
     "ecommerce": { "label": "E-commerce", "tagline": "Nákupná aplikácia, ktorá mení návštevníkov na verných kupujúcich.", "features": { "search": { "label": "Inteligentné vyhľadávanie a filtre", "benefit": "Nakupujúci rýchlo nájdu správny produkt" }, "recommendations": { "label": "Personalizované odporúčania", "benefit": "Odporúčania na mieru, ktoré zvyšujú každú objednávku" }, "wishlist": { "label": "Zoznam želaní a upozornenia na sklad", "benefit": "Uložené položky privedú nakupujúcich späť" }, "guestCheckout": { "label": "Rýchla objednávka bez registrácie", "benefit": "Menej opustených košíkov, viac predaja" }, "payments": { "label": "Viacero platobných metód", "benefit": "Plaťte kartou, peňaženkou alebo na splátky" }, "orderTracking": { "label": "Sledovanie objednávky", "benefit": "Zákazníci sledujú doručenie s istotou" }, "reviews": { "label": "Recenzie a hodnotenia", "benefit": "Skutočná spätná väzba buduje dôveru kupujúcich" }, "cartReminders": { "label": "Pripomienky opusteného košíka", "benefit": "Získajte späť takmer dokončené nákupy" }, "loyalty": { "label": "Vernosť a odmeny", "benefit": "Verní zákazníci časom míňajú viac" } } },

@@ -1,24 +1,44 @@
 'use client'
 
-import { ArrowBack, CheckCircleRounded, RadioButtonUnchecked, Send } from '@mui/icons-material'
+import { ArrowBack, CheckCircleRounded, Language, RadioButtonUnchecked, Send, Smartphone } from '@mui/icons-material'
 import Alert from '@mui/material/Alert'
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
-import TextField from '@mui/material/TextField'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { useState, type KeyboardEvent } from 'react'
+import { useEffect, useState, type KeyboardEvent } from 'react'
 import {
   Button,
+  FilterChip,
+  Input,
+  PhoneInput,
   TextBody1Neutral60,
   TextBody1Neutral80,
   TextCaptionNeutral60,
   TextH4Bold,
   TextH6Bold,
 } from '@/shared/components'
-import { showcaseApps } from './apps'
+import { detailApps } from './apps'
 
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
+const EMAIL_ERROR_DELAY_MS = 800
+
+// Default phone country from the active locale (a German number usually matches a
+// German-speaking user better than their current IP location). Accurate server-side
+// IP geo is a deploy-time enhancement — see roadmap.
+const PHONE_COUNTRY_BY_LOCALE: Record<string, 'SK' | 'CZ' | 'DE' | 'GB'> = {
+  'sk-SK': 'SK',
+  'cs-CZ': 'CZ',
+  'de-DE': 'DE',
+  'en-GB': 'GB',
+}
+
+// What the client actually wants — shown as pills at the top. Both selected by
+// default; at least one must stay selected.
+const PLATFORMS = [
+  { key: 'web', Icon: Language, labelKey: 'home.platformWeb' },
+  { key: 'mobile', Icon: Smartphone, labelKey: 'home.platformMobile' },
+] as const
 
 interface AppDetailProps {
   appId: string
@@ -26,12 +46,31 @@ interface AppDetailProps {
 
 export function AppDetail({ appId }: AppDetailProps) {
   const t = useTranslations()
-  const app = showcaseApps.find((item) => item.id === appId)
-  const [selected, setSelected] = useState<Set<string>>(() => new Set(app?.featureKeys ?? []))
+  const locale = useLocale()
+  const phoneCountry = PHONE_COUNTRY_BY_LOCALE[locale] ?? 'SK'
+  const app = detailApps.find((item) => item.id === appId)
+  const isCustom = appId === 'custom'
+  const [selected, setSelected] = useState<Set<string>>(() => new Set(isCustom ? [] : (app?.featureKeys ?? [])))
+  const [platforms, setPlatforms] = useState<Set<string>>(() => new Set(['web', 'mobile']))
   const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [phoneHasNumber, setPhoneHasNumber] = useState(false)
+  const [note, setNote] = useState('')
   const [sending, setSending] = useState(false)
   const [error, setError] = useState(false)
   const [sent, setSent] = useState(false)
+  const [showEmailError, setShowEmailError] = useState(false)
+
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  useEffect(() => {
+    if (!email || emailValid) {
+      setShowEmailError(false)
+      return
+    }
+    const timer = setTimeout(() => setShowEmailError(true), EMAIL_ERROR_DELAY_MS)
+    return () => clearTimeout(timer)
+  }, [email, emailValid])
 
   if (!app) return null
 
@@ -44,6 +83,9 @@ export function AppDetail({ appId }: AppDetailProps) {
     benefit: t(`apps.${id}.features.${key}.benefit`),
   }))
   const selectedFeatures = features.filter((feature) => selected.has(feature.key))
+  const canSubmit = isCustom
+    ? selectedFeatures.length > 0 || note.trim().length > 0
+    : selectedFeatures.length > 0
 
   const toggle = (key: string) => {
     setSelected((prev) => {
@@ -57,8 +99,25 @@ export function AppDetail({ appId }: AppDetailProps) {
     })
   }
 
+  const togglePlatform = (key: string) => {
+    setPlatforms((prev) => {
+      const next = new Set(prev)
+      if (next.has(key)) {
+        if (next.size === 1) return prev // keep at least one
+        next.delete(key)
+      } else {
+        next.add(key)
+      }
+      return next
+    })
+  }
+
   const submit = async () => {
-    if (!email || sending) return
+    if (sending) return
+    if (!emailValid) {
+      setShowEmailError(true)
+      return
+    }
     setSending(true)
     setError(false)
     try {
@@ -68,10 +127,19 @@ export function AppDetail({ appId }: AppDetailProps) {
         body: JSON.stringify({
           access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
           subject: t('home.mailSubject', { app: appLabel }),
+          'App type': appLabel,
+          Platforms: PLATFORMS.filter((p) => platforms.has(p.key))
+            .map((p) => t(p.labelKey))
+            .join(', '),
+          ...(name.trim() ? { name: name.trim() } : {}),
+          ...(phoneHasNumber ? { phone: phone.trim() } : {}),
           email,
-          message: `${t('home.mailIntro', { app: appLabel })}\n\n${selectedFeatures
-            .map((feature) => `• ${feature.label}`)
-            .join('\n')}`,
+          message: [
+            isCustom ? t('home.customIntro') : t('home.mailIntro', { app: appLabel }),
+            '',
+            ...selectedFeatures.map((feature) => `• ${feature.label}`),
+            ...(note.trim() ? ['', `${t('home.noteLabel')}:`, note.trim()] : []),
+          ].join('\n'),
         }),
       })
       const data = (await response.json()) as { success?: boolean }
@@ -88,7 +156,7 @@ export function AppDetail({ appId }: AppDetailProps) {
   }
 
   return (
-    <Box component="main" sx={{ maxWidth: 720, mx: 'auto', px: 3, py: { xs: 4, md: 6 } }}>
+    <Box component="main" sx={{ maxWidth: 880, mx: 'auto', px: 3, py: { xs: 4, md: 6 } }}>
       <Box
         component={Link}
         href="/"
@@ -136,6 +204,31 @@ export function AppDetail({ appId }: AppDetailProps) {
           <TextH4Bold>{appLabel}</TextH4Bold>
           <Box sx={{ mt: 0.5, mb: 3 }}>
             <TextBody1Neutral60>{appTagline}</TextBody1Neutral60>
+          </Box>
+
+          <Box sx={{ mb: 3 }}>
+            <TextBody1Neutral60 sx={{ mb: 1 }}>{t('home.platformsLabel')}</TextBody1Neutral60>
+            <Stack direction="row" useFlexGap spacing={1} sx={{ flexWrap: 'wrap' }}>
+              {PLATFORMS.map((platform) => {
+                const PlatformIcon = platform.Icon
+                return (
+                  <FilterChip
+                    key={platform.key}
+                    selected={platforms.has(platform.key)}
+                    onClick={() => togglePlatform(platform.key)}
+                    label={
+                      <Box
+                        component="span"
+                        sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.75, verticalAlign: 'middle' }}
+                      >
+                        <PlatformIcon sx={{ fontSize: 18 }} />
+                        {t(platform.labelKey)}
+                      </Box>
+                    }
+                  />
+                )
+              })}
+            </Stack>
           </Box>
 
           <Box sx={{ mb: 2 }}>
@@ -191,16 +284,46 @@ export function AppDetail({ appId }: AppDetailProps) {
             })}
           </Stack>
 
-          <TextField
-            type="email"
-            label={t('home.emailLabel')}
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            required
-            fullWidth
-            size="small"
-            sx={{ mb: error ? 2 : 3 }}
-          />
+          <Stack spacing={2} sx={{ mb: error ? 2 : 3 }}>
+            <Input
+              label={t('home.nameLabel')}
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+            />
+            <Box sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
+              <Box sx={{ flex: 1 }}>
+                <Input
+                  type="email"
+                  label={t('home.emailLabel')}
+                  placeholder="name@email.com"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  required
+                  error={showEmailError}
+                  errorText={t('home.emailInvalid')}
+                />
+              </Box>
+              <Box sx={{ flex: 1 }}>
+                <PhoneInput
+                  label={t('home.phoneLabel')}
+                  value={phone}
+                  defaultCountry={phoneCountry}
+                  onChange={(value, info) => {
+                    setPhone(value)
+                    setPhoneHasNumber(Boolean(info.nationalNumber))
+                  }}
+                />
+              </Box>
+            </Box>
+            <Input
+              label={t('home.messageLabel')}
+              placeholder={t('home.messagePlaceholder')}
+              value={note}
+              onChange={(event) => setNote(event.target.value)}
+              multiline
+              minRows={3}
+            />
+          </Stack>
           {error && (
             <Alert severity="error" sx={{ mb: 3 }}>
               {t('home.sendError')}
@@ -212,9 +335,9 @@ export function AppDetail({ appId }: AppDetailProps) {
             startIcon={<Send />}
             onClick={submit}
             loading={sending}
-            disabled={!email || selectedFeatures.length === 0}
+            disabled={!canSubmit}
           >
-            {`${t('home.sendCta')} (${selectedFeatures.length})`}
+            {selectedFeatures.length > 0 ? `${t('home.sendCta')} (${selectedFeatures.length})` : t('home.sendCta')}
           </Button>
         </>
       )}

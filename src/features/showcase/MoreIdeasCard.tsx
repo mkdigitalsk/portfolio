@@ -1,9 +1,10 @@
 'use client'
 
-import { Mail, RocketLaunchOutlined } from '@mui/icons-material'
+import { RocketLaunchOutlined } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import { useTranslations } from 'next-intl'
-import { Button, TextH6Bold } from '@/shared/components'
+import Link from 'next/link'
+import { Button, TextBody1Neutral60, TextH6Bold } from '@/shared/components'
 
 export function MoreIdeasCard() {
   const t = useTranslations()
@@ -33,13 +34,11 @@ export function MoreIdeasCard() {
       <RocketLaunchOutlined sx={{ fontSize: 38, color: 'primary.main', flexShrink: 0 }} />
       <Box sx={{ flex: 1 }}>
         <TextH6Bold>{t('home.moreText')}</TextH6Bold>
+        <Box sx={{ mt: 0.5 }}>
+          <TextBody1Neutral60>{t('home.moreExisting')}</TextBody1Neutral60>
+        </Box>
       </Box>
-      <Button
-        variant="primary"
-        startIcon={<Mail />}
-        href="mailto:mir.kusnir@gmail.com"
-        sx={{ '&:hover': { transform: 'none' }, '&:active': { transform: 'none' } }}
-      >
+      <Button component={Link} href="/app/custom" variant="primary">
         {t('home.moreCta')}
       </Button>
     </Box>

@@ -1,9 +1,11 @@
 export { Button } from './Button'
+export { Input } from './forms/Input'
+export { PhoneInput } from './forms/PhoneInput'
 export { ThemeModeToggle } from './ThemeModeToggle'
 export { LocaleSwitcher } from './LocaleSwitcher'
 export { MotionToggle } from './MotionToggle'
 export { Reveal } from './Reveal'
-export { NavBar, Footer, ColorSchemeScript } from './layout'
+export { NavBar, Footer } from './layout'
 export {
   TextH1Bold,
   TextH1BoldPrimary,
