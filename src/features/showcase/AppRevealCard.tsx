@@ -77,9 +77,15 @@ export function AppRevealCard({ app, hint, ariaLabel, onActivate, height = 240 }
         cursor: 'pointer',
         borderRadius: `${CARD_RADIUS}px`,
         outline: 'none',
-        transition: 'box-shadow 0.2s ease',
-        '&:hover': { boxShadow: `0 0 0 2px ${accent}` },
-        '&:focus-visible': { boxShadow: `0 0 0 2px ${accent}` },
+        transition: 'box-shadow 0.25s ease, transform 0.25s ease',
+        '&:hover': {
+          boxShadow: `0 0 0 2px ${accent}, 0 12px 24px -10px rgba(0,0,0,0.26)`,
+          transform: 'translateY(-4px)',
+        },
+        '&:focus-visible': {
+          boxShadow: `0 0 0 2px ${accent}, 0 12px 24px -10px rgba(0,0,0,0.26)`,
+          transform: 'translateY(-4px)',
+        },
       }}
     >
       <motion.div

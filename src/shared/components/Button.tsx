@@ -15,7 +15,7 @@ const variantMap = {
   outline: { variant: 'outlined', color: 'primary' },
 } as const
 
-export function Button({ children, variant = 'primary', loading = false, disabled, ...props }: ButtonProps) {
+export function Button({ children, variant = 'primary', loading = false, disabled, sx, ...props }: ButtonProps) {
   const muiVariant = variantMap[variant]
 
   return (
@@ -23,6 +23,14 @@ export function Button({ children, variant = 'primary', loading = false, disable
       variant={muiVariant.variant}
       color={muiVariant.color}
       disabled={disabled || loading}
+      sx={[
+        {
+          transition: 'transform 0.15s ease, box-shadow 0.15s ease',
+          '&:hover': { transform: 'translateY(-2px)' },
+          '&:active': { transform: 'translateY(0)' },
+        },
+        ...(Array.isArray(sx) ? sx : [sx]),
+      ]}
       {...props}
     >
       {loading ? 'Loading...' : children}
