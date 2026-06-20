@@ -7,17 +7,19 @@
     "openDetail": "Details zu {name} ansehen",
     "detailHeading": "Was Ihre App enthalten könnte",
     "detailCta": "Ihre App bauen",
-    "close": "Schließen"
+    "close": "Schließen",
+    "moreText": "Ihre Idee ist entweder oben dabei oder etwas Einzigartiges — schreiben Sie uns und wir helfen, sie umzusetzen.",
+    "moreCta": "Kontakt aufnehmen"
   },
   "hero": {
     "headline": "Komplette Apps aus einer Hand.",
-    "subline": "iOS, Android, Web und Backend — einmal richtig gebaut, mit den produktionsreifen Mustern, die ich in echten Kundenprojekten einsetze.",
+    "subline": "iOS, Android, Web und Backend — einmal richtig gebaut, mit den produktionsreifen Mustern, die wir in echten Kundenprojekten einsetzen.",
     "cta": "Kontakt aufnehmen",
     "cv": "Lebenslauf herunterladen"
   },
   "showcases": {
     "title": "Showcases",
-    "subtitle": "Produktionsreife Muster, die ich liefere — sieh dir den Code an.",
+    "subtitle": "Produktionsreife Muster, die wir liefern — sieh dir den Code an.",
     "code": "Code",
     "viewCode": "Code von {name} ansehen",
     "kmpDesc": "iOS + Android, gemeinsame Business-Logik",

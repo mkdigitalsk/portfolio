@@ -9,6 +9,7 @@ import { AppRevealCard } from './AppRevealCard'
 import { BankFlip } from './BankFlip'
 import { FlipRevealCard } from './FlipRevealCard'
 import { FoodFlip } from './FoodFlip'
+import { MoreIdeasCard } from './MoreIdeasCard'
 import { showcaseApps, type ShowcaseApp } from './apps'
 
 const STAGGER_STEP = 0.06
@@ -72,6 +73,10 @@ export function AppShowcase() {
           </Reveal>
         ))}
       </Box>
+
+      <Reveal delay={0.1}>
+        <MoreIdeasCard />
+      </Reveal>
 
       <AppDetailDialog app={selectedApp} open={selectedApp !== null} onClose={() => setSelectedApp(null)} />
     </Box>

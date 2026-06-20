@@ -7,17 +7,19 @@
     "openDetail": "View {name} details",
     "detailHeading": "What your app could include",
     "detailCta": "Let's build yours",
-    "close": "Close"
+    "close": "Close",
+    "moreText": "Either your idea is covered above, or it's something unique — share it and we'll help bring it to life.",
+    "moreCta": "Get in touch"
   },
   "hero": {
-    "headline": "I build apps end to end.",
-    "subline": "iOS, Android, web, and backend — built once, properly, with the production patterns I use on real client work.",
-    "cta": "Let's talk",
+    "headline": "We build apps end to end.",
+    "subline": "iOS, Android, web, and backend — built once, properly, with the production patterns we use on real client work.",
+    "cta": "Get in touch",
     "cv": "Download CV"
   },
   "showcases": {
     "title": "Showcases",
-    "subtitle": "Production patterns I ship — explore the source.",
+    "subtitle": "Production patterns we ship — explore the source.",
     "code": "Code",
     "viewCode": "View {name} code",
     "kmpDesc": "iOS + Android, shared business logic",
