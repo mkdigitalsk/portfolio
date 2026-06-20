@@ -10,9 +10,10 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v16-appRouter'
 import { ThemeProvider } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import CssBaseline from '@mui/material/CssBaseline'
+import InitColorSchemeScript from '@mui/material/InitColorSchemeScript'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
-import { ColorSchemeScript, Footer, NavBar } from '@/shared/components'
+import { Footer, NavBar } from '@/shared/components'
 import { MotionProvider } from '@/shared/context/MotionContext'
 import { theme } from '@/shared/theme'
 import './globals.css'
@@ -30,9 +31,9 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   return (
     <html lang={locale} suppressHydrationWarning>
       <body>
+        <InitColorSchemeScript attribute="class" defaultMode="system" />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-            <ColorSchemeScript />
             <ThemeProvider theme={theme} defaultMode="system">
               <CssBaseline />
               <MotionProvider>

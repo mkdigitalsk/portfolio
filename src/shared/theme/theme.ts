@@ -55,6 +55,9 @@ const BodyFont = '"Inter", "Helvetica", "Arial", sans-serif'
 const HeadingFont = '"Plus Jakarta Sans", "Inter", "Helvetica", sans-serif'
 
 export const theme = createTheme({
+  cssVariables: {
+    colorSchemeSelector: 'class',
+  },
   colorSchemes: {
     light: {
       palette: {
