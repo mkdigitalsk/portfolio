@@ -40,6 +40,7 @@ export function Footer() {
               aria-label={label}
               size="small"
               sx={(theme) => ({
+                color: 'text.secondary',
                 transition: 'color 0.2s ease, transform 0.2s ease',
                 '&:hover': {
                   color: brand === 'github' ? (theme.palette.mode === 'dark' ? GitHubLight : GitHubDark) : brand,
