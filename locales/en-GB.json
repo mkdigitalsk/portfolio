@@ -38,8 +38,7 @@
   "hero": {
     "headline": "We build apps end to end.",
     "subline": "iOS, Android, web, and backend — built once, properly, with the production patterns we use on real client work.",
-    "cta": "Get in touch",
-    "cv": "Download CV"
+    "cta": "Get in touch"
   },
   "showcases": {
     "title": "Showcases",

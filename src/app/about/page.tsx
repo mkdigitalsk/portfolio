@@ -1,4 +1,4 @@
-import { Download, Mail } from '@mui/icons-material'
+import { Mail } from '@mui/icons-material'
 import { Box, Stack } from '@mui/material'
 import { getTranslations } from 'next-intl/server'
 import { Button, Reveal, TextBody1Neutral60, TextH1Bold, TextH4Bold } from '@/shared/components'
@@ -64,9 +64,6 @@ export default async function AboutPage() {
           <Stack direction="row" useFlexGap spacing={1.5} sx={{ flexWrap: 'wrap' }}>
             <Button variant="primary" startIcon={<Mail />} href="mailto:mir.kusnir@gmail.com">
               {t('hero.cta')}
-            </Button>
-            <Button variant="outline" startIcon={<Download />} href="/cv.pdf" target="_blank" rel="noopener noreferrer">
-              {t('hero.cv')}
             </Button>
           </Stack>
         </Reveal>

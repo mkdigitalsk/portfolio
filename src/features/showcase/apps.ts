@@ -44,7 +44,7 @@ export const showcaseApps: ShowcaseApp[] = [
   {
     id: 'fintech',
     Icon: AccountBalance,
-    accent: '#1E8E5A',
+    accent: '#103A66',
     iconAnimation: 'flip',
     previewSrc: '/previews/fintech.mp4',
     featureKeys: [

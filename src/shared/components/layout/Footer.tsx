@@ -28,7 +28,7 @@ export function Footer() {
           justifyContent: 'space-between',
         }}
       >
-        <TextBody1Neutral60>© 2026 MK Digital s.r.o. · Miroslav Kušnír</TextBody1Neutral60>
+        <TextBody1Neutral60>© 2026 MK Digital s.r.o.</TextBody1Neutral60>
         <Box sx={{ display: 'flex', gap: 0.5 }}>
           {socials.map(({ label, href, Icon, brand }) => (
             <IconButton

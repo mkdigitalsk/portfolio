@@ -19,9 +19,9 @@ import { theme } from '@/shared/theme'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Miroslav Kušnír — Cross-platform engineer (mobile · web · backend)',
+  title: 'MK Digital — Cross-platform apps (mobile · web · backend)',
   description:
-    'I build cross-platform apps end to end — iOS, Android, web, and backend — with clean architecture and production-grade patterns.',
+    'We build cross-platform apps end to end — iOS, Android, web, and backend — with clean architecture and production-grade patterns.',
 }
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
