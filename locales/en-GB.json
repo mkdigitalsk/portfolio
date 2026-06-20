@@ -83,17 +83,17 @@
     },
     "fintech": {
       "label": "Banking & Fintech",
-      "tagline": "Everything your customers need to bank with confidence.",
+      "tagline": "A secure, dependable banking experience your customers can trust with their money.",
       "features": {
-        "biometricLogin": { "label": "Biometric login", "benefit": "Secure access with face or fingerprint" },
-        "instantTransfers": { "label": "Instant transfers", "benefit": "Send and receive money in seconds" },
-        "cardControls": { "label": "Card freeze & controls", "benefit": "Lock cards and set limits instantly" },
-        "spendingInsights": { "label": "Spending insights", "benefit": "Clear view of where money goes" },
-        "multiCurrency": { "label": "Multi-currency accounts", "benefit": "Hold and spend in many currencies" },
-        "savingsGoals": { "label": "Savings goals", "benefit": "Help customers save toward what matters" },
-        "realtimeAlerts": { "label": "Real-time alerts", "benefit": "Instant notifications on every transaction" },
-        "fastOnboarding": { "label": "Fast onboarding", "benefit": "Verify identity and open accounts in minutes" },
-        "billSplitting": { "label": "Bill splitting", "benefit": "Share costs with friends effortlessly" }
+        "biometricLogin": { "label": "Biometric login", "benefit": "Protected access through biometric authentication" },
+        "instantTransfers": { "label": "Instant transfers", "benefit": "Transfer funds securely in real time" },
+        "cardControls": { "label": "Card freeze & controls", "benefit": "Freeze cards and set spending limits at any time" },
+        "spendingInsights": { "label": "Spending insights", "benefit": "A clear, accurate overview of every transaction" },
+        "multiCurrency": { "label": "Multi-currency accounts", "benefit": "Hold and settle in multiple currencies" },
+        "savingsGoals": { "label": "Savings goals", "benefit": "Structured savings toward defined goals" },
+        "realtimeAlerts": { "label": "Real-time alerts", "benefit": "Real-time alerts on every account movement" },
+        "fastOnboarding": { "label": "Fast onboarding", "benefit": "Verified identity (KYC) and account opening in minutes" },
+        "billSplitting": { "label": "Bill splitting", "benefit": "Split shared expenses, settled transparently" }
       }
     },
     "ecommerce": {
