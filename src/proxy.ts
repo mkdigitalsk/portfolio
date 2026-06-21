@@ -1,22 +1,47 @@
 import { NextResponse, type NextRequest } from 'next/server'
 
-// Pre-launch privacy gate (Next.js 16 "proxy" convention, formerly "middleware"). The whole
-// site is locked behind HTTP Basic Auth whenever SITE_PASSWORD is set (e.g. on the deployed
-// environment). Leave it unset locally and at launch to make the site public — going live
-// needs no code change, just drop the env var.
+const ACCESS_COOKIE = 'site_access'
+const ONE_YEAR = 60 * 60 * 24 * 365
+
+// Pre-launch privacy gate (Next.js 16 "proxy" convention). The whole site is locked behind
+// HTTP Basic Auth whenever SITE_PASSWORD is set. Unset it (locally / at launch) to make the
+// site public — no code change needed.
+//
+// To skip the prompt on your own devices: set SITE_BYPASS_TOKEN and visit `/?access=<token>`
+// once. That drops a long-lived cookie so this browser is let through silently — and you can
+// share that magic link to grant someone access without handing out the password.
 export function proxy(request: NextRequest) {
   const password = process.env.SITE_PASSWORD
   if (!password) return NextResponse.next()
 
+  const bypass = process.env.SITE_BYPASS_TOKEN
+  if (bypass) {
+    const url = new URL(request.url)
+    // Magic link: store the bypass cookie, then redirect to the clean URL (without ?access).
+    if (url.searchParams.get('access') === bypass) {
+      url.searchParams.delete('access')
+      const res = NextResponse.redirect(url)
+      res.cookies.set(ACCESS_COOKIE, bypass, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'lax',
+        path: '/',
+        maxAge: ONE_YEAR,
+      })
+      return res
+    }
+    // This browser already holds the bypass cookie → let it through silently.
+    if (request.cookies.get(ACCESS_COOKIE)?.value === bypass) return NextResponse.next()
+  }
+
   const user = process.env.SITE_USER ?? 'mk'
   const header = request.headers.get('authorization')
-
   if (header?.startsWith('Basic ')) {
     const decoded = atob(header.slice(6))
     const separator = decoded.indexOf(':')
-    const givenUser = decoded.slice(0, separator)
-    const givenPass = decoded.slice(separator + 1)
-    if (givenUser === user && givenPass === password) return NextResponse.next()
+    if (decoded.slice(0, separator) === user && decoded.slice(separator + 1) === password) {
+      return NextResponse.next()
+    }
   }
 
   // realm must be ASCII / Latin-1 only — HTTP header values are ByteStrings, so a fancy
