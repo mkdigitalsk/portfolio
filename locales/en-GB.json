@@ -135,7 +135,8 @@
       "subline": "Tell us what you're building. We reply within 24 hours — usually with first questions and a sense of scope.",
       "company": "MK Digital s.r.o. · Banská Bystrica, Slovakia",
       "cta": "Let's talk"
-    }
+    },
+    "appTypes": "App types"
   },
   "hero": {
     "headline": "Senior-led, fintech-grade, fully accountable.",
@@ -200,7 +201,7 @@
     "process": "Process",
     "proof": "Proof",
     "contact": "Contact",
-    "demos": "Demos"
+    "demos": "Products"
   },
   "apps": {
     "custom": {

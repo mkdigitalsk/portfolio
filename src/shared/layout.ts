@@ -5,4 +5,4 @@ export const CONTENT_MAX = 1180
 
 // Top padding (the gap under the sticky nav) for the first content block of EVERY page —
 // one source of truth so /about, home, the app detail and privacy never drift apart again.
-export const PAGE_PT = { xs: 6, md: 10 }
+export const PAGE_PT = { xs: 4, md: 6 }

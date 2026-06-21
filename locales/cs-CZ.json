@@ -135,7 +135,8 @@
       "subline": "Napište nám, co stavíte. Odpovíme do 24 hodin — obvykle s prvními otázkami a odhadem rozsahu.",
       "company": "MK Digital s.r.o. · Banská Bystrica, Slovensko",
       "cta": "Pojďme si promluvit"
-    }
+    },
+    "appTypes": "Typy aplikací"
   },
   "hero": {
     "headline": "Vedené seniorem. Fintech kvalita. Plná odpovědnost.",
@@ -200,7 +201,7 @@
     "process": "Proces",
     "proof": "Důkaz",
     "contact": "Kontakt",
-    "demos": "Ukázky"
+    "demos": "Produkty"
   },
   "apps": {
     "custom": {
