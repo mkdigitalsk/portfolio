@@ -35,7 +35,9 @@ export function useScrollSpy(sectionIds: string[]): string | null {
         const current = sectionIds.find((id) => visible.has(id))
         setActiveId(current ?? null)
       },
-      { rootMargin: '-45% 0px -45% 0px' },
+      // Margins sum to -100% → a single detection LINE (exactly one section active at a time).
+      // The line sits ~20% from the top so a section lights up as it scrolls just under the nav.
+      { rootMargin: '-20% 0px -80% 0px' },
     )
     elements.forEach((element) => observer.observe(element))
     return () => observer.disconnect()
