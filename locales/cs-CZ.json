@@ -106,7 +106,11 @@
     "proof": {
       "title": "Přečtěte si kód dřív, než nás najmete",
       "subtitle": "Kód většiny studií je zavřený. Náš je otevřený. Toto jsou kompletní showcase aplikace v produkční kvalitě — prozkoumejte architekturu, testy i historii commitů sami.",
-      "inspectLine": "Čistá architektura · automatizované testy · CI/CD · kompletní historie commitů — vše veřejně na GitHubu."
+      "inspectLine": "Čistá architektura · automatizované testy · CI/CD · kompletní historie commitů — vše veřejně na GitHubu.",
+      "signal1": "Čistá architektura",
+      "signal2": "Automatizované testy",
+      "signal3": "CI/CD pipeline",
+      "signal4": "Veřejná historie commitů"
     },
     "testimonials": {
       "title": "Co říkají klienti",

@@ -106,7 +106,11 @@
     "proof": {
       "title": "Read the code before you hire us",
       "subtitle": "Most studios' code is closed. Ours is open. These are full, production-grade showcase apps — explore the architecture, the tests, and the commit history yourself.",
-      "inspectLine": "Clean architecture · automated tests · CI/CD · full commit history — all public on GitHub."
+      "inspectLine": "Clean architecture · automated tests · CI/CD · full commit history — all public on GitHub.",
+      "signal1": "Clean Architecture",
+      "signal2": "Automated tests",
+      "signal3": "CI/CD pipelines",
+      "signal4": "Public commit history"
     },
     "testimonials": {
       "title": "What clients say",
