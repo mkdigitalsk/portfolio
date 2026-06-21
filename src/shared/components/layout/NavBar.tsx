@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { ReactNode } from 'react'
 import { useScrollSpy } from '@/shared/hooks/useScrollSpy'
+import { useScrollToTop } from '@/shared/hooks/useScrollToTop'
 import { CONTENT_MAX } from '@/shared/layout'
 import { TextH6Bold } from '../text'
 import { ThemeModeToggle } from '../ThemeModeToggle'
@@ -16,14 +17,16 @@ interface NavItemProps {
   href: string
   active: boolean
   ariaLabel?: string
+  onClick?: () => void
   children: ReactNode
 }
 
-function NavItem({ href, active, ariaLabel, children }: NavItemProps) {
+function NavItem({ href, active, ariaLabel, onClick, children }: NavItemProps) {
   return (
     <Box
       component={Link}
       href={href}
+      onClick={onClick}
       aria-label={ariaLabel}
       aria-current={active ? 'page' : undefined}
       sx={{
@@ -67,6 +70,7 @@ export function NavBar() {
   const pathname = usePathname()
   const t = useTranslations()
   const activeSection = useScrollSpy(SECTION_IDS)
+  const scrollToTop = useScrollToTop()
 
   return (
     <Box
@@ -91,7 +95,14 @@ export function NavBar() {
           justifyContent: 'space-between',
         }}
       >
-        <NavItem href="/" active={pathname === '/'} ariaLabel="Home">
+        <NavItem
+          href="/"
+          active={pathname === '/'}
+          ariaLabel="Home"
+          onClick={() => {
+            if (pathname === '/') scrollToTop()
+          }}
+        >
           <Home />
         </NavItem>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>

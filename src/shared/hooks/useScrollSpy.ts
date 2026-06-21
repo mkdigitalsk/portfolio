@@ -30,8 +30,10 @@ export function useScrollSpy(sectionIds: string[]): string | null {
             visible.delete(entry.target.id)
           }
         }
+        // null when no observed section is in the band (e.g. scrolled up to the hero) — so the
+        // nav highlight clears at the top instead of sticking on the last section.
         const current = sectionIds.find((id) => visible.has(id))
-        if (current) setActiveId(current)
+        setActiveId(current ?? null)
       },
       { rootMargin: '-45% 0px -45% 0px' },
     )
