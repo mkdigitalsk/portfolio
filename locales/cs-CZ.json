@@ -154,15 +154,15 @@
       "subtitle": "Jeden odpovědný inženýr odstraní overhead, předávky a ukazování prstem, které zpomalují víctýmovou agenturu.",
       "coordination": {
         "title": "Nulová daň za koordinaci",
-        "body": "Osmičlenný tým udržuje 28 interních konverzací v synchronizaci dřív, než padne řádek kódu. Jeden stavitel žádnou — ten overhead se stává vaší rychlostí."
+        "body": "Každý další člověk znásobuje konverzace, které je třeba držet v synchronizaci — osmičlenný tým jich má 28 dřív, než padne řádek kódu. S MK Digital tento overhead jednoduše není — stává se vaší rychlostí."
       },
       "translation": {
         "title": "Nic se neztratí v překladu",
-        "body": "Stejný člověk, který postavil váš backend, staví i mobil a web. Spoje, které mezi týmy obvykle praskají, tu vůbec nevznikají."
+        "body": "Stejný senior vlastní váš backend, mobil i web — takže spoje, které mezi týmy v předávce obvykle praskají, tu vůbec nevznikají."
       },
       "accountability": {
         "title": "Jedno jméno na lince",
-        "body": "Odpovědnost lze sdílet. Accountability ne. Žádné ukazování prstem mezi backendem a frontendem — obojí je moje."
+        "body": "Odpovědnost lze sdílet. Accountability ne. Dostáváte jednoho odpovědného partnera na celý build — žádné ukazování prstem mezi backendem a frontendem."
       },
       "directLine": {
         "title": "Přímá linka",

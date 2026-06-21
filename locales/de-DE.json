@@ -154,15 +154,15 @@
       "subtitle": "Ein einziger verantwortlicher Engineer entfernt den Overhead, die Übergaben und das Fingerzeigen, die eine Mehr-Team-Agentur ausbremsen.",
       "coordination": {
         "title": "Null Koordinationssteuer",
-        "body": "Ein Acht-Personen-Team hält 28 interne Gespräche synchron, bevor eine Zeile Code geschrieben ist. Ein einzelner Entwickler keines — dieser Overhead wird zu Ihrer Geschwindigkeit."
+        "body": "Jede zusätzliche Person vervielfacht die Gespräche, die synchron bleiben müssen — ein Acht-Personen-Team führt 28, bevor eine Zeile Code entsteht. Bei MK Digital gibt es diesen Overhead einfach nicht — er wird zu Ihrer Geschwindigkeit."
       },
       "translation": {
         "title": "Nichts geht in der Übersetzung verloren",
-        "body": "Die Person, die Ihr Backend gebaut hat, baut auch Mobile und Web. Die Nahtstellen, die zwischen Teams sonst brechen, entstehen hier gar nicht erst."
+        "body": "Derselbe Senior verantwortet Ihr Backend, Mobile und Web — so entstehen die Nahtstellen, die bei der Übergabe zwischen Teams sonst brechen, hier gar nicht erst."
       },
       "accountability": {
         "title": "Ein Name in der Verantwortung",
-        "body": "Verantwortung lässt sich teilen. Rechenschaft nicht. Kein Fingerzeigen zwischen Backend und Frontend — beides ist meins."
+        "body": "Verantwortung lässt sich teilen. Rechenschaft nicht. Sie erhalten einen verantwortlichen Partner für den gesamten Build — kein Fingerzeigen zwischen Backend und Frontend."
       },
       "directLine": {
         "title": "Eine direkte Leitung",

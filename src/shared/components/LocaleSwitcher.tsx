@@ -3,25 +3,22 @@
 import { Check } from '@mui/icons-material'
 import { Box, IconButton, ListItemIcon, Menu, MenuItem, Tooltip } from '@mui/material'
 import { useLocale, useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
 import { type MouseEvent, useState } from 'react'
+import { useLocalePreference } from '../hooks/useLocalePreference'
 import { LOCALES } from '../i18n/locales'
-
-const LOCALE_MAX_AGE = 60 * 60 * 24 * 365
 
 export function LocaleSwitcher() {
   const activeLocale = useLocale()
   const t = useTranslations('common')
-  const router = useRouter()
+  const { setLocale } = useLocalePreference()
   const [anchor, setAnchor] = useState<HTMLElement | null>(null)
   const current = LOCALES.find((l) => l.code === activeLocale) ?? LOCALES[0]
 
   const handleOpen = (event: MouseEvent<HTMLElement>) => setAnchor(event.currentTarget)
 
   const handleSelect = (code: string) => {
-    document.cookie = `locale=${code}; path=/; max-age=${LOCALE_MAX_AGE}; samesite=lax`
+    setLocale(code)
     setAnchor(null)
-    router.refresh()
   }
 
   return (
