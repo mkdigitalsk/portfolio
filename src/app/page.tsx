@@ -1,5 +1,5 @@
-import { AppShowcase } from '@/features/showcase/AppShowcase'
+import { HomePage } from '@/features/home/HomePage'
 
-export default function HomePage() {
-  return <AppShowcase />
+export default function Page() {
+  return <HomePage />
 }
