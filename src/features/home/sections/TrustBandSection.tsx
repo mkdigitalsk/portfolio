@@ -18,7 +18,6 @@ export async function TrustBandSection() {
             display: 'flex',
             flexWrap: 'wrap',
             alignItems: 'center',
-            justifyContent: { xs: 'flex-start', md: 'center' },
             gap: { xs: 1.5, sm: 2, md: 3 },
           }}
         >

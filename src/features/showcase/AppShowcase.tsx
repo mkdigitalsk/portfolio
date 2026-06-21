@@ -3,7 +3,8 @@
 import Box from '@mui/material/Box'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
-import { Reveal, TextBody1Neutral60, TextH1Bold } from '@/shared/components'
+import { Reveal } from '@/shared/components'
+import { Section } from '@/features/home/Section'
 import { AppRevealCard } from './AppRevealCard'
 import { BankFlip } from './BankFlip'
 import { FlipRevealCard } from './FlipRevealCard'
@@ -14,27 +15,15 @@ import { showcaseApps } from './apps'
 const STAGGER_STEP = 0.06
 const STAGGER_MAX = 0.3
 
+// The flip-card craft demo — a section like any other. Header and edges come from <Section>,
+// so it lines up with the rest of the page; only the grid is its own.
 export function AppShowcase() {
   const t = useTranslations()
   const router = useRouter()
   const open = (id: string) => router.push(`/app/${id}`)
 
   return (
-    <Box
-      component="main"
-      sx={{ maxWidth: 1080, mx: 'auto', px: 3, pt: { xs: 6, md: 10 }, pb: { xs: 8, md: 12 } }}
-    >
-      <Reveal>
-        <Box sx={{ mb: 2 }}>
-          <TextH1Bold align="center">{t('home.headline')}</TextH1Bold>
-        </Box>
-      </Reveal>
-      <Reveal delay={0.08}>
-        <Box sx={{ mb: { xs: 5, md: 7 }, maxWidth: 620, mx: 'auto' }}>
-          <TextBody1Neutral60 align="center">{t('home.subline')}</TextBody1Neutral60>
-        </Box>
-      </Reveal>
-
+    <Section title={t('home.headline')} subtitle={t('home.subline')}>
       <Box
         sx={{
           display: 'grid',
@@ -46,21 +35,24 @@ export function AppShowcase() {
           <Reveal key={app.id} delay={Math.min(index * STAGGER_STEP, STAGGER_MAX)}>
             {app.iconAnimation === 'flip' ? (
               <FlipRevealCard
-                app={app}                ariaLabel={t('home.openDetail', { name: t(`apps.${app.id}.label`) })}
+                app={app}
+                ariaLabel={t('home.openDetail', { name: t(`apps.${app.id}.label`) })}
                 onActivate={() => open(app.id)}
                 frontIcon={<BankFlip accent={app.accent} flipSign={-1} />}
                 flipSign={-1}
               />
             ) : app.iconAnimation === 'food' ? (
               <FlipRevealCard
-                app={app}                ariaLabel={t('home.openDetail', { name: t(`apps.${app.id}.label`) })}
+                app={app}
+                ariaLabel={t('home.openDetail', { name: t(`apps.${app.id}.label`) })}
                 onActivate={() => open(app.id)}
                 frontIcon={<FoodFlip accent={app.accent} flipSign={1} />}
                 flipSign={1}
               />
             ) : (
               <AppRevealCard
-                app={app}                ariaLabel={t('home.openDetail', { name: t(`apps.${app.id}.label`) })}
+                app={app}
+                ariaLabel={t('home.openDetail', { name: t(`apps.${app.id}.label`) })}
                 onActivate={() => open(app.id)}
               />
             )}
@@ -71,6 +63,6 @@ export function AppShowcase() {
       <Reveal delay={0.1}>
         <MoreIdeasCard />
       </Reveal>
-    </Box>
+    </Section>
   )
 }
