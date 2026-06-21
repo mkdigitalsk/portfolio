@@ -3,7 +3,6 @@ export { Input } from './forms/Input'
 export { PhoneInput } from './forms/PhoneInput'
 export { ThemeModeToggle } from './ThemeModeToggle'
 export { LocaleSwitcher } from './LocaleSwitcher'
-export { MotionToggle } from './MotionToggle'
 export { Reveal } from './Reveal'
 export { NavBar, Footer } from './layout'
 export {

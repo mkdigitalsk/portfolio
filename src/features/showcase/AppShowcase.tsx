@@ -3,8 +3,7 @@
 import Box from '@mui/material/Box'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
-import { Reveal, TextCaptionNeutral60 } from '@/shared/components'
-import { MotionToggle } from '@/shared/components/MotionToggle'
+import { Reveal } from '@/shared/components'
 import { Section } from '@/features/home/Section'
 import { AppRevealCard } from './AppRevealCard'
 import { BankFlip } from './BankFlip'
@@ -25,10 +24,6 @@ export function AppShowcase() {
 
   return (
     <Section divider title={t('home.headline')} subtitle={t('home.subline')}>
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: 0.5, mb: 1.5 }}>
-        <TextCaptionNeutral60>{t('common.animations')}</TextCaptionNeutral60>
-        <MotionToggle />
-      </Box>
       <Box
         sx={{
           display: 'grid',
