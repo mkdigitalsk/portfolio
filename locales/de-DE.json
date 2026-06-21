@@ -43,9 +43,9 @@
     "platformWeb": "Web",
     "platformMobile": "Mobile App",
     "trust": {
-      "fact1": "iOS · Android · Web · Backend",
-      "fact2": "Saubere Architektur · Produktionsmuster",
-      "fact3": "Von der ersten Idee bis zum Launch",
+      "fact1": "8+ Jahre · Fintech · Payments · Healthcare",
+      "fact2": "iOS · Android · Web · Backend",
+      "fact3": "Saubere Architektur · Produktionsstandards",
       "fact4": "Auch nach dem Launch gepflegt — nicht verlassen",
       "fact5": "KI-gestützt, von Senior gebaut",
       "fact6": "DSGVO-konform · SK s.r.o."
@@ -110,7 +110,13 @@
       "signal1": "Saubere Architektur",
       "signal2": "Automatisierte Tests",
       "signal3": "CI/CD-Pipelines",
-      "signal4": "Öffentliche Commit-Historie"
+      "signal4": "Öffentliche Commit-Historie",
+      "metrics": {
+        "commitsLabel": "Commits, vollständig öffentlich",
+        "appsLabel": "Open-Source-Showcase-Apps",
+        "sinceLabel": "öffentlich seit"
+      },
+      "references": "Kundenprojekte stehen unter NDA — verifizierte Referenzen und LinkedIn-Empfehlungen auf Anfrage."
     },
     "testimonials": {
       "title": "Was Kunden sagen",
@@ -120,8 +126,8 @@
     },
     "about": {
       "title": "Der Partner, mit dem Sie wirklich arbeiten",
-      "para1": "MK Digital ist ein fokussierter Produktpartner: Senior-Engineering, saubere Architektur und dieselben Produktionsstandards auf jeder Plattform — Mobile, Web und Backend.",
-      "para2": "Senior-Engineering direkt an Ihrem Produkt — keine Übergaben zwischen Teams, ein verantwortlicher Partner vom ersten Kontakt bis zum Launch.",
+      "para1": "MK Digital ist ein senior-geführter Produktpartner — aufgebaut auf über 8 Jahren Produktions-Apps in Fintech, Payments und Healthcare in UK, Irland und der EU.",
+      "para2": "Senior-Engineering direkt an Ihrem Produkt: ein verantwortlicher Partner von der ersten Idee bis zum Launch, keine Hand-off-Kette. Der Code ist sauber und öffentlich, Sie besitzen alles — kein Lock-in, niemals.",
       "cta": "Mehr über uns"
     },
     "contact": {
@@ -132,14 +138,41 @@
     }
   },
   "hero": {
-    "headline": "8 Jahre Produktions-Apps. Gesamter Code öffentlich.",
-    "subline": "Hinter MK Digital steht ein Senior-Engineer mit über 8 Jahren in der Produktionsentwicklung — darunter internationales Fintech in UK und EU. Dieselben Standards, die wir in echten Projekten anwenden, finden Sie unten in unseren Open-Source-Showcase-Apps — prüfen Sie Architektur, Tests und Commit-Historie.",
+    "headline": "Senior-geführt. Fintech-Qualität. Voll verantwortlich.",
+    "subline": "Hinter MK Digital steht ein Senior-Engineer mit über 8 Jahren im Bau von Produktions-Apps — als Head of Mobile und Lead Engineer in Fintech, Payments und Healthcare in UK, Irland und der EU. Ein verantwortlicher Partner von der ersten Idee bis zum Launch — und dieselben Standards sind in den Open-Source-Apps unten öffentlich: prüfen Sie Architektur, Tests und Commit-Historie, bevor Sie uns beauftragen.",
     "cta": "Kontakt aufnehmen",
-    "exp1": "8+ Jahre in Produktion",
-    "exp2": "Internationales Fintech · UK & EU",
-    "exp3": "Senior Mobile → Full-Stack",
+    "exp1": "Head of Mobile & Lead Engineer · 8+ Jahre",
+    "exp2": "Fintech · Payments · Healthcare",
+    "exp3": "UK · Irland · EU",
     "linkedinCta": "Auf LinkedIn prüfen",
-    "company": "MK Digital s. r. o. · Banská Bystrica, Slowakei · ID 55 450 229 — ein verantwortlicher Partner vom ersten Kontakt bis zum Launch."
+    "company": "MK Digital s. r. o. · Banská Bystrica, Slowakei · ID 55 450 229 — ein verantwortlicher Partner vom ersten Kontakt bis zum Launch.",
+    "githubCta": "Code auf GitHub ansehen"
+  },
+  "about": {
+    "why": {
+      "title": "Warum ein Senior-Partner",
+      "subtitle": "Ein einziger verantwortlicher Engineer entfernt den Overhead, die Übergaben und das Fingerzeigen, die eine Mehr-Team-Agentur ausbremsen.",
+      "coordination": {
+        "title": "Null Koordinationssteuer",
+        "body": "Ein Acht-Personen-Team hält 28 interne Gespräche synchron, bevor eine Zeile Code geschrieben ist. Ein einzelner Entwickler keines — dieser Overhead wird zu Ihrer Geschwindigkeit."
+      },
+      "translation": {
+        "title": "Nichts geht in der Übersetzung verloren",
+        "body": "Die Person, die Ihr Backend gebaut hat, baut auch Mobile und Web. Die Nahtstellen, die zwischen Teams sonst brechen, entstehen hier gar nicht erst."
+      },
+      "accountability": {
+        "title": "Ein Name in der Verantwortung",
+        "body": "Verantwortung lässt sich teilen. Rechenschaft nicht. Kein Fingerzeigen zwischen Backend und Frontend — beides ist meins."
+      },
+      "directLine": {
+        "title": "Eine direkte Leitung",
+        "body": "Kein Account Manager, kein PM-Relay. Eine Leitung zwischen Ihrer Entscheidung und Ihrem Produkt."
+      }
+    },
+    "continuity": {
+      "title": "Kein Single Point of Failure — Sie halten jeden Schlüssel",
+      "body": "Der Bus-Faktor hängt nicht von der Teamgröße ab — eine 20-Personen-Agentur, in der ein Architekt das gesamte Wissen hält, ist genauso exponiert. Ab dem ersten Tag besitzen Sie das Repository, die Infrastruktur und die Zugänge, mit sauberer Architektur und einer Dokumentation, die vollständig genug ist, dass jeder Senior morgen weitermachen kann. Kein Lock-in ist kein Versprechen — es ist eine Architektur, die Sie in den offenen Repositories nachlesen können."
+    }
   },
   "showcases": {
     "title": "Showcases",
@@ -162,7 +195,11 @@
   "common": {
     "language": "Sprache",
     "privacy": "Datenschutz",
-    "about": "Über uns"
+    "about": "Über uns",
+    "services": "Leistungen",
+    "process": "Prozess",
+    "proof": "Nachweis",
+    "contact": "Kontakt"
   },
   "apps": {
     "custom": {

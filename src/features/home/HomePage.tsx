@@ -5,7 +5,6 @@ import { HeroSection } from './sections/HeroSection'
 import { ProcessSection } from './sections/ProcessSection'
 import { ProofSection } from './sections/ProofSection'
 import { ServicesSection } from './sections/ServicesSection'
-import { TestimonialsSection } from './sections/TestimonialsSection'
 import { TrustBandSection } from './sections/TrustBandSection'
 
 // Research-backed homepage (see portfolio-research.md). Sections render in the order the
@@ -20,7 +19,6 @@ export function HomePage() {
       <AppShowcase />
       <ProcessSection />
       <ProofSection />
-      <TestimonialsSection />
       <AboutSection />
       <ContactSection />
     </main>

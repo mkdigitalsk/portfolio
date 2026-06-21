@@ -43,9 +43,9 @@
     "platformWeb": "Web",
     "platformMobile": "Mobile app",
     "trust": {
-      "fact1": "iOS · Android · Web · Backend",
-      "fact2": "Clean architecture · production patterns",
-      "fact3": "From first idea to launch",
+      "fact1": "8+ years · fintech · payments · healthcare",
+      "fact2": "iOS · Android · Web · Backend",
+      "fact3": "Clean architecture · production patterns",
       "fact4": "Maintained after launch — not abandoned",
       "fact5": "AI-assisted, senior-built",
       "fact6": "GDPR-compliant · SK s.r.o."
@@ -110,7 +110,13 @@
       "signal1": "Clean Architecture",
       "signal2": "Automated tests",
       "signal3": "CI/CD pipelines",
-      "signal4": "Public commit history"
+      "signal4": "Public commit history",
+      "metrics": {
+        "commitsLabel": "commits, fully public",
+        "appsLabel": "open-source showcase apps",
+        "sinceLabel": "building in public since"
+      },
+      "references": "Client work is under NDA — verified references and LinkedIn recommendations are available on request."
     },
     "testimonials": {
       "title": "What clients say",
@@ -120,8 +126,8 @@
     },
     "about": {
       "title": "The partner you actually work with",
-      "para1": "MK Digital is a focused product partner: senior engineering, clean architecture, and the same production standards on every platform — mobile, web and backend.",
-      "para2": "Senior engineering applied directly to your product — no hand-offs between teams, one accountable partner from first contact to launch.",
+      "para1": "MK Digital is a senior-led product partner — built on 8+ years delivering production apps across fintech, payments and healthcare in the UK, Ireland and the EU.",
+      "para2": "Senior engineering applied directly to your product: one accountable partner from first idea to launch, no hand-off chain. The code is clean and public, so you own everything — no lock-in, ever.",
       "cta": "More about us"
     },
     "contact": {
@@ -132,14 +138,41 @@
     }
   },
   "hero": {
-    "headline": "8 years of production apps. All code public.",
-    "subline": "Behind MK Digital is a senior engineer with 8+ years in production development — including international fintech across the UK and EU. The same standards we apply on real projects are in our open-source showcase apps below — inspect the architecture, tests and commit history.",
+    "headline": "Senior-led, fintech-grade, fully accountable.",
+    "subline": "Behind MK Digital is a senior engineer with 8+ years shipping production apps — as Head of Mobile and lead engineer across fintech, payments and healthcare in the UK, Ireland and the EU. One accountable partner from first idea to launch — and the same standards are public in the open-source apps below: inspect the architecture, tests and commit history before you hire.",
     "cta": "Get in touch",
-    "exp1": "8+ years in production",
-    "exp2": "International fintech · UK & EU",
-    "exp3": "Senior mobile → full-stack",
+    "exp1": "Head of Mobile & lead engineer · 8+ years",
+    "exp2": "Fintech · Payments · Healthcare",
+    "exp3": "UK · Ireland · EU",
     "linkedinCta": "Verify on LinkedIn",
-    "company": "MK Digital s. r. o. · Banská Bystrica, Slovakia · Company ID 55 450 229 — one accountable partner from first contact to launch."
+    "company": "MK Digital s. r. o. · Banská Bystrica, Slovakia · Company ID 55 450 229 — one accountable partner from first contact to launch.",
+    "githubCta": "Read the code on GitHub"
+  },
+  "about": {
+    "why": {
+      "title": "Why one senior partner",
+      "subtitle": "A single accountable engineer removes the overhead, hand-offs and finger-pointing that slow a multi-team agency down.",
+      "coordination": {
+        "title": "Zero coordination tax",
+        "body": "An eight-person team keeps 28 internal conversations in sync before a line of code is written. One builder keeps none — that overhead becomes your speed."
+      },
+      "translation": {
+        "title": "Nothing lost in translation",
+        "body": "The person who built your backend builds your mobile and web. The seams that usually break between teams never exist here."
+      },
+      "accountability": {
+        "title": "One name on the line",
+        "body": "Responsibility can be shared. Accountability can't. No backend-vs-frontend finger-pointing — both are mine."
+      },
+      "directLine": {
+        "title": "A direct line",
+        "body": "No account manager, no PM relay. One line between your decision and your product."
+      }
+    },
+    "continuity": {
+      "title": "No single point of failure — you hold every key",
+      "body": "Bus factor isn't about team size — a 20-person agency where one architect holds the knowledge is just as exposed. From day one you own the repo, the infrastructure and the credentials, with clean architecture and documentation complete enough for any senior to continue tomorrow. No lock-in isn't a promise — it's an architecture you can read in the open repos."
+    }
   },
   "showcases": {
     "title": "Showcases",
@@ -162,7 +195,11 @@
   "common": {
     "language": "Language",
     "privacy": "Privacy Policy",
-    "about": "About"
+    "about": "About",
+    "services": "Services",
+    "process": "Process",
+    "proof": "Proof",
+    "contact": "Contact"
   },
   "apps": {
     "custom": {

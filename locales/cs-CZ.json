@@ -43,9 +43,9 @@
     "platformWeb": "Web",
     "platformMobile": "Mobilní aplikace",
     "trust": {
-      "fact1": "iOS · Android · Web · Backend",
-      "fact2": "Čistá architektura · produkční vzory",
-      "fact3": "Od prvního nápadu po spuštění",
+      "fact1": "8+ let · fintech · platby · zdravotnictví",
+      "fact2": "iOS · Android · Web · Backend",
+      "fact3": "Čistá architektura · produkční standardy",
       "fact4": "Udržované i po spuštění — ne opuštěné",
       "fact5": "AI-assisted, postavené seniorem",
       "fact6": "V souladu s GDPR · SK s.r.o."
@@ -110,7 +110,13 @@
       "signal1": "Čistá architektura",
       "signal2": "Automatizované testy",
       "signal3": "CI/CD pipeline",
-      "signal4": "Veřejná historie commitů"
+      "signal4": "Veřejná historie commitů",
+      "metrics": {
+        "commitsLabel": "commitů, plně veřejných",
+        "appsLabel": "open-source showcase aplikace",
+        "sinceLabel": "tvoříme veřejně od"
+      },
+      "references": "Klientská práce je pod NDA — ověřené reference a LinkedIn doporučení poskytneme na vyžádání."
     },
     "testimonials": {
       "title": "Co říkají klienti",
@@ -120,8 +126,8 @@
     },
     "about": {
       "title": "Partner, se kterým reálně pracujete",
-      "para1": "MK Digital je zaměřený produktový partner: seniorní engineering, čistá architektura a stejné produkční standardy na každé platformě — mobil, web i backend.",
-      "para2": "Seniorní engineering přímo na vašem produktu — žádné předávání mezi týmy, jeden zodpovědný partner od prvního kontaktu po spuštění.",
+      "para1": "MK Digital je senior-led produktový partner — postavený na 8+ letech dodávání produkčních appek napříč fintechem, platbami a zdravotnictvím v UK, Irsku a EU.",
+      "para2": "Senior inženýrství aplikované přímo na váš produkt: jeden odpovědný partner od první myšlenky po spuštění, žádný hand-off chain. Kód je čistý a veřejný, takže vlastníte všechno — žádný lock-in, nikdy.",
       "cta": "Více o nás"
     },
     "contact": {
@@ -132,14 +138,41 @@
     }
   },
   "hero": {
-    "headline": "8 let produkčních appek. Celý kód veřejný.",
-    "subline": "Za MK Digital je senior inženýr s 8+ lety v produkčním vývoji — včetně mezinárodního fintechu napříč UK a EU. Stejné standardy, jaké používáme na reálných projektech, najdete v našich open-source showcase aplikacích níže — prozkoumejte architekturu, testy i historii commitů.",
+    "headline": "Vedené seniorem. Fintech kvalita. Plná odpovědnost.",
+    "subline": "Za MK Digital je senior inženýr s 8+ lety budování produkčních appek — jako Head of Mobile a lead engineer napříč fintechem, platbami a zdravotnictvím v UK, Irsku a EU. Jeden odpovědný partner od první myšlenky po spuštění — a stejné standardy jsou veřejné v open-source aplikacích níže: prozkoumejte architekturu, testy i historii commitů dřív, než si nás najmete.",
     "cta": "Ozvěte se nám",
-    "exp1": "8+ let v produkci",
-    "exp2": "Mezinárodní fintech · UK & EU",
-    "exp3": "Senior mobile → full-stack",
+    "exp1": "Head of Mobile & lead engineer · 8+ let",
+    "exp2": "Fintech · Platby · Zdravotnictví",
+    "exp3": "UK · Irsko · EU",
     "linkedinCta": "Ověřte si na LinkedIn",
-    "company": "MK Digital s. r. o. · Banská Bystrica · IČO 55 450 229 — jeden zodpovědný partner od prvního kontaktu po spuštění."
+    "company": "MK Digital s. r. o. · Banská Bystrica · IČO 55 450 229 — jeden zodpovědný partner od prvního kontaktu po spuštění.",
+    "githubCta": "Prohlédni kód na GitHubu"
+  },
+  "about": {
+    "why": {
+      "title": "Proč jeden senior partner",
+      "subtitle": "Jeden odpovědný inženýr odstraní overhead, předávky a ukazování prstem, které zpomalují víctýmovou agenturu.",
+      "coordination": {
+        "title": "Nulová daň za koordinaci",
+        "body": "Osmičlenný tým udržuje 28 interních konverzací v synchronizaci dřív, než padne řádek kódu. Jeden stavitel žádnou — ten overhead se stává vaší rychlostí."
+      },
+      "translation": {
+        "title": "Nic se neztratí v překladu",
+        "body": "Stejný člověk, který postavil váš backend, staví i mobil a web. Spoje, které mezi týmy obvykle praskají, tu vůbec nevznikají."
+      },
+      "accountability": {
+        "title": "Jedno jméno na lince",
+        "body": "Odpovědnost lze sdílet. Accountability ne. Žádné ukazování prstem mezi backendem a frontendem — obojí je moje."
+      },
+      "directLine": {
+        "title": "Přímá linka",
+        "body": "Žádný account manager, žádný PM relay. Jedna linka mezi vaším rozhodnutím a produktem."
+      }
+    },
+    "continuity": {
+      "title": "Žádný single point of failure — všechny klíče máte vy",
+      "body": "Bus factor není o velikosti týmu — 20členná agentura, kde jeden architekt drží všechny znalosti, je stejně exponovaná. Od prvního dne vlastníte repozitář, infrastrukturu i přístupy, s čistou architekturou a dokumentací dostatečnou na to, aby kterýkoli senior pokračoval hned zítra. No lock-in není slib — je to architektura, kterou si přečtete v otevřených repozitářích."
+    }
   },
   "showcases": {
     "title": "Ukázky",
@@ -162,7 +195,11 @@
   "common": {
     "language": "Jazyk",
     "privacy": "Ochrana osobních údajů",
-    "about": "O nás"
+    "about": "O nás",
+    "services": "Služby",
+    "process": "Proces",
+    "proof": "Důkaz",
+    "contact": "Kontakt"
   },
   "apps": {
     "custom": {

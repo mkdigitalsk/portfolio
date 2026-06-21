@@ -17,7 +17,7 @@ export async function ServicesSection() {
   const t = await getTranslations('home.services')
 
   return (
-    <Section title={t('title')} subtitle={t('subtitle')}>
+    <Section id="services" title={t('title')} subtitle={t('subtitle')}>
       <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' }, gap: { xs: 3, md: 4 } }}>
         {PILLARS.map(({ key, Icon }, i) => (
           <Reveal key={key} delay={0.08 * i}>

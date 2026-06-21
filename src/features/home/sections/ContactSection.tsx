@@ -13,7 +13,7 @@ export async function ContactSection() {
   const t = await getTranslations('home.contact')
 
   return (
-    <Section divider py={{ xs: 7, md: 10 }}>
+    <Section id="contact" divider py={{ xs: 7, md: 10 }}>
       <Reveal>
         <TextH1Bold sx={{ mb: 3 }}>{t('headline')}</TextH1Bold>
       </Reveal>

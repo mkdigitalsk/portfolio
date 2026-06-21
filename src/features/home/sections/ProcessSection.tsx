@@ -14,7 +14,7 @@ export async function ProcessSection() {
   const t = await getTranslations('home.process')
 
   return (
-    <Section bg title={t('title')} subtitle={t('subtitle')}>
+    <Section id="process" bg title={t('title')} subtitle={t('subtitle')}>
       <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' }, gap: { xs: 3, md: 4 } }}>
         {PHASES.map((key, i) => (
           <Reveal key={key} delay={0.08 * i}>
