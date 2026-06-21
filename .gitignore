@@ -49,3 +49,6 @@ next-env.d.ts
 
 # secrets / local config — never commit (repo is public)
 local.properties
+
+# local working notes / logo concepts
+.claude/

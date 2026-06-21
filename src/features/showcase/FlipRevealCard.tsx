@@ -3,7 +3,7 @@
 import Box from '@mui/material/Box'
 import { motion, useReducedMotion } from 'motion/react'
 import { useTranslations } from 'next-intl'
-import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react'
+import { useState, type KeyboardEvent, type ReactNode } from 'react'
 import { TextH6Bold } from '@/shared/components'
 import { useMotion } from '@/shared/context/MotionContext'
 import { CARD_FLIP_CLOSE_S, CARD_FLIP_S, FLIP_EASE, ICON_FLIP_S } from './flipTiming'
@@ -11,7 +11,6 @@ import { APP_PREVIEWS } from './previews'
 import type { ShowcaseApp } from './apps'
 
 const CARD_RADIUS = 12
-const PLAY_DELAY_MS = (ICON_FLIP_S + 0.18) * 1000
 
 const faceStyle = {
   position: 'absolute',
@@ -41,58 +40,25 @@ export function FlipRevealCard({
   flipSign = -1,
   height = 240,
 }: FlipRevealCardProps) {
-  const { accent, previewSrc } = app
+  const { accent } = app
   const Preview = APP_PREVIEWS[app.id]
   const t = useTranslations()
   const label = t(`apps.${app.id}.label`)
   const reduceMotion = useReducedMotion()
   const { motionEnabled } = useMotion()
   const animate = !reduceMotion && motionEnabled
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const playTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const flipTo = 180 * flipSign
   // Drive the flip from hover state tracked on the STABLE outer container — never via
   // whileHover on the rotating card itself: mid-flip the 3D card turns edge-on, the
   // browser fires pointerleave, and Framer would think hover ended and reverse/stall.
   const [hovered, setHovered] = useState(false)
-  const onEnter = () => {
-    setHovered(true)
-    schedulePlay()
-  }
-  const onLeave = () => {
-    setHovered(false)
-    stopPreview()
-  }
 
-  const clearPlayTimer = () => {
-    if (playTimerRef.current) {
-      clearTimeout(playTimerRef.current)
-      playTimerRef.current = null
-    }
-  }
-  const schedulePlay = () => {
-    if (!previewSrc || !animate) return
-    clearPlayTimer()
-    playTimerRef.current = setTimeout(() => {
-      videoRef.current?.play().catch(() => undefined)
-    }, PLAY_DELAY_MS)
-  }
-  const stopPreview = () => {
-    clearPlayTimer()
-    const video = videoRef.current
-    if (video) {
-      video.pause()
-      video.currentTime = 0
-    }
-  }
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault()
       onActivate()
     }
   }
-
-  useEffect(() => clearPlayTimer, [])
 
   return (
     <Box
@@ -101,8 +67,8 @@ export function FlipRevealCard({
       aria-label={ariaLabel}
       onClick={onActivate}
       onKeyDown={handleKeyDown}
-      onMouseEnter={onEnter}
-      onMouseLeave={onLeave}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       sx={{
         height,
         cursor: 'pointer',
@@ -163,23 +129,7 @@ export function FlipRevealCard({
         </Box>
 
         <Box sx={{ ...faceStyle, transform: `rotateX(${flipTo}deg)`, bgcolor: 'background.paper' }}>
-          {Preview ? (
-            <Preview accent={accent} />
-          ) : (
-            previewSrc && (
-              <Box
-                component="video"
-                ref={videoRef}
-                src={previewSrc}
-                muted
-                loop
-                playsInline
-                preload="auto"
-                aria-hidden
-                sx={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            )
-          )}
+          {Preview ? <Preview accent={accent} /> : null}
         </Box>
       </motion.div>
     </Box>

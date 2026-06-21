@@ -3,7 +3,7 @@
 import Box from '@mui/material/Box'
 import { motion, useAnimationControls, useReducedMotion, type TargetAndTransition } from 'motion/react'
 import { useTranslations } from 'next-intl'
-import { useEffect, useRef, type KeyboardEvent } from 'react'
+import { type KeyboardEvent } from 'react'
 import { TextH6Bold } from '@/shared/components'
 import { useMotion } from '@/shared/context/MotionContext'
 import { HeartBeat } from './HeartBeat'
@@ -14,11 +14,6 @@ import { APP_PREVIEWS } from './previews'
 import type { ShowcaseApp } from './apps'
 
 const CARD_RADIUS = 12
-
-const REVEAL_DURATION_MS = 550
-// Start playback this long BEFORE the reveal finishes, so the video is already
-// in motion by the moment it becomes visible.
-const PLAY_OFFSET_MS = 130
 
 // Close (unhover): the plane flies back IN from the bottom-left corner along a curve at
 // constant speed, down to home — a different path from the takeoff (so it's driven
@@ -39,50 +34,25 @@ interface AppRevealCardProps {
 }
 
 export function AppRevealCard({ app, ariaLabel, onActivate, height = 240 }: AppRevealCardProps) {
-  const { Icon, accent, previewSrc, iconAnimation } = app
+  const { Icon, accent, iconAnimation } = app
   const Preview = APP_PREVIEWS[app.id]
   const t = useTranslations()
   const label = t(`apps.${app.id}.label`)
   const reduceMotion = useReducedMotion()
   const { motionEnabled } = useMotion()
   const animate = !reduceMotion && motionEnabled
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const playTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const iconAnim = iconAnimations[iconAnimation]
   const reveal = revealAnimations[iconAnimation]
   const isFly = iconAnimation === 'fly'
   const clipId = `plane-reveal-${app.id}`
   const flyControls = useAnimationControls()
 
-  const clearPlayTimer = () => {
-    if (playTimerRef.current) {
-      clearTimeout(playTimerRef.current)
-      playTimerRef.current = null
-    }
-  }
-  const schedulePlay = () => {
-    if (!previewSrc || !animate) return
-    clearPlayTimer()
-    playTimerRef.current = setTimeout(() => {
-      videoRef.current?.play().catch(() => undefined)
-    }, REVEAL_DURATION_MS - PLAY_OFFSET_MS)
-  }
-  const stopPreview = () => {
-    clearPlayTimer()
-    const video = videoRef.current
-    if (video) {
-      video.pause()
-      video.currentTime = 0
-    }
-  }
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault()
       onActivate()
     }
   }
-
-  useEffect(() => clearPlayTimer, [])
 
   return (
     <Box
@@ -91,8 +61,6 @@ export function AppRevealCard({ app, ariaLabel, onActivate, height = 240 }: AppR
       aria-label={ariaLabel}
       onClick={onActivate}
       onKeyDown={handleKeyDown}
-      onMouseEnter={schedulePlay}
-      onMouseLeave={stopPreview}
       sx={{
         height,
         cursor: 'pointer',
@@ -136,7 +104,7 @@ export function AppRevealCard({ app, ariaLabel, onActivate, height = 240 }: AppR
           }}
         />
 
-        {previewSrc && isFly && (
+        {isFly && (
           <>
             <svg aria-hidden width={0} height={0} style={{ position: 'absolute' }}>
               <defs>
@@ -154,26 +122,12 @@ export function AppRevealCard({ app, ariaLabel, onActivate, height = 240 }: AppR
             <Box
               sx={{ position: 'absolute', inset: 0, clipPath: `url(#${clipId})`, WebkitClipPath: `url(#${clipId})` }}
             >
-              {Preview ? (
-                <Preview accent={accent} />
-              ) : (
-                <Box
-                  component="video"
-                  ref={videoRef}
-                  src={previewSrc}
-                  muted
-                  loop
-                  playsInline
-                  preload="auto"
-                  aria-hidden
-                  sx={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              )}
+              {Preview ? <Preview accent={accent} /> : null}
             </Box>
           </>
         )}
 
-        {previewSrc && !isFly && (
+        {!isFly && (
           <motion.div
             variants={{
               rest: { ...reveal.rest, transition: fasterClose(reveal.transition) },
@@ -181,21 +135,7 @@ export function AppRevealCard({ app, ariaLabel, onActivate, height = 240 }: AppR
             }}
             style={{ position: 'absolute', inset: 0 }}
           >
-            {Preview ? (
-              <Preview accent={accent} />
-            ) : (
-              <Box
-                component="video"
-                ref={videoRef}
-                src={previewSrc}
-                muted
-                loop
-                playsInline
-                preload="auto"
-                aria-hidden
-                sx={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            )}
+            {Preview ? <Preview accent={accent} /> : null}
           </motion.div>
         )}
 

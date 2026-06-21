@@ -19,7 +19,6 @@ export interface ShowcaseApp {
   accent: string
   iconAnimation: IconAnimation
   featureKeys: string[]
-  previewSrc?: string
 }
 
 export const showcaseApps: ShowcaseApp[] = [
@@ -28,7 +27,6 @@ export const showcaseApps: ShowcaseApp[] = [
     Icon: Restaurant,
     accent: '#FF6B35',
     iconAnimation: 'food',
-    previewSrc: '/previews/food.mp4',
     featureKeys: [
       'liveTracking',
       'favourites',
@@ -46,7 +44,6 @@ export const showcaseApps: ShowcaseApp[] = [
     Icon: AccountBalance,
     accent: '#103A66',
     iconAnimation: 'flip',
-    previewSrc: '/previews/fintech.mp4',
     featureKeys: [
       'biometricLogin',
       'instantTransfers',
@@ -64,7 +61,6 @@ export const showcaseApps: ShowcaseApp[] = [
     Icon: ShoppingBag,
     accent: '#6200EE',
     iconAnimation: 'drop',
-    previewSrc: '/previews/ecommerce.mp4',
     featureKeys: [
       'search',
       'recommendations',
@@ -82,7 +78,6 @@ export const showcaseApps: ShowcaseApp[] = [
     Icon: FlightTakeoff,
     accent: '#0288D1',
     iconAnimation: 'fly',
-    previewSrc: '/previews/booking.mp4',
     featureKeys: [
       'search',
       'availability',
@@ -100,7 +95,6 @@ export const showcaseApps: ShowcaseApp[] = [
     Icon: Storefront,
     accent: '#8E24AA',
     iconAnimation: 'wind',
-    previewSrc: '/previews/marketplace.mp4',
     featureKeys: [
       'sellerListings',
       'search',
@@ -118,7 +112,6 @@ export const showcaseApps: ShowcaseApp[] = [
     Icon: MonitorHeart,
     accent: '#E0457B',
     iconAnimation: 'heart',
-    previewSrc: '/previews/health.mp4',
     featureKeys: [
       'activityTracking',
       'wearableSync',
