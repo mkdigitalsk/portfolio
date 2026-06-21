@@ -13,6 +13,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import InitColorSchemeScript from '@mui/material/InitColorSchemeScript'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Footer, NavBar } from '@/shared/components'
 import { MotionProvider } from '@/shared/context/MotionContext'
 import { theme } from '@/shared/theme'
@@ -46,6 +47,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
             </ThemeProvider>
           </AppRouterCacheProvider>
         </NextIntlClientProvider>
+        <SpeedInsights />
       </body>
     </html>
   )
