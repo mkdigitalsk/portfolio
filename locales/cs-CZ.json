@@ -132,9 +132,14 @@
     }
   },
   "hero": {
-    "headline": "Stavíme aplikace od A do Z.",
-    "subline": "iOS, Android, web a backend — postavené pořádně a najednou, s produkčními vzory, které používáme při reálné práci pro klienty.",
-    "cta": "Ozvěte se nám"
+    "headline": "8 let produkčních appek. Celý kód veřejný.",
+    "subline": "Za MK Digital je senior inženýr s 8+ lety v produkčním vývoji — včetně mezinárodního fintechu napříč UK a EU. Stejné standardy, jaké používáme na reálných projektech, najdete v našich open-source showcase aplikacích níže — prozkoumejte architekturu, testy i historii commitů.",
+    "cta": "Ozvěte se nám",
+    "exp1": "8+ let v produkci",
+    "exp2": "Mezinárodní fintech · UK & EU",
+    "exp3": "Senior mobile → full-stack",
+    "linkedinCta": "Ověřte si na LinkedIn",
+    "company": "MK Digital s. r. o. · Banská Bystrica · IČO 55 450 229 — jeden zodpovědný partner od prvního kontaktu po spuštění."
   },
   "showcases": {
     "title": "Ukázky",

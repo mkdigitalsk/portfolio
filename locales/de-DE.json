@@ -132,9 +132,14 @@
     }
   },
   "hero": {
-    "headline": "Komplette Apps aus einer Hand.",
-    "subline": "iOS, Android, Web und Backend — einmal richtig gebaut, mit den produktionsreifen Mustern, die wir in echten Kundenprojekten einsetzen.",
-    "cta": "Kontakt aufnehmen"
+    "headline": "8 Jahre Produktions-Apps. Gesamter Code öffentlich.",
+    "subline": "Hinter MK Digital steht ein Senior-Engineer mit über 8 Jahren in der Produktionsentwicklung — darunter internationales Fintech in UK und EU. Dieselben Standards, die wir in echten Projekten anwenden, finden Sie unten in unseren Open-Source-Showcase-Apps — prüfen Sie Architektur, Tests und Commit-Historie.",
+    "cta": "Kontakt aufnehmen",
+    "exp1": "8+ Jahre in Produktion",
+    "exp2": "Internationales Fintech · UK & EU",
+    "exp3": "Senior Mobile → Full-Stack",
+    "linkedinCta": "Auf LinkedIn prüfen",
+    "company": "MK Digital s. r. o. · Banská Bystrica, Slowakei · ID 55 450 229 — ein verantwortlicher Partner vom ersten Kontakt bis zum Launch."
   },
   "showcases": {
     "title": "Showcases",

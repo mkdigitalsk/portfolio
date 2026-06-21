@@ -132,9 +132,14 @@
     }
   },
   "hero": {
-    "headline": "We build apps end to end.",
-    "subline": "iOS, Android, web, and backend — built once, properly, with the production patterns we use on real client work.",
-    "cta": "Get in touch"
+    "headline": "8 years of production apps. All code public.",
+    "subline": "Behind MK Digital is a senior engineer with 8+ years in production development — including international fintech across the UK and EU. The same standards we apply on real projects are in our open-source showcase apps below — inspect the architecture, tests and commit history.",
+    "cta": "Get in touch",
+    "exp1": "8+ years in production",
+    "exp2": "International fintech · UK & EU",
+    "exp3": "Senior mobile → full-stack",
+    "linkedinCta": "Verify on LinkedIn",
+    "company": "MK Digital s. r. o. · Banská Bystrica, Slovakia · Company ID 55 450 229 — one accountable partner from first contact to launch."
   },
   "showcases": {
     "title": "Showcases",

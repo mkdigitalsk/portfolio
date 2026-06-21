@@ -1,13 +1,22 @@
-import { Mail } from '@mui/icons-material'
+import { CheckCircle, Mail, OpenInNew } from '@mui/icons-material'
 import { Box, Stack } from '@mui/material'
 import { getTranslations } from 'next-intl/server'
-import { Button, Reveal, TextBody1Neutral60, TextH1Bold, TextH4Bold } from '@/shared/components'
+import {
+  Button,
+  Reveal,
+  TextBody1Neutral60,
+  TextBody1Neutral80,
+  TextCaptionNeutral60,
+  TextH1Bold,
+  TextH4Bold,
+} from '@/shared/components'
 import { ShowcaseList, type Showcase } from '@/features/home/ShowcaseList'
 import { TechStack, type TechGroup } from '@/features/home/TechStack'
 import { TEXT_MAX } from '@/features/home/layout'
 import { CONTENT_MAX } from '@/shared/layout'
 
 const GITHUB = 'https://github.com/mkdigitalsk'
+const LINKEDIN = 'https://www.linkedin.com/in/miroslavkusnir/'
 
 const showcases: Showcase[] = [
   { platform: 'kotlin', label: 'Kotlin Multiplatform', descriptionKey: 'kmpDesc', repoUrl: `${GITHUB}/kmp-showcase` },
@@ -52,6 +61,7 @@ const techGroups: TechGroup[] = [
 
 export default async function AboutPage() {
   const t = await getTranslations()
+  const credibility = [t('hero.exp1'), t('hero.exp2'), t('hero.exp3')]
 
   return (
     <Box component="main">
@@ -64,10 +74,29 @@ export default async function AboutPage() {
             <TextBody1Neutral60>{t('hero.subline')}</TextBody1Neutral60>
           </Box>
         </Reveal>
+        <Reveal delay={0.12}>
+          <Box sx={{ mb: 4, display: 'flex', flexWrap: 'wrap', gap: { xs: 1.5, sm: 3 } }}>
+            {credibility.map((item) => (
+              <Box key={item} sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
+                <CheckCircle sx={{ fontSize: 18, color: 'primary.main' }} />
+                <TextBody1Neutral80>{item}</TextBody1Neutral80>
+              </Box>
+            ))}
+          </Box>
+        </Reveal>
         <Reveal delay={0.16}>
           <Stack direction="row" useFlexGap spacing={1.5} sx={{ flexWrap: 'wrap' }}>
             <Button variant="primary" startIcon={<Mail />} href="mailto:admin@mkdigital.sk">
               {t('hero.cta')}
+            </Button>
+            <Button
+              variant="outline"
+              startIcon={<OpenInNew />}
+              href={LINKEDIN}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t('hero.linkedinCta')}
             </Button>
           </Stack>
         </Reveal>
@@ -87,8 +116,16 @@ export default async function AboutPage() {
         </Reveal>
       </Box>
 
-      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, pb: { xs: 8, md: 12 } }}>
+      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, pb: { xs: 6, md: 8 } }}>
         <TechStack groups={techGroups} />
+      </Box>
+
+      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, pb: { xs: 8, md: 12 } }}>
+        <Reveal>
+          <Box sx={{ maxWidth: TEXT_MAX, pt: 3, borderTop: '1px solid', borderColor: 'divider' }}>
+            <TextCaptionNeutral60>{t('hero.company')}</TextCaptionNeutral60>
+          </Box>
+        </Reveal>
       </Box>
     </Box>
   )
