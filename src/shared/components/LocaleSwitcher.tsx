@@ -27,7 +27,7 @@ export function LocaleSwitcher() {
   return (
     <>
       <Tooltip title={t('language')}>
-        <IconButton onClick={handleOpen} size="small" aria-label={t('language')}>
+        <IconButton onClick={handleOpen} size="small" aria-label={t('language')} sx={{ color: 'text.primary' }}>
           <Box component="span" sx={{ fontSize: 20, lineHeight: 1 }}>
             {current.flag}
           </Box>

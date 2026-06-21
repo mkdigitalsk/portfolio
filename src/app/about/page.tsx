@@ -14,7 +14,7 @@ import {
 import { ShowcaseList, type Showcase } from '@/features/home/ShowcaseList'
 import { TechStack, type TechGroup } from '@/features/home/TechStack'
 import { TEXT_MAX } from '@/features/home/layout'
-import { CONTENT_MAX } from '@/shared/layout'
+import { CONTENT_MAX, PAGE_PT } from '@/shared/layout'
 
 const GITHUB = 'https://github.com/mkdigitalsk'
 const LINKEDIN = 'https://www.linkedin.com/in/miroslavkusnir/'
@@ -75,7 +75,7 @@ export default async function AboutPage() {
 
   return (
     <Box component="main">
-      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, pt: { xs: 6, md: 12 }, pb: { xs: 6, md: 10 } }}>
+      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, pt: PAGE_PT, pb: { xs: 6, md: 10 } }}>
         <Reveal>
           <TextH1Bold sx={{ mb: 3 }}>{t('hero.headline')}</TextH1Bold>
         </Reveal>

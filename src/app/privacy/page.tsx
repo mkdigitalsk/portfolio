@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Box, Stack } from '@mui/material'
 import { getLocale } from 'next-intl/server'
 import { TextBody1Neutral60, TextCaptionNeutral60, TextH4Bold, TextH6Bold } from '@/shared/components'
+import { PAGE_PT } from '@/shared/layout'
 
 export const metadata: Metadata = {
   title: 'Ochrana osobných údajov — MK Digital',
@@ -111,7 +112,7 @@ export default async function PrivacyPage() {
   const p = locale.startsWith('sk') ? SK : EN
 
   return (
-    <Box component="main" sx={{ maxWidth: 880, mx: 'auto', px: 3, py: { xs: 4, md: 6 } }}>
+    <Box component="main" sx={{ maxWidth: 880, mx: 'auto', px: 3, pt: PAGE_PT, pb: { xs: 4, md: 6 } }}>
       <TextH4Bold sx={{ mb: 1 }}>{p.title}</TextH4Bold>
       <Box sx={{ mb: 4 }}>
         <TextCaptionNeutral60>{p.updated}</TextCaptionNeutral60>

@@ -44,7 +44,7 @@ export function ThemeModeToggle() {
 
   return (
     <Tooltip title={tooltip}>
-      <IconButton onClick={handleToggle} size="small" aria-label="Toggle theme">
+      <IconButton onClick={handleToggle} size="small" aria-label="Toggle theme" sx={{ color: 'text.primary' }}>
         <Box sx={{ position: 'relative', width: 20, height: 20 }}>
           <LightMode
             sx={{

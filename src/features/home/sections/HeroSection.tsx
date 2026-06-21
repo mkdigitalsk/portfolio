@@ -2,7 +2,7 @@ import { CheckCircle, Mail } from '@mui/icons-material'
 import { Box } from '@mui/material'
 import { getTranslations } from 'next-intl/server'
 import { Button, Reveal, TextBody1Neutral60, TextH1Bold } from '@/shared/components'
-import { TEXT_MAX } from '../layout'
+import { PAGE_PT, TEXT_MAX } from '../layout'
 import { Section } from '../Section'
 
 // Homepage hero — the research blueprint's #1 lever: an outcome-led claim with hard proof
@@ -14,7 +14,7 @@ export async function HeroSection() {
   const proofs = [t('proof1'), t('proof2'), t('proof3')]
 
   return (
-    <Section py={{ xs: 5, md: 7 }}>
+    <Section pt={PAGE_PT} py={{ xs: 5, md: 7 }}>
       <Reveal>
         <TextH1Bold sx={{ mb: 3 }}>{t('headline')}</TextH1Bold>
       </Reveal>

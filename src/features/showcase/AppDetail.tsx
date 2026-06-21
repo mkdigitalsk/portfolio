@@ -18,6 +18,7 @@ import {
   TextH4Bold,
   TextH6Bold,
 } from '@/shared/components'
+import { PAGE_PT } from '@/shared/layout'
 import { detailApps } from './apps'
 
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
@@ -156,7 +157,7 @@ export function AppDetail({ appId }: AppDetailProps) {
   }
 
   return (
-    <Box component="main" sx={{ maxWidth: 880, mx: 'auto', px: 3, py: { xs: 4, md: 6 } }}>
+    <Box component="main" sx={{ maxWidth: 880, mx: 'auto', px: 3, pt: PAGE_PT, pb: { xs: 4, md: 6 } }}>
       <Box
         component={Link}
         href="/"

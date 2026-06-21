@@ -17,6 +17,8 @@ interface SectionProps {
   dividerBottom?: boolean
   /** Override the standard vertical padding. */
   py?: { xs: number; md: number }
+  /** Override just the TOP padding (e.g. the hero uses the shared PAGE_PT page-top constant). */
+  pt?: { xs: number; md: number }
   id?: string
 }
 
@@ -24,7 +26,7 @@ interface SectionProps {
 // header all live here, in one place. Change it here and every section moves together; no
 // per-section copy-paste that can drift. Content stays left-aligned (TEXT_MAX for text columns).
 // Hero and the final CTA intentionally render their own H1 (bookends) instead of `title`.
-export function Section({ children, title, subtitle, bg, divider, dividerBottom, py = SECTION_PY, id }: SectionProps) {
+export function Section({ children, title, subtitle, bg, divider, dividerBottom, py = SECTION_PY, pt, id }: SectionProps) {
   return (
     <Box
       component="section"
@@ -35,7 +37,7 @@ export function Section({ children, title, subtitle, bg, divider, dividerBottom,
         ...(dividerBottom && { borderBottom: '1px solid', borderColor: 'divider' }),
       }}
     >
-      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, py }}>
+      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, py, ...(pt && { pt }) }}>
         {title && (
           <Reveal>
             <TextH4Bold sx={{ mb: subtitle ? 2 : 4 }}>{title}</TextH4Bold>
