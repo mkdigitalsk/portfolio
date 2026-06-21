@@ -18,7 +18,14 @@ export async function ProcessSection() {
       <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' }, gap: { xs: 3, md: 4 } }}>
         {PHASES.map((key, i) => (
           <Reveal key={key} delay={0.08 * i}>
-            <Box>
+            <Box
+              sx={{
+                height: '100%',
+                borderLeft: i > 0 ? { xs: 'none', md: '1px solid' } : 'none',
+                borderColor: 'divider',
+                pl: i > 0 ? { xs: 0, md: 4 } : 0,
+              }}
+            >
               <Box sx={{ mb: 1 }}>
                 <TextCaptionNeutral60>{t(`${key}.when`)}</TextCaptionNeutral60>
               </Box>
