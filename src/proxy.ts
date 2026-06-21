@@ -1,9 +1,10 @@
 import { NextResponse, type NextRequest } from 'next/server'
 
-// Pre-launch privacy gate. The whole site is locked behind HTTP Basic Auth whenever
-// SITE_PASSWORD is set (e.g. on the deployed environment). Leave it unset locally and at
-// launch to make the site public — going live needs no code change, just drop the env var.
-export function middleware(request: NextRequest) {
+// Pre-launch privacy gate (Next.js 16 "proxy" convention, formerly "middleware"). The whole
+// site is locked behind HTTP Basic Auth whenever SITE_PASSWORD is set (e.g. on the deployed
+// environment). Leave it unset locally and at launch to make the site public — going live
+// needs no code change, just drop the env var.
+export function proxy(request: NextRequest) {
   const password = process.env.SITE_PASSWORD
   if (!password) return NextResponse.next()
 
