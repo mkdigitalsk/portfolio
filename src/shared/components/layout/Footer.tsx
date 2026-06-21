@@ -11,7 +11,7 @@ import { GitHubDark, GitHubLight, LinkedInBlue, WhatsAppGreen } from '../../them
 const socials = [
   { label: 'LinkedIn', href: 'https://linkedin.com/in/miroslavkusnir', Icon: LinkedIn, brand: LinkedInBlue },
   { label: 'WhatsApp', href: 'https://wa.me/421951892670', Icon: WhatsApp, brand: WhatsAppGreen },
-  { label: 'GitHub', href: 'https://github.com/KusnirM', Icon: GitHub, brand: 'github' as const },
+  { label: 'GitHub', href: 'https://github.com/mkdigitalsk', Icon: GitHub, brand: 'github' as const },
 ]
 
 export function Footer() {

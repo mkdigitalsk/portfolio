@@ -5,7 +5,7 @@ import { Button, Reveal, TextBody1Neutral60, TextH1Bold, TextH4Bold } from '@/sh
 import { ShowcaseList, type Showcase } from '@/features/home/ShowcaseList'
 import { TechStack, type TechGroup } from '@/features/home/TechStack'
 
-const GITHUB = 'https://github.com/KusnirM'
+const GITHUB = 'https://github.com/mkdigitalsk'
 
 const showcases: Showcase[] = [
   { platform: 'kotlin', label: 'Kotlin Multiplatform', descriptionKey: 'kmpDesc', repoUrl: `${GITHUB}/kmp-showcase` },

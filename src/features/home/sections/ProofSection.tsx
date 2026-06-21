@@ -6,7 +6,7 @@ import { ShowcaseList, type Showcase } from '@/features/home/ShowcaseList'
 // Proof spine — open-source showcases reframed as quantified proof. The NDA-safe trust axis:
 // closed-source agencies ask you to trust code you can't see; ours is public. We quantify the
 // ARTIFACT and engineering rigor instead of (forbidden) client revenue (see portfolio-research.md).
-const GITHUB = 'https://github.com/KusnirM'
+const GITHUB = 'https://github.com/mkdigitalsk'
 
 const showcases: Showcase[] = [
   { platform: 'kotlin', label: 'Kotlin Multiplatform', descriptionKey: 'kmpDesc', repoUrl: `${GITHUB}/kmp-showcase` },
