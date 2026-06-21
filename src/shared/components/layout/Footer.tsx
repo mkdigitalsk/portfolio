@@ -5,6 +5,7 @@ import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
+import { CONTENT_MAX } from '@/shared/layout'
 import { TextBody1Neutral60 } from '../text'
 import { GitHubDark, GitHubLight } from '../../theme/socialColors'
 
@@ -17,7 +18,7 @@ export function Footer() {
     <Box component="footer" sx={{ borderTop: '1px solid', borderColor: 'divider' }}>
       <Box
         sx={{
-          maxWidth: 960,
+          maxWidth: CONTENT_MAX,
           mx: 'auto',
           px: 3,
           py: 4,

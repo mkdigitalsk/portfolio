@@ -5,6 +5,7 @@ import Box from '@mui/material/Box'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { ReactNode } from 'react'
+import { CONTENT_MAX } from '@/shared/layout'
 import { TextH6Bold } from '../text'
 import { ThemeModeToggle } from '../ThemeModeToggle'
 import { LocaleSwitcher } from '../LocaleSwitcher'
@@ -57,7 +58,7 @@ export function NavBar() {
     >
       <Box
         sx={{
-          maxWidth: 880,
+          maxWidth: CONTENT_MAX,
           mx: 'auto',
           px: 3,
           py: 1.5,
