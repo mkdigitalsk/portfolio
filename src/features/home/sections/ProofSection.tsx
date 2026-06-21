@@ -1,8 +1,8 @@
 import { Box } from '@mui/material'
 import { getTranslations } from 'next-intl/server'
-import { Chip, Reveal, TextBody1Neutral60, TextBody1Primary, TextH4Bold } from '@/shared/components'
+import { Chip, Reveal, TextBody1Primary } from '@/shared/components'
 import { ShowcaseList, type Showcase } from '@/features/home/ShowcaseList'
-import { SECTION_MAX, TEXT_MAX } from '../layout'
+import { Section } from '../Section'
 
 // Proof spine — open-source showcases reframed as quantified proof. The NDA-safe trust axis:
 // closed-source agencies ask you to trust code you can't see; ours is public. We quantify the
@@ -22,15 +22,7 @@ export async function ProofSection() {
   const t = await getTranslations('home.proof')
 
   return (
-    <Box component="section" sx={{ maxWidth: SECTION_MAX, mx: 'auto', px: 3, py: { xs: 6, md: 8 } }}>
-      <Reveal>
-        <TextH4Bold sx={{ mb: 2 }}>{t('title')}</TextH4Bold>
-      </Reveal>
-      <Reveal delay={0.06}>
-        <Box sx={{ mb: 3, maxWidth: TEXT_MAX }}>
-          <TextBody1Neutral60>{t('subtitle')}</TextBody1Neutral60>
-        </Box>
-      </Reveal>
+    <Section title={t('title')} subtitle={t('subtitle')}>
       <Reveal delay={0.12}>
         <Box sx={{ mb: 4 }}>
           <TextBody1Primary>{t('inspectLine')}</TextBody1Primary>
@@ -46,6 +38,6 @@ export async function ProofSection() {
       <Reveal delay={0.24}>
         <ShowcaseList items={showcases} />
       </Reveal>
-    </Box>
+    </Section>
   )
 }

@@ -2,17 +2,19 @@ import { CheckCircle, Mail } from '@mui/icons-material'
 import { Box } from '@mui/material'
 import { getTranslations } from 'next-intl/server'
 import { Button, Reveal, TextBody1Neutral60, TextH1Bold } from '@/shared/components'
-import { SECTION_MAX, TEXT_MAX } from '../layout'
+import { TEXT_MAX } from '../layout'
+import { Section } from '../Section'
 
 // Homepage hero — the research blueprint's #1 lever: an outcome-led claim with hard proof
 // in the first viewport (see portfolio-research.md). With no client logos (NDA), the proof
-// trio carries credibility: 24h reply, open-source code, full focus.
+// trio carries credibility: 24h reply, open-source code, full focus. Renders its own H1
+// (a bookend focal point), not the shared Section header.
 export async function HeroSection() {
   const t = await getTranslations('home.hero')
   const proofs = [t('proof1'), t('proof2'), t('proof3')]
 
   return (
-    <Box component="section" sx={{ maxWidth: SECTION_MAX, mx: 'auto', px: 3, pt: { xs: 5, md: 7 }, pb: { xs: 5, md: 7 } }}>
+    <Section py={{ xs: 5, md: 7 }}>
       <Reveal>
         <TextH1Bold sx={{ mb: 3 }}>{t('headline')}</TextH1Bold>
       </Reveal>
@@ -38,6 +40,6 @@ export async function HeroSection() {
           ))}
         </Box>
       </Reveal>
-    </Box>
+    </Section>
   )
 }
