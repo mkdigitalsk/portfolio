@@ -84,7 +84,7 @@ export function NavBar() {
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2.5 }}>
             {ANCHORS.map((a) => (
-              <NavItem key={a.href} href={a.href} active={false}>
+              <NavItem key={a.href} href={a.href} active={a.key === 'common.demos' && pathname.startsWith('/app')}>
                 <TextH6Bold>{t(a.key)}</TextH6Bold>
               </NavItem>
             ))}
