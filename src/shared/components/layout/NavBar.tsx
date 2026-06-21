@@ -45,6 +45,7 @@ function NavItem({ href, active, ariaLabel, children }: NavItemProps) {
 // two nav items). Hash hrefs work from /about too — they route home, then scroll to the section.
 const ANCHORS = [
   { href: '/#services', key: 'common.services' },
+  { href: '/#demos', key: 'common.demos' },
   { href: '/#process', key: 'common.process' },
   { href: '/#proof', key: 'common.proof' },
   { href: '/#contact', key: 'common.contact' },

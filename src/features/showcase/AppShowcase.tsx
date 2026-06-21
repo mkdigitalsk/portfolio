@@ -23,7 +23,7 @@ export function AppShowcase() {
   const open = (id: string) => router.push(`/app/${id}`)
 
   return (
-    <Section divider title={t('home.headline')} subtitle={t('home.subline')}>
+    <Section divider id="demos" title={t('home.headline')} subtitle={t('home.subline')}>
       <Box
         sx={{
           display: 'grid',

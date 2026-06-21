@@ -199,7 +199,8 @@
     "services": "Services",
     "process": "Process",
     "proof": "Proof",
-    "contact": "Contact"
+    "contact": "Contact",
+    "demos": "Demos"
   },
   "apps": {
     "custom": {
