@@ -1,6 +1,6 @@
 import { Box } from '@mui/material'
 import { getTranslations } from 'next-intl/server'
-import { Chip, Reveal, TextBody1Primary, TextCaptionNeutral60, TextH4Bold } from '@/shared/components'
+import { Chip, Reveal, TextBody1Primary, TextCaptionNeutral60 } from '@/shared/components'
 import { ShowcaseList, type Showcase } from '@/features/home/ShowcaseList'
 import { Section } from '../Section'
 
@@ -18,29 +18,11 @@ const showcases: Showcase[] = [
 
 const SIGNALS = ['signal1', 'signal2', 'signal3', 'signal4'] as const
 
-// Real, inspectable numbers — the specificity the research rewards (no fabricated metrics).
-// Live snapshot from the public GitHub repos; "240+" stays true as commits only grow.
-const METRICS = [
-  { value: '240+', key: 'commitsLabel' },
-  { value: '4', key: 'appsLabel' },
-  { value: '2025', key: 'sinceLabel' },
-] as const
-
 export async function ProofSection() {
   const t = await getTranslations('home.proof')
 
   return (
     <Section id="proof" title={t('title')} subtitle={t('subtitle')}>
-      <Reveal delay={0.06}>
-        <Box sx={{ mb: 4, display: 'flex', flexWrap: 'wrap', gap: { xs: 3, md: 6 } }}>
-          {METRICS.map(({ value, key }) => (
-            <Box key={key}>
-              <TextH4Bold>{value}</TextH4Bold>
-              <TextCaptionNeutral60>{t(`metrics.${key}`)}</TextCaptionNeutral60>
-            </Box>
-          ))}
-        </Box>
-      </Reveal>
       <Reveal delay={0.12}>
         <Box sx={{ mb: 4 }}>
           <TextBody1Primary>{t('inspectLine')}</TextBody1Primary>

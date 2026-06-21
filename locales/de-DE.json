@@ -111,11 +111,6 @@
       "signal2": "Automatisierte Tests",
       "signal3": "CI/CD-Pipelines",
       "signal4": "Öffentliche Commit-Historie",
-      "metrics": {
-        "commitsLabel": "Commits, vollständig öffentlich",
-        "appsLabel": "Open-Source-Showcase-Apps",
-        "sinceLabel": "öffentlich seit"
-      },
       "references": "Kundenprojekte stehen unter NDA — verifizierte Referenzen und LinkedIn-Empfehlungen auf Anfrage."
     },
     "testimonials": {

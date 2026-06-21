@@ -111,11 +111,6 @@
       "signal2": "Automatizované testy",
       "signal3": "CI/CD pipeline",
       "signal4": "Veřejná historie commitů",
-      "metrics": {
-        "commitsLabel": "commitů, plně veřejných",
-        "appsLabel": "open-source showcase aplikace",
-        "sinceLabel": "tvoříme veřejně od"
-      },
       "references": "Klientská práce je pod NDA — ověřené reference a LinkedIn doporučení poskytneme na vyžádání."
     },
     "testimonials": {
