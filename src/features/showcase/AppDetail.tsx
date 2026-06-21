@@ -166,24 +166,6 @@ export function AppDetail({ appId }: AppDetailProps) {
   return (
     <Box component="main" sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, pt: PAGE_PT, pb: { xs: 4, md: 6 } }}>
       <Box
-        component={Link}
-        href="/"
-        sx={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: 0.5,
-          mb: 3,
-          color: 'text.secondary',
-          textDecoration: 'none',
-          transition: 'color 0.2s ease',
-          '&:hover': { color: 'primary.main' },
-        }}
-      >
-        <ArrowBack sx={{ fontSize: 18 }} />
-        <TextCaptionNeutral60>{t('home.backToApps')}</TextCaptionNeutral60>
-      </Box>
-
-      <Box
         sx={{
           display: 'grid',
           gridTemplateColumns: { xs: '1fr', md: '230px minmax(0, 1fr)' },
@@ -191,8 +173,27 @@ export function AppDetail({ appId }: AppDetailProps) {
           alignItems: 'start',
         }}
       >
-        {/* Left rail — switch app type without going back. Desktop only; mobile keeps the back link. */}
-        <Box component="nav" aria-label={t('home.appTypes')} sx={{ display: { xs: 'none', md: 'block' }, position: 'sticky', top: 88 }}>
+        {/* Left column: back link (always) sits at the same top as the right column's hero,
+            then the app-type switcher rail (desktop only; mobile keeps just the back link). */}
+        <Box>
+          <Box
+            component={Link}
+            href="/"
+            sx={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 0.5,
+              mb: 3,
+              color: 'text.secondary',
+              textDecoration: 'none',
+              transition: 'color 0.2s ease',
+              '&:hover': { color: 'primary.main' },
+            }}
+          >
+            <ArrowBack sx={{ fontSize: 18 }} />
+            <TextCaptionNeutral60>{t('home.backToApps')}</TextCaptionNeutral60>
+          </Box>
+          <Box component="nav" aria-label={t('home.appTypes')} sx={{ display: { xs: 'none', md: 'block' }, position: 'sticky', top: 88 }}>
           <Box sx={{ mb: 1.5 }}>
             <TextCaptionNeutral60>{t('home.appTypes')}</TextCaptionNeutral60>
           </Box>
@@ -227,6 +228,7 @@ export function AppDetail({ appId }: AppDetailProps) {
               )
             })}
           </Stack>
+          </Box>
         </Box>
 
         {/* Right column — the configurator + lead form. */}
