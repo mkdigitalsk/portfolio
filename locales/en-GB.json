@@ -73,7 +73,8 @@
         "fullDesc": "We own delivery end-to-end — you get a finished, maintained product and one point of contact.",
         "embeddedTitle": "Embedded senior engineer",
         "embeddedDesc": "Need extra senior firepower? We join your team and ship alongside your engineers."
-      }
+      },
+      "existing": "Already have a product? We also take over, stabilise and extend it — rescue legacy code, cut crash rates, ship new features — not only greenfield builds."
     },
     "process": {
       "title": "How we work",
@@ -126,7 +127,7 @@
       "cta": "More about us"
     },
     "contact": {
-      "headline": "Have a product to build?",
+      "headline": "Have a product to build — or improve?",
       "subline": "Tell us what you're building. We reply within 24 hours — usually with first questions and a sense of scope.",
       "company": "MK Digital s.r.o. · Banská Bystrica, Slovakia",
       "cta": "Let's talk"

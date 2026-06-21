@@ -68,6 +68,14 @@ export async function ServicesSection() {
           </Box>
         </Box>
       </Reveal>
+
+      {/* Brownfield: existing products welcome, not only greenfield. DRAFT copy — final wording
+          pending its own deep-research (the consultative "free audit / we analyse it" angle). */}
+      <Reveal delay={0.34}>
+        <Box sx={{ mt: { xs: 2.5, md: 3 } }}>
+          <TextBody1Neutral60>{t('existing')}</TextBody1Neutral60>
+        </Box>
+      </Reveal>
     </Section>
   )
 }

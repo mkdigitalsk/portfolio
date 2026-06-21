@@ -73,7 +73,8 @@
         "fullDesc": "Přebíráme dodání od začátku do konce — dostanete hotový, udržovaný produkt a jeden kontakt.",
         "embeddedTitle": "Senior inženýr ve vašem týmu",
         "embeddedDesc": "Potřebujete seniorní posilu? Připojíme se k vašemu týmu a dodáváme po boku vašich inženýrů."
-      }
+      },
+      "existing": "Už máte produkt? Umíme ho i převzít, stabilizovat a rozšířit — záchrana legacy kódu, nižší crash-rate, nové funkce — nejen stavět od nuly."
     },
     "process": {
       "title": "Jak pracujeme",
@@ -126,7 +127,7 @@
       "cta": "Více o nás"
     },
     "contact": {
-      "headline": "Máte produkt k postavení?",
+      "headline": "Máte produkt k postavení — nebo vylepšení?",
       "subline": "Napište nám, co stavíte. Odpovíme do 24 hodin — obvykle s prvními otázkami a odhadem rozsahu.",
       "company": "MK Digital s.r.o. · Banská Bystrica, Slovensko",
       "cta": "Pojďme si promluvit"

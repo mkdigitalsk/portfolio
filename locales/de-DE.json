@@ -73,7 +73,8 @@
         "fullDesc": "Wir übernehmen die Lieferung end-to-end — Sie erhalten ein fertiges, gepflegtes Produkt und einen Ansprechpartner.",
         "embeddedTitle": "Eingebetteter Senior-Engineer",
         "embeddedDesc": "Brauchen Sie zusätzliche Senior-Power? Wir treten Ihrem Team bei und liefern Seite an Seite mit Ihren Entwicklern."
-      }
+      },
+      "existing": "Sie haben bereits ein Produkt? Wir übernehmen, stabilisieren und erweitern es auch — Legacy-Code retten, Crash-Rate senken, neue Features — nicht nur Neuentwicklung."
     },
     "process": {
       "title": "Wie wir arbeiten",
@@ -126,7 +127,7 @@
       "cta": "Mehr über uns"
     },
     "contact": {
-      "headline": "Haben Sie ein Produkt zu bauen?",
+      "headline": "Ein Produkt zu bauen — oder zu verbessern?",
       "subline": "Sagen Sie uns, was Sie bauen. Wir antworten innerhalb von 24 Stunden — meist mit ersten Fragen und einer Einschätzung des Umfangs.",
       "company": "MK Digital s.r.o. · Banská Bystrica, Slowakei",
       "cta": "Sprechen wir"
