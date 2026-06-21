@@ -5,7 +5,6 @@ import { motion, useReducedMotion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { useState, type KeyboardEvent, type ReactNode } from 'react'
 import { TextH6Bold } from '@/shared/components'
-import { useMotion } from '@/shared/context/MotionContext'
 import { CARD_FLIP_CLOSE_S, CARD_FLIP_S, FLIP_EASE, ICON_FLIP_S } from './flipTiming'
 import { APP_PREVIEWS } from './previews'
 import type { ShowcaseApp } from './apps'
@@ -45,8 +44,7 @@ export function FlipRevealCard({
   const t = useTranslations()
   const label = t(`apps.${app.id}.label`)
   const reduceMotion = useReducedMotion()
-  const { motionEnabled } = useMotion()
-  const animate = !reduceMotion && motionEnabled
+  const animate = !reduceMotion
   const flipTo = 180 * flipSign
   // Drive the flip from hover state tracked on the STABLE outer container — never via
   // whileHover on the rotating card itself: mid-flip the 3D card turns edge-on, the

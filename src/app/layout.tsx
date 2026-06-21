@@ -15,7 +15,6 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Footer, NavBar } from '@/shared/components'
-import { MotionProvider } from '@/shared/context/MotionContext'
 import { theme } from '@/shared/theme'
 import './globals.css'
 
@@ -37,13 +36,11 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
           <AppRouterCacheProvider options={{ enableCssLayer: true }}>
             <ThemeProvider theme={theme} defaultMode="system">
               <CssBaseline />
-              <MotionProvider>
-                <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100dvh' }}>
-                  <NavBar />
-                  <Box sx={{ flex: 1 }}>{children}</Box>
-                  <Footer />
-                </Box>
-              </MotionProvider>
+              <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100dvh' }}>
+                <NavBar />
+                <Box sx={{ flex: 1 }}>{children}</Box>
+                <Footer />
+              </Box>
             </ThemeProvider>
           </AppRouterCacheProvider>
         </NextIntlClientProvider>

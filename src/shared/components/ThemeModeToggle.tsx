@@ -3,12 +3,12 @@
 import { DarkMode, LightMode } from '@mui/icons-material'
 import { Box, IconButton, Tooltip } from '@mui/material'
 import { useColorScheme } from '@mui/material/styles'
-import { useMotion } from '@/shared/context/MotionContext'
+import { useReducedMotion } from 'motion/react'
 import { useViewTransition } from '@/shared/hooks/useViewTransition'
 
 export function ThemeModeToggle() {
   const { mode, systemMode, setMode } = useColorScheme()
-  const { motionEnabled } = useMotion()
+  const reduceMotion = useReducedMotion()
   const startViewTransition = useViewTransition()
 
   if (!mode) {
@@ -26,7 +26,7 @@ export function ThemeModeToggle() {
   const handleToggle = () => {
     const opposite = systemMode === 'dark' ? 'light' : 'dark'
     const next = isSystem ? opposite : 'system'
-    if (motionEnabled) {
+    if (!reduceMotion) {
       startViewTransition(() => setMode(next))
     } else {
       setMode(next)

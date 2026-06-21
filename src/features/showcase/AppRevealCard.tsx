@@ -5,7 +5,6 @@ import { motion, useAnimationControls, useReducedMotion, type TargetAndTransitio
 import { useTranslations } from 'next-intl'
 import { type KeyboardEvent } from 'react'
 import { TextH6Bold } from '@/shared/components'
-import { useMotion } from '@/shared/context/MotionContext'
 import { HeartBeat } from './HeartBeat'
 import { fasterClose } from './closeTransition'
 import { iconAnimations } from './iconAnimations'
@@ -39,8 +38,7 @@ export function AppRevealCard({ app, ariaLabel, onActivate, height = 240 }: AppR
   const t = useTranslations()
   const label = t(`apps.${app.id}.label`)
   const reduceMotion = useReducedMotion()
-  const { motionEnabled } = useMotion()
-  const animate = !reduceMotion && motionEnabled
+  const animate = !reduceMotion
   const iconAnim = iconAnimations[iconAnimation]
   const reveal = revealAnimations[iconAnimation]
   const isFly = iconAnimation === 'fly'
