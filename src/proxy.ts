@@ -19,9 +19,11 @@ export function proxy(request: NextRequest) {
     if (givenUser === user && givenPass === password) return NextResponse.next()
   }
 
+  // realm must be ASCII / Latin-1 only — HTTP header values are ByteStrings, so a fancy
+  // em-dash here throws "Cannot convert argument to a ByteString" and 500s the gate.
   return new NextResponse('Authentication required.', {
     status: 401,
-    headers: { 'WWW-Authenticate': 'Basic realm="MK Digital — private preview"' },
+    headers: { 'WWW-Authenticate': 'Basic realm="MK Digital"' },
   })
 }
 
