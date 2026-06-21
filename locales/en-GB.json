@@ -1,5 +1,13 @@
 {
   "home": {
+    "hero": {
+      "headline": "Your product, shipped end-to-end.",
+      "subline": "iOS, Android, web, and backend — built once, properly, with the production patterns we use on real client work. One accountable partner, no hand-off chain.",
+      "cta": "Let's talk",
+      "proof1": "Reply within 24 hours",
+      "proof2": "4 open-source apps — inspect the real code",
+      "proof3": "One client at a time, full focus"
+    },
     "headline": "The app your business needs.",
     "subline": "Pick a product type and watch it come to life — each one built end to end, across mobile, web, and backend.",
     "previewSoon": "Live demo coming soon",

@@ -1,5 +1,13 @@
 {
   "home": {
+    "hero": {
+      "headline": "Váš produkt, dodaný od začiatku do konca.",
+      "subline": "iOS, Android, web aj backend — postavené raz a poriadne, s produkčnými vzormi, ktoré používame na reálnych klientskych projektoch. Jeden zodpovedný partner, žiadne odovzdávanie medzi tímami.",
+      "cta": "Poďme sa porozprávať",
+      "proof1": "Odpoveď do 24 hodín",
+      "proof2": "4 open-source aplikácie — pozrite si reálny kód",
+      "proof3": "Jeden klient naraz, plný fokus"
+    },
     "headline": "Aplikácia, ktorú vaše podnikanie potrebuje.",
     "subline": "Vyberte typ produktu a sledujte, ako ožíva — každý postavený od A po Z, naprieč mobilom, webom aj backendom.",
     "previewSoon": "Živá ukážka už čoskoro",

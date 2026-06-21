@@ -1,5 +1,13 @@
 {
   "home": {
+    "hero": {
+      "headline": "Ihr Produkt, end-to-end geliefert.",
+      "subline": "iOS, Android, Web und Backend — einmal und richtig gebaut, mit denselben Produktionsmustern, die wir in echten Kundenprojekten verwenden. Ein verantwortlicher Partner, keine Übergabekette.",
+      "cta": "Sprechen wir",
+      "proof1": "Antwort innerhalb von 24 Stunden",
+      "proof2": "4 Open-Source-Apps — prüfen Sie den echten Code",
+      "proof3": "Ein Kunde nach dem anderen, volle Fokussierung"
+    },
     "headline": "Die App, die Ihr Unternehmen braucht.",
     "subline": "Wählen Sie einen Produkttyp und sehen Sie ihn lebendig werden — jeder von A bis Z gebaut, über Mobile, Web und Backend hinweg.",
     "previewSoon": "Live-Demo bald verfügbar",
