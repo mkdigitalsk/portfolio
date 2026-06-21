@@ -11,7 +11,7 @@ export async function ContactSection() {
 
   return (
     <Box component="section" sx={{ borderTop: '1px solid', borderColor: 'divider' }}>
-      <Box sx={{ maxWidth: 880, mx: 'auto', px: 3, py: { xs: 10, md: 16 }, textAlign: 'center' }}>
+      <Box sx={{ maxWidth: 960, mx: 'auto', px: 3, py: { xs: 7, md: 10 }, textAlign: 'center' }}>
         <Reveal>
           <TextH1Bold sx={{ mb: 3 }}>{t('headline')}</TextH1Bold>
         </Reveal>

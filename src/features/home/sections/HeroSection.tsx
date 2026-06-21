@@ -11,7 +11,7 @@ export async function HeroSection() {
   const proofs = [t('proof1'), t('proof2'), t('proof3')]
 
   return (
-    <Box component="section" sx={{ maxWidth: 880, mx: 'auto', px: 3, pt: { xs: 8, md: 14 }, pb: { xs: 6, md: 10 } }}>
+    <Box component="section" sx={{ maxWidth: 960, mx: 'auto', px: 3, pt: { xs: 5, md: 7 }, pb: { xs: 5, md: 7 } }}>
       <Reveal>
         <TextH1Bold sx={{ mb: 3 }}>{t('headline')}</TextH1Bold>
       </Reveal>

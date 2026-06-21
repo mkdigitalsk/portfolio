@@ -11,7 +11,7 @@ export async function TestimonialsSection() {
 
   return (
     <Box component="section" sx={{ bgcolor: 'action.hover' }}>
-      <Box sx={{ maxWidth: 880, mx: 'auto', px: 3, py: { xs: 8, md: 12 } }}>
+      <Box sx={{ maxWidth: 960, mx: 'auto', px: 3, py: { xs: 6, md: 8 } }}>
         <Reveal>
           <TextH4Bold sx={{ mb: 2 }}>{t('title')}</TextH4Bold>
         </Reveal>

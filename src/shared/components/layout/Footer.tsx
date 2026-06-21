@@ -1,18 +1,14 @@
 'use client'
 
-import { GitHub, LinkedIn, WhatsApp } from '@mui/icons-material'
+import { GitHub } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { TextBody1Neutral60 } from '../text'
-import { GitHubDark, GitHubLight, LinkedInBlue, WhatsAppGreen } from '../../theme/socialColors'
+import { GitHubDark, GitHubLight } from '../../theme/socialColors'
 
-const socials = [
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/miroslavkusnir', Icon: LinkedIn, brand: LinkedInBlue },
-  { label: 'WhatsApp', href: 'https://wa.me/421951892670', Icon: WhatsApp, brand: WhatsAppGreen },
-  { label: 'GitHub', href: 'https://github.com/mkdigitalsk', Icon: GitHub, brand: 'github' as const },
-]
+const socials = [{ label: 'GitHub', href: 'https://github.com/mkdigitalsk', Icon: GitHub, brand: 'github' as const }]
 
 export function Footer() {
   const t = useTranslations()
@@ -21,7 +17,7 @@ export function Footer() {
     <Box component="footer" sx={{ borderTop: '1px solid', borderColor: 'divider' }}>
       <Box
         sx={{
-          maxWidth: 880,
+          maxWidth: 960,
           mx: 'auto',
           px: 3,
           py: 4,

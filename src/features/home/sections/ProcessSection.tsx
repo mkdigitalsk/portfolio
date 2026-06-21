@@ -14,7 +14,7 @@ export async function ProcessSection() {
 
   return (
     <Box component="section" sx={{ bgcolor: 'action.hover' }}>
-      <Box sx={{ maxWidth: 1040, mx: 'auto', px: 3, py: { xs: 8, md: 12 } }}>
+      <Box sx={{ maxWidth: 1180, mx: 'auto', px: 3, py: { xs: 6, md: 8 } }}>
         <Reveal>
           <TextH4Bold sx={{ mb: 2 }}>{t('title')}</TextH4Bold>
         </Reveal>

@@ -11,7 +11,7 @@ export async function TrustBandSection() {
 
   return (
     <Box component="section" sx={{ borderTop: '1px solid', borderBottom: '1px solid', borderColor: 'divider' }}>
-      <Box sx={{ maxWidth: 1040, mx: 'auto', px: 3, py: { xs: 3, md: 4 } }}>
+      <Box sx={{ maxWidth: 1180, mx: 'auto', px: 3, py: { xs: 3, md: 4 } }}>
         <Reveal>
           <Box
             sx={{

@@ -10,7 +10,7 @@ export async function AboutSection() {
   const t = await getTranslations('home.about')
 
   return (
-    <Box component="section" sx={{ maxWidth: 880, mx: 'auto', px: 3, py: { xs: 8, md: 12 } }}>
+    <Box component="section" sx={{ maxWidth: 960, mx: 'auto', px: 3, py: { xs: 6, md: 8 } }}>
       <Reveal>
         <TextH4Bold sx={{ mb: 3 }}>{t('title')}</TextH4Bold>
       </Reveal>

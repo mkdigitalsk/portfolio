@@ -16,7 +16,7 @@ export async function ServicesSection() {
   const t = await getTranslations('home.services')
 
   return (
-    <Box component="section" sx={{ maxWidth: 1040, mx: 'auto', px: 3, py: { xs: 8, md: 12 } }}>
+    <Box component="section" sx={{ maxWidth: 1180, mx: 'auto', px: 3, py: { xs: 6, md: 8 } }}>
       <Reveal>
         <TextH4Bold sx={{ mb: 2 }}>{t('title')}</TextH4Bold>
       </Reveal>
