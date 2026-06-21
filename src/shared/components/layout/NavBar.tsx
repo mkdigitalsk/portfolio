@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { ReactNode } from 'react'
+import { useScrollSpy } from '@/shared/hooks/useScrollSpy'
 import { CONTENT_MAX } from '@/shared/layout'
 import { TextH6Bold } from '../text'
 import { ThemeModeToggle } from '../ThemeModeToggle'
@@ -43,17 +44,29 @@ function NavItem({ href, active, ariaLabel, children }: NavItemProps) {
 
 // Home section anchors for serious buyers to drill into (research: a services firm needs more than
 // two nav items). Hash hrefs work from /about too — they route home, then scroll to the section.
-const ANCHORS = [
+// `activePrefix` (optional) keeps the item highlighted while the current route starts with it —
+// e.g. Products stays active across the /app/* product-detail pages.
+interface NavAnchor {
+  href: string
+  key: string
+  activePrefix?: string
+}
+
+const ANCHORS: NavAnchor[] = [
   { href: '/#services', key: 'common.services' },
-  { href: '/#demos', key: 'common.demos' },
+  { href: '/#demos', key: 'common.demos', activePrefix: '/app' },
   { href: '/#process', key: 'common.process' },
   { href: '/#proof', key: 'common.proof' },
   { href: '/#contact', key: 'common.contact' },
-] as const
+]
+
+// Section ids for scroll-spy — derived once from the hash anchors above (stable reference).
+const SECTION_IDS = ANCHORS.filter((a) => a.href.startsWith('/#')).map((a) => a.href.slice(2))
 
 export function NavBar() {
   const pathname = usePathname()
   const t = useTranslations()
+  const activeSection = useScrollSpy(SECTION_IDS)
 
   return (
     <Box
@@ -84,7 +97,14 @@ export function NavBar() {
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2.5 }}>
             {ANCHORS.map((a) => (
-              <NavItem key={a.href} href={a.href} active={a.key === 'common.demos' && pathname.startsWith('/app')}>
+              <NavItem
+                key={a.href}
+                href={a.href}
+                active={
+                  (a.activePrefix !== undefined && pathname.startsWith(a.activePrefix)) ||
+                  (pathname === '/' && a.href.slice(2) === activeSection)
+                }
+              >
                 <TextH6Bold>{t(a.key)}</TextH6Bold>
               </NavItem>
             ))}
