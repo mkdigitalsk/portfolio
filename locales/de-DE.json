@@ -8,8 +8,8 @@
       "proof2": "4 Open-Source-Apps — prüfen Sie den echten Code",
       "proof3": "Ein Kunde nach dem anderen, volle Fokussierung"
     },
-    "headline": "Die App, die Ihr Unternehmen braucht.",
-    "subline": "Wählen Sie einen Produkttyp und sehen Sie ihn lebendig werden — jeder von A bis Z gebaut, über Mobile, Web und Backend hinweg.",
+    "headline": "Sehen Sie, welches Produkt Sie liefern könnten",
+    "subline": "Live, interaktive Vorschauen — gebaut mit denselben Produktionsmustern, die wir an Kunden liefern. Wählen Sie einen Typ zum Erkunden.",
     "previewSoon": "Live-Demo bald verfügbar",
     "openDetail": "Details zu {name} ansehen",
     "detailHeading": "Was Ihre App enthalten könnte",
@@ -41,7 +41,91 @@
     "customIntro": "Hallo, ich möchte eine individuelle App entwickeln lassen.",
     "platformsLabel": "Was brauchen Sie?",
     "platformWeb": "Web",
-    "platformMobile": "Mobile App"
+    "platformMobile": "Mobile App",
+    "trust": {
+      "fact1": "iOS · Android · Web · Backend",
+      "fact2": "Ein Senior-Partner, volle Fokussierung",
+      "fact3": "Antwort innerhalb von 24 Stunden",
+      "fact4": "Open-Source-Code zur Einsicht",
+      "fact5": "Saubere Architektur, Produktionsmuster",
+      "fact6": "DSGVO-konform · SK s.r.o."
+    },
+    "services": {
+      "title": "Was wir tun",
+      "subtitle": "Ein Partner über den gesamten Produktlebenszyklus — von der ersten Idee bis zum ausgelieferten, gepflegten Produkt. KI dort, wo sie ihren Platz verdient.",
+      "strategy": {
+        "title": "Strategie & Scoping",
+        "outcome": "Aus einer groben Idee machen wir einen klaren, kalkulierten Plan — Umfang, Architektur und eine realistische Roadmap vor jeder Zeile Code.",
+        "credential": "Saubere Architektur von Tag eins"
+      },
+      "build": {
+        "title": "Design & Entwicklung",
+        "outcome": "Mobile, Web und Backend einmal und richtig gebaut — Produktionsmuster, automatisierte Tests und KI für schnellere Auslieferung ohne Abstriche.",
+        "credential": "iOS · Android · Web · Backend"
+      },
+      "launch": {
+        "title": "Launch & Iteration",
+        "outcome": "Wir veröffentlichen in den Stores und im Web, richten CI/CD und Monitoring ein und verbessern weiter auf Basis echter Nutzung.",
+        "credential": "CI/CD, Monitoring, laufender Support"
+      },
+      "engagement": {
+        "fullTitle": "Voller Produktpartner",
+        "fullDesc": "Wir übernehmen die Lieferung end-to-end — Sie erhalten ein fertiges, gepflegtes Produkt und einen Ansprechpartner.",
+        "embeddedTitle": "Eingebetteter Senior-Engineer",
+        "embeddedDesc": "Brauchen Sie zusätzliche Senior-Power? Wir treten Ihrem Team bei und liefern Seite an Seite mit Ihren Entwicklern."
+      }
+    },
+    "process": {
+      "title": "Wie wir arbeiten",
+      "subtitle": "Transparent, zeitlich getaktet und risikoarm — Sie wissen jederzeit, wo Ihr Geld und Ihr Produkt stehen.",
+      "phase1": {
+        "when": "Woche 1",
+        "title": "Umfang & Plan",
+        "detail": "Eine Discovery zum Festpreis: Wir definieren Umfang, Architektur und Roadmap und vereinbaren Preis und Termin im Voraus."
+      },
+      "phase2": {
+        "when": "Woche 2–N",
+        "title": "Entwicklung im Offenen",
+        "detail": "Wöchentliche Demos, ein transparentes Repo zum Mitverfolgen und direkter Zugang zum Engineer — kein Account-Manager dazwischen."
+      },
+      "phase3": {
+        "when": "Launch & danach",
+        "title": "Auslieferung & Support",
+        "detail": "Wir veröffentlichen, richten Monitoring ein und bleiben für Fixes und Verbesserungen — das Produkt wird bei der Übergabe nicht fallengelassen."
+      },
+      "principle1": "Wöchentliche Demos",
+      "principle2": "Direkter Zugang zum Engineer",
+      "principle3": "Transparentes, einsehbares Repo",
+      "principle4": "Fester Umfang, Preis und Termin",
+      "riskReversal": {
+        "title": "Pünktlich und im Budget — vorab vereinbart",
+        "body": "Wir legen Umfang, Preis und Liefertermin vor jeder Zeile Code fest — und dank des öffentlichen Repos überprüfen Sie den Fortschritt jederzeit selbst."
+      },
+      "cta": "Kostenloses Scoping-Gespräch buchen"
+    },
+    "proof": {
+      "title": "Lesen Sie den Code, bevor Sie uns beauftragen",
+      "subtitle": "Der Code der meisten Studios ist geschlossen. Unserer ist offen. Das sind vollständige Showcase-Apps in Produktionsqualität — prüfen Sie Architektur, Tests und Commit-Historie selbst.",
+      "inspectLine": "Saubere Architektur · automatisierte Tests · CI/CD · vollständige Commit-Historie — alles öffentlich auf GitHub."
+    },
+    "testimonials": {
+      "title": "Was Kunden sagen",
+      "subtitle": "Wir sind am Anfang und selektiv, und der Großteil unserer Arbeit unterliegt einer NDA.",
+      "placeholder": "Verifizierte Referenzen und LinkedIn-Empfehlungen stellen wir auf Anfrage bereit.",
+      "cta": "Referenzen anfragen"
+    },
+    "about": {
+      "title": "Die Person, mit der Sie tatsächlich arbeiten",
+      "para1": "MK Digital ist ein fokussiertes Studio: Senior-Engineering, saubere Architektur und dieselben Produktionsstandards auf jeder Plattform — Mobile, Web und Backend.",
+      "para2": "Sie arbeiten direkt mit dem Engineer, der Ihr Produkt baut — keine Übergabekette, ein verantwortlicher Partner vom ersten Gespräch bis zum Launch.",
+      "cta": "Mehr über uns"
+    },
+    "contact": {
+      "headline": "Haben Sie ein Produkt zu bauen?",
+      "subline": "Sagen Sie uns, was Sie bauen. Wir antworten innerhalb von 24 Stunden — meist mit ersten Fragen und einer Einschätzung des Umfangs.",
+      "company": "MK Digital s.r.o. · Banská Bystrica, Slowakei",
+      "cta": "Sprechen wir"
+    }
   },
   "hero": {
     "headline": "Komplette Apps aus einer Hand.",
@@ -72,13 +156,300 @@
     "privacy": "Datenschutz"
   },
   "apps": {
-    "custom": { "label": "Ihre Idee", "tagline": "Keine der Apps oben? Sagen Sie uns, was Sie vorhaben — wählen Sie gängige Funktionen oder beschreiben Sie es einfach.", "features": { "accounts": { "label": "Benutzerkonten & Login", "benefit": "Sichere Registrierung, Login und Profile" }, "payments": { "label": "In-App-Zahlungen", "benefit": "Karten- und Wallet-Zahlungen sicher annehmen" }, "notifications": { "label": "Push-Benachrichtigungen", "benefit": "Nutzer mit zeitnahen Hinweisen zurückholen" }, "chat": { "label": "In-App-Chat & Support", "benefit": "Nutzer erreichen Sie, ohne die App zu verlassen" }, "search": { "label": "Suche & Filter", "benefit": "Nutzer finden schnell, was sie brauchen" }, "adminDashboard": { "label": "Admin-Dashboard", "benefit": "Inhalte, Nutzer und Bestellungen an einem Ort verwalten" }, "analytics": { "label": "Analytik & Einblicke", "benefit": "Sehen Sie, wie Menschen Ihr Produkt nutzen" }, "multiLanguage": { "label": "Mehrsprachiger Support", "benefit": "Erreichen Sie Kunden in ihrer Sprache" }, "offline": { "label": "Offline-Modus", "benefit": "Funktioniert auch ohne Verbindung" } } },
-    "food": { "label": "Lieferdienst", "tagline": "Alles, was Ihre Kunden brauchen, um mühelos zu bestellen, zu verfolgen und nachzubestellen.", "features": { "liveTracking": { "label": "Live-Bestellverfolgung", "benefit": "Kunden sehen ihren Fahrer in Echtzeit ankommen" }, "favourites": { "label": "Favoriten & Nachbestellen", "benefit": "Nachbestellen per Fingertipp bringt Kunden schneller zurück" }, "payments": { "label": "In-App-Zahlungen", "benefit": "Karten, Wallets und Bargeld sicher unterstützt" }, "scheduled": { "label": "Geplante Lieferung", "benefit": "Lassen Sie Kunden ihre ideale Lieferzeit wählen" }, "menuFilters": { "label": "Smarte Menüfilter", "benefit": "Gerichte nach Ernährung, Allergenen oder Preis finden" }, "ratings": { "label": "Bewertungen & Rezensionen", "benefit": "Vertrauen durch ehrliches Kundenfeedback aufbauen" }, "promos": { "label": "Promo-Codes & Treue", "benefit": "Stammkunden belohnen und Wiederbestellungen steigern" }, "multiLanguage": { "label": "Mehrsprachiger Support", "benefit": "Erreichen Sie jeden Kunden in seiner Sprache" }, "supportChat": { "label": "In-App-Support-Chat", "benefit": "Bestellprobleme lösen, ohne die App zu verlassen" } } },
-    "fintech": { "label": "Banking & Fintech", "tagline": "Ein sicheres, verlässliches Banking-Erlebnis, dem Ihre Kunden ihr Geld anvertrauen.", "features": { "biometricLogin": { "label": "Biometrische Anmeldung", "benefit": "Geschützter Zugang per biometrischer Authentifizierung" }, "instantTransfers": { "label": "Sofortüberweisungen", "benefit": "Sichere Überweisungen in Echtzeit" }, "cardControls": { "label": "Kartensperre & -steuerung", "benefit": "Karten jederzeit sperren und Limits festlegen" }, "spendingInsights": { "label": "Ausgabenübersicht", "benefit": "Ein klarer, präziser Überblick über jede Transaktion" }, "multiCurrency": { "label": "Multi-Währungskonten", "benefit": "Führung und Abrechnung in mehreren Währungen" }, "savingsGoals": { "label": "Sparziele", "benefit": "Strukturiertes Sparen auf definierte Ziele" }, "realtimeAlerts": { "label": "Echtzeit-Benachrichtigungen", "benefit": "Echtzeit-Benachrichtigungen zu jeder Kontobewegung" }, "fastOnboarding": { "label": "Schnelles Onboarding", "benefit": "Identitätsprüfung (KYC) und Kontoeröffnung in Minuten" }, "billSplitting": { "label": "Rechnungen teilen", "benefit": "Aufteilung gemeinsamer Kosten mit transparenter Abrechnung" } } },
-    "ecommerce": { "label": "E-Commerce", "tagline": "Eine Shopping-App, die Besucher zu treuen Käufern macht.", "features": { "search": { "label": "Smarte Suche & Filter", "benefit": "Käufer finden das richtige Produkt schnell" }, "recommendations": { "label": "Personalisierte Empfehlungen", "benefit": "Passgenaue Vorschläge steigern jede Bestellung" }, "wishlist": { "label": "Wunschliste & Lager-Alerts", "benefit": "Gespeicherte Artikel bringen Käufer zurück" }, "guestCheckout": { "label": "Schneller Gast-Checkout", "benefit": "Weniger Kaufabbrüche, mehr Verkäufe" }, "payments": { "label": "Mehrere Zahlungsmethoden", "benefit": "Zahlung per Karte, Wallet oder Raten" }, "orderTracking": { "label": "Bestellverfolgung", "benefit": "Kunden verfolgen Lieferungen mit Vertrauen" }, "reviews": { "label": "Rezensionen & Bewertungen", "benefit": "Echtes Feedback schafft Käufervertrauen" }, "cartReminders": { "label": "Warenkorb-Erinnerungen", "benefit": "Fast abgeschlossene Käufe zurückgewinnen" }, "loyalty": { "label": "Treue & Prämien", "benefit": "Stammkunden geben mit der Zeit mehr aus" } } },
-    "booking": { "label": "Buchung & Reisen", "tagline": "Verwandeln Sie jede Suche in eine sichere, abgeschlossene Buchung.", "features": { "search": { "label": "Smarte Suche & Filter", "benefit": "Kunden finden die richtige Option in Sekunden" }, "availability": { "label": "Verfügbarkeitskalender", "benefit": "Live-Termine und -Preise, nie doppelt gebucht" }, "instantBooking": { "label": "Sofortbuchung", "benefit": "Mit wenigen Tipps reservieren" }, "mapView": { "label": "Kartenansicht", "benefit": "Sehen Sie genau, wo sich alles befindet" }, "payments": { "label": "Sichere Zahlungen", "benefit": "Vertrauenswürdiger Checkout schützt jede Transaktion" }, "manage": { "label": "Buchungsverwaltung", "benefit": "Reisen einfach ansehen, ändern oder stornieren" }, "reviews": { "label": "Bewertungen & Rezensionen", "benefit": "Echtes Feedback schafft Käufervertrauen" }, "multiLangCurrency": { "label": "Mehrsprachig & Mehrwährung", "benefit": "Begrüßen Sie Reisende aus aller Welt" }, "reminders": { "label": "Reise-Erinnerungen", "benefit": "Rechtzeitige Hinweise halten Kunden im Zeitplan" } } },
-    "marketplace": { "label": "Marktplatz", "tagline": "Alles, was Käufer und Verkäufer brauchen, um mit Vertrauen zu handeln.", "features": { "sellerListings": { "label": "Einfache Verkäufer-Inserate", "benefit": "Verkäufer inserieren Artikel in Sekunden mit Fotos" }, "search": { "label": "Smarte Suche & Filter", "benefit": "Käufer finden den richtigen Artikel schnell" }, "chat": { "label": "In-App-Chat", "benefit": "Käufer und Verkäufer sprechen vor dem Kauf" }, "escrow": { "label": "Sichere Treuhand-Zahlungen", "benefit": "Geld erst freigegeben, wenn Käufer zufrieden sind" }, "buyerProtection": { "label": "Käuferschutz", "benefit": "Rückerstattungen und Streitschlichtung schaffen Vertrauen" }, "reviews": { "label": "Bewertungen & Rezensionen", "benefit": "Ehrliches Feedback belohnt vertrauenswürdige Nutzer" }, "verification": { "label": "Identitätsprüfung", "benefit": "Verifizierte Konten halten Betrug fern" }, "shipping": { "label": "Versand-Integration", "benefit": "Etiketten und Tracking direkt in der App" }, "pushOffers": { "label": "Push-Angebote & Alerts", "benefit": "Käufer mit zeitnahen Deals zurückholen" } } },
-    "health": { "label": "Gesundheit & Fitness", "tagline": "Helfen Sie Ihren Nutzern, sich mehr zu bewegen, besser zu essen und motiviert zu bleiben.", "features": { "activityTracking": { "label": "Aktivitätsverfolgung", "benefit": "Erfasst Schritte, Läufe und Workouts automatisch" }, "wearableSync": { "label": "Wearable-Sync", "benefit": "Verbindet Apple Watch, Fitbit und Garmin" }, "workoutPlans": { "label": "Personalisierte Trainingspläne", "benefit": "Routinen, abgestimmt auf die Ziele jedes Nutzers" }, "nutrition": { "label": "Ernährungsprotokoll", "benefit": "Einfaches Verfolgen von Mahlzeiten und Kalorien" }, "progressCharts": { "label": "Fortschrittsdiagramme", "benefit": "Verbesserungen auf einen Blick sehen" }, "goalReminders": { "label": "Ziel-Erinnerungen", "benefit": "Sanfte Anstöße halten Nutzer auf Kurs" }, "challenges": { "label": "Soziale Challenges", "benefit": "Freundlicher Wettbewerb fördert tägliches Engagement" }, "sleep": { "label": "Schlaf & Erholung", "benefit": "Ruhe verfolgen für gesündere Ergebnisse" }, "privacy": { "label": "Private Gesundheitsdaten", "benefit": "Persönliche Daten bleiben sicher und geschützt" } } }
+    "custom": {
+      "label": "Ihre Idee",
+      "tagline": "Keine der Apps oben? Sagen Sie uns, was Sie vorhaben — wählen Sie gängige Funktionen oder beschreiben Sie es einfach.",
+      "features": {
+        "accounts": {
+          "label": "Benutzerkonten & Login",
+          "benefit": "Sichere Registrierung, Login und Profile"
+        },
+        "payments": {
+          "label": "In-App-Zahlungen",
+          "benefit": "Karten- und Wallet-Zahlungen sicher annehmen"
+        },
+        "notifications": {
+          "label": "Push-Benachrichtigungen",
+          "benefit": "Nutzer mit zeitnahen Hinweisen zurückholen"
+        },
+        "chat": {
+          "label": "In-App-Chat & Support",
+          "benefit": "Nutzer erreichen Sie, ohne die App zu verlassen"
+        },
+        "search": {
+          "label": "Suche & Filter",
+          "benefit": "Nutzer finden schnell, was sie brauchen"
+        },
+        "adminDashboard": {
+          "label": "Admin-Dashboard",
+          "benefit": "Inhalte, Nutzer und Bestellungen an einem Ort verwalten"
+        },
+        "analytics": {
+          "label": "Analytik & Einblicke",
+          "benefit": "Sehen Sie, wie Menschen Ihr Produkt nutzen"
+        },
+        "multiLanguage": {
+          "label": "Mehrsprachiger Support",
+          "benefit": "Erreichen Sie Kunden in ihrer Sprache"
+        },
+        "offline": {
+          "label": "Offline-Modus",
+          "benefit": "Funktioniert auch ohne Verbindung"
+        }
+      }
+    },
+    "food": {
+      "label": "Lieferdienst",
+      "tagline": "Alles, was Ihre Kunden brauchen, um mühelos zu bestellen, zu verfolgen und nachzubestellen.",
+      "features": {
+        "liveTracking": {
+          "label": "Live-Bestellverfolgung",
+          "benefit": "Kunden sehen ihren Fahrer in Echtzeit ankommen"
+        },
+        "favourites": {
+          "label": "Favoriten & Nachbestellen",
+          "benefit": "Nachbestellen per Fingertipp bringt Kunden schneller zurück"
+        },
+        "payments": {
+          "label": "In-App-Zahlungen",
+          "benefit": "Karten, Wallets und Bargeld sicher unterstützt"
+        },
+        "scheduled": {
+          "label": "Geplante Lieferung",
+          "benefit": "Lassen Sie Kunden ihre ideale Lieferzeit wählen"
+        },
+        "menuFilters": {
+          "label": "Smarte Menüfilter",
+          "benefit": "Gerichte nach Ernährung, Allergenen oder Preis finden"
+        },
+        "ratings": {
+          "label": "Bewertungen & Rezensionen",
+          "benefit": "Vertrauen durch ehrliches Kundenfeedback aufbauen"
+        },
+        "promos": {
+          "label": "Promo-Codes & Treue",
+          "benefit": "Stammkunden belohnen und Wiederbestellungen steigern"
+        },
+        "multiLanguage": {
+          "label": "Mehrsprachiger Support",
+          "benefit": "Erreichen Sie jeden Kunden in seiner Sprache"
+        },
+        "supportChat": {
+          "label": "In-App-Support-Chat",
+          "benefit": "Bestellprobleme lösen, ohne die App zu verlassen"
+        }
+      }
+    },
+    "fintech": {
+      "label": "Banking & Fintech",
+      "tagline": "Ein sicheres, verlässliches Banking-Erlebnis, dem Ihre Kunden ihr Geld anvertrauen.",
+      "features": {
+        "biometricLogin": {
+          "label": "Biometrische Anmeldung",
+          "benefit": "Geschützter Zugang per biometrischer Authentifizierung"
+        },
+        "instantTransfers": {
+          "label": "Sofortüberweisungen",
+          "benefit": "Sichere Überweisungen in Echtzeit"
+        },
+        "cardControls": {
+          "label": "Kartensperre & -steuerung",
+          "benefit": "Karten jederzeit sperren und Limits festlegen"
+        },
+        "spendingInsights": {
+          "label": "Ausgabenübersicht",
+          "benefit": "Ein klarer, präziser Überblick über jede Transaktion"
+        },
+        "multiCurrency": {
+          "label": "Multi-Währungskonten",
+          "benefit": "Führung und Abrechnung in mehreren Währungen"
+        },
+        "savingsGoals": {
+          "label": "Sparziele",
+          "benefit": "Strukturiertes Sparen auf definierte Ziele"
+        },
+        "realtimeAlerts": {
+          "label": "Echtzeit-Benachrichtigungen",
+          "benefit": "Echtzeit-Benachrichtigungen zu jeder Kontobewegung"
+        },
+        "fastOnboarding": {
+          "label": "Schnelles Onboarding",
+          "benefit": "Identitätsprüfung (KYC) und Kontoeröffnung in Minuten"
+        },
+        "billSplitting": {
+          "label": "Rechnungen teilen",
+          "benefit": "Aufteilung gemeinsamer Kosten mit transparenter Abrechnung"
+        }
+      }
+    },
+    "ecommerce": {
+      "label": "E-Commerce",
+      "tagline": "Eine Shopping-App, die Besucher zu treuen Käufern macht.",
+      "features": {
+        "search": {
+          "label": "Smarte Suche & Filter",
+          "benefit": "Käufer finden das richtige Produkt schnell"
+        },
+        "recommendations": {
+          "label": "Personalisierte Empfehlungen",
+          "benefit": "Passgenaue Vorschläge steigern jede Bestellung"
+        },
+        "wishlist": {
+          "label": "Wunschliste & Lager-Alerts",
+          "benefit": "Gespeicherte Artikel bringen Käufer zurück"
+        },
+        "guestCheckout": {
+          "label": "Schneller Gast-Checkout",
+          "benefit": "Weniger Kaufabbrüche, mehr Verkäufe"
+        },
+        "payments": {
+          "label": "Mehrere Zahlungsmethoden",
+          "benefit": "Zahlung per Karte, Wallet oder Raten"
+        },
+        "orderTracking": {
+          "label": "Bestellverfolgung",
+          "benefit": "Kunden verfolgen Lieferungen mit Vertrauen"
+        },
+        "reviews": {
+          "label": "Rezensionen & Bewertungen",
+          "benefit": "Echtes Feedback schafft Käufervertrauen"
+        },
+        "cartReminders": {
+          "label": "Warenkorb-Erinnerungen",
+          "benefit": "Fast abgeschlossene Käufe zurückgewinnen"
+        },
+        "loyalty": {
+          "label": "Treue & Prämien",
+          "benefit": "Stammkunden geben mit der Zeit mehr aus"
+        }
+      }
+    },
+    "booking": {
+      "label": "Buchung & Reisen",
+      "tagline": "Verwandeln Sie jede Suche in eine sichere, abgeschlossene Buchung.",
+      "features": {
+        "search": {
+          "label": "Smarte Suche & Filter",
+          "benefit": "Kunden finden die richtige Option in Sekunden"
+        },
+        "availability": {
+          "label": "Verfügbarkeitskalender",
+          "benefit": "Live-Termine und -Preise, nie doppelt gebucht"
+        },
+        "instantBooking": {
+          "label": "Sofortbuchung",
+          "benefit": "Mit wenigen Tipps reservieren"
+        },
+        "mapView": {
+          "label": "Kartenansicht",
+          "benefit": "Sehen Sie genau, wo sich alles befindet"
+        },
+        "payments": {
+          "label": "Sichere Zahlungen",
+          "benefit": "Vertrauenswürdiger Checkout schützt jede Transaktion"
+        },
+        "manage": {
+          "label": "Buchungsverwaltung",
+          "benefit": "Reisen einfach ansehen, ändern oder stornieren"
+        },
+        "reviews": {
+          "label": "Bewertungen & Rezensionen",
+          "benefit": "Echtes Feedback schafft Käufervertrauen"
+        },
+        "multiLangCurrency": {
+          "label": "Mehrsprachig & Mehrwährung",
+          "benefit": "Begrüßen Sie Reisende aus aller Welt"
+        },
+        "reminders": {
+          "label": "Reise-Erinnerungen",
+          "benefit": "Rechtzeitige Hinweise halten Kunden im Zeitplan"
+        }
+      }
+    },
+    "marketplace": {
+      "label": "Marktplatz",
+      "tagline": "Alles, was Käufer und Verkäufer brauchen, um mit Vertrauen zu handeln.",
+      "features": {
+        "sellerListings": {
+          "label": "Einfache Verkäufer-Inserate",
+          "benefit": "Verkäufer inserieren Artikel in Sekunden mit Fotos"
+        },
+        "search": {
+          "label": "Smarte Suche & Filter",
+          "benefit": "Käufer finden den richtigen Artikel schnell"
+        },
+        "chat": {
+          "label": "In-App-Chat",
+          "benefit": "Käufer und Verkäufer sprechen vor dem Kauf"
+        },
+        "escrow": {
+          "label": "Sichere Treuhand-Zahlungen",
+          "benefit": "Geld erst freigegeben, wenn Käufer zufrieden sind"
+        },
+        "buyerProtection": {
+          "label": "Käuferschutz",
+          "benefit": "Rückerstattungen und Streitschlichtung schaffen Vertrauen"
+        },
+        "reviews": {
+          "label": "Bewertungen & Rezensionen",
+          "benefit": "Ehrliches Feedback belohnt vertrauenswürdige Nutzer"
+        },
+        "verification": {
+          "label": "Identitätsprüfung",
+          "benefit": "Verifizierte Konten halten Betrug fern"
+        },
+        "shipping": {
+          "label": "Versand-Integration",
+          "benefit": "Etiketten und Tracking direkt in der App"
+        },
+        "pushOffers": {
+          "label": "Push-Angebote & Alerts",
+          "benefit": "Käufer mit zeitnahen Deals zurückholen"
+        }
+      }
+    },
+    "health": {
+      "label": "Gesundheit & Fitness",
+      "tagline": "Helfen Sie Ihren Nutzern, sich mehr zu bewegen, besser zu essen und motiviert zu bleiben.",
+      "features": {
+        "activityTracking": {
+          "label": "Aktivitätsverfolgung",
+          "benefit": "Erfasst Schritte, Läufe und Workouts automatisch"
+        },
+        "wearableSync": {
+          "label": "Wearable-Sync",
+          "benefit": "Verbindet Apple Watch, Fitbit und Garmin"
+        },
+        "workoutPlans": {
+          "label": "Personalisierte Trainingspläne",
+          "benefit": "Routinen, abgestimmt auf die Ziele jedes Nutzers"
+        },
+        "nutrition": {
+          "label": "Ernährungsprotokoll",
+          "benefit": "Einfaches Verfolgen von Mahlzeiten und Kalorien"
+        },
+        "progressCharts": {
+          "label": "Fortschrittsdiagramme",
+          "benefit": "Verbesserungen auf einen Blick sehen"
+        },
+        "goalReminders": {
+          "label": "Ziel-Erinnerungen",
+          "benefit": "Sanfte Anstöße halten Nutzer auf Kurs"
+        },
+        "challenges": {
+          "label": "Soziale Challenges",
+          "benefit": "Freundlicher Wettbewerb fördert tägliches Engagement"
+        },
+        "sleep": {
+          "label": "Schlaf & Erholung",
+          "benefit": "Ruhe verfolgen für gesündere Ergebnisse"
+        },
+        "privacy": {
+          "label": "Private Gesundheitsdaten",
+          "benefit": "Persönliche Daten bleiben sicher und geschützt"
+        }
+      }
+    }
   },
   "previews": {
     "fintech": {
