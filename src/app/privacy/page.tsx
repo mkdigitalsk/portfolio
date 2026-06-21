@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Ako MK Digital s.r.o. spracúva osobné údaje z kontaktného formulára (GDPR, zákon č. 18/2018 Z. z.).',
 }
 
-const CONTACT_EMAIL = 'mk.digital.sro@gmail.com'
+const CONTACT_EMAIL = 'admin@mkdigital.sk'
 
 interface Policy {
   title: string

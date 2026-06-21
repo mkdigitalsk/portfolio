@@ -4,6 +4,8 @@ import { getTranslations } from 'next-intl/server'
 import { Button, Reveal, TextBody1Neutral60, TextH1Bold, TextH4Bold } from '@/shared/components'
 import { ShowcaseList, type Showcase } from '@/features/home/ShowcaseList'
 import { TechStack, type TechGroup } from '@/features/home/TechStack'
+import { TEXT_MAX } from '@/features/home/layout'
+import { CONTENT_MAX } from '@/shared/layout'
 
 const GITHUB = 'https://github.com/mkdigitalsk'
 
@@ -53,35 +55,39 @@ export default async function AboutPage() {
 
   return (
     <Box component="main">
-      <Box sx={{ maxWidth: 880, mx: 'auto', px: 3, pt: { xs: 6, md: 12 }, pb: { xs: 6, md: 10 } }}>
+      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, pt: { xs: 6, md: 12 }, pb: { xs: 6, md: 10 } }}>
         <Reveal>
           <TextH1Bold sx={{ mb: 3 }}>{t('hero.headline')}</TextH1Bold>
         </Reveal>
         <Reveal delay={0.08}>
-          <TextBody1Neutral60 sx={{ mb: 4 }}>{t('hero.subline')}</TextBody1Neutral60>
+          <Box sx={{ maxWidth: TEXT_MAX, mb: 4 }}>
+            <TextBody1Neutral60>{t('hero.subline')}</TextBody1Neutral60>
+          </Box>
         </Reveal>
         <Reveal delay={0.16}>
           <Stack direction="row" useFlexGap spacing={1.5} sx={{ flexWrap: 'wrap' }}>
-            <Button variant="primary" startIcon={<Mail />} href="mailto:mk.digital.sro@gmail.com">
+            <Button variant="primary" startIcon={<Mail />} href="mailto:admin@mkdigital.sk">
               {t('hero.cta')}
             </Button>
           </Stack>
         </Reveal>
       </Box>
 
-      <Box sx={{ maxWidth: 880, mx: 'auto', px: 3, pb: { xs: 6, md: 8 } }}>
+      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, pb: { xs: 6, md: 8 } }}>
         <Reveal>
           <TextH4Bold sx={{ mb: 1 }}>{t('showcases.title')}</TextH4Bold>
         </Reveal>
         <Reveal delay={0.06}>
-          <TextBody1Neutral60 sx={{ mb: 2 }}>{t('showcases.subtitle')}</TextBody1Neutral60>
+          <Box sx={{ maxWidth: TEXT_MAX, mb: 2 }}>
+            <TextBody1Neutral60>{t('showcases.subtitle')}</TextBody1Neutral60>
+          </Box>
         </Reveal>
         <Reveal delay={0.12}>
           <ShowcaseList items={showcases} />
         </Reveal>
       </Box>
 
-      <Box sx={{ maxWidth: 880, mx: 'auto', px: 3, pb: { xs: 8, md: 12 } }}>
+      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, pb: { xs: 8, md: 12 } }}>
         <TechStack groups={techGroups} />
       </Box>
     </Box>
