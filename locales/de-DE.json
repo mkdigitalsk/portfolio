@@ -35,8 +35,8 @@
     "backToApps": "Alle Apps",
     "detailCta": "Ihre App bauen",
     "close": "Schließen",
-    "moreText": "Ihre Idee ist entweder oben dabei oder etwas Einzigartiges — schreiben Sie uns und wir helfen, sie umzusetzen.",
-    "moreCta": "Kontakt aufnehmen",
+    "moreText": "Ihre Idee ist entweder oben dabei oder etwas Einzigartiges — wir zeigen Ihnen, wie sie aussehen könnte.",
+    "moreCta": "Eigenes entwerfen",
     "moreExisting": "Schon ein Produkt? Rebrand, neue Features und neues Leben — machen wir auch.",
     "customIntro": "Hallo, ich möchte eine individuelle App entwickeln lassen.",
     "platformsLabel": "Was brauchen Sie?",
@@ -157,7 +157,8 @@
   "common": {
     "language": "Sprache",
     "animations": "Animationen",
-    "privacy": "Datenschutz"
+    "privacy": "Datenschutz",
+    "about": "Über uns"
   },
   "apps": {
     "custom": {

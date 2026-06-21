@@ -35,8 +35,8 @@
     "backToApps": "Všechny aplikace",
     "detailCta": "Pojďme postavit tu vaši",
     "close": "Zavřít",
-    "moreText": "Váš nápad je buď mezi těmi výše, nebo je jedinečný — napište nám a pomůžeme ho přivést k životu.",
-    "moreCta": "Ozvěte se nám",
+    "moreText": "Váš nápad je buď mezi těmi výše, nebo je jedinečný — ukážeme vám, jak by mohl vypadat.",
+    "moreCta": "Navrhněte si vlastní",
     "moreExisting": "Už máte produkt? Uděláme rebrand, přidáme funkce a vdechneme mu nový život.",
     "customIntro": "Dobrý den, rád bych postavil aplikaci na míru.",
     "platformsLabel": "Co potřebujete?",
@@ -157,7 +157,8 @@
   "common": {
     "language": "Jazyk",
     "animations": "Animace",
-    "privacy": "Ochrana osobních údajů"
+    "privacy": "Ochrana osobních údajů",
+    "about": "O nás"
   },
   "apps": {
     "custom": {

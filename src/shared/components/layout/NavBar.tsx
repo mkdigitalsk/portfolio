@@ -2,6 +2,7 @@
 
 import { Home } from '@mui/icons-material'
 import Box from '@mui/material/Box'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { ReactNode } from 'react'
@@ -9,7 +10,6 @@ import { CONTENT_MAX } from '@/shared/layout'
 import { TextH6Bold } from '../text'
 import { ThemeModeToggle } from '../ThemeModeToggle'
 import { LocaleSwitcher } from '../LocaleSwitcher'
-import { MotionToggle } from '../MotionToggle'
 
 interface NavItemProps {
   href: string
@@ -43,6 +43,7 @@ function NavItem({ href, active, ariaLabel, children }: NavItemProps) {
 
 export function NavBar() {
   const pathname = usePathname()
+  const t = useTranslations()
 
   return (
     <Box
@@ -72,10 +73,9 @@ export function NavBar() {
         </NavItem>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
           <NavItem href="/about" active={pathname === '/about'}>
-            <TextH6Bold>About</TextH6Bold>
+            <TextH6Bold>{t('common.about')}</TextH6Bold>
           </NavItem>
           <LocaleSwitcher />
-          <MotionToggle />
           <ThemeModeToggle />
         </Box>
       </Box>

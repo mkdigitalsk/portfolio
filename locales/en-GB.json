@@ -35,8 +35,8 @@
     "backToApps": "All apps",
     "detailCta": "Let's build yours",
     "close": "Close",
-    "moreText": "Either your idea is covered above, or it's something unique — share it and we'll help bring it to life.",
-    "moreCta": "Get in touch",
+    "moreText": "Either your idea is covered above, or it's something unique — we'll show you what it could look like.",
+    "moreCta": "Design your own",
     "moreExisting": "Already have a product? We rebrand, add features, and breathe new life into it.",
     "customIntro": "Hi, I'd like to build a custom app.",
     "platformsLabel": "What do you need?",
@@ -157,7 +157,8 @@
   "common": {
     "language": "Language",
     "animations": "Animations",
-    "privacy": "Privacy Policy"
+    "privacy": "Privacy Policy",
+    "about": "About"
   },
   "apps": {
     "custom": {
