@@ -2,6 +2,7 @@ import { AutoAwesome, RocketLaunch, Insights } from '@mui/icons-material'
 import { Box } from '@mui/material'
 import { getTranslations } from 'next-intl/server'
 import { Reveal, TextBody1Neutral60, TextBody1Primary, TextH4Bold, TextH6Bold } from '@/shared/components'
+import { SECTION_MAX, SECTION_MAX_WIDE, TEXT_MAX } from '../layout'
 
 // Services as 3-4 named lifecycle pillars + engagement model. Replaces the implicit
 // "we do everything" read with an intentional, scannable taxonomy that signals focus and
@@ -16,12 +17,12 @@ export async function ServicesSection() {
   const t = await getTranslations('home.services')
 
   return (
-    <Box component="section" sx={{ maxWidth: 1180, mx: 'auto', px: 3, py: { xs: 6, md: 8 } }}>
+    <Box component="section" sx={{ maxWidth: SECTION_MAX_WIDE, mx: 'auto', px: 3, py: { xs: 6, md: 8 } }}>
       <Reveal>
         <TextH4Bold sx={{ mb: 2 }}>{t('title')}</TextH4Bold>
       </Reveal>
       <Reveal delay={0.06}>
-        <Box sx={{ mb: 5, maxWidth: 680 }}>
+        <Box sx={{ mb: 5, maxWidth: TEXT_MAX }}>
           <TextBody1Neutral60>{t('subtitle')}</TextBody1Neutral60>
         </Box>
       </Reveal>

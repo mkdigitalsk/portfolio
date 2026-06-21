@@ -44,10 +44,10 @@
     "platformMobile": "Mobilná aplikácia",
     "trust": {
       "fact1": "iOS · Android · Web · Backend",
-      "fact2": "Jeden senior partner, plný fokus",
-      "fact3": "Odpoveď do 24 hodín",
-      "fact4": "Open-source kód na nahliadnutie",
-      "fact5": "Čistá architektúra, produkčné vzory",
+      "fact2": "Čistá architektúra · produkčné vzory",
+      "fact3": "Od prvého nápadu po spustenie",
+      "fact4": "Udržiavané aj po spustení — nie opustené",
+      "fact5": "AI-assisted, postavené seniorom",
       "fact6": "V súlade s GDPR · SK s.r.o."
     },
     "services": {

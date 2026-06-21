@@ -2,6 +2,7 @@ import { Mail, Shield } from '@mui/icons-material'
 import { Box } from '@mui/material'
 import { getTranslations } from 'next-intl/server'
 import { Button, Reveal, TextBody1Neutral60, TextBody1Neutral80, TextCaptionNeutral60, TextH4Bold, TextH6Bold } from '@/shared/components'
+import { SECTION_MAX, SECTION_MAX_WIDE, TEXT_MAX } from '../layout'
 
 // How we work — opinionated process + productized first step. The research is explicit: for a
 // boutique/solo brand, process transparency and a low-risk productized discovery substitute for
@@ -14,12 +15,12 @@ export async function ProcessSection() {
 
   return (
     <Box component="section" sx={{ bgcolor: 'action.hover' }}>
-      <Box sx={{ maxWidth: 1180, mx: 'auto', px: 3, py: { xs: 6, md: 8 } }}>
+      <Box sx={{ maxWidth: SECTION_MAX_WIDE, mx: 'auto', px: 3, py: { xs: 6, md: 8 } }}>
         <Reveal>
           <TextH4Bold sx={{ mb: 2 }}>{t('title')}</TextH4Bold>
         </Reveal>
         <Reveal delay={0.06}>
-          <Box sx={{ mb: 5, maxWidth: 680 }}>
+          <Box sx={{ mb: 5, maxWidth: TEXT_MAX }}>
             <TextBody1Neutral60>{t('subtitle')}</TextBody1Neutral60>
           </Box>
         </Reveal>

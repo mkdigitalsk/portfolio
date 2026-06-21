@@ -2,6 +2,7 @@ import { CheckCircle, Mail } from '@mui/icons-material'
 import { Box } from '@mui/material'
 import { getTranslations } from 'next-intl/server'
 import { Button, Reveal, TextBody1Neutral60, TextH1Bold } from '@/shared/components'
+import { SECTION_MAX, TEXT_MAX } from '../layout'
 
 // Homepage hero — the research blueprint's #1 lever: an outcome-led claim with hard proof
 // in the first viewport (see portfolio-research.md). With no client logos (NDA), the proof
@@ -11,12 +12,12 @@ export async function HeroSection() {
   const proofs = [t('proof1'), t('proof2'), t('proof3')]
 
   return (
-    <Box component="section" sx={{ maxWidth: 960, mx: 'auto', px: 3, pt: { xs: 5, md: 7 }, pb: { xs: 5, md: 7 } }}>
+    <Box component="section" sx={{ maxWidth: SECTION_MAX, mx: 'auto', px: 3, pt: { xs: 5, md: 7 }, pb: { xs: 5, md: 7 } }}>
       <Reveal>
         <TextH1Bold sx={{ mb: 3 }}>{t('headline')}</TextH1Bold>
       </Reveal>
       <Reveal delay={0.08}>
-        <Box sx={{ mb: 4, maxWidth: 660 }}>
+        <Box sx={{ mb: 4, maxWidth: TEXT_MAX }}>
           <TextBody1Neutral60>{t('subline')}</TextBody1Neutral60>
         </Box>
       </Reveal>

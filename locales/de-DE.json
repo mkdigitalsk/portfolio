@@ -44,10 +44,10 @@
     "platformMobile": "Mobile App",
     "trust": {
       "fact1": "iOS · Android · Web · Backend",
-      "fact2": "Ein Senior-Partner, volle Fokussierung",
-      "fact3": "Antwort innerhalb von 24 Stunden",
-      "fact4": "Open-Source-Code zur Einsicht",
-      "fact5": "Saubere Architektur, Produktionsmuster",
+      "fact2": "Saubere Architektur · Produktionsmuster",
+      "fact3": "Von der ersten Idee bis zum Launch",
+      "fact4": "Auch nach dem Launch gepflegt — nicht verlassen",
+      "fact5": "KI-gestützt, von Senior gebaut",
       "fact6": "DSGVO-konform · SK s.r.o."
     },
     "services": {

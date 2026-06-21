@@ -1,6 +1,7 @@
 import { Box } from '@mui/material'
 import { getTranslations } from 'next-intl/server'
 import { Reveal, TextBody1Neutral80 } from '@/shared/components'
+import { SECTION_MAX, SECTION_MAX_WIDE } from '../layout'
 
 // Trust / metrics band — a fast-scan reassurance strip directly under the hero. The research
 // blueprint shows a metrics band high on the page correlates with top trust scores and reframes
@@ -11,7 +12,7 @@ export async function TrustBandSection() {
 
   return (
     <Box component="section" sx={{ borderTop: '1px solid', borderBottom: '1px solid', borderColor: 'divider' }}>
-      <Box sx={{ maxWidth: 1180, mx: 'auto', px: 3, py: { xs: 3, md: 4 } }}>
+      <Box sx={{ maxWidth: SECTION_MAX_WIDE, mx: 'auto', px: 3, py: { xs: 3, md: 4 } }}>
         <Reveal>
           <Box
             sx={{
