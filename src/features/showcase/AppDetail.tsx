@@ -231,8 +231,9 @@ export function AppDetail({ appId }: AppDetailProps) {
           </Box>
         </Box>
 
-        {/* Right column — the configurator + lead form. */}
-        <Box sx={{ maxWidth: 720 }}>
+        {/* Right column — fills to the shared CONTENT_MAX right edge (no hardcoded width),
+            so the hero + content line up with the home sections, nav and footer. */}
+        <Box sx={{ minWidth: 0 }}>
           <Box
             sx={{
               height: { xs: 150, md: 190 },
