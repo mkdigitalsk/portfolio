@@ -21,5 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 export default async function AppPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   if (!detailApps.some((app) => app.id === id)) notFound()
-  return <AppDetail appId={id} />
+  // key={id} remounts the configurator when the app type changes (via the rail), so each app's
+  // selection/platforms/form start fresh and independent — no state bleeding from the previous app.
+  return <AppDetail key={id} appId={id} />
 }
