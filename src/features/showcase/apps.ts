@@ -147,3 +147,15 @@ export const customApp: ShowcaseApp = {
 }
 
 export const detailApps: ShowcaseApp[] = [...showcaseApps, customApp]
+
+// Default-checked "core" features per type — the configurator starts at a mid scope (meter reads
+// ~Standard), then climbs as the client adds premium features or the second platform, instead of
+// being pinned at max. The rest stay available, just unchecked. Tune freely.
+export const CORE_FEATURES: Record<string, string[]> = {
+  food: ['liveTracking', 'payments', 'menuFilters'],
+  fintech: ['instantTransfers', 'cardControls', 'biometricLogin'],
+  ecommerce: ['search', 'payments', 'orderTracking'],
+  booking: ['search', 'availability', 'payments'],
+  marketplace: ['sellerListings', 'search', 'escrow'],
+  health: ['activityTracking', 'workoutPlans', 'progressCharts'],
+}
