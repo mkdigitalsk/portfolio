@@ -102,7 +102,7 @@
         "title": "On time, on budget — agreed up front",
         "body": "We fix scope, price, and delivery date before any code is written — and the public repo means you can verify progress yourself, any day."
       },
-      "cta": "Get a free estimate"
+      "cta": "Book a discovery call"
     },
     "proof": {
       "title": "Read the code before you hire us",
@@ -132,7 +132,14 @@
       "company": "MK Digital s.r.o. · Banská Bystrica, Slovakia",
       "cta": "Let's talk"
     },
-    "appTypes": "App types"
+    "appTypes": "App types",
+    "scope": {
+      "label": "Estimated scope",
+      "compact": "Compact",
+      "standard": "Standard",
+      "comprehensive": "Comprehensive",
+      "hint": "A rough scope from your selection — the exact scope and a fixed price come from a short discovery call and a written spec, never an instant number."
+    }
   },
   "hero": {
     "headline": "Senior-led, fintech-grade, fully accountable.",

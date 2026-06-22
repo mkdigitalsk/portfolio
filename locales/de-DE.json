@@ -102,7 +102,7 @@
         "title": "Pünktlich und im Budget — vorab vereinbart",
         "body": "Wir legen Umfang, Preis und Liefertermin vor jeder Zeile Code fest — und dank des öffentlichen Repos überprüfen Sie den Fortschritt jederzeit selbst."
       },
-      "cta": "Kostenlose Einschätzung"
+      "cta": "Erstgespräch buchen"
     },
     "proof": {
       "title": "Lesen Sie den Code, bevor Sie uns beauftragen",
@@ -132,7 +132,14 @@
       "company": "MK Digital s.r.o. · Banská Bystrica, Slowakei",
       "cta": "Sprechen wir"
     },
-    "appTypes": "App-Typen"
+    "appTypes": "App-Typen",
+    "scope": {
+      "label": "Geschätzter Umfang",
+      "compact": "Kompakt",
+      "standard": "Standard",
+      "comprehensive": "Umfassend",
+      "hint": "Ein grober Umfang aus Ihrer Auswahl — den genauen Umfang und einen Festpreis ermitteln wir aus einem kurzen Erstgespräch und einer schriftlichen Spezifikation, nie aus einer Sofortzahl."
+    }
   },
   "hero": {
     "headline": "Senior-geführt. Fintech-Qualität. Voll verantwortlich.",

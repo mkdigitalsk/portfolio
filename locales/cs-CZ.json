@@ -102,7 +102,7 @@
         "title": "Včas a v rozpočtu — dohodnuto předem",
         "body": "Rozsah, cenu i termín dohodneme před prvním řádkem kódu — a díky veřejnému repu si pokrok ověříte sami, kdykoli."
       },
-      "cta": "Získat bezplatný odhad"
+      "cta": "Rezervovat úvodní hovor"
     },
     "proof": {
       "title": "Přečtěte si kód dřív, než nás najmete",
@@ -132,7 +132,14 @@
       "company": "MK Digital s.r.o. · Banská Bystrica, Slovensko",
       "cta": "Pojďme si promluvit"
     },
-    "appTypes": "Typy aplikací"
+    "appTypes": "Typy aplikací",
+    "scope": {
+      "label": "Odhadovaný rozsah",
+      "compact": "Kompaktní",
+      "standard": "Standardní",
+      "comprehensive": "Komplexní",
+      "hint": "Hrubý rozsah z tvého výběru — přesný rozsah a fixní cenu určíme z krátkého úvodního hovoru a písemného spec-u, ne z okamžitého čísla."
+    }
   },
   "hero": {
     "headline": "Vedené seniorem. Fintech kvalita. Plná odpovědnost.",

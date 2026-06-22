@@ -19,6 +19,7 @@ import {
 } from '@/shared/components'
 import { CONTENT_MAX, PAGE_PT } from '@/shared/layout'
 import { detailApps } from './apps'
+import { scopeFill, scopeScore, scopeTier } from './complexity'
 
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
 const EMAIL_ERROR_DELAY_MS = 800
@@ -87,6 +88,11 @@ export function AppDetail({ appId }: AppDetailProps) {
   const canSubmit = isCustom
     ? selectedFeatures.length > 0 || note.trim().length > 0
     : selectedFeatures.length > 0
+
+  // Public scope signal — complexity only, never a price (price = difficulty × country stays internal).
+  const scopeValue = scopeScore(appId, selected, platforms)
+  const tier = scopeTier(scopeValue)
+  const fill = scopeFill(scopeValue)
 
   const toggle = (key: string) => {
     setSelected((prev) => {
@@ -358,6 +364,21 @@ export function AppDetail({ appId }: AppDetailProps) {
                   )
                 })}
               </Stack>
+
+              <Box sx={{ mb: 3, p: 2, borderRadius: 2, border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', mb: 1 }}>
+                  <TextCaptionNeutral60>{t('home.scope.label')}</TextCaptionNeutral60>
+                  <Box component="span" sx={{ color: accent, fontWeight: 600, fontSize: '0.95rem' }}>
+                    {t(`home.scope.${tier}`)}
+                  </Box>
+                </Box>
+                <Box sx={{ height: 6, borderRadius: 3, bgcolor: 'action.hover', overflow: 'hidden' }}>
+                  <Box sx={{ height: '100%', width: `${fill * 100}%`, bgcolor: accent, transition: 'width 0.3s ease' }} />
+                </Box>
+                <Box sx={{ mt: 1 }}>
+                  <TextCaptionNeutral60>{t('home.scope.hint')}</TextCaptionNeutral60>
+                </Box>
+              </Box>
 
               <Stack spacing={2} sx={{ mb: error ? 2 : 3 }}>
                 <Input label={t('home.nameLabel')} value={name} onChange={(event) => setName(event.target.value)} />
