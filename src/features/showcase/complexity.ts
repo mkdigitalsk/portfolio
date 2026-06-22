@@ -43,8 +43,9 @@ const BOTH_FACTOR = 1.5
 // path-to-quote deep-research in .claude/research). Framed as scope-fit, never price.
 export const SCOPE_TIERS = ['compact', 'standard', 'comprehensive'] as const
 export type ScopeTier = (typeof SCOPE_TIERS)[number]
-const TIER_MIN: Record<ScopeTier, number> = { compact: 0, standard: 14, comprehensive: 26 }
-const SCORE_MAX = 40 // ~ceiling for the meter fill
+// Thresholds are FILL RATIOS (0..1) relative to the app's own max (all its features + both
+// platforms), so selecting everything fills the bar and reads Comprehensive.
+const TIER_MIN: Record<ScopeTier, number> = { compact: 0, standard: 0.4, comprehensive: 0.75 }
 
 export function scopeScore(appId: string, features: Iterable<string>, platforms: Iterable<string>): number {
   let score = TYPE_BASE[appId] ?? 2
@@ -56,17 +57,17 @@ export function scopeScore(appId: string, features: Iterable<string>, platforms:
   return score
 }
 
-export function scopeTier(score: number): ScopeTier {
+export function scopeTier(fill: number): ScopeTier {
   let tier: ScopeTier = 'compact'
   for (const t of SCOPE_TIERS) {
-    if (score >= TIER_MIN[t]) tier = t
+    if (fill >= TIER_MIN[t]) tier = t
   }
   return tier
 }
 
-// 0..1 fill for the meter bar.
-export function scopeFill(score: number): number {
-  return Math.min(1, score / SCORE_MAX)
+// 0..1 fill of the bar = the chosen scope relative to the app's maximum (all features + both platforms).
+export function scopeFill(score: number, maxScore: number): number {
+  return maxScore > 0 ? Math.min(1, score / maxScore) : 0
 }
 
 // Single-hue sequential colour scale for the meter bar: keep the accent's HUE, move LIGHTNESS from
@@ -119,9 +120,17 @@ function hslToRgb(h: number, s: number, l: number): [number, number, number] {
   return [hue(h + 1 / 3) * 255, hue(h) * 255, hue(h - 1 / 3) * 255]
 }
 
-export function scopeColor(accent: string, fill: number): string {
+// Discrete shade per TIER (not a subtle continuous % change) — 3 clearly distinct steps: a light
+// tint at Compact to a darker, more saturated shade at Comprehensive. Reads far better than a faint
+// gradient on a thin bar, and ties the colour to the tier label. The bar WIDTH still tracks % fill.
+const TIER_SHADE: Record<ScopeTier, { dl: number; ds: number }> = {
+  compact: { dl: 0.16, ds: -0.05 },
+  standard: { dl: 0, ds: 0 },
+  comprehensive: { dl: -0.14, ds: 0.12 },
+}
+
+export function scopeColor(accent: string, tier: ScopeTier): string {
   const [h, s, l] = rgbToHsl(...hexToRgb(accent))
-  const nl = clamp(l + 0.18 - 0.3 * fill, 0.12, 0.92) // lighter at low scope, darker at high
-  const ns = clamp(s + 0.1 * fill, 0, 1) // a touch more saturated at the strong end
-  return rgbToHex(...hslToRgb(h, ns, nl))
+  const { dl, ds } = TIER_SHADE[tier]
+  return rgbToHex(...hslToRgb(h, clamp(s + ds, 0, 1), clamp(l + dl, 0.12, 0.92)))
 }

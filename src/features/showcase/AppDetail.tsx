@@ -92,9 +92,10 @@ export function AppDetail({ appId }: AppDetailProps) {
     : selectedFeatures.length > 0
 
   // Public scope signal — complexity only, never a price (price = difficulty × country stays internal).
+  const maxScore = scopeScore(appId, app.featureKeys, ['web', 'mobile'])
   const scopeValue = scopeScore(appId, selected, platforms)
-  const tier = scopeTier(scopeValue)
-  const fill = scopeFill(scopeValue)
+  const fill = scopeFill(scopeValue, maxScore)
+  const tier = scopeTier(fill)
 
   const toggle = (key: string) => {
     setSelected((prev) => {
@@ -379,8 +380,8 @@ export function AppDetail({ appId }: AppDetailProps) {
                     sx={{
                       height: '100%',
                       width: `${fill * 100}%`,
-                      bgcolor: scopeColor(accent, fill),
-                      transition: 'width 0.3s ease, background-color 0.3s ease',
+                      bgcolor: scopeColor(accent, tier),
+                      transition: 'width 0.3s ease, background-color 0.55s ease-in-out',
                     }}
                   />
                 </Box>
