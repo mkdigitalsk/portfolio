@@ -139,7 +139,10 @@
       "standard": "Standard",
       "comprehensive": "Comprehensive",
       "hint": "A rough scope from your selection — the exact scope and a fixed price come from a short discovery call and a written spec, never an instant number."
-    }
+    },
+    "hasDocLabel": "I have my own documentation",
+    "hasDocBenefit": "Send it over — or we'll go through it on the discovery call.",
+    "hasDocMail": "Client has their own documentation / spec."
   },
   "hero": {
     "headline": "Senior-led, fintech-grade, fully accountable.",

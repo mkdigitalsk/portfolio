@@ -139,7 +139,10 @@
       "standard": "Standard",
       "comprehensive": "Umfassend",
       "hint": "Ein grober Umfang aus Ihrer Auswahl — den genauen Umfang und einen Festpreis ermitteln wir aus einem kurzen Erstgespräch und einer schriftlichen Spezifikation, nie aus einer Sofortzahl."
-    }
+    },
+    "hasDocLabel": "Ich habe eine eigene Dokumentation",
+    "hasDocBenefit": "Senden Sie sie uns — oder wir gehen sie im Erstgespräch durch.",
+    "hasDocMail": "Kunde hat eigene Dokumentation / Spezifikation."
   },
   "hero": {
     "headline": "Senior-geführt. Fintech-Qualität. Voll verantwortlich.",

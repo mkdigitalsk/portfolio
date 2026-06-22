@@ -63,6 +63,7 @@ export function AppDetail({ appId }: AppDetailProps) {
   const [error, setError] = useState(false)
   const [sent, setSent] = useState(false)
   const [showEmailError, setShowEmailError] = useState(false)
+  const [hasDoc, setHasDoc] = useState(false) // "I have my own documentation" — optional flag on the lead
 
   // Reset everything to defaults when the app type changes (rail switch) — the React-recommended
   // "adjust state when a prop changes" pattern, robust even if Next reuses the instance. Each app
@@ -81,6 +82,7 @@ export function AppDetail({ appId }: AppDetailProps) {
     setError(false)
     setSent(false)
     setShowEmailError(false)
+    setHasDoc(false)
   }
 
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
@@ -104,9 +106,11 @@ export function AppDetail({ appId }: AppDetailProps) {
     benefit: t(`apps.${id}.features.${key}.benefit`),
   }))
   const selectedFeatures = features.filter((feature) => selected.has(feature.key))
-  const canSubmit = isCustom
-    ? selectedFeatures.length > 0 || note.trim().length > 0
-    : selectedFeatures.length > 0
+  const canSubmit = hasDoc
+    ? true
+    : isCustom
+      ? selectedFeatures.length > 0 || note.trim().length > 0
+      : selectedFeatures.length > 0
 
   // Public scope signal — complexity only, never a price (price = difficulty × country stays internal).
   const maxScore = scopeScore(appId, app.featureKeys, ['web', 'mobile'])
@@ -172,6 +176,7 @@ export function AppDetail({ appId }: AppDetailProps) {
             isCustom ? t('home.customIntro') : t('home.mailIntro', { app: appLabel }),
             '',
             ...selectedFeatures.map((feature) => `• ${feature.label}`),
+            ...(hasDoc ? ['', t('home.hasDocMail')] : []),
             ...(note.trim() ? ['', `${t('home.noteLabel')}:`, note.trim()] : []),
           ].join('\n'),
         }),
@@ -383,6 +388,40 @@ export function AppDetail({ appId }: AppDetailProps) {
                     </Box>
                   )
                 })}
+
+                {/* Optional meta tick at the bottom of the list — the client already has a spec/docs. */}
+                <Box
+                  role="checkbox"
+                  aria-checked={hasDoc}
+                  tabIndex={0}
+                  onClick={() => setHasDoc(!hasDoc)}
+                  onKeyDown={(event) => onSelectableKeyDown(event, () => setHasDoc(!hasDoc))}
+                  sx={{
+                    display: 'flex',
+                    gap: 1.5,
+                    alignItems: 'flex-start',
+                    cursor: 'pointer',
+                    borderRadius: 1,
+                    p: 1,
+                    mx: -1,
+                    mt: 1,
+                    outline: 'none',
+                    opacity: hasDoc ? 1 : 0.6,
+                    transition: 'background-color 0.15s ease, opacity 0.15s ease',
+                    '&:hover': { backgroundColor: 'action.hover' },
+                    '&:focus-visible': { backgroundColor: 'action.hover' },
+                  }}
+                >
+                  {hasDoc ? (
+                    <CheckCircleRounded sx={{ color: accent, fontSize: 22, mt: '2px', flexShrink: 0 }} />
+                  ) : (
+                    <RadioButtonUnchecked sx={{ color: 'text.disabled', fontSize: 22, mt: '2px', flexShrink: 0 }} />
+                  )}
+                  <Box>
+                    <TextBody1Neutral80>{t('home.hasDocLabel')}</TextBody1Neutral80>
+                    <TextCaptionNeutral60>{t('home.hasDocBenefit')}</TextCaptionNeutral60>
+                  </Box>
+                </Box>
               </Stack>
 
               <Box sx={{ mb: 3, p: 2, borderRadius: 2, border: '1px solid', borderColor: 'divider' }}>

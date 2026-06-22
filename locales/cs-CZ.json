@@ -139,7 +139,10 @@
       "standard": "Standardní",
       "comprehensive": "Komplexní",
       "hint": "Hrubý rozsah z tvého výběru — přesný rozsah a fixní cenu určíme z krátkého úvodního hovoru a písemného spec-u, ne z okamžitého čísla."
-    }
+    },
+    "hasDocLabel": "Mám vlastní dokumentaci",
+    "hasDocBenefit": "Pošlete nám ji — nebo ji projdeme na úvodním hovoru.",
+    "hasDocMail": "Klient má vlastní dokumentaci / specifikaci."
   },
   "hero": {
     "headline": "Vedené seniorem. Fintech kvalita. Plná odpovědnost.",
