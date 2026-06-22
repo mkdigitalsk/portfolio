@@ -68,3 +68,60 @@ export function scopeTier(score: number): ScopeTier {
 export function scopeFill(score: number): number {
   return Math.min(1, score / SCORE_MAX)
 }
+
+// Single-hue sequential colour scale for the meter bar: keep the accent's HUE, move LIGHTNESS from
+// a lighter tint (low scope) to a darker, slightly more saturated shade (high scope) — the
+// "progressively stronger" colour (best practice: vary lightness, add saturation at the dark end).
+const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v))
+
+function hexToRgb(hex: string): [number, number, number] {
+  const h = hex.replace('#', '')
+  const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h
+  const n = parseInt(full, 16)
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255]
+}
+
+function rgbToHex(r: number, g: number, b: number): string {
+  const to = (v: number) => clamp(Math.round(v), 0, 255).toString(16).padStart(2, '0')
+  return `#${to(r)}${to(g)}${to(b)}`
+}
+
+function rgbToHsl(r: number, g: number, b: number): [number, number, number] {
+  const rn = r / 255
+  const gn = g / 255
+  const bn = b / 255
+  const max = Math.max(rn, gn, bn)
+  const min = Math.min(rn, gn, bn)
+  const l = (max + min) / 2
+  const d = max - min
+  if (d === 0) return [0, 0, l]
+  const s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
+  let h: number
+  if (max === rn) h = ((gn - bn) / d + (gn < bn ? 6 : 0)) / 6
+  else if (max === gn) h = ((bn - rn) / d + 2) / 6
+  else h = ((rn - gn) / d + 4) / 6
+  return [h, s, l]
+}
+
+function hslToRgb(h: number, s: number, l: number): [number, number, number] {
+  if (s === 0) return [l * 255, l * 255, l * 255]
+  const q = l < 0.5 ? l * (1 + s) : l + s - l * s
+  const p = 2 * l - q
+  const hue = (t: number) => {
+    let tt = t
+    if (tt < 0) tt += 1
+    if (tt > 1) tt -= 1
+    if (tt < 1 / 6) return p + (q - p) * 6 * tt
+    if (tt < 1 / 2) return q
+    if (tt < 2 / 3) return p + (q - p) * (2 / 3 - tt) * 6
+    return p
+  }
+  return [hue(h + 1 / 3) * 255, hue(h) * 255, hue(h - 1 / 3) * 255]
+}
+
+export function scopeColor(accent: string, fill: number): string {
+  const [h, s, l] = rgbToHsl(...hexToRgb(accent))
+  const nl = clamp(l + 0.18 - 0.3 * fill, 0.12, 0.92) // lighter at low scope, darker at high
+  const ns = clamp(s + 0.1 * fill, 0, 1) // a touch more saturated at the strong end
+  return rgbToHex(...hslToRgb(h, ns, nl))
+}

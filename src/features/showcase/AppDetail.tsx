@@ -19,7 +19,7 @@ import {
 } from '@/shared/components'
 import { CONTENT_MAX, PAGE_PT } from '@/shared/layout'
 import { CORE_FEATURES, detailApps } from './apps'
-import { scopeFill, scopeScore, scopeTier } from './complexity'
+import { scopeColor, scopeFill, scopeScore, scopeTier } from './complexity'
 
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
 const EMAIL_ERROR_DELAY_MS = 800
@@ -375,7 +375,14 @@ export function AppDetail({ appId }: AppDetailProps) {
                   </Box>
                 </Box>
                 <Box sx={{ height: 6, borderRadius: 3, bgcolor: 'action.hover', overflow: 'hidden' }}>
-                  <Box sx={{ height: '100%', width: `${fill * 100}%`, bgcolor: accent, transition: 'width 0.3s ease' }} />
+                  <Box
+                    sx={{
+                      height: '100%',
+                      width: `${fill * 100}%`,
+                      bgcolor: scopeColor(accent, fill),
+                      transition: 'width 0.3s ease, background-color 0.3s ease',
+                    }}
+                  />
                 </Box>
                 <Box sx={{ mt: 1 }}>
                   <TextCaptionNeutral60>{t('home.scope.hint')}</TextCaptionNeutral60>
