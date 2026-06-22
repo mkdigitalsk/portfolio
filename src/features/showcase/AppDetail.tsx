@@ -18,7 +18,7 @@ import {
   TextH6Bold,
 } from '@/shared/components'
 import { CONTENT_MAX, PAGE_PT } from '@/shared/layout'
-import { CORE_FEATURES, detailApps } from './apps'
+import { detailApps } from './apps'
 import { scopeColor, scopeFill, scopeScore, scopeTier } from './complexity'
 
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
@@ -52,10 +52,8 @@ export function AppDetail({ appId }: AppDetailProps) {
   const phoneCountry = PHONE_COUNTRY_BY_LOCALE[locale] ?? 'SK'
   const app = detailApps.find((item) => item.id === appId)
   const isCustom = appId === 'custom'
-  const [selected, setSelected] = useState<Set<string>>(
-    () => new Set(isCustom ? [] : (CORE_FEATURES[appId] ?? app?.featureKeys ?? [])),
-  )
-  const [platforms, setPlatforms] = useState<Set<string>>(() => new Set(['web', 'mobile']))
+  const [selected, setSelected] = useState<Set<string>>(() => new Set())
+  const [platforms, setPlatforms] = useState<Set<string>>(() => new Set(['web']))
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
@@ -72,8 +70,8 @@ export function AppDetail({ appId }: AppDetailProps) {
   const [activeAppId, setActiveAppId] = useState(appId)
   if (appId !== activeAppId) {
     setActiveAppId(appId)
-    setSelected(new Set(isCustom ? [] : (CORE_FEATURES[appId] ?? app?.featureKeys ?? [])))
-    setPlatforms(new Set(['web', 'mobile']))
+    setSelected(new Set())
+    setPlatforms(new Set(['web']))
     setEmail('')
     setName('')
     setPhone('')
