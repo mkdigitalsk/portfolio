@@ -66,6 +66,25 @@ export function AppDetail({ appId }: AppDetailProps) {
   const [sent, setSent] = useState(false)
   const [showEmailError, setShowEmailError] = useState(false)
 
+  // Reset everything to defaults when the app type changes (rail switch) — the React-recommended
+  // "adjust state when a prop changes" pattern, robust even if Next reuses the instance. Each app
+  // is independent: re-opening a tab starts fresh, no bleed from the previous one.
+  const [activeAppId, setActiveAppId] = useState(appId)
+  if (appId !== activeAppId) {
+    setActiveAppId(appId)
+    setSelected(new Set(isCustom ? [] : (CORE_FEATURES[appId] ?? app?.featureKeys ?? [])))
+    setPlatforms(new Set(['web', 'mobile']))
+    setEmail('')
+    setName('')
+    setPhone('')
+    setPhoneHasNumber(false)
+    setNote('')
+    setSending(false)
+    setError(false)
+    setSent(false)
+    setShowEmailError(false)
+  }
+
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
   useEffect(() => {
     if (!email || emailValid) {
