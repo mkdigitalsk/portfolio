@@ -32,7 +32,9 @@ const FEATURE_DIFFICULTY: Record<string, number> = {
   accounts: 2, notifications: 1, adminDashboard: 3, analytics: 3, offline: 2,
 }
 
-const PLATFORM_WEIGHT: Record<string, number> = { web: 2, mobile: 3 }
+// Web + mobile is more work than one surface — but well under 2×: KMP shares business logic across
+// iOS/Android and the backend is shared. So a ~1.4× multiplier on the whole scope, not additive.
+const PLATFORM_BOTH_FACTOR = 1.4
 
 // Scope tiers by score (tune thresholds freely — only the public label changes).
 // Three tiers only — choice-overload research shows 4+ tiers convert ~30% worse (see the
@@ -45,7 +47,8 @@ const SCORE_MAX = 40 // ~ceiling for the meter fill
 export function scopeScore(appId: string, features: Iterable<string>, platforms: Iterable<string>): number {
   let score = TYPE_BASE[appId] ?? 2
   for (const f of features) score += FEATURE_DIFFICULTY[f] ?? 2
-  for (const p of platforms) score += PLATFORM_WEIGHT[p] ?? 0
+  // Both surfaces (web + mobile) multiply the whole scope; one surface leaves it as-is.
+  if (Array.from(platforms).length >= 2) score *= PLATFORM_BOTH_FACTOR
   return score
 }
 
