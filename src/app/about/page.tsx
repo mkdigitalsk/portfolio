@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { Bolt, CheckCircle, Forum, Hub, Mail, OpenInNew, Verified, VpnKey } from '@mui/icons-material'
 import { Box, Stack } from '@mui/material'
 import { getTranslations } from 'next-intl/server'
@@ -15,6 +16,12 @@ import { ShowcaseList, type Showcase } from '@/features/home/ShowcaseList'
 import { TechStack, type TechGroup } from '@/features/home/TechStack'
 import { TEXT_MAX } from '@/features/home/layout'
 import { CONTENT_MAX, PAGE_PT } from '@/shared/layout'
+
+export const metadata: Metadata = {
+  title: 'About — MK Digital',
+  description:
+    'Senior-led product studio — iOS, Android, web and backend shipped by one accountable engineer with 8+ years across fintech, payments and healthcare. Inspect the open-source code before you hire.',
+}
 
 const GITHUB = 'https://github.com/mkdigitalsk'
 const LINKEDIN = 'https://www.linkedin.com/in/miroslavkusnir/'
