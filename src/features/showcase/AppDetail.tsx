@@ -63,7 +63,7 @@ export function AppDetail({ appId }: AppDetailProps) {
   const [sending, setSending] = useState(false)
   const [error, setError] = useState(false)
   const [sent, setSent] = useState(false)
-  const [showEmailError, setShowEmailError] = useState(false)
+  const [errorArmedFor, setErrorArmedFor] = useState('')
   const [hasDoc, setHasDoc] = useState(false) // "I have my own documentation" — optional flag on the lead
 
   // Reset everything to defaults when the app type changes (rail switch) — the React-recommended
@@ -82,19 +82,20 @@ export function AppDetail({ appId }: AppDetailProps) {
     setSending(false)
     setError(false)
     setSent(false)
-    setShowEmailError(false)
+    setErrorArmedFor('')
     setHasDoc(false)
   }
 
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
   useEffect(() => {
-    if (!email || emailValid) {
-      setShowEmailError(false)
-      return
-    }
-    const timer = setTimeout(() => setShowEmailError(true), EMAIL_ERROR_DELAY_MS)
+    if (!email || emailValid) return
+    const timer = setTimeout(() => setErrorArmedFor(email), EMAIL_ERROR_DELAY_MS)
     return () => clearTimeout(timer)
   }, [email, emailValid])
+  // Derived (not effect-set): the email error shows for a present, invalid value once the debounce has
+  // elapsed for THIS exact string. Keying `errorArmedFor` to the email resets it on every keystroke, so
+  // there is no synchronous setState in the effect — the only set happens in the timer callback.
+  const showEmailError = !!email && !emailValid && errorArmedFor === email
 
   if (!app) return null
 
@@ -154,7 +155,7 @@ export function AppDetail({ appId }: AppDetailProps) {
   const submit = async () => {
     if (sending) return
     if (!emailValid) {
-      setShowEmailError(true)
+      setErrorArmedFor(email)
       return
     }
     setSending(true)
