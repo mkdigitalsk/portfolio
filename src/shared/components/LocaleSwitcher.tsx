@@ -37,7 +37,7 @@ export function LocaleSwitcher() {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
-        {LOCALES.map((option) => (
+        {LOCALES.filter((option) => !option.other).map((option) => (
           <MenuItem key={option.code} selected={option.code === activeLocale} onClick={() => handleSelect(option.code)}>
             <Box component="span" sx={{ mr: 1.5, fontSize: 18 }}>
               {option.flag}

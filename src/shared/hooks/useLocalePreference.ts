@@ -1,23 +1,37 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { OTHER_LOCALES_COOKIE } from '../i18n/locales'
 
 const LOCALE_MAX_AGE = 60 * 60 * 24 * 365 // one year
 
-// Raw platform write kept in a plain module function (not a component/hook) so the
-// document.cookie mutation lives outside React's render rules. Components depend only
-// on this hook's interface, never on the cookie API directly (DIP — see web-conventions).
-function writeLocaleCookie(code: string) {
-  document.cookie = `locale=${code}; path=/; max-age=${LOCALE_MAX_AGE}; samesite=lax`
+// Cookie mutation kept outside React's render rules; components depend on this
+// hook's interface, never on document.cookie (DIP — see web-conventions).
+function writeCookie(name: string, value: string) {
+  document.cookie = `${name}=${value}; path=/; max-age=${LOCALE_MAX_AGE}; samesite=lax`
+}
+
+function readCookie(name: string) {
+  return document.cookie.split('; ').find((row) => row.startsWith(`${name}=`))?.split('=')[1]
+}
+
+function readDeepLinkParams() {
+  const params = new URLSearchParams(window.location.search)
+  return { lang: params.get('lang') ?? undefined, wantsOtherLocales: params.get(OTHER_LOCALES_COOKIE) === 'true' }
 }
 
 export function useLocalePreference() {
   const router = useRouter()
 
-  const setLocale = (code: string) => {
-    writeLocaleCookie(code)
+  const applyPreferences = ({ locale, enableOtherLocales }: { locale?: string; enableOtherLocales?: boolean }) => {
+    if (enableOtherLocales) writeCookie(OTHER_LOCALES_COOKIE, 'true')
+    if (locale) writeCookie('locale', locale)
     router.refresh()
   }
 
-  return { setLocale }
+  const setLocale = (code: string) => applyPreferences({ locale: code })
+
+  const otherLocalesEnabled = () => readCookie(OTHER_LOCALES_COOKIE) === 'true'
+
+  return { setLocale, applyPreferences, otherLocalesEnabled, readDeepLinkParams }
 }

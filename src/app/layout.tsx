@@ -15,6 +15,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Footer, NavBar } from '@/shared/components'
+import { LocaleDeepLink } from '@/shared/components/LocaleDeepLink'
 import { theme } from '@/shared/theme'
 import './globals.css'
 
@@ -33,6 +34,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
       <body>
         <InitColorSchemeScript attribute="class" defaultMode="system" />
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <LocaleDeepLink />
           <AppRouterCacheProvider options={{ enableCssLayer: true }}>
             <ThemeProvider theme={theme} defaultMode="system">
               <CssBaseline />
