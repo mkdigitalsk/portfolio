@@ -1,9 +1,11 @@
 'use client'
 
+import { ArrowForwardRounded } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import { motion, useReducedMotion } from 'motion/react'
 import { useTranslations } from 'next-intl'
-import { useState, type KeyboardEvent, type ReactNode } from 'react'
+import { type KeyboardEvent, type ReactNode } from 'react'
+import { useRevealInteraction } from '@/shared/hooks/useRevealInteraction'
 import { TextH6Bold } from '@/shared/components'
 import { CARD_FLIP_CLOSE_S, CARD_FLIP_S, FLIP_EASE, ICON_FLIP_S } from './flipTiming'
 import { APP_PREVIEWS } from './previews'
@@ -46,10 +48,11 @@ export function FlipRevealCard({
   const reduceMotion = useReducedMotion()
   const animate = !reduceMotion
   const flipTo = 180 * flipSign
-  // Drive the flip from hover state tracked on the STABLE outer container — never via
-  // whileHover on the rotating card itself: mid-flip the 3D card turns edge-on, the
-  // browser fires pointerleave, and Framer would think hover ended and reverse/stall.
-  const [hovered, setHovered] = useState(false)
+  // Reveal hidden behind an intent interface (useRevealInteraction): hover devices reveal on hover,
+  // touch devices on tap — the card only knows `revealed` + spreads containerProps (DIP; platform is
+  // the implementation). State lives on the STABLE outer container, never whileHover on the rotating
+  // card (mid-flip the 3D card turns edge-on → browser fires pointerleave → Framer would reverse/stall).
+  const { revealed, containerProps, showActivateHint } = useRevealInteraction(onActivate)
 
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -63,10 +66,8 @@ export function FlipRevealCard({
       role="button"
       tabIndex={0}
       aria-label={ariaLabel}
-      onClick={onActivate}
       onKeyDown={handleKeyDown}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      {...containerProps}
       sx={{
         height,
         cursor: 'pointer',
@@ -86,7 +87,7 @@ export function FlipRevealCard({
     >
       <motion.div
         initial="rest"
-        animate={animate && hovered ? 'active' : 'rest'}
+        animate={animate && revealed ? 'active' : 'rest'}
         variants={{
           // Close: the card flips back first (no delay, a touch quicker), then the icon flips.
           rest: { rotateX: 0, transition: { duration: CARD_FLIP_CLOSE_S, delay: 0, ease: FLIP_EASE } },
@@ -128,6 +129,33 @@ export function FlipRevealCard({
 
         <Box sx={{ ...faceStyle, transform: `rotateX(${flipTo}deg)`, bgcolor: 'background.paper' }}>
           {Preview ? <Preview accent={accent} /> : null}
+          {/* Touch-only affordance: after the first tap reveals the preview, a forward arrow signals
+              that the next tap opens the detail (the web "click → navigate" cue). Non-interactive —
+              the whole card's second tap navigates. */}
+          {showActivateHint && (
+            <motion.div
+              aria-hidden
+              initial={reduceMotion ? false : { opacity: 0, scale: 0.8 }}
+              animate={reduceMotion ? {} : { opacity: 1, scale: 1 }}
+              transition={{ duration: 0.2, delay: 0.15 }}
+              style={{ position: 'absolute', right: 10, bottom: 10, pointerEvents: 'none' }}
+            >
+              <Box
+                sx={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: '50%',
+                  display: 'grid',
+                  placeItems: 'center',
+                  bgcolor: accent,
+                  color: 'common.white',
+                  boxShadow: '0 4px 12px -4px rgba(0,0,0,0.35)',
+                }}
+              >
+                <ArrowForwardRounded sx={{ fontSize: 20 }} />
+              </Box>
+            </motion.div>
+          )}
         </Box>
       </motion.div>
     </Box>
