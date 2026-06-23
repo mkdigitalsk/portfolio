@@ -4,15 +4,17 @@ import { Check } from '@mui/icons-material'
 import { Box, IconButton, ListItemIcon, Menu, MenuItem, Tooltip } from '@mui/material'
 import { useLocale, useTranslations } from 'next-intl'
 import { type MouseEvent, useState } from 'react'
-import { useLocalePreference } from '../hooks/useLocalePreference'
+import { useLocalePreference, useOtherLocalesEnabled } from '../hooks/useLocalePreference'
 import { LOCALES } from '../i18n/locales'
 
 export function LocaleSwitcher() {
   const activeLocale = useLocale()
   const t = useTranslations('common')
   const { setLocale } = useLocalePreference()
+  const showOther = useOtherLocalesEnabled()
   const [anchor, setAnchor] = useState<HTMLElement | null>(null)
   const current = LOCALES.find((l) => l.code === activeLocale) ?? LOCALES[0]
+  const options = LOCALES.filter((option) => !option.other || showOther)
 
   const handleOpen = (event: MouseEvent<HTMLElement>) => setAnchor(event.currentTarget)
 
@@ -37,7 +39,7 @@ export function LocaleSwitcher() {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
-        {LOCALES.filter((option) => !option.other).map((option) => (
+        {options.map((option) => (
           <MenuItem key={option.code} selected={option.code === activeLocale} onClick={() => handleSelect(option.code)}>
             <Box component="span" sx={{ mr: 1.5, fontSize: 18 }}>
               {option.flag}
