@@ -208,7 +208,9 @@
     "proof": "Dôkaz",
     "contact": "Kontakt",
     "demos": "Produkty",
-    "tagline": "Senior-led produktové štúdio — iOS · Android · Web · Backend"
+    "tagline": "Senior-led produktové štúdio — iOS · Android · Web · Backend",
+    "menu": "Menu",
+    "closeMenu": "Zavrieť menu"
   },
   "apps": {
     "custom": {

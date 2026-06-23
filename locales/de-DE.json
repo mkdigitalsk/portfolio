@@ -208,7 +208,9 @@
     "proof": "Nachweis",
     "contact": "Kontakt",
     "demos": "Produkte",
-    "tagline": "Senior-geführtes Produktstudio — iOS · Android · Web · Backend"
+    "tagline": "Senior-geführtes Produktstudio — iOS · Android · Web · Backend",
+    "menu": "Menü",
+    "closeMenu": "Menü schließen"
   },
   "apps": {
     "custom": {

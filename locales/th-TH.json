@@ -208,7 +208,9 @@
     "proof": "หลักฐาน",
     "contact": "ติดต่อ",
     "demos": "ผลิตภัณฑ์",
-    "tagline": "สตูดิโอผลิตภัณฑ์ที่นำโดยวิศวกรอาวุโส — iOS · Android · เว็บ · Backend"
+    "tagline": "สตูดิโอผลิตภัณฑ์ที่นำโดยวิศวกรอาวุโส — iOS · Android · เว็บ · Backend",
+    "menu": "เมนู",
+    "closeMenu": "ปิดเมนู"
   },
   "apps": {
     "custom": {

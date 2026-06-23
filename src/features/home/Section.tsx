@@ -37,7 +37,7 @@ export function Section({ children, title, subtitle, bg, divider, dividerBottom,
         ...(dividerBottom && { borderBottom: '1px solid', borderColor: 'divider' }),
       }}
     >
-      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, py, ...(pt && { pt }) }}>
+      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: { xs: 2, md: 3 }, py, ...(pt && { pt }) }}>
         {title && (
           <Reveal>
             <TextH4Bold sx={{ mb: subtitle ? 2 : 4 }}>{title}</TextH4Bold>

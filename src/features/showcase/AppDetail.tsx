@@ -188,7 +188,7 @@ export function AppDetail({ appId }: AppDetailProps) {
   }
 
   return (
-    <Box component="main" sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, pt: PAGE_PT, pb: { xs: 4, md: 6 } }}>
+    <Box component="main" sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: { xs: 2, md: 3 }, pt: PAGE_PT, pb: { xs: 4, md: 6 } }}>
       <Box
         sx={{
           display: 'grid',
@@ -216,6 +216,56 @@ export function AppDetail({ appId }: AppDetailProps) {
           >
             <ArrowBack sx={{ fontSize: 18 }} />
             <TextCaptionNeutral60>{t('home.backToApps')}</TextCaptionNeutral60>
+          </Box>
+          {/* Mobile: horizontal scrollable app-type strip — replaces the vertical rail (research:
+              a strip beats a dropdown/accordion for cross-type jumps and stays visible). Bleeds
+              edge-to-edge so the overflow is a discoverable scroll affordance. Desktop keeps the rail. */}
+          <Box
+            component="nav"
+            aria-label={t('home.appTypes')}
+            sx={{
+              display: { xs: 'flex', md: 'none' },
+              gap: 1,
+              mb: 3,
+              mx: -2,
+              px: 2,
+              pb: 1,
+              overflowX: 'auto',
+              scrollbarWidth: 'none',
+              '&::-webkit-scrollbar': { display: 'none' },
+            }}
+          >
+            {detailApps.map((item) => {
+              const StripIcon = item.Icon
+              const isCurrent = item.id === appId
+              return (
+                <Box
+                  key={item.id}
+                  component={Link}
+                  href={`/app/${item.id}`}
+                  aria-current={isCurrent ? 'page' : undefined}
+                  sx={{
+                    flexShrink: 0,
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 0.75,
+                    py: 1,
+                    px: 1.5,
+                    borderRadius: 2,
+                    textDecoration: 'none',
+                    color: 'text.primary',
+                    whiteSpace: 'nowrap',
+                    border: '1px solid',
+                    borderColor: isCurrent ? item.accent : 'divider',
+                    bgcolor: isCurrent ? `${item.accent}14` : 'transparent',
+                    transition: 'border-color 0.15s ease, background-color 0.15s ease',
+                  }}
+                >
+                  <StripIcon sx={{ fontSize: 18, color: item.accent, flexShrink: 0 }} />
+                  <TextBody1Neutral80>{t(`apps.${item.id}.label`)}</TextBody1Neutral80>
+                </Box>
+              )
+            })}
           </Box>
           <Box component="nav" aria-label={t('home.appTypes')} sx={{ display: { xs: 'none', md: 'block' }, position: 'sticky', top: 88 }}>
           <Box sx={{ mb: 1.5 }}>
@@ -305,6 +355,7 @@ export function AppDetail({ appId }: AppDetailProps) {
                         onKeyDown={(event) => onSelectableKeyDown(event, () => togglePlatform(platform.key))}
                         sx={{
                           flex: 1,
+                          minWidth: 0,
                           display: 'flex',
                           alignItems: 'center',
                           gap: 1.25,
@@ -441,8 +492,15 @@ export function AppDetail({ appId }: AppDetailProps) {
 
               <Stack spacing={2} sx={{ mb: error ? 2 : 3 }}>
                 <Input label={t('home.nameLabel')} value={name} onChange={(event) => setName(event.target.value)} />
-                <Box sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
-                  <Box sx={{ flex: 1 }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: { xs: 'column', md: 'row' },
+                    gap: 2,
+                    alignItems: { xs: 'stretch', md: 'flex-start' },
+                  }}
+                >
+                  <Box sx={{ flex: 1, minWidth: 0 }}>
                     <Input
                       type="email"
                       label={t('home.emailLabel')}
@@ -454,7 +512,7 @@ export function AppDetail({ appId }: AppDetailProps) {
                       errorText={t('home.emailInvalid')}
                     />
                   </Box>
-                  <Box sx={{ flex: 1 }}>
+                  <Box sx={{ flex: 1, minWidth: 0 }}>
                     <PhoneInput
                       label={t('home.phoneLabel')}
                       value={phone}

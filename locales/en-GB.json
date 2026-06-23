@@ -208,7 +208,9 @@
     "proof": "Proof",
     "contact": "Contact",
     "demos": "Products",
-    "tagline": "Senior-led product studio — iOS · Android · Web · Backend"
+    "tagline": "Senior-led product studio — iOS · Android · Web · Backend",
+    "menu": "Menu",
+    "closeMenu": "Close menu"
   },
   "apps": {
     "custom": {

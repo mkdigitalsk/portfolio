@@ -75,7 +75,7 @@ export default async function AboutPage() {
 
   return (
     <Box component="main">
-      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, pt: PAGE_PT, pb: { xs: 6, md: 10 } }}>
+      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: { xs: 2, md: 3 }, pt: PAGE_PT, pb: { xs: 6, md: 10 } }}>
         <Reveal>
           <TextH1Bold sx={{ mb: 3 }}>{t('hero.headline')}</TextH1Bold>
         </Reveal>
@@ -112,7 +112,7 @@ export default async function AboutPage() {
         </Reveal>
       </Box>
 
-      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, pb: { xs: 6, md: 8 } }}>
+      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: { xs: 2, md: 3 }, pb: { xs: 6, md: 8 } }}>
         <Reveal>
           <TextH4Bold sx={{ mb: 1 }}>{t('about.why.title')}</TextH4Bold>
         </Reveal>
@@ -153,7 +153,7 @@ export default async function AboutPage() {
         </Box>
       </Box>
 
-      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, pb: { xs: 6, md: 8 } }}>
+      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: { xs: 2, md: 3 }, pb: { xs: 6, md: 8 } }}>
         <Reveal>
           <Box sx={{ p: { xs: 3, md: 4 }, borderRadius: 2, bgcolor: 'action.hover' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
@@ -167,7 +167,7 @@ export default async function AboutPage() {
         </Reveal>
       </Box>
 
-      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, pb: { xs: 6, md: 8 } }}>
+      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: { xs: 2, md: 3 }, pb: { xs: 6, md: 8 } }}>
         <Reveal>
           <TextH4Bold sx={{ mb: 1 }}>{t('showcases.title')}</TextH4Bold>
         </Reveal>
@@ -181,11 +181,11 @@ export default async function AboutPage() {
         </Reveal>
       </Box>
 
-      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, pb: { xs: 6, md: 8 } }}>
+      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: { xs: 2, md: 3 }, pb: { xs: 6, md: 8 } }}>
         <TechStack groups={techGroups} />
       </Box>
 
-      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, pb: { xs: 8, md: 12 } }}>
+      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: { xs: 2, md: 3 }, pb: { xs: 8, md: 12 } }}>
         <Reveal>
           <Box sx={{ maxWidth: TEXT_MAX, pt: 3, borderTop: '1px solid', borderColor: 'divider' }}>
             <TextCaptionNeutral60>{t('hero.company')}</TextCaptionNeutral60>

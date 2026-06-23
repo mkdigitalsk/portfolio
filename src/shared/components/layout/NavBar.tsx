@@ -1,11 +1,13 @@
 'use client'
 
-import { Home } from '@mui/icons-material'
+import { Close, Home, Menu as MenuIcon } from '@mui/icons-material'
 import Box from '@mui/material/Box'
+import Drawer from '@mui/material/Drawer'
+import IconButton from '@mui/material/IconButton'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import type { ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import { useScrollSpy } from '@/shared/hooks/useScrollSpy'
 import { useScrollToTop } from '@/shared/hooks/useScrollToTop'
 import { CONTENT_MAX } from '@/shared/layout'
@@ -71,6 +73,11 @@ export function NavBar() {
   const t = useTranslations()
   const activeSection = useScrollSpy(SECTION_IDS)
   const scrollToTop = useScrollToTop()
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const isAnchorActive = (a: NavAnchor) =>
+    (a.activePrefix !== undefined && pathname.startsWith(a.activePrefix)) ||
+    (pathname === '/' && a.href.slice(2) === activeSection)
 
   return (
     <Box
@@ -88,7 +95,7 @@ export function NavBar() {
         sx={{
           maxWidth: CONTENT_MAX,
           mx: 'auto',
-          px: 3,
+          px: { xs: 2, md: 3 },
           py: 1.5,
           display: 'flex',
           alignItems: 'center',
@@ -105,28 +112,64 @@ export function NavBar() {
         >
           <Home />
         </NavItem>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, md: 1.5 } }}>
+          {/* Desktop (md+): every section anchor inline. */}
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2.5 }}>
             {ANCHORS.map((a) => (
-              <NavItem
-                key={a.href}
-                href={a.href}
-                active={
-                  (a.activePrefix !== undefined && pathname.startsWith(a.activePrefix)) ||
-                  (pathname === '/' && a.href.slice(2) === activeSection)
-                }
-              >
+              <NavItem key={a.href} href={a.href} active={isAnchorActive(a)}>
                 <TextH6Bold>{t(a.key)}</TextH6Bold>
               </NavItem>
             ))}
           </Box>
-          <NavItem href="/about" active={pathname === '/about'}>
-            <TextH6Bold>{t('common.about')}</TextH6Bold>
-          </NavItem>
+          {/* About: inline on desktop, moves into the drawer on mobile. */}
+          <Box sx={{ display: { xs: 'none', md: 'inline-flex' } }}>
+            <NavItem href="/about" active={pathname === '/about'}>
+              <TextH6Bold>{t('common.about')}</TextH6Bold>
+            </NavItem>
+          </Box>
+          {/* Mobile combo (research: visible primary item + "more" beats a pure hamburger):
+              keep Contact (the CTA) one tap away, the rest live in the drawer. */}
+          <Box sx={{ display: { xs: 'inline-flex', md: 'none' } }}>
+            <NavItem href="/#contact" active={pathname === '/' && activeSection === 'contact'}>
+              <TextH6Bold>{t('common.contact')}</TextH6Bold>
+            </NavItem>
+          </Box>
+          <IconButton
+            aria-label={t('common.menu')}
+            onClick={() => setMenuOpen(true)}
+            sx={{ display: { xs: 'inline-flex', md: 'none' }, color: 'text.primary' }}
+          >
+            <MenuIcon />
+          </IconButton>
+
           <LocaleSwitcher />
           <ThemeModeToggle />
         </Box>
       </Box>
+
+      <Drawer anchor="right" open={menuOpen} onClose={() => setMenuOpen(false)}>
+        <Box
+          role="navigation"
+          sx={{ width: 'min(78vw, 300px)', p: 2, display: 'flex', flexDirection: 'column', gap: 2 }}
+        >
+          <IconButton
+            aria-label={t('common.closeMenu')}
+            onClick={() => setMenuOpen(false)}
+            sx={{ alignSelf: 'flex-end', color: 'text.primary' }}
+          >
+            <Close />
+          </IconButton>
+          {/* Contact is already visible inline on mobile, so the drawer holds the rest + About. */}
+          {ANCHORS.filter((a) => a.key !== 'common.contact').map((a) => (
+            <NavItem key={a.href} href={a.href} active={isAnchorActive(a)} onClick={() => setMenuOpen(false)}>
+              <TextH6Bold>{t(a.key)}</TextH6Bold>
+            </NavItem>
+          ))}
+          <NavItem href="/about" active={pathname === '/about'} onClick={() => setMenuOpen(false)}>
+            <TextH6Bold>{t('common.about')}</TextH6Bold>
+          </NavItem>
+        </Box>
+      </Drawer>
     </Box>
   )
 }

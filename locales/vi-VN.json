@@ -208,7 +208,9 @@
     "proof": "Bằng chứng",
     "contact": "Liên hệ",
     "demos": "Sản phẩm",
-    "tagline": "Studio sản phẩm dẫn dắt bởi kỹ sư cao cấp — iOS · Android · Web · Backend"
+    "tagline": "Studio sản phẩm dẫn dắt bởi kỹ sư cao cấp — iOS · Android · Web · Backend",
+    "menu": "Menu",
+    "closeMenu": "Đóng menu"
   },
   "apps": {
     "custom": {
