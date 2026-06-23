@@ -21,7 +21,8 @@ import { CONTENT_MAX, PAGE_PT } from '@/shared/layout'
 import { detailApps } from './apps'
 import { scopeColor, scopeFill, scopeScore, scopeTier } from './complexity'
 
-const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
+const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://kmp-showcase-production.up.railway.app'
+const LEADS_ENDPOINT = `${API_BASE}/api/v1/leads`
 const EMAIL_ERROR_DELAY_MS = 800
 
 // Default phone country from the active locale (a German number usually matches a
@@ -159,30 +160,22 @@ export function AppDetail({ appId }: AppDetailProps) {
     setSending(true)
     setError(false)
     try {
-      const response = await fetch(WEB3FORMS_ENDPOINT, {
+      const response = await fetch(LEADS_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
-          subject: t('home.mailSubject', { app: appLabel }),
-          'App type': appLabel,
-          Platforms: PLATFORMS.filter((p) => platforms.has(p.key))
-            .map((p) => t(p.labelKey))
-            .join(', '),
+          email,
+          appType: appLabel,
+          platforms: PLATFORMS.filter((p) => platforms.has(p.key)).map((p) => t(p.labelKey)),
+          features: selectedFeatures.map((feature) => feature.label),
           ...(name.trim() ? { name: name.trim() } : {}),
           ...(phoneHasNumber ? { phone: phone.trim() } : {}),
-          email,
-          message: [
-            isCustom ? t('home.customIntro') : t('home.mailIntro', { app: appLabel }),
-            '',
-            ...selectedFeatures.map((feature) => `• ${feature.label}`),
-            ...(hasDoc ? ['', t('home.hasDocMail')] : []),
-            ...(note.trim() ? ['', `${t('home.noteLabel')}:`, note.trim()] : []),
-          ].join('\n'),
+          ...(note.trim() ? { note: note.trim() } : {}),
+          hasDoc,
         }),
       })
       const data = (await response.json()) as { success?: boolean }
-      if (data.success) {
+      if (response.ok && data.success) {
         setSent(true)
       } else {
         setError(true)

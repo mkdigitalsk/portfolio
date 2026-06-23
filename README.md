@@ -23,7 +23,7 @@ npm run build    # production build
 
 Copy `.env.example` → `.env.local`:
 
-- `NEXT_PUBLIC_WEB3FORMS_KEY` — lead form in the contact dialog
+- `NEXT_PUBLIC_API_URL` — backend base for the lead form (defaults to the Railway server; set to `http://localhost:8080` for local dev)
 - `SITE_PASSWORD` — when set, the whole site is gated behind HTTP Basic Auth (pre-launch privacy); unset = public
 
 ## Structure
