@@ -113,7 +113,6 @@ export function NavBar() {
           <Home />
         </NavItem>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, md: 1.5 } }}>
-          {/* Desktop (md+): every section anchor inline. */}
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2.5 }}>
             {ANCHORS.map((a) => (
               <NavItem key={a.href} href={a.href} active={isAnchorActive(a)}>
@@ -121,14 +120,12 @@ export function NavBar() {
               </NavItem>
             ))}
           </Box>
-          {/* About: inline on desktop, moves into the drawer on mobile. */}
           <Box sx={{ display: { xs: 'none', md: 'inline-flex' } }}>
             <NavItem href="/about" active={pathname === '/about'}>
               <TextH6Bold>{t('common.about')}</TextH6Bold>
             </NavItem>
           </Box>
-          {/* Mobile combo (research: visible primary item + "more" beats a pure hamburger):
-              keep Contact (the CTA) one tap away, the rest live in the drawer. */}
+          {/* Combo: keep the CTA visible, rest in the drawer — more discoverable than a pure hamburger. */}
           <Box sx={{ display: { xs: 'inline-flex', md: 'none' } }}>
             <NavItem href="/#contact" active={pathname === '/' && activeSection === 'contact'}>
               <TextH6Bold>{t('common.contact')}</TextH6Bold>
@@ -159,7 +156,6 @@ export function NavBar() {
           >
             <Close />
           </IconButton>
-          {/* Contact is already visible inline on mobile, so the drawer holds the rest + About. */}
           {ANCHORS.filter((a) => a.key !== 'common.contact').map((a) => (
             <NavItem key={a.href} href={a.href} active={isAnchorActive(a)} onClick={() => setMenuOpen(false)}>
               <TextH6Bold>{t(a.key)}</TextH6Bold>

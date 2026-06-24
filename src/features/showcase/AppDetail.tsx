@@ -92,9 +92,7 @@ export function AppDetail({ appId }: AppDetailProps) {
     const timer = setTimeout(() => setErrorArmedFor(email), EMAIL_ERROR_DELAY_MS)
     return () => clearTimeout(timer)
   }, [email, emailValid])
-  // Derived (not effect-set): the email error shows for a present, invalid value once the debounce has
-  // elapsed for THIS exact string. Keying `errorArmedFor` to the email resets it on every keystroke, so
-  // there is no synchronous setState in the effect — the only set happens in the timer callback.
+  // Keyed to the email string so it re-arms each keystroke and the effect needs no synchronous setState.
   const showEmailError = !!email && !emailValid && errorArmedFor === email
 
   if (!app) return null
@@ -218,9 +216,7 @@ export function AppDetail({ appId }: AppDetailProps) {
             <ArrowBack sx={{ fontSize: 18 }} />
             <TextCaptionNeutral60>{t('home.backToApps')}</TextCaptionNeutral60>
           </Box>
-          {/* Mobile: horizontal scrollable app-type strip — replaces the vertical rail (research:
-              a strip beats a dropdown/accordion for cross-type jumps and stays visible). Bleeds
-              edge-to-edge so the overflow is a discoverable scroll affordance. Desktop keeps the rail. */}
+          {/* Mobile app-type switcher: scrollable strip; bleeds edge-to-edge as a scroll cue. */}
           <Box
             component="nav"
             aria-label={t('home.appTypes')}

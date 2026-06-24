@@ -3,20 +3,14 @@
 import { useState } from 'react'
 import { useHasHover } from './useHasHover'
 
-// Headless reveal interaction — the component depends on the INTENT (`revealed` + an activate
-// callback) and spreads `containerProps`; it never knows hover vs tap (DIP — the platform is the
-// implementation, behind this interface). Implementation per input capability ([[useHasHover]]):
-//   • hover devices  → reveal on hover, activate on click
-//   • touch devices  → reveal on first tap, activate on the second (tap is a 2-state toggle, so for
-//                      a showcase we intentionally drop "tap to flip back" — you go in or scroll on)
+// Hover: reveal on hover, activate on click. Touch: first tap reveals, second activates — one gesture
+// can't do reveal + back + activate, so a showcase drops "tap to flip back".
 export function useRevealInteraction(onActivate: () => void) {
   const hasHover = useHasHover()
   const [hovered, setHovered] = useState(false)
   const [tapped, setTapped] = useState(false)
   const revealed = hasHover ? hovered : tapped
 
-  // Touch only: once revealed, the next tap activates — surface a "tap to open" affordance so the
-  // user knows a second tap navigates. Hover devices activate on a single click, so no hint needed.
   const showActivateHint = !hasHover && revealed
 
   const containerProps = hasHover

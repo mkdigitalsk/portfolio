@@ -48,10 +48,8 @@ export function FlipRevealCard({
   const reduceMotion = useReducedMotion()
   const animate = !reduceMotion
   const flipTo = 180 * flipSign
-  // Reveal hidden behind an intent interface (useRevealInteraction): hover devices reveal on hover,
-  // touch devices on tap — the card only knows `revealed` + spreads containerProps (DIP; platform is
-  // the implementation). State lives on the STABLE outer container, never whileHover on the rotating
-  // card (mid-flip the 3D card turns edge-on → browser fires pointerleave → Framer would reverse/stall).
+  // State on the stable outer container, never whileHover on the rotating card: mid-flip it turns
+  // edge-on, pointerleave fires, and Framer would stall.
   const { revealed, containerProps, showActivateHint } = useRevealInteraction(onActivate)
 
   const handleKeyDown = (event: KeyboardEvent) => {
@@ -129,9 +127,6 @@ export function FlipRevealCard({
 
         <Box sx={{ ...faceStyle, transform: `rotateX(${flipTo}deg)`, bgcolor: 'background.paper' }}>
           {Preview ? <Preview accent={accent} /> : null}
-          {/* Touch-only affordance: after the first tap reveals the preview, a forward arrow signals
-              that the next tap opens the detail (the web "click → navigate" cue). Non-interactive —
-              the whole card's second tap navigates. */}
           {showActivateHint && (
             <motion.div
               aria-hidden
