@@ -27,6 +27,9 @@ function useClock() {
 
 export interface PreviewProps {
   accent: string
+  // ms after the card is revealed before the in-screen action starts — per card type, so the
+  // action begins right after that card's own open/reveal finishes. See previewTiming.ts.
+  startDelay?: number
 }
 
 // A phone-style app screen: subtle status bar on top, content below, clipped + rounded.

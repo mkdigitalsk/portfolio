@@ -9,6 +9,7 @@ import { useRevealInteraction } from '@/shared/hooks/useRevealInteraction'
 import { TextH6Bold } from '@/shared/components'
 import { CARD_FLIP_CLOSE_S, CARD_FLIP_S, FLIP_EASE, ICON_FLIP_S } from './flipTiming'
 import { APP_PREVIEWS } from './previews'
+import { actionStartMs } from './previews/previewTiming'
 import type { ShowcaseApp } from './apps'
 
 const CARD_RADIUS = 12
@@ -126,7 +127,9 @@ export function FlipRevealCard({
         </Box>
 
         <Box sx={{ ...faceStyle, transform: `rotateX(${flipTo}deg)`, bgcolor: 'background.paper' }}>
-          {Preview ? <Preview accent={accent} /> : null}
+          {/* Mount the preview only while revealed → its looped animation restarts from the start
+              on every open (instead of being caught mid-cycle), and idle cards don't animate. */}
+          {revealed && Preview ? <Preview accent={accent} startDelay={actionStartMs(app.iconAnimation)} /> : null}
           {showActivateHint && (
             <motion.div
               aria-hidden

@@ -6,15 +6,17 @@ import { animate, AnimatePresence, motion, useReducedMotion } from 'motion/react
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { PreviewScreen, type PreviewProps } from './PreviewKit'
+import { DETAIL_HOLD_MS, LOOP_GAP_MS, SCREEN_FADE_S, SCREEN_SLIDE_PX, TAP_RIPPLE_S, TAP_TO_FLIP_MS } from './previewTiming'
 
 // Fintech micro-theme: Revolut/Monzo vibe — tighter corners, real MUI icons (not emoji),
-// tabular-nums, high contrast. Loop: accounts overview -> tap Main Account -> account detail
-// where an incoming credit drops in from the top, the list carousels down one row (last clipped
-// off the bottom), and the balance counts up.
+// tabular-nums, high contrast. Flow: accounts overview -> tap Main Account -> account detail where
+// you first see the base balance, then an incoming credit drops in from the top, the list carousels
+// down one row (last clipped off the bottom), and the balance counts up.
 
 const R = 8 // tighter, fintech radius
 const ROW = 34 // transaction row height (also the carousel slide distance)
 const VISIBLE = 3
+const CREDIT_DROP_MS = 700 // after the detail opens: hold on the base balance, then the credit lands
 
 const ACCOUNTS = [
   { Icon: AccountBalanceWallet, key: 'mainAccount', subKey: 'current', amount: '€8,210.30' },
@@ -75,6 +77,8 @@ function TxRow({ tx, flash }: { tx: Tx; flash: boolean }) {
   )
 }
 
+// Plays the incoming-credit beat from its OWN mount (which happens after the overview tap + flip —
+// so it's always the second beat, after the tap on Main Account).
 function AccountDetail({ label, sub }: { label: string; sub: string }) {
   const reduceMotion = useReducedMotion()
   const [balance, setBalance] = useState(BASE_BALANCE)
@@ -88,7 +92,7 @@ function AccountDetail({ label, sub }: { label: string; sub: string }) {
       setRows([CREDIT, ...BASE_TX]) // credit on top; the old last row is now the clipped 4th
       setSlideKey(1) // remount the strip → carousel slide from y:-ROW to 0
       controls = animate(BASE_BALANCE, BASE_BALANCE + CREDIT_AMOUNT, { duration: 0.9, ease: 'easeOut', onUpdate: setBalance })
-    }, 650)
+    }, CREDIT_DROP_MS)
     return () => {
       clearTimeout(timer)
       controls?.stop()
@@ -129,27 +133,29 @@ function AccountDetail({ label, sub }: { label: string; sub: string }) {
   )
 }
 
-export function FintechFlow({ accent }: PreviewProps) {
+export function FintechFlow({ accent, startDelay = 900 }: PreviewProps) {
   const t = useTranslations('previews.fintech')
   const reduceMotion = useReducedMotion()
-  const [screen, setScreen] = useState(0)
+  const [screen, setScreen] = useState(0) // start on the accounts overview
   const [tapping, setTapping] = useState(false)
 
   useEffect(() => {
     if (reduceMotion) return undefined
-    let flip: ReturnType<typeof setTimeout>
-    const loop = setInterval(() => {
-      setTapping(true)
-      flip = setTimeout(() => {
-        setScreen((s) => 1 - s)
-        setTapping(false)
-      }, 400)
-    }, 2800)
-    return () => {
-      clearInterval(loop)
-      clearTimeout(flip)
+    const timers: ReturnType<typeof setTimeout>[] = []
+    const cycle = () => {
+      timers.push(setTimeout(() => setTapping(true), startDelay)) // tap Main Account
+      timers.push(
+        setTimeout(() => {
+          setScreen(1)
+          setTapping(false)
+        }, startDelay + TAP_TO_FLIP_MS),
+      )
+      timers.push(setTimeout(() => setScreen(0), startDelay + TAP_TO_FLIP_MS + DETAIL_HOLD_MS)) // back to overview
+      timers.push(setTimeout(cycle, startDelay + TAP_TO_FLIP_MS + DETAIL_HOLD_MS + LOOP_GAP_MS)) // loop
     }
-  }, [reduceMotion])
+    cycle()
+    return () => timers.forEach(clearTimeout)
+  }, [reduceMotion, startDelay])
 
   return (
     <PreviewScreen>
@@ -158,10 +164,10 @@ export function FintechFlow({ accent }: PreviewProps) {
           {screen === 0 ? (
             <motion.div
               key="home"
-              initial={{ opacity: 0, x: -10 }}
+              initial={{ opacity: 0, x: -SCREEN_SLIDE_PX }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -10 }}
-              transition={{ duration: 0.3 }}
+              exit={{ opacity: 0, x: -SCREEN_SLIDE_PX }}
+              transition={{ duration: SCREEN_FADE_S }}
               style={{ padding: '0 12px' }}
             >
               <Box sx={{ fontSize: 10.5, fontWeight: 700, color: 'text.secondary', letterSpacing: '-0.01em', textAlign: 'right' }}>
@@ -191,7 +197,8 @@ export function FintechFlow({ accent }: PreviewProps) {
                     p: 1,
                     mb: 0.75,
                     borderRadius: `${R}px`,
-                    bgcolor: 'action.hover',
+                    bgcolor: i === 0 && tapping ? 'action.selected' : 'action.hover',
+                    overflow: 'hidden',
                   }}
                 >
                   <Box
@@ -216,18 +223,20 @@ export function FintechFlow({ accent }: PreviewProps) {
                   </Box>
                   {tapping && i === 0 && !reduceMotion && (
                     <motion.div
-                      initial={{ scale: 0, opacity: 0.5 }}
-                      animate={{ scale: 2.4, opacity: 0 }}
-                      transition={{ duration: 0.45 }}
+                      initial={{ scale: 0, opacity: 0.4 }}
+                      animate={{ scale: 1, opacity: 0 }}
+                      transition={{ duration: TAP_RIPPLE_S, ease: 'easeOut' }}
                       style={{
                         position: 'absolute',
-                        right: 22,
+                        left: '50%',
                         top: '50%',
-                        width: 22,
-                        height: 22,
-                        marginTop: -11,
+                        width: 220,
+                        height: 220,
+                        marginLeft: -110,
+                        marginTop: -110,
                         borderRadius: '50%',
                         background: accent,
+                        pointerEvents: 'none',
                       }}
                     />
                   )}
@@ -237,10 +246,10 @@ export function FintechFlow({ accent }: PreviewProps) {
           ) : (
             <motion.div
               key="detail"
-              initial={{ opacity: 0, x: 10 }}
+              initial={{ opacity: 0, x: SCREEN_SLIDE_PX }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 10 }}
-              transition={{ duration: 0.3 }}
+              exit={{ opacity: 0, x: SCREEN_SLIDE_PX }}
+              transition={{ duration: SCREEN_FADE_S }}
               style={{ padding: '0 12px' }}
             >
               <AccountDetail label={t('mainAccount')} sub={t('current')} />

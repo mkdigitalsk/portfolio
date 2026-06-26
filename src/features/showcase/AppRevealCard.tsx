@@ -3,13 +3,14 @@
 import Box from '@mui/material/Box'
 import { motion, useAnimationControls, useReducedMotion, type TargetAndTransition } from 'motion/react'
 import { useTranslations } from 'next-intl'
-import { type KeyboardEvent } from 'react'
+import { useState, type KeyboardEvent } from 'react'
 import { TextH6Bold } from '@/shared/components'
 import { HeartBeat } from './HeartBeat'
 import { fasterClose } from './closeTransition'
 import { iconAnimations } from './iconAnimations'
 import { planePaths, revealAnimations } from './revealAnimations'
 import { APP_PREVIEWS } from './previews'
+import { actionStartMs } from './previews/previewTiming'
 import type { ShowcaseApp } from './apps'
 
 const CARD_RADIUS = 12
@@ -44,6 +45,9 @@ export function AppRevealCard({ app, ariaLabel, onActivate, height = 240 }: AppR
   const isFly = iconAnimation === 'fly'
   const clipId = `plane-reveal-${app.id}`
   const flyControls = useAnimationControls()
+  // Mount the preview only while hovered → its looped action restarts from the start on each
+  // reveal (instead of running from page-load), and idle cards don't animate.
+  const [hovered, setHovered] = useState(false)
 
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -80,11 +84,13 @@ export function AppRevealCard({ app, ariaLabel, onActivate, height = 240 }: AppR
         animate="rest"
         whileHover={animate ? 'active' : undefined}
         onHoverStart={() => {
+          setHovered(true)
           if (isFly && animate) {
             flyControls.start({ ...(iconAnim.variants.active as TargetAndTransition), transition: iconAnim.transition })
           }
         }}
         onHoverEnd={() => {
+          setHovered(false)
           if (isFly && animate) {
             flyControls.start({ ...PLANE_FLY_IN, transition: PLANE_FLY_IN_TRANSITION })
           }
@@ -120,7 +126,7 @@ export function AppRevealCard({ app, ariaLabel, onActivate, height = 240 }: AppR
             <Box
               sx={{ position: 'absolute', inset: 0, clipPath: `url(#${clipId})`, WebkitClipPath: `url(#${clipId})` }}
             >
-              {Preview ? <Preview accent={accent} /> : null}
+              {hovered && Preview ? <Preview accent={accent} startDelay={actionStartMs(iconAnimation)} /> : null}
             </Box>
           </>
         )}
@@ -133,7 +139,7 @@ export function AppRevealCard({ app, ariaLabel, onActivate, height = 240 }: AppR
             }}
             style={{ position: 'absolute', inset: 0 }}
           >
-            {Preview ? <Preview accent={accent} /> : null}
+            {hovered && Preview ? <Preview accent={accent} startDelay={actionStartMs(iconAnimation)} /> : null}
           </motion.div>
         )}
 
