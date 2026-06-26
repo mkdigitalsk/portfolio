@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Box, Stack } from '@mui/material'
 import { getLocale } from 'next-intl/server'
 import { TextBody1Neutral60, TextCaptionNeutral60, TextH4Bold, TextH6Bold } from '@/shared/components'
-import { PAGE_PT } from '@/shared/layout'
+import { CONTENT_MAX, PAGE_PT, TEXT_MAX } from '@/shared/layout'
 
 export const metadata: Metadata = {
   title: 'Ochrana osobných údajov — MK Digital',
@@ -14,18 +14,17 @@ const CONTACT_EMAIL = 'admin@mkdigital.sk'
 interface Policy {
   title: string
   updated: string
-  reviewNote: string
   sections: { h: string; body: string }[]
 }
 
 // Canonical Slovak version (the controller is a Slovak s.r.o.; Slovak law applies),
 // with an English version for the other locales. Grounded in GDPR (Reg. 2016/679),
 // the Slovak Act 18/2018 Coll. and Act 452/2021 Coll. § 109 (cookies).
-// TODO before go-live: fill the controller's registered seat + IČO, and have it reviewed by a lawyer.
+// TODO before go-live (tracked in roadmap): lawyer review; confirm the server's hosting region to
+// finalise the international-transfer clause in §4 (lead API + DB run on Railway).
 const SK: Policy = {
   title: 'Ochrana osobných údajov',
   updated: 'Účinné od: 20. júna 2026',
-  reviewNote: 'Odporúčame dať tento dokument pred ostrým spustením skontrolovať advokátovi.',
   sections: [
     {
       h: '1. Prevádzkovateľ',
@@ -33,7 +32,7 @@ const SK: Policy = {
     },
     {
       h: '2. Aké údaje spracúvame',
-      body: 'Pri použití kontaktného / projektového formulára spracúvame len to, čo nám pošlete: váš e-mail (povinný) a voliteľne meno alebo firmu, telefónne číslo, vybraný typ produktu a funkcie a vašu správu.',
+      body: 'Pri použití kontaktného / projektového formulára spracúvame len to, čo nám pošlete: váš e-mail (povinný) a voliteľne meno alebo firmu, telefónne číslo, vybraný typ produktu, platformy a funkcie a vašu správu.',
     },
     {
       h: '3. Účel a právny základ',
@@ -41,15 +40,15 @@ const SK: Policy = {
     },
     {
       h: '4. Príjemcovia a prenos do tretej krajiny',
-      body: 'Odoslanie formulára nám doručuje sprostredkovateľská služba Web3Forms, ktorá ho prepošle na náš e-mail; pri tom sa údaje môžu spracúvať aj mimo EÚ (USA). Iným tretím stranám údaje neposkytujeme. Plánujeme prejsť na vlastné riešenie v EÚ, ktoré tento prenos odstráni.',
+      body: 'Odoslaný formulár prijíma a uloží náš vlastný server u poskytovateľa hostingu (Railway); notifikačný e-mail nám doručuje náš e-mailový poskytovateľ Websupport, s. r. o. (Slovensko, EÚ). Iným tretím stranám údaje neposkytujeme ani nepredávame. Ak by sa časť spracúvania uskutočňovala mimo EÚ, opierame sa o štandardné zmluvné doložky.',
     },
     {
       h: '5. Doba uchovávania',
-      body: 'Váš dopyt uchovávame len po dobu nevyhnutnú na jeho vybavenie a prípadnú nadväznú komunikáciu, potom ho vymažeme.',
+      body: 'Váš dopyt uchovávame v našom systéme len po dobu nevyhnutnú na jeho vybavenie a prípadnú nadväznú komunikáciu, potom ho vymažeme.',
     },
     {
       h: '6. Cookies a úložisko prehliadača',
-      body: 'Nepoužívame analytické, reklamné ani sledovacie cookies, preto nepotrebujeme cookie lištu. Ukladáme len funkčné nastavenia vo vašom prehliadači — jazyk (cookie) a tému a obmedzenie animácií (local storage) — podľa § 109 zákona č. 452/2021 Z. z. Tieto údaje vás neidentifikujú a neopúšťajú vaše zariadenie.',
+      body: 'Nepoužívame analytické, reklamné ani sledovacie cookies, preto nepotrebujeme cookie lištu. Ukladáme len funkčné nastavenia vo vašom prehliadači — jazyk a tému (cookies) a obmedzenie animácií (local storage) — podľa § 109 zákona č. 452/2021 Z. z. Tieto údaje vás neidentifikujú a neopúšťajú vaše zariadenie.',
     },
     {
       h: '7. Vaše práva',
@@ -69,7 +68,6 @@ const SK: Policy = {
 const EN: Policy = {
   title: 'Privacy Policy',
   updated: 'Effective: 20 June 2026',
-  reviewNote: 'We recommend a lawyer reviews this document before go-live.',
   sections: [
     {
       h: '1. Controller',
@@ -77,7 +75,7 @@ const EN: Policy = {
     },
     {
       h: '2. What we collect',
-      body: 'When you use the contact / project form we process only what you send: your email (required), and optionally your name or company, phone number, the product type and features you selected, and your message.',
+      body: 'When you use the contact / project form we process only what you send: your email (required), and optionally your name or company, phone number, the product type, platforms and features you selected, and your message.',
     },
     {
       h: '3. Purpose & legal basis',
@@ -85,12 +83,12 @@ const EN: Policy = {
     },
     {
       h: '4. Recipients & international transfer',
-      body: 'The form is delivered to us by Web3Forms, a processor that forwards your submission to our email; in doing so data may be processed outside the EU (USA). We do not share your data with anyone else. We plan to move to our own EU-based solution, which removes this transfer.',
+      body: 'Your submission is received and stored by our own server at our hosting provider (Railway); the notification email is delivered by our email provider Websupport s. r. o. (Slovakia, EU). We do not share or sell your data to anyone else. Where any processing takes place outside the EU, we rely on standard contractual clauses.',
     },
-    { h: '5. Retention', body: 'We keep your enquiry only as long as needed to handle it and any follow-up, then delete it.' },
+    { h: '5. Retention', body: 'We store your enquiry only as long as needed to handle it and any follow-up, then delete it.' },
     {
       h: '6. Cookies & browser storage',
-      body: 'We use no analytics, advertising, or tracking cookies, so no cookie banner is needed. We store only functional preferences in your browser — your language (cookie) and your theme and reduced-motion settings (local storage) — under § 109 of Act 452/2021 Coll. None of this identifies you or leaves your device.',
+      body: 'We use no analytics, advertising, or tracking cookies, so no cookie banner is needed. We store only functional preferences in your browser — your language and theme (cookies) and your reduced-motion setting (local storage) — under § 109 of Act 452/2021 Coll. None of this identifies you or leaves your device.',
     },
     {
       h: '7. Your rights',
@@ -112,23 +110,19 @@ export default async function PrivacyPage() {
   const p = locale.startsWith('sk') ? SK : EN
 
   return (
-    <Box component="main" sx={{ maxWidth: 880, mx: 'auto', px: 3, pt: PAGE_PT, pb: { xs: 4, md: 6 } }}>
+    <Box component="main" sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: { xs: 2, md: 3 }, pt: PAGE_PT, pb: { xs: 4, md: 6 } }}>
       <TextH4Bold sx={{ mb: 1 }}>{p.title}</TextH4Bold>
       <Box sx={{ mb: 4 }}>
         <TextCaptionNeutral60>{p.updated}</TextCaptionNeutral60>
       </Box>
 
-      <Stack spacing={3}>
+      <Stack spacing={3} sx={{ maxWidth: TEXT_MAX }}>
         {p.sections.map((section) => (
           <Box key={section.h}>
             <TextH6Bold sx={{ mb: 1 }}>{section.h}</TextH6Bold>
             <TextBody1Neutral60>{section.body}</TextBody1Neutral60>
           </Box>
         ))}
-
-        <Box sx={{ pt: 2 }}>
-          <TextCaptionNeutral60>{p.reviewNote}</TextCaptionNeutral60>
-        </Box>
       </Stack>
     </Box>
   )
