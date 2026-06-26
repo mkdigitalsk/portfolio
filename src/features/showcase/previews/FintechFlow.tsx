@@ -1,12 +1,12 @@
 'use client'
 
-import { AccountBalanceWallet, ArrowDownward, ArrowUpward, CreditCard } from '@mui/icons-material'
+import { ArrowDownward, ArrowUpward } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import { animate, AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { PreviewScreen, type PreviewProps } from './PreviewKit'
-import { DETAIL_HOLD_MS, LOOP_GAP_MS, SCREEN_FADE_S, SCREEN_SLIDE_PX, TAP_RIPPLE_S, TAP_TO_FLIP_MS } from './previewTiming'
+import { DETAIL_HOLD_MS, LOOP_GAP_MS, PRESS_DIP, PRESS_TRANSITION, SCREEN_FADE_S, SCREEN_SLIDE_PX, TAP_RIPPLE_S, TAP_TO_FLIP_MS } from './previewTiming'
 
 // Fintech micro-theme: Revolut/Monzo vibe — tighter corners, real MUI icons (not emoji),
 // tabular-nums, high contrast. Flow: accounts overview -> tap Main Account -> account detail where
@@ -18,9 +18,13 @@ const ROW = 34 // transaction row height (also the carousel slide distance)
 const VISIBLE = 3
 const CREDIT_DROP_MS = 700 // after the detail opens: hold on the base balance, then the credit lands
 
+// Multi-currency wallet (Revolut/Wise vibe): the EUR account is the main one (tapped → detail);
+// the others are the same wallet in other currencies, each with its flag.
+// TODO(i18n): currency account names are literals — localize before final.
 const ACCOUNTS = [
-  { Icon: AccountBalanceWallet, key: 'mainAccount', subKey: 'current', amount: '€8,210.30' },
-  { Icon: CreditCard, key: 'cardPhysical', sub: 'Visa', amount: '€4,270.20' },
+  { flag: '🇪🇺', key: 'mainAccount', sub: 'EUR', amount: '€8,210.30' },
+  { flag: '🇬🇧', name: 'British pound', sub: 'GBP', amount: '£2,450.00' },
+  { flag: '🇺🇸', name: 'US dollar', sub: 'USD', amount: '$1,920.00' },
 ]
 
 type Tx = { id: string; dir: 'in' | 'out'; name: string; amount: string }
@@ -175,27 +179,30 @@ export function FintechFlow({ accent, startDelay = 900 }: PreviewProps) {
               </Box>
               <Box
                 sx={{
-                  fontSize: 26,
+                  fontSize: 23,
                   fontWeight: 800,
                   color: 'text.primary',
                   letterSpacing: '-0.02em',
-                  mb: 1.25,
+                  mb: 1,
                   fontVariantNumeric: 'tabular-nums',
                   textAlign: 'right',
                 }}
               >
-                €12,480.50
+                €12,862.30
               </Box>
               {ACCOUNTS.map((a, i) => (
                 <Box
-                  key={a.key}
+                  key={a.sub}
+                  component={motion.div}
+                  animate={tapping && i === 0 && !reduceMotion ? { scale: PRESS_DIP } : {}}
+                  transition={PRESS_TRANSITION}
                   sx={{
                     position: 'relative',
                     display: 'flex',
                     alignItems: 'center',
                     gap: 1,
-                    p: 1,
-                    mb: 0.75,
+                    p: 0.85,
+                    mb: 0.6,
                     borderRadius: `${R}px`,
                     bgcolor: i === 0 && tapping ? 'action.selected' : 'action.hover',
                     overflow: 'hidden',
@@ -203,20 +210,21 @@ export function FintechFlow({ accent, startDelay = 900 }: PreviewProps) {
                 >
                   <Box
                     sx={{
-                      width: 30,
-                      height: 30,
-                      borderRadius: `${R - 2}px`,
+                      width: 28,
+                      height: 28,
+                      borderRadius: '50%',
                       display: 'grid',
                       placeItems: 'center',
-                      bgcolor: `${accent}1A`,
-                      color: accent,
+                      fontSize: 16,
+                      flexShrink: 0,
+                      bgcolor: 'action.hover',
                     }}
                   >
-                    <a.Icon sx={{ fontSize: 16 }} />
+                    {a.flag}
                   </Box>
                   <Box sx={{ flex: 1, minWidth: 0 }}>
-                    <Box sx={{ fontSize: 11.5, fontWeight: 700, color: 'text.primary' }}>{t(a.key)}</Box>
-                    <Box sx={{ fontSize: 9.5, color: 'text.secondary' }}>{a.subKey ? t(a.subKey) : a.sub}</Box>
+                    <Box sx={{ fontSize: 11.5, fontWeight: 700, color: 'text.primary' }}>{a.key ? t(a.key) : a.name}</Box>
+                    <Box sx={{ fontSize: 9.5, color: 'text.secondary' }}>{a.sub}</Box>
                   </Box>
                   <Box sx={{ fontSize: 11.5, fontWeight: 800, color: 'text.primary', fontVariantNumeric: 'tabular-nums' }}>
                     {a.amount}

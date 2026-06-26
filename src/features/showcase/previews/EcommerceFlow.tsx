@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { PreviewScreen, type PreviewProps } from './PreviewKit'
+import { PRESS_DIP, PRESS_TRANSITION } from './previewTiming'
 
 // E-commerce micro-theme: Shopify/Amazon vibe. Distinct flow: on the product page you PICK A SIZE,
 // then Add to Cart -> the button confirms "Added" and the cart badge bumps +1. Two screens.
@@ -214,7 +215,13 @@ export function EcommerceFlow({ accent, startDelay = 700 }: PreviewProps) {
                 <CartBadge accent={accent} count={2} />
               </Box>
               {PRODUCTS.map((p, i) => (
-                <Box key={p.key} sx={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 1.25, py: 1 }}>
+                <Box
+                  key={p.key}
+                  component={motion.div}
+                  animate={tapping && i === 1 && !reduceMotion ? { scale: PRESS_DIP } : {}}
+                  transition={PRESS_TRANSITION}
+                  sx={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 1.25, py: 1 }}
+                >
                   <Box
                     sx={{
                       width: 38,

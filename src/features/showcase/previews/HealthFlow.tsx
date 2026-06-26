@@ -2,10 +2,11 @@
 
 import { Bolt, Check, DirectionsRun, LocalFireDepartment, Timer } from '@mui/icons-material'
 import Box from '@mui/material/Box'
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { animate, AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { PreviewScreen, type PreviewProps } from './PreviewKit'
+import { PRESS_DIP, PRESS_TRANSITION } from './previewTiming'
 
 // Health & Fitness micro-theme: Strava/Nike Training Club vibe. Full flow: dashboard -> tap
 // "Start workout" -> the run progresses live (ring fills, clock ticks, distance/kcal climb) ->
@@ -25,32 +26,35 @@ const RING_R = (RING_SIZE - RING_STROKE) / 2
 const RING_C = 2 * Math.PI * RING_R
 
 const START = 12 * 60 + 34 // 12:34 elapsed
-const RUN_MS = 2400 // how long the run progresses before it's "done"
+const RUN_MS = 2800 // run duration; eased start→accelerate→ease out, like a real effort curve
+const RUN_SECS = 24 // clock advances this many seconds across the run
+const RUN_DIST = 0.5 // km gained
+const RUN_KCAL = 48 // kcal gained
+const PROGRESS_START = 0.16
+const PROGRESS_END = 0.96
 const fmtClock = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
 
 function ActiveWorkout({ accent, t }: { accent: string; t: ReturnType<typeof useTranslations> }) {
   const reduceMotion = useReducedMotion()
-  const [secs, setSecs] = useState(START)
+  const [p, setP] = useState(reduceMotion ? 1 : 0) // eased run progress 0..1
   const [done, setDone] = useState(false)
 
   useEffect(() => {
-    if (reduceMotion) return undefined // reduced motion: frozen snapshot
-    const id = setInterval(() => setSecs((s) => s + 1), 200)
-    const finish = setTimeout(() => {
-      clearInterval(id)
-      setDone(true) // run complete -> reveal the Save button
-    }, RUN_MS)
-    return () => {
-      clearInterval(id)
-      clearTimeout(finish)
-    }
+    if (reduceMotion) return undefined // reduced motion: frozen at the end
+    const controls = animate(0, 1, {
+      duration: RUN_MS / 1000,
+      ease: 'easeInOut', // start slow → accelerate → ease out
+      onUpdate: setP,
+      onComplete: () => setDone(true), // run complete -> reveal the Save button
+    })
+    return () => controls.stop()
   }, [reduceMotion])
 
-  const ticks = secs - START
-  const progress = done ? 0.96 : Math.min(0.92, 0.16 + ticks * 0.065)
+  const progress = PROGRESS_START + p * (PROGRESS_END - PROGRESS_START)
   const offset = RING_C * (1 - progress)
-  const distance = 3.2 + ticks * 0.03
-  const kcal = 320 + ticks * 3
+  const secs = START + Math.round(p * RUN_SECS)
+  const distance = 3.2 + p * RUN_DIST
+  const kcal = Math.round(320 + p * RUN_KCAL)
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -61,7 +65,7 @@ function ActiveWorkout({ accent, t }: { accent: string; t: ReturnType<typeof use
       <Box sx={{ position: 'relative', width: RING_SIZE, height: RING_SIZE, mb: 0.75 }}>
         <svg width={RING_SIZE} height={RING_SIZE} style={{ transform: 'rotate(-90deg)' }}>
           <circle cx={RING_SIZE / 2} cy={RING_SIZE / 2} r={RING_R} fill="none" stroke="rgba(128,128,128,0.18)" strokeWidth={RING_STROKE} />
-          <motion.circle
+          <circle
             cx={RING_SIZE / 2}
             cy={RING_SIZE / 2}
             r={RING_R}
@@ -70,9 +74,7 @@ function ActiveWorkout({ accent, t }: { accent: string; t: ReturnType<typeof use
             strokeWidth={RING_STROKE}
             strokeLinecap="round"
             strokeDasharray={RING_C}
-            initial={false}
-            animate={{ strokeDashoffset: offset }}
-            transition={{ duration: 0.25, ease: 'linear' }}
+            strokeDashoffset={offset}
           />
         </svg>
         <Box sx={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
@@ -171,6 +173,9 @@ export function HealthFlow({ accent, startDelay = 900 }: PreviewProps) {
                 ))}
               </Box>
               <Box
+                component={motion.div}
+                animate={tapping && !reduceMotion ? { scale: PRESS_DIP } : {}}
+                transition={PRESS_TRANSITION}
                 sx={{
                   position: 'relative',
                   height: 44,

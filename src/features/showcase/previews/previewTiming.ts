@@ -13,6 +13,8 @@ export const CONFIRM_GAP_MS = 200 // extra beat before a confirm / CTA fires
 export const DETAIL_HOLD_MS = 3000 // how long a detail screen holds before looping back to the list
 export const LOOP_GAP_MS = 600 // pause on the list screen before the cycle restarts
 export const POP_SPRING = { type: 'spring' as const, stiffness: 500, damping: 16 } // checkmark / badge pop
+export const PRESS_DIP = [1, 0.94, 1] // tap press: the button/row scale dips then releases (a real "click")
+export const PRESS_TRANSITION = { duration: 0.28, ease: 'easeOut' as const }
 
 // fintech/food flip in 3D (FlipRevealCard): icon flip then card flip.
 const FLIP_OPEN_MS = (ICON_FLIP_S + CARD_FLIP_S) * 1000 // ≈ 840ms
@@ -29,8 +31,8 @@ export const CARD_TIMING: Record<IconAnimation, { reveal: number; offset: number
   flip: { reveal: FLIP_OPEN_MS, offset: 300 }, // fintech — tap Main Account just after the overview reveals (~1140ms) → detail → credit
   food: { reveal: FLIP_OPEN_MS, offset: 1570 }, // food — menu scrolls to the burger (~2.26s), then tap (~2410ms) → ingredients
   drop: { reveal: clipRevealMs('drop'), offset: 400 }, // ecommerce — show the product before the size taps (~950ms)
-  wind: { reveal: clipRevealMs('wind'), offset: 150 }, // marketplace — was good, just ~50ms later (~700ms)
-  fly: { reveal: clipRevealMs('fly'), offset: -200 }, // booking — plane reveal is 1.2s; earliest VISIBLE start (~1000ms). Earlier just hides it behind the reveal → reappears next loop.
+  wind: { reveal: clipRevealMs('wind'), offset: 250 }, // marketplace — tiny pause before the first add-to-cart (~800ms)
+  fly: { reveal: clipRevealMs('fly'), offset: 300 }, // booking — tap the featured stay after the plane reveal (~1500ms) → detail → nights → Book
   heart: { reveal: clipRevealMs('heart'), offset: 150 }, // health — tap "Start workout" after the dashboard reveals (~1150ms)
 }
 

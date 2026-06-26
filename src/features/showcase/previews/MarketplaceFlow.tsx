@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { PreviewScreen, type PreviewProps } from './PreviewKit'
+import { PRESS_DIP, PRESS_TRANSITION } from './previewTiming'
 
 // Variation A — about price/cart: items drop into the cart (top-right icon fills), then the cart
 // opens to a SUMMARY with the running total, and Checkout is tapped -> "Order placed". Two screens.
@@ -23,6 +24,13 @@ const LISTINGS = [
 const formatEUR = (n: number) => `€${n.toLocaleString('en-US', { maximumFractionDigits: 0 })}`
 const CART_TOTAL = LISTINGS.reduce((s, l) => s + l.price, 0)
 
+const ADD_STEP_MS = 550 // cadence of items dropping into the cart, one after another
+const LAST_ADD_MS = (LISTINGS.length - 1) * ADD_STEP_MS // the last item lands
+const OPEN_CART_MS = LAST_ADD_MS + 600 // tap the cart icon
+const SUMMARY_MS = OPEN_CART_MS + 400 // flip to the summary
+const PLACED_MS = SUMMARY_MS + 1400 // tap Checkout -> placed
+const RESTART_MS = PLACED_MS + 1100 // hold the confirmation, then loop
+
 export function MarketplaceFlow({ accent, startDelay = 670 }: PreviewProps) {
   const t = useTranslations('previews.marketplace')
   const reduceMotion = useReducedMotion()
@@ -35,27 +43,25 @@ export function MarketplaceFlow({ accent, startDelay = 670 }: PreviewProps) {
     if (reduceMotion) return undefined
     const timers: ReturnType<typeof setTimeout>[] = []
     const runAdds = () => {
-      timers.push(setTimeout(() => setInCart(1), startDelay))
-      timers.push(setTimeout(() => setInCart(2), startDelay + 500))
-      timers.push(setTimeout(() => setInCart(3), startDelay + 1000))
-      timers.push(setTimeout(() => setTapping(true), startDelay + 1600)) // tap the cart icon
+      LISTINGS.forEach((_, i) => timers.push(setTimeout(() => setInCart(i + 1), startDelay + i * ADD_STEP_MS)))
+      timers.push(setTimeout(() => setTapping(true), startDelay + OPEN_CART_MS)) // tap the cart icon
       timers.push(
         setTimeout(() => {
           setScreen(1)
           setTapping(false)
-        }, startDelay + 2000),
+        }, startDelay + SUMMARY_MS),
       )
-      timers.push(setTimeout(() => setPlaced(true), startDelay + 3400)) // tap Checkout -> placed
+      timers.push(setTimeout(() => setPlaced(true), startDelay + PLACED_MS)) // tap Checkout -> placed
     }
     const restart = () => {
       setScreen(0)
       setInCart(0)
       setPlaced(false)
       runAdds()
-      timers.push(setTimeout(restart, startDelay + 4500))
+      timers.push(setTimeout(restart, startDelay + RESTART_MS))
     }
     runAdds() // first cycle (state already at defaults — no sync setState in effect body)
-    timers.push(setTimeout(restart, startDelay + 4500))
+    timers.push(setTimeout(restart, startDelay + RESTART_MS))
     return () => timers.forEach(clearTimeout)
   }, [reduceMotion, startDelay])
 
@@ -89,7 +95,12 @@ export function MarketplaceFlow({ accent, startDelay = 670 }: PreviewProps) {
                     {t(pillKey)}
                   </Box>
                 ))}
-                <Box sx={{ position: 'relative', ml: 'auto', display: 'grid', placeItems: 'center', width: 26, height: 26 }}>
+                <Box
+                  component={motion.div}
+                  animate={tapping && !reduceMotion ? { scale: PRESS_DIP } : {}}
+                  transition={PRESS_TRANSITION}
+                  sx={{ position: 'relative', ml: 'auto', display: 'grid', placeItems: 'center', width: 26, height: 26 }}
+                >
                   <ShoppingCartOutlined sx={{ fontSize: 18, color: 'text.secondary' }} />
                   {inCart > 0 && (
                     <motion.div

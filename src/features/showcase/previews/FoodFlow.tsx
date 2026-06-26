@@ -12,6 +12,8 @@ import {
   FIRST_BEAT_MS,
   LOOP_GAP_MS,
   POP_SPRING,
+  PRESS_DIP,
+  PRESS_TRANSITION,
   SCREEN_FADE_S,
   SCREEN_SLIDE_PX,
   STEP_MS,
@@ -193,6 +195,9 @@ export function FoodFlow({ accent, startDelay = 900 }: PreviewProps) {
                   {DISHES.map((d, i) => (
                     <Box
                       key={d.key ?? d.name}
+                      component={motion.div}
+                      animate={tapping && i === BURGER_INDEX && !reduceMotion ? { scale: PRESS_DIP } : {}}
+                      transition={PRESS_TRANSITION}
                       sx={{
                         position: 'relative',
                         height: ROW_H,
