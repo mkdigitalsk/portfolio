@@ -13,6 +13,8 @@ import CssBaseline from '@mui/material/CssBaseline'
 import InitColorSchemeScript from '@mui/material/InitColorSchemeScript'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
+import { cookies } from 'next/headers'
+import { InitialSchemeProvider, SchemeCookieSync } from '@/shared/theme/colorSchemeCookie'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Footer, NavBar } from '@/shared/components'
 import { LocaleDeepLink } from '@/shared/components/LocaleDeepLink'
@@ -28,6 +30,7 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const locale = await getLocale()
   const messages = await getMessages()
+  const initialScheme = (await cookies()).get('scheme')?.value === 'dark' ? 'dark' : 'light'
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -38,11 +41,14 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
           <AppRouterCacheProvider options={{ enableCssLayer: true }}>
             <ThemeProvider theme={theme} defaultMode="system">
               <CssBaseline />
-              <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100dvh' }}>
-                <NavBar />
-                <Box sx={{ flex: 1 }}>{children}</Box>
-                <Footer />
-              </Box>
+              <InitialSchemeProvider value={initialScheme}>
+                <SchemeCookieSync />
+                <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100dvh' }}>
+                  <NavBar />
+                  <Box sx={{ flex: 1 }}>{children}</Box>
+                  <Footer />
+                </Box>
+              </InitialSchemeProvider>
             </ThemeProvider>
           </AppRouterCacheProvider>
         </NextIntlClientProvider>

@@ -5,35 +5,33 @@ import { Box, IconButton, Tooltip } from '@mui/material'
 import { useColorScheme } from '@mui/material/styles'
 import { useReducedMotion } from 'motion/react'
 import { useViewTransition } from '@/shared/hooks/useViewTransition'
+import { useInitialScheme } from '@/shared/theme/colorSchemeCookie'
 
 export function ThemeModeToggle() {
   const { mode, systemMode, setMode } = useColorScheme()
+  const initialScheme = useInitialScheme()
   const reduceMotion = useReducedMotion()
   const startViewTransition = useViewTransition()
 
-  // `useColorScheme().mode` is the only signal correct across system + explicit modes. It's
-  // undefined until mount (SSR can't resolve the scheme), so show a neutral placeholder — never a
-  // definite icon, which would flash wrong (sun in dark). This is the standard SSR mounted-guard.
-  if (!mode) {
-    return (
-      <IconButton size="small" disabled aria-label="Toggle theme">
-        <Box sx={{ width: 20, height: 20 }} />
-      </IconButton>
-    )
-  }
-
-  const resolved = mode === 'system' ? systemMode : mode
+  // Before mount `mode` is undefined; fall back to the server-known scheme (from cookie) so the
+  // icon is correct on first paint — same value on server + client first render, so no mismatch.
+  const resolved = mode ? (mode === 'system' ? systemMode : mode) : initialScheme
   const isDark = resolved === 'dark'
   const isSystem = mode === 'system'
 
   const handleToggle = () => {
+    if (!mode) return
     const opposite = systemMode === 'dark' ? 'light' : 'dark'
     const next = isSystem ? opposite : 'system'
     if (!reduceMotion) startViewTransition(() => setMode(next))
     else setMode(next)
   }
 
-  const tooltip = isSystem ? `Following system · ${resolved}` : `${resolved} · tap to follow system`
+  const tooltip = !mode
+    ? 'Toggle theme'
+    : isSystem
+      ? `Following system · ${resolved}`
+      : `${resolved} · tap to follow system`
 
   const iconBaseSx = {
     position: 'absolute',
