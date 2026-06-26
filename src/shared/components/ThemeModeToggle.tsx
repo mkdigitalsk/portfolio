@@ -11,10 +11,13 @@ export function ThemeModeToggle() {
   const reduceMotion = useReducedMotion()
   const startViewTransition = useViewTransition()
 
+  // `useColorScheme().mode` is the only signal correct across system + explicit modes. It's
+  // undefined until mount (SSR can't resolve the scheme), so show a neutral placeholder — never a
+  // definite icon, which would flash wrong (sun in dark). This is the standard SSR mounted-guard.
   if (!mode) {
     return (
       <IconButton size="small" disabled aria-label="Toggle theme">
-        <LightMode fontSize="small" />
+        <Box sx={{ width: 20, height: 20 }} />
       </IconButton>
     )
   }
@@ -26,11 +29,8 @@ export function ThemeModeToggle() {
   const handleToggle = () => {
     const opposite = systemMode === 'dark' ? 'light' : 'dark'
     const next = isSystem ? opposite : 'system'
-    if (!reduceMotion) {
-      startViewTransition(() => setMode(next))
-    } else {
-      setMode(next)
-    }
+    if (!reduceMotion) startViewTransition(() => setMode(next))
+    else setMode(next)
   }
 
   const tooltip = isSystem ? `Following system · ${resolved}` : `${resolved} · tap to follow system`
