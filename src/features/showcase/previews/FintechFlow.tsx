@@ -2,26 +2,132 @@
 
 import { AccountBalanceWallet, ArrowDownward, ArrowUpward, CreditCard } from '@mui/icons-material'
 import Box from '@mui/material/Box'
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { animate, AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { PreviewScreen, type PreviewProps } from './PreviewKit'
 
 // Fintech micro-theme: Revolut/Monzo vibe — tighter corners, real MUI icons (not emoji),
-// tabular-nums, high contrast. Auto-simulates a tap on the card row -> navigates to the
-// card detail and loops (a "recorded interaction", not real clicks).
+// tabular-nums, high contrast. Loop: accounts overview -> tap Main Account -> account detail
+// where an incoming credit drops in from the top, the list carousels down one row (last clipped
+// off the bottom), and the balance counts up.
 
 const R = 8 // tighter, fintech radius
+const ROW = 34 // transaction row height (also the carousel slide distance)
+const VISIBLE = 3
 
 const ACCOUNTS = [
   { Icon: AccountBalanceWallet, key: 'mainAccount', subKey: 'current', amount: '€8,210.30' },
   { Icon: CreditCard, key: 'cardPhysical', sub: 'Visa', amount: '€4,270.20' },
 ]
-const TX = [
-  { dir: 'in' as const, key: 'salary', amount: '+€2,400.00' },
-  { dir: 'out' as const, key: 'tesco', name: 'Tesco', amount: '−€42.10' },
-  { dir: 'out' as const, key: 'spotify', name: 'Spotify', amount: '−€9.99' },
+
+type Tx = { id: string; dir: 'in' | 'out'; name: string; amount: string }
+
+const BASE_BALANCE = 8210.3
+const CREDIT_AMOUNT = 5321
+const CREDIT: Tx = { id: 'credit', dir: 'in', name: 'Incoming transfer', amount: '+€5,321.00' }
+const BASE_TX: Tx[] = [
+  { id: 'tesco', dir: 'out', name: 'Tesco', amount: '−€42.10' },
+  { id: 'spotify', dir: 'out', name: 'Spotify', amount: '−€9.99' },
+  { id: 'uber', dir: 'out', name: 'Uber', amount: '−€14.30' },
 ]
+
+const formatEUR = (n: number) => `€${n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+
+function TxRow({ tx, flash }: { tx: Tx; flash: boolean }) {
+  return (
+    <Box sx={{ position: 'relative', height: ROW }}>
+      {flash && (
+        <motion.span
+          initial={{ opacity: 0.22 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 1.1 }}
+          style={{ position: 'absolute', inset: 0, background: 'rgb(52,211,153)', borderRadius: R, pointerEvents: 'none' }}
+        />
+      )}
+      <Box sx={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 1, height: ROW, px: 0.5 }}>
+        <Box
+          sx={{
+            width: 26,
+            height: 26,
+            borderRadius: `${R - 2}px`,
+            display: 'grid',
+            placeItems: 'center',
+            bgcolor: 'action.hover',
+            color: tx.dir === 'in' ? 'success.main' : 'text.secondary',
+          }}
+        >
+          {tx.dir === 'in' ? <ArrowUpward sx={{ fontSize: 14 }} /> : <ArrowDownward sx={{ fontSize: 14 }} />}
+        </Box>
+        <Box sx={{ flex: 1, fontSize: 11.5, fontWeight: 700, color: 'text.primary' }}>{tx.name}</Box>
+        <Box
+          sx={{
+            fontSize: 11.5,
+            fontWeight: 800,
+            color: tx.dir === 'in' ? 'success.main' : 'text.primary',
+            fontVariantNumeric: 'tabular-nums',
+          }}
+        >
+          {tx.amount}
+        </Box>
+      </Box>
+    </Box>
+  )
+}
+
+function AccountDetail({ label, sub }: { label: string; sub: string }) {
+  const reduceMotion = useReducedMotion()
+  const [balance, setBalance] = useState(BASE_BALANCE)
+  const [rows, setRows] = useState<Tx[]>(BASE_TX)
+  const [slideKey, setSlideKey] = useState(0)
+
+  useEffect(() => {
+    if (reduceMotion) return undefined // reduced motion: static base account, no incoming-credit beat
+    let controls: ReturnType<typeof animate> | undefined
+    const timer = setTimeout(() => {
+      setRows([CREDIT, ...BASE_TX]) // credit on top; the old last row is now the clipped 4th
+      setSlideKey(1) // remount the strip → carousel slide from y:-ROW to 0
+      controls = animate(BASE_BALANCE, BASE_BALANCE + CREDIT_AMOUNT, { duration: 0.9, ease: 'easeOut', onUpdate: setBalance })
+    }, 650)
+    return () => {
+      clearTimeout(timer)
+      controls?.stop()
+    }
+  }, [reduceMotion])
+
+  return (
+    <>
+      <Box sx={{ fontSize: 10.5, fontWeight: 700, color: 'text.secondary', letterSpacing: '-0.01em', textAlign: 'right' }}>
+        {label}
+      </Box>
+      <Box
+        sx={{
+          fontSize: 26,
+          fontWeight: 800,
+          color: 'text.primary',
+          letterSpacing: '-0.02em',
+          fontVariantNumeric: 'tabular-nums',
+          textAlign: 'right',
+        }}
+      >
+        {formatEUR(balance)}
+      </Box>
+      <Box sx={{ fontSize: 9.5, color: 'text.secondary', mb: 1, textAlign: 'right' }}>{sub}</Box>
+      <Box sx={{ height: ROW * VISIBLE, overflow: 'hidden' }}>
+        <motion.div
+          key={slideKey}
+          initial={slideKey === 0 ? false : { y: -ROW }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {rows.map((tx) => (
+            <TxRow key={tx.id} tx={tx} flash={tx.id === 'credit' && !reduceMotion} />
+          ))}
+        </motion.div>
+      </Box>
+    </>
+  )
+}
 
 export function FintechFlow({ accent }: PreviewProps) {
   const t = useTranslations('previews.fintech')
@@ -38,7 +144,7 @@ export function FintechFlow({ accent }: PreviewProps) {
         setScreen((s) => 1 - s)
         setTapping(false)
       }, 400)
-    }, 2000)
+    }, 2800)
     return () => {
       clearInterval(loop)
       clearTimeout(flip)
@@ -58,7 +164,7 @@ export function FintechFlow({ accent }: PreviewProps) {
               transition={{ duration: 0.3 }}
               style={{ padding: '0 12px' }}
             >
-              <Box sx={{ fontSize: 10.5, fontWeight: 700, color: 'text.secondary', letterSpacing: '-0.01em' }}>
+              <Box sx={{ fontSize: 10.5, fontWeight: 700, color: 'text.secondary', letterSpacing: '-0.01em', textAlign: 'right' }}>
                 {t('accounts')}
               </Box>
               <Box
@@ -69,6 +175,7 @@ export function FintechFlow({ accent }: PreviewProps) {
                   letterSpacing: '-0.02em',
                   mb: 1.25,
                   fontVariantNumeric: 'tabular-nums',
+                  textAlign: 'right',
                 }}
               >
                 €12,480.50
@@ -107,7 +214,7 @@ export function FintechFlow({ accent }: PreviewProps) {
                   <Box sx={{ fontSize: 11.5, fontWeight: 800, color: 'text.primary', fontVariantNumeric: 'tabular-nums' }}>
                     {a.amount}
                   </Box>
-                  {tapping && i === 1 && !reduceMotion && (
+                  {tapping && i === 0 && !reduceMotion && (
                     <motion.div
                       initial={{ scale: 0, opacity: 0.5 }}
                       animate={{ scale: 2.4, opacity: 0 }}
@@ -129,60 +236,14 @@ export function FintechFlow({ accent }: PreviewProps) {
             </motion.div>
           ) : (
             <motion.div
-              key="card"
+              key="detail"
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 10 }}
               transition={{ duration: 0.3 }}
               style={{ padding: '0 12px' }}
             >
-              <Box
-                sx={{
-                  height: 62,
-                  borderRadius: `${R}px`,
-                  p: 1.25,
-                  mb: 1,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  color: 'common.white',
-                  background: `linear-gradient(135deg, ${accent}, ${accent}bb)`,
-                }}
-              >
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Box sx={{ fontSize: 10, fontWeight: 700, opacity: 0.85 }}>{t('cardLabel')} · Visa</Box>
-                  <CreditCard sx={{ fontSize: 16, opacity: 0.85 }} />
-                </Box>
-                <Box sx={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em' }}>•••• 4821</Box>
-              </Box>
-              {TX.map((tx) => (
-                <Box key={tx.key} sx={{ display: 'flex', alignItems: 'center', gap: 1, py: 0.5 }}>
-                  <Box
-                    sx={{
-                      width: 26,
-                      height: 26,
-                      borderRadius: `${R - 2}px`,
-                      display: 'grid',
-                      placeItems: 'center',
-                      bgcolor: 'action.hover',
-                      color: tx.dir === 'in' ? 'success.main' : 'text.secondary',
-                    }}
-                  >
-                    {tx.dir === 'in' ? <ArrowUpward sx={{ fontSize: 14 }} /> : <ArrowDownward sx={{ fontSize: 14 }} />}
-                  </Box>
-                  <Box sx={{ flex: 1, fontSize: 11.5, fontWeight: 700, color: 'text.primary' }}>{tx.name ?? t(tx.key)}</Box>
-                  <Box
-                    sx={{
-                      fontSize: 11.5,
-                      fontWeight: 800,
-                      color: tx.dir === 'in' ? 'success.main' : 'text.primary',
-                      fontVariantNumeric: 'tabular-nums',
-                    }}
-                  >
-                    {tx.amount}
-                  </Box>
-                </Box>
-              ))}
+              <AccountDetail label={t('mainAccount')} sub={t('current')} />
             </motion.div>
           )}
         </AnimatePresence>
