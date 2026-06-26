@@ -23,7 +23,7 @@ import {
 // bag -> "Added" + the bag badge bumps. Variant configuration, not a cart or a checklist.
 
 const R = 11
-// TODO(i18n): product names + "Color"/"Size"/"Add to bag"/"Added" literals — localize before final.
+// Product names are content (proper nouns) kept inline; the UI chrome is localized.
 const PRODUCTS = [
   { name: 'Aero Runner', emoji: '👟', price: 'from €119' },
   { name: 'Track Jacket', emoji: '🧥', price: '€189.00' },
@@ -124,7 +124,7 @@ function ProductDetail({ accent, t }: { accent: string; t: ReturnType<typeof use
       <Box sx={{ fontSize: 9.5, color: 'text.secondary', mb: 0.75 }}>★★★★☆ 124 {t('reviews')}</Box>
 
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, mb: 0.6 }}>
-        <Box sx={{ fontSize: 9.5, fontWeight: 700, color: 'text.secondary', width: 30 }}>Color</Box>
+        <Box sx={{ fontSize: 9.5, fontWeight: 700, color: 'text.secondary', width: 30 }}>{t('color')}</Box>
         {COLORWAYS.map((c, i) => {
           const on = color === i
           return (
@@ -147,7 +147,7 @@ function ProductDetail({ accent, t }: { accent: string; t: ReturnType<typeof use
       </Box>
 
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.6, mb: 1 }}>
-        <Box sx={{ fontSize: 9.5, fontWeight: 700, color: 'text.secondary', width: 30 }}>Size</Box>
+        <Box sx={{ fontSize: 9.5, fontWeight: 700, color: 'text.secondary', width: 30 }}>{t('size')}</Box>
         {SIZES.map((s, i) => {
           const on = size === i
           return (
@@ -200,10 +200,10 @@ function ProductDetail({ accent, t }: { accent: string; t: ReturnType<typeof use
             <motion.span initial={reduceMotion ? false : { scale: 0 }} animate={{ scale: 1 }} transition={POP_SPRING} style={{ display: 'grid' }}>
               <Check sx={{ fontSize: 16 }} />
             </motion.span>
-            Added to bag
+            {t('addedToBag')}
           </>
         ) : (
-          'Add to bag'
+          t('addToBag')
         )}
       </Box>
     </Box>

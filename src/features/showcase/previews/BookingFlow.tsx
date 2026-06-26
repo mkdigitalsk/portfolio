@@ -131,10 +131,9 @@ function BookingDetail({ accent, t }: { accent: string; t: ReturnType<typeof use
         </Box>
       </Box>
 
-      {/* TODO(i18n): "Nights" / "Your trip is booked" literals — localize before final */}
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 0.75 }}>
         <Box>
-          <Box sx={{ fontSize: 11, fontWeight: 700, color: 'text.primary' }}>Nights</Box>
+          <Box sx={{ fontSize: 11, fontWeight: 700, color: 'text.primary' }}>{t('nightsLabel')}</Box>
           <Box sx={{ fontSize: 9.5, color: 'text.secondary' }}>
             {formatEUR(RATE)} {t('perNight')}
           </Box>
@@ -201,7 +200,7 @@ function BookingDetail({ accent, t }: { accent: string; t: ReturnType<typeof use
             <motion.span initial={reduceMotion ? false : { scale: 0 }} animate={{ scale: 1 }} transition={POP_SPRING} style={{ display: 'grid' }}>
               <Check sx={{ fontSize: 16 }} />
             </motion.span>
-            Your trip is booked
+            {t('tripBooked')}
           </>
         ) : (
           t('bookNow')

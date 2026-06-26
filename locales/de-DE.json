@@ -515,7 +515,10 @@
       "current": "Girokonto",
       "cardPhysical": "Karte · Physisch",
       "cardLabel": "Karte",
-      "salary": "Gehalt"
+      "salary": "Gehalt",
+      "incomingTransfer": "Geldeingang",
+      "gbpAccount": "Britisches Pfund",
+      "usdAccount": "US-Dollar"
     },
     "food": {
       "restaurantsNearYou": "Restaurants in der Nähe",
@@ -526,7 +529,10 @@
       },
       "onTheWay": "Unterwegs",
       "driver": "Fahrer",
-      "kmAway": "{distance} km entfernt"
+      "kmAway": "{distance} km entfernt",
+      "buildYourBurger": "Stell deinen Burger zusammen",
+      "addToOrder": "Zur Bestellung",
+      "addedToOrder": "Hinzugefügt"
     },
     "ecommerce": {
       "searchProducts": "Produkte suchen",
@@ -534,7 +540,11 @@
       "headphones": "Kopfhörer",
       "smartWatch": "Smartwatch",
       "reviews": "Bewertungen",
-      "addToCart": "In den Warenkorb"
+      "addToCart": "In den Warenkorb",
+      "color": "Farbe",
+      "size": "Größe",
+      "addToBag": "In den Warenkorb",
+      "addedToBag": "Hinzugefügt"
     },
     "booking": {
       "whereTo": "Wohin?",
@@ -546,7 +556,9 @@
       "bookNow": "Jetzt buchen",
       "beachResort": "Strandresort",
       "mountainLodge": "Berghütte",
-      "cityHotel": "Stadthotel"
+      "cityHotel": "Stadthotel",
+      "nightsLabel": "Nächte",
+      "tripBooked": "Reise gebucht"
     },
     "marketplace": {
       "pillAll": "Alle",
@@ -558,7 +570,12 @@
       "seller": "Verkäufer",
       "sales": "Verkäufe",
       "escrow": "Sichere Treuhand · Käuferschutz",
-      "messageSeller": "Verkäufer kontaktieren"
+      "messageSeller": "Verkäufer kontaktieren",
+      "yourCart": "Dein Warenkorb",
+      "items": "Artikel",
+      "total": "Gesamt",
+      "checkout": "Zur Kasse",
+      "orderPlaced": "Bestellung aufgegeben"
     },
     "health": {
       "today": "Heute",
@@ -567,7 +584,9 @@
       "min": "Min",
       "startWorkout": "Training starten",
       "morningRun": "Morgenlauf",
-      "elapsed": "VERSTRICHEN"
+      "elapsed": "VERSTRICHEN",
+      "saveProgress": "Fortschritt speichern",
+      "workoutSaved": "Gespeichert"
     }
   }
 }

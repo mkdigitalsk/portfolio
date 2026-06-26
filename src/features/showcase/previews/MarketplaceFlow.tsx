@@ -195,8 +195,9 @@ export function MarketplaceFlow({ accent, startDelay = 670 }: PreviewProps) {
               transition={{ duration: 0.3 }}
               style={{ padding: PAD }}
             >
-              {/* TODO(i18n): "Your cart" / "Total" / "Checkout" / "Order placed" literals — localize before final */}
-              <Box sx={{ fontSize: 12, fontWeight: 800, color: 'text.primary', mb: 0.75 }}>Your cart · {LISTINGS.length} items</Box>
+              <Box sx={{ fontSize: 12, fontWeight: 800, color: 'text.primary', mb: 0.75 }}>
+                {t('yourCart')} · {LISTINGS.length} {t('items')}
+              </Box>
               {LISTINGS.map((l) => (
                 <Box key={l.key} sx={{ display: 'flex', alignItems: 'center', gap: 1, py: 0.4 }}>
                   <Box
@@ -229,7 +230,7 @@ export function MarketplaceFlow({ accent, startDelay = 670 }: PreviewProps) {
                   borderColor: 'divider',
                 }}
               >
-                <Box sx={{ fontSize: 11, fontWeight: 700, color: 'text.secondary' }}>Total</Box>
+                <Box sx={{ fontSize: 11, fontWeight: 700, color: 'text.secondary' }}>{t('total')}</Box>
                 <Box sx={{ fontSize: 15, fontWeight: 800, color: accent, fontVariantNumeric: 'tabular-nums' }}>
                   {formatEUR(CART_TOTAL)}
                 </Box>
@@ -264,10 +265,10 @@ export function MarketplaceFlow({ accent, startDelay = 670 }: PreviewProps) {
                     >
                       <Check sx={{ fontSize: 16 }} />
                     </motion.span>
-                    Order placed
+                    {t('orderPlaced')}
                   </>
                 ) : (
-                  `Checkout · ${formatEUR(CART_TOTAL)}`
+                  `${t('checkout')} · ${formatEUR(CART_TOTAL)}`
                 )}
               </Box>
             </motion.div>

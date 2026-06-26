@@ -515,7 +515,10 @@
       "current": "Bežný",
       "cardPhysical": "Karta · Fyzická",
       "cardLabel": "Karta",
-      "salary": "Mzda"
+      "salary": "Mzda",
+      "incomingTransfer": "Prijatá platba",
+      "gbpAccount": "Britská libra",
+      "usdAccount": "Americký dolár"
     },
     "food": {
       "restaurantsNearYou": "Reštaurácie v okolí",
@@ -526,7 +529,10 @@
       },
       "onTheWay": "Na ceste",
       "driver": "Kuriér",
-      "kmAway": "{distance} km od vás"
+      "kmAway": "{distance} km od vás",
+      "buildYourBurger": "Poskladaj si burger",
+      "addToOrder": "Pridať do objednávky",
+      "addedToOrder": "Pridané"
     },
     "ecommerce": {
       "searchProducts": "Hľadať produkty",
@@ -534,7 +540,11 @@
       "headphones": "Slúchadlá",
       "smartWatch": "Inteligentné hodinky",
       "reviews": "recenzií",
-      "addToCart": "Pridať do košíka"
+      "addToCart": "Pridať do košíka",
+      "color": "Farba",
+      "size": "Veľkosť",
+      "addToBag": "Pridať do košíka",
+      "addedToBag": "Pridané"
     },
     "booking": {
       "whereTo": "Kam cestujete?",
@@ -546,7 +556,9 @@
       "bookNow": "Rezervovať",
       "beachResort": "Plážový rezort",
       "mountainLodge": "Horská chata",
-      "cityHotel": "Mestský hotel"
+      "cityHotel": "Mestský hotel",
+      "nightsLabel": "Noci",
+      "tripBooked": "Cesta je rezervovaná"
     },
     "marketplace": {
       "pillAll": "Všetko",
@@ -558,7 +570,12 @@
       "seller": "predajca",
       "sales": "predajov",
       "escrow": "Bezpečná úschova · ochrana kupujúceho",
-      "messageSeller": "Napísať predajcovi"
+      "messageSeller": "Napísať predajcovi",
+      "yourCart": "Tvoj košík",
+      "items": "položky",
+      "total": "Spolu",
+      "checkout": "Pokladňa",
+      "orderPlaced": "Objednávka odoslaná"
     },
     "health": {
       "today": "Dnes",
@@ -567,7 +584,9 @@
       "min": "min",
       "startWorkout": "Spustiť tréning",
       "morningRun": "Ranný beh",
-      "elapsed": "UPLYNULÝ ČAS"
+      "elapsed": "UPLYNULÝ ČAS",
+      "saveProgress": "Uložiť pokrok",
+      "workoutSaved": "Tréning uložený"
     }
   }
 }

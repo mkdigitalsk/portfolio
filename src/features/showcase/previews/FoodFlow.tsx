@@ -35,7 +35,7 @@ const SCROLL_Y = -(BURGER_INDEX - 1) * ROW_H // bring row (BURGER_INDEX-1) to th
 const SCROLL_DELAY_S = 0.86 // flip reveal ≈840ms + 20ms: show the top (pizza) first, then scroll
 const SCROLL_DUR_S = 1.4 // longer travel — scroll passes several items before the burger lands
 
-// TODO(i18n): new dish names + topping names + "Build your burger" / "Add to order" are literals.
+// Dish + topping names are content (proper nouns) kept inline; the UI chrome below is localized.
 const DISHES = [
   { key: 'pizza', emoji: '🍕', meta: '★ 4.8 · 25 min', price: '€9.50' },
   { name: 'Caesar salad', emoji: '🥗', meta: '★ 4.7 · 15 min', price: '€8.20' },
@@ -55,7 +55,7 @@ const TOPPINGS = [
   { id: 'avocado', emoji: '🥑', name: 'Avocado' },
 ]
 
-function CustomizeBurger({ accent, name }: { accent: string; name: string }) {
+function CustomizeBurger({ accent, name, t }: { accent: string; name: string; t: ReturnType<typeof useTranslations> }) {
   const reduceMotion = useReducedMotion()
   const [picked, setPicked] = useState(0)
   const [ordered, setOrdered] = useState(false)
@@ -75,7 +75,7 @@ function CustomizeBurger({ accent, name }: { accent: string; name: string }) {
         </Box>
         <Box sx={{ flex: 1, minWidth: 0 }}>
           <Box sx={{ fontSize: 13, fontWeight: 600, color: 'text.primary' }}>{name}</Box>
-          <Box sx={{ fontSize: 10.5, color: 'text.secondary' }}>Build your burger</Box>
+          <Box sx={{ fontSize: 10.5, color: 'text.secondary' }}>{t('buildYourBurger')}</Box>
         </Box>
       </Box>
 
@@ -123,10 +123,10 @@ function CustomizeBurger({ accent, name }: { accent: string; name: string }) {
             <motion.span initial={reduceMotion ? false : { scale: 0 }} animate={{ scale: 1 }} transition={POP_SPRING} style={{ display: 'grid' }}>
               <Check sx={{ fontSize: 16 }} />
             </motion.span>
-            Added to order
+            {t('addedToOrder')}
           </>
         ) : (
-          'Add to order'
+          t('addToOrder')
         )}
       </Box>
     </>
@@ -239,7 +239,7 @@ export function FoodFlow({ accent, startDelay = 900 }: PreviewProps) {
               transition={{ duration: SCREEN_FADE_S }}
               style={{ padding: '0 12px' }}
             >
-              <CustomizeBurger accent={accent} name={t('dish.burger')} />
+              <CustomizeBurger accent={accent} name={t('dish.burger')} t={t} />
             </motion.div>
           )}
         </AnimatePresence>

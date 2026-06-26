@@ -20,12 +20,13 @@ const CREDIT_DROP_MS = 700 // after the detail opens: hold on the base balance, 
 
 // Multi-currency wallet (Revolut/Wise vibe): the EUR account is the main one (tapped → detail);
 // the others are the same wallet in other currencies, each with its flag.
-// TODO(i18n): currency account names are literals — localize before final.
 const ACCOUNTS = [
-  { flag: '🇪🇺', key: 'mainAccount', sub: 'EUR', amount: '€8,210.30' },
-  { flag: '🇬🇧', name: 'British pound', sub: 'GBP', amount: '£2,450.00' },
-  { flag: '🇺🇸', name: 'US dollar', sub: 'USD', amount: '$1,920.00' },
+  { flag: '🇪🇺', key: 'mainAccount', sub: 'EUR', symbol: '€', amount: 8210.3, rate: 1 },
+  { flag: '🇬🇧', key: 'gbpAccount', sub: 'GBP', symbol: '£', amount: 2450, rate: 1.17 },
+  { flag: '🇺🇸', key: 'usdAccount', sub: 'USD', symbol: '$', amount: 1920, rate: 0.92 },
 ]
+// The header total is the EUR-equivalent sum of every account — like a real multi-currency wallet.
+const TOTAL_EUR = ACCOUNTS.reduce((sum, a) => sum + a.amount * a.rate, 0)
 
 type Tx = { id: string; dir: 'in' | 'out'; name: string; amount: string }
 
@@ -38,7 +39,8 @@ const BASE_TX: Tx[] = [
   { id: 'uber', dir: 'out', name: 'Uber', amount: '−€14.30' },
 ]
 
-const formatEUR = (n: number) => `€${n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+const fmtMoney = (symbol: string, n: number) => `${symbol}${n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+const formatEUR = (n: number) => fmtMoney('€', n)
 
 function TxRow({ tx, flash }: { tx: Tx; flash: boolean }) {
   return (
@@ -83,7 +85,7 @@ function TxRow({ tx, flash }: { tx: Tx; flash: boolean }) {
 
 // Plays the incoming-credit beat from its OWN mount (which happens after the overview tap + flip —
 // so it's always the second beat, after the tap on Main Account).
-function AccountDetail({ label, sub }: { label: string; sub: string }) {
+function AccountDetail({ label, sub, incoming }: { label: string; sub: string; incoming: string }) {
   const reduceMotion = useReducedMotion()
   const [balance, setBalance] = useState(BASE_BALANCE)
   const [rows, setRows] = useState<Tx[]>(BASE_TX)
@@ -93,7 +95,7 @@ function AccountDetail({ label, sub }: { label: string; sub: string }) {
     if (reduceMotion) return undefined // reduced motion: static base account, no incoming-credit beat
     let controls: ReturnType<typeof animate> | undefined
     const timer = setTimeout(() => {
-      setRows([CREDIT, ...BASE_TX]) // credit on top; the old last row is now the clipped 4th
+      setRows([{ ...CREDIT, name: incoming }, ...BASE_TX]) // credit on top; the old last row is now the clipped 4th
       setSlideKey(1) // remount the strip → carousel slide from y:-ROW to 0
       controls = animate(BASE_BALANCE, BASE_BALANCE + CREDIT_AMOUNT, { duration: 0.9, ease: 'easeOut', onUpdate: setBalance })
     }, CREDIT_DROP_MS)
@@ -101,7 +103,7 @@ function AccountDetail({ label, sub }: { label: string; sub: string }) {
       clearTimeout(timer)
       controls?.stop()
     }
-  }, [reduceMotion])
+  }, [reduceMotion, incoming])
 
   return (
     <>
@@ -188,7 +190,7 @@ export function FintechFlow({ accent, startDelay = 900 }: PreviewProps) {
                   textAlign: 'right',
                 }}
               >
-                €12,862.30
+                {formatEUR(TOTAL_EUR)}
               </Box>
               {ACCOUNTS.map((a, i) => (
                 <Box
@@ -223,11 +225,11 @@ export function FintechFlow({ accent, startDelay = 900 }: PreviewProps) {
                     {a.flag}
                   </Box>
                   <Box sx={{ flex: 1, minWidth: 0 }}>
-                    <Box sx={{ fontSize: 11.5, fontWeight: 700, color: 'text.primary' }}>{a.key ? t(a.key) : a.name}</Box>
+                    <Box sx={{ fontSize: 11.5, fontWeight: 700, color: 'text.primary' }}>{t(a.key)}</Box>
                     <Box sx={{ fontSize: 9.5, color: 'text.secondary' }}>{a.sub}</Box>
                   </Box>
                   <Box sx={{ fontSize: 11.5, fontWeight: 800, color: 'text.primary', fontVariantNumeric: 'tabular-nums' }}>
-                    {a.amount}
+                    {fmtMoney(a.symbol, a.amount)}
                   </Box>
                   {tapping && i === 0 && !reduceMotion && (
                     <motion.div
@@ -260,7 +262,7 @@ export function FintechFlow({ accent, startDelay = 900 }: PreviewProps) {
               transition={{ duration: SCREEN_FADE_S }}
               style={{ padding: '0 12px' }}
             >
-              <AccountDetail label={t('mainAccount')} sub={t('current')} />
+              <AccountDetail label={t('mainAccount')} sub={t('current')} incoming={t('incomingTransfer')} />
             </motion.div>
           )}
         </AnimatePresence>

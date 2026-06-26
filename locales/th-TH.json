@@ -515,7 +515,10 @@
       "current": "กระแสรายวัน",
       "cardPhysical": "บัตร · แบบกายภาพ",
       "cardLabel": "บัตร",
-      "salary": "เงินเดือน"
+      "salary": "เงินเดือน",
+      "incomingTransfer": "เงินโอนเข้า",
+      "gbpAccount": "ปอนด์อังกฤษ",
+      "usdAccount": "ดอลลาร์สหรัฐ"
     },
     "food": {
       "restaurantsNearYou": "ร้านอาหารใกล้คุณ",
@@ -526,7 +529,10 @@
       },
       "onTheWay": "กำลังมา",
       "driver": "คนขับ",
-      "kmAway": "ห่าง {distance} กม."
+      "kmAway": "ห่าง {distance} กม.",
+      "buildYourBurger": "สร้างเบอร์เกอร์ของคุณ",
+      "addToOrder": "เพิ่มลงออเดอร์",
+      "addedToOrder": "เพิ่มแล้ว"
     },
     "ecommerce": {
       "searchProducts": "ค้นหาสินค้า",
@@ -534,7 +540,11 @@
       "headphones": "หูฟัง",
       "smartWatch": "สมาร์ทวอทช์",
       "reviews": "รีวิว",
-      "addToCart": "เพิ่มลงตะกร้า"
+      "addToCart": "เพิ่มลงตะกร้า",
+      "color": "สี",
+      "size": "ขนาด",
+      "addToBag": "ใส่ตะกร้า",
+      "addedToBag": "เพิ่มแล้ว"
     },
     "booking": {
       "whereTo": "ไปที่ไหนดี?",
@@ -546,7 +556,9 @@
       "bookNow": "จองเลย",
       "beachResort": "รีสอร์ทริมหาด",
       "mountainLodge": "ลอดจ์บนภูเขา",
-      "cityHotel": "โรงแรมในเมือง"
+      "cityHotel": "โรงแรมในเมือง",
+      "nightsLabel": "คืน",
+      "tripBooked": "จองทริปแล้ว"
     },
     "marketplace": {
       "pillAll": "ทั้งหมด",
@@ -558,7 +570,12 @@
       "seller": "ผู้ขาย",
       "sales": "ยอดขาย",
       "escrow": "escrow ปลอดภัย · คุ้มครองผู้ซื้อ",
-      "messageSeller": "ส่งข้อความถึงผู้ขาย"
+      "messageSeller": "ส่งข้อความถึงผู้ขาย",
+      "yourCart": "ตะกร้าของคุณ",
+      "items": "ชิ้น",
+      "total": "รวม",
+      "checkout": "ชำระเงิน",
+      "orderPlaced": "สั่งซื้อสำเร็จ"
     },
     "health": {
       "today": "วันนี้",
@@ -567,7 +584,9 @@
       "min": "นาที",
       "startWorkout": "เริ่มออกกำลังกาย",
       "morningRun": "วิ่งตอนเช้า",
-      "elapsed": "เวลาที่ผ่านไป"
+      "elapsed": "เวลาที่ผ่านไป",
+      "saveProgress": "บันทึกความคืบหน้า",
+      "workoutSaved": "บันทึกแล้ว"
     }
   }
 }

@@ -101,7 +101,6 @@ function ActiveWorkout({ accent, t }: { accent: string; t: ReturnType<typeof use
           </Box>
         ))}
       </Box>
-      {/* TODO(i18n): "Save progress" / "Workout saved" literals — localize before final */}
       {done && (
         <Box
           component={motion.div}
@@ -128,12 +127,12 @@ function ActiveWorkout({ accent, t }: { accent: string; t: ReturnType<typeof use
               <motion.span initial={reduceMotion ? false : { scale: 0 }} animate={{ scale: 1 }} transition={POP_SPRING} style={{ display: 'grid' }}>
                 <Check sx={{ fontSize: 16 }} />
               </motion.span>
-              Workout saved
+              {t('workoutSaved')}
             </>
           ) : (
             <>
               <Check sx={{ fontSize: 16 }} />
-              Save progress
+              {t('saveProgress')}
             </>
           )}
         </Box>

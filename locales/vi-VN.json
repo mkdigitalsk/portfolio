@@ -515,7 +515,10 @@
       "current": "Thanh toán",
       "cardPhysical": "Thẻ · Vật lý",
       "cardLabel": "Thẻ",
-      "salary": "Lương"
+      "salary": "Lương",
+      "incomingTransfer": "Tiền chuyển đến",
+      "gbpAccount": "Bảng Anh",
+      "usdAccount": "Đô la Mỹ"
     },
     "food": {
       "restaurantsNearYou": "Nhà hàng gần bạn",
@@ -526,7 +529,10 @@
       },
       "onTheWay": "Đang trên đường",
       "driver": "Tài xế",
-      "kmAway": "cách {distance} km"
+      "kmAway": "cách {distance} km",
+      "buildYourBurger": "Tự tạo burger",
+      "addToOrder": "Thêm vào đơn",
+      "addedToOrder": "Đã thêm"
     },
     "ecommerce": {
       "searchProducts": "Tìm sản phẩm",
@@ -534,7 +540,11 @@
       "headphones": "Tai nghe",
       "smartWatch": "Đồng hồ thông minh",
       "reviews": "đánh giá",
-      "addToCart": "Thêm vào giỏ"
+      "addToCart": "Thêm vào giỏ",
+      "color": "Màu",
+      "size": "Kích cỡ",
+      "addToBag": "Thêm vào giỏ",
+      "addedToBag": "Đã thêm"
     },
     "booking": {
       "whereTo": "Đi đâu?",
@@ -546,7 +556,9 @@
       "bookNow": "Đặt ngay",
       "beachResort": "Khu nghỉ dưỡng biển",
       "mountainLodge": "Nhà nghỉ trên núi",
-      "cityHotel": "Khách sạn thành phố"
+      "cityHotel": "Khách sạn thành phố",
+      "nightsLabel": "Đêm",
+      "tripBooked": "Đã đặt chuyến đi"
     },
     "marketplace": {
       "pillAll": "Tất cả",
@@ -558,7 +570,12 @@
       "seller": "người bán",
       "sales": "lượt bán",
       "escrow": "Ký quỹ an toàn · bảo vệ người mua",
-      "messageSeller": "Nhắn người bán"
+      "messageSeller": "Nhắn người bán",
+      "yourCart": "Giỏ hàng",
+      "items": "món",
+      "total": "Tổng",
+      "checkout": "Thanh toán",
+      "orderPlaced": "Đã đặt hàng"
     },
     "health": {
       "today": "Hôm nay",
@@ -567,7 +584,9 @@
       "min": "phút",
       "startWorkout": "Bắt đầu tập",
       "morningRun": "Chạy buổi sáng",
-      "elapsed": "ĐÃ TRÔI QUA"
+      "elapsed": "ĐÃ TRÔI QUA",
+      "saveProgress": "Lưu tiến trình",
+      "workoutSaved": "Đã lưu"
     }
   }
 }
