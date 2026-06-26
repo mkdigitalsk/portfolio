@@ -85,7 +85,7 @@ export function Logo({ variant = 'wordmark', height = 28, sx }: LogoProps) {
                 width: '100%', // stretch the descriptor edge-to-edge across the wordmark width
                 justifyContent: 'space-between',
                 fontFamily: (t) => t.typography.h6.fontFamily,
-                fontWeight: 600,
+                fontWeight: 800,
                 fontSize: height * 0.155,
                 mt: 0.4,
                 color: Brand.tealDark,
