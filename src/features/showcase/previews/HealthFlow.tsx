@@ -6,7 +6,7 @@ import { animate, AnimatePresence, motion, useReducedMotion } from 'motion/react
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { PreviewScreen, type PreviewProps } from './PreviewKit'
-import { PRESS_DIP, PRESS_TRANSITION } from './previewTiming'
+import { POP_SPRING, PRESS_DIP, PRESS_TRANSITION } from './previewTiming'
 
 // Health & Fitness micro-theme: Strava/Nike Training Club vibe. Full flow: dashboard -> tap
 // "Start workout" -> the run progresses live (ring fills, clock ticks, distance/kcal climb) ->
@@ -32,22 +32,31 @@ const RUN_DIST = 0.5 // km gained
 const RUN_KCAL = 48 // kcal gained
 const PROGRESS_START = 0.16
 const PROGRESS_END = 0.96
+const SAVE_TAP_MS = 700 // after the run ends: see the Save button, then it's tapped → "Workout saved"
 const fmtClock = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
 
 function ActiveWorkout({ accent, t }: { accent: string; t: ReturnType<typeof useTranslations> }) {
   const reduceMotion = useReducedMotion()
   const [p, setP] = useState(reduceMotion ? 1 : 0) // eased run progress 0..1
   const [done, setDone] = useState(false)
+  const [saved, setSaved] = useState(false)
 
   useEffect(() => {
     if (reduceMotion) return undefined // reduced motion: frozen at the end
+    let saveTimer: ReturnType<typeof setTimeout>
     const controls = animate(0, 1, {
       duration: RUN_MS / 1000,
       ease: 'easeInOut', // start slow → accelerate → ease out
       onUpdate: setP,
-      onComplete: () => setDone(true), // run complete -> reveal the Save button
+      onComplete: () => {
+        setDone(true) // run complete -> reveal the Save button
+        saveTimer = setTimeout(() => setSaved(true), SAVE_TAP_MS) // then it's tapped → saved
+      },
     })
-    return () => controls.stop()
+    return () => {
+      controls.stop()
+      clearTimeout(saveTimer)
+    }
   }, [reduceMotion])
 
   const progress = PROGRESS_START + p * (PROGRESS_END - PROGRESS_START)
@@ -92,13 +101,13 @@ function ActiveWorkout({ accent, t }: { accent: string; t: ReturnType<typeof use
           </Box>
         ))}
       </Box>
-      {/* TODO(i18n): "Save progress" literal — localize before final */}
+      {/* TODO(i18n): "Save progress" / "Workout saved" literals — localize before final */}
       {done && (
         <Box
           component={motion.div}
           initial={reduceMotion ? false : { opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ type: 'spring', stiffness: 400, damping: 24 }}
+          animate={reduceMotion ? {} : { opacity: 1, y: 0, scale: saved ? PRESS_DIP : 1 }}
+          transition={{ opacity: { duration: 0.2 }, y: { type: 'spring', stiffness: 400, damping: 24 }, scale: PRESS_TRANSITION }}
           sx={{
             display: 'flex',
             alignItems: 'center',
@@ -114,8 +123,19 @@ function ActiveWorkout({ accent, t }: { accent: string; t: ReturnType<typeof use
             fontWeight: 800,
           }}
         >
-          <Check sx={{ fontSize: 16 }} />
-          Save progress
+          {saved ? (
+            <>
+              <motion.span initial={reduceMotion ? false : { scale: 0 }} animate={{ scale: 1 }} transition={POP_SPRING} style={{ display: 'grid' }}>
+                <Check sx={{ fontSize: 16 }} />
+              </motion.span>
+              Workout saved
+            </>
+          ) : (
+            <>
+              <Check sx={{ fontSize: 16 }} />
+              Save progress
+            </>
+          )}
         </Box>
       )}
     </Box>
@@ -139,8 +159,8 @@ export function HealthFlow({ accent, startDelay = 900 }: PreviewProps) {
           setTapping(false)
         }, startDelay + 400),
       )
-      timers.push(setTimeout(() => setScreen(0), startDelay + 400 + 3600)) // back to dashboard
-      timers.push(setTimeout(cycle, startDelay + 400 + 3600 + 700)) // loop
+      timers.push(setTimeout(() => setScreen(0), startDelay + 400 + 4500)) // back to dashboard (hold for the run + Save → saved)
+      timers.push(setTimeout(cycle, startDelay + 400 + 4500 + 700)) // loop
     }
     cycle() // first cycle (screen starts on the dashboard — no sync setState in effect body)
     return () => timers.forEach(clearTimeout)

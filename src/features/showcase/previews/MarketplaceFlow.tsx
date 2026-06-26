@@ -247,7 +247,7 @@ export function MarketplaceFlow({ accent, startDelay = 670 }: PreviewProps) {
                   gap: 0.75,
                   py: 1,
                   borderRadius: `${R}px`,
-                  bgcolor: placed ? 'success.main' : accent,
+                  bgcolor: accent,
                   color: 'common.white',
                   fontSize: 12,
                   fontWeight: 800,

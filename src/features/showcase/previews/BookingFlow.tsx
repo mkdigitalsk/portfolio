@@ -188,7 +188,7 @@ function BookingDetail({ accent, t }: { accent: string; t: ReturnType<typeof use
           justifyContent: 'center',
           gap: 0.75,
           borderRadius: `${R}px`,
-          bgcolor: booked ? 'success.main' : accent,
+          bgcolor: accent,
           color: 'common.white',
           py: 1.25,
           fontSize: 12,

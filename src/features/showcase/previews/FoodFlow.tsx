@@ -111,7 +111,7 @@ function CustomizeBurger({ accent, name }: { accent: string; name: string }) {
           gap: 0.75,
           height: 36,
           borderRadius: `${R}px`,
-          bgcolor: ordered ? 'success.main' : accent,
+          bgcolor: accent,
           color: '#fff',
           fontSize: 12,
           fontWeight: 800,

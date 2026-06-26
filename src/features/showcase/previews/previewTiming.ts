@@ -30,7 +30,7 @@ const clipRevealMs = (ia: IconAnimation) => ((revealAnimations[ia].transition as
 export const CARD_TIMING: Record<IconAnimation, { reveal: number; offset: number }> = {
   flip: { reveal: FLIP_OPEN_MS, offset: 300 }, // fintech — tap Main Account just after the overview reveals (~1140ms) → detail → credit
   food: { reveal: FLIP_OPEN_MS, offset: 1570 }, // food — menu scrolls to the burger (~2.26s), then tap (~2410ms) → ingredients
-  drop: { reveal: clipRevealMs('drop'), offset: 400 }, // ecommerce — show the product before the size taps (~950ms)
+  drop: { reveal: clipRevealMs('drop'), offset: 300 }, // ecommerce — tap the product after the shop reveals (~850ms) → colorway → size → bag
   wind: { reveal: clipRevealMs('wind'), offset: 250 }, // marketplace — tiny pause before the first add-to-cart (~800ms)
   fly: { reveal: clipRevealMs('fly'), offset: 300 }, // booking — tap the featured stay after the plane reveal (~1500ms) → detail → nights → Book
   heart: { reveal: clipRevealMs('heart'), offset: 150 }, // health — tap "Start workout" after the dashboard reveals (~1150ms)
