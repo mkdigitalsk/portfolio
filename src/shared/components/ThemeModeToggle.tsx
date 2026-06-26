@@ -15,9 +15,20 @@ export function ThemeModeToggle() {
 
   // Before mount `mode` is undefined; fall back to the server-known scheme (from cookie) so the
   // icon is correct on first paint — same value on server + client first render, so no mismatch.
-  const resolved = mode ? (mode === 'system' ? systemMode : mode) : initialScheme
-  const isDark = resolved === 'dark'
+  const resolved = (mode === 'system' ? systemMode : mode) ?? initialScheme
   const isSystem = mode === 'system'
+
+  // Genuinely unknown (first-ever visit, no cookie, pre-mount) → neutral placeholder, never a
+  // guess that would flash light→dark.
+  if (!resolved) {
+    return (
+      <IconButton size="small" disabled aria-label="Toggle theme">
+        <Box sx={{ width: 20, height: 20 }} />
+      </IconButton>
+    )
+  }
+
+  const isDark = resolved === 'dark'
 
   const handleToggle = () => {
     if (!mode) return

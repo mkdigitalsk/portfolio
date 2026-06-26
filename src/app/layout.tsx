@@ -30,7 +30,8 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const locale = await getLocale()
   const messages = await getMessages()
-  const initialScheme = (await cookies()).get('scheme')?.value === 'dark' ? 'dark' : 'light'
+  const cookieScheme = (await cookies()).get('scheme')?.value
+  const initialScheme = cookieScheme === 'dark' || cookieScheme === 'light' ? cookieScheme : undefined
 
   return (
     <html lang={locale} suppressHydrationWarning>
