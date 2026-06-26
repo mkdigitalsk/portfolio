@@ -113,7 +113,7 @@ export function NavBar() {
             if (pathname === '/') scrollToTop()
           }}
         >
-          <Logo variant="wordmark" height={30} />
+          <Logo variant="lockup" height={40} />
         </NavItem>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, md: 1.5 } }}>
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2.5 }}>

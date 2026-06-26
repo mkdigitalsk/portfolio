@@ -60,6 +60,7 @@ export function Logo({ variant = 'wordmark', height = 28, sx }: LogoProps) {
             aria-hidden
             sx={[
               {
+                display: 'inline-block', // establishes a box so -webkit-background-clip: text actually paints
                 backgroundImage: bands(Light.stack),
                 WebkitBackgroundClip: 'text',
                 backgroundClip: 'text',
@@ -77,21 +78,26 @@ export function Logo({ variant = 'wordmark', height = 28, sx }: LogoProps) {
         </Box>
         {isLockup && (
           <Box
-            component="span"
             aria-hidden
             sx={[
               {
+                display: 'flex',
+                width: '100%', // stretch the descriptor edge-to-edge across the wordmark width
+                justifyContent: 'space-between',
                 fontFamily: (t) => t.typography.h6.fontFamily,
                 fontWeight: 600,
                 fontSize: height * 0.155,
-                letterSpacing: '0.3em',
                 mt: 0.4,
                 color: Brand.tealDark,
               },
               (t) => t.applyStyles('dark', { color: Brand.teal }),
             ]}
           >
-            SOFTWARE&nbsp;STUDIO
+            {'SOFTWARE STUDIO'.split('').map((ch, i) => (
+              <Box component="span" key={i} sx={ch === ' ' ? { width: '0.35em' } : undefined}>
+                {ch === ' ' ? '' : ch}
+              </Box>
+            ))}
           </Box>
         )}
       </Box>
