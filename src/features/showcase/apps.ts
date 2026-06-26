@@ -9,6 +9,7 @@ import {
   ShoppingBag,
   Storefront,
 } from '@mui/icons-material'
+import { Brand } from '@/shared/theme/color'
 import type { IconAnimation } from './iconAnimations'
 
 // Text (label, tagline, feature label + benefit) is localized — see the `apps.<id>`
@@ -59,7 +60,7 @@ export const showcaseApps: ShowcaseApp[] = [
   {
     id: 'ecommerce',
     Icon: ShoppingBag,
-    accent: '#6200EE',
+    accent: '#4F46E5', // indigo — distinct from marketplace's purple (was the dead brand purple)
     iconAnimation: 'drop',
     featureKeys: [
       'search',
@@ -131,7 +132,7 @@ export const showcaseApps: ShowcaseApp[] = [
 export const customApp: ShowcaseApp = {
   id: 'custom',
   Icon: RocketLaunchOutlined,
-  accent: '#6200EE',
+  accent: Brand.teal, // the "your custom app" card represents MK Digital itself
   iconAnimation: 'drop',
   featureKeys: [
     'accounts',

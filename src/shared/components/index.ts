@@ -4,6 +4,7 @@ export { PhoneInput } from './forms/PhoneInput'
 export { ThemeModeToggle } from './ThemeModeToggle'
 export { LocaleSwitcher } from './LocaleSwitcher'
 export { Reveal } from './Reveal'
+export { Logo } from './icons/Logo'
 export { NavBar, Footer } from './layout'
 export {
   TextH1Bold,

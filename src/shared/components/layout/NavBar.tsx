@@ -1,6 +1,6 @@
 'use client'
 
-import { Close, Home, Menu as MenuIcon } from '@mui/icons-material'
+import { Close, Menu as MenuIcon } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
@@ -11,6 +11,8 @@ import { useState, type ReactNode } from 'react'
 import { useScrollSpy } from '@/shared/hooks/useScrollSpy'
 import { useScrollToTop } from '@/shared/hooks/useScrollToTop'
 import { CONTENT_MAX } from '@/shared/layout'
+import { Brand } from '@/shared/theme/color'
+import { Logo } from '../icons/Logo'
 import { TextH6Bold } from '../text'
 import { ThemeModeToggle } from '../ThemeModeToggle'
 import { LocaleSwitcher } from '../LocaleSwitcher'
@@ -82,11 +84,12 @@ export function NavBar() {
   return (
     <Box
       component="header"
+      className="dark" // brand bar: force on-dark tokens so text + logo read on the navy surface
       sx={{
         position: 'sticky',
         top: 0,
         zIndex: (theme) => theme.zIndex.appBar,
-        bgcolor: 'background.default',
+        bgcolor: Brand.navy,
         borderBottom: '1px solid',
         borderColor: 'divider',
       }}
@@ -105,12 +108,12 @@ export function NavBar() {
         <NavItem
           href="/"
           active={pathname === '/'}
-          ariaLabel="Home"
+          ariaLabel="MK Digital — home"
           onClick={() => {
             if (pathname === '/') scrollToTop()
           }}
         >
-          <Home />
+          <Logo variant="wordmark" height={30} />
         </NavItem>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, md: 1.5 } }}>
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2.5 }}>
