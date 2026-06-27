@@ -25,6 +25,16 @@ export const metadata: Metadata = {
   title: 'MK Digital — Cross-platform apps (mobile · web · backend)',
   description:
     'We build cross-platform apps end to end — iOS, Android, web, and backend — with clean architecture and production-grade patterns.',
+  // Adaptive SVG favicon (Chrome/Firefox swap colours via prefers-color-scheme); PNG light/dark
+  // fallbacks for Safari, which renders SVG favicons but ignores their embedded @media. apple-icon
+  // is wired separately via the app/apple-icon.png file convention.
+  icons: {
+    icon: [
+      { url: '/favicon-adaptive.svg', type: 'image/svg+xml' },
+      { url: '/favicon-mark-light.png', type: 'image/png', sizes: '48x48', media: '(prefers-color-scheme: light)' },
+      { url: '/favicon-mark-dark.png', type: 'image/png', sizes: '48x48', media: '(prefers-color-scheme: dark)' },
+    ],
+  },
 }
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
