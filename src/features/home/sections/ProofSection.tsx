@@ -13,7 +13,7 @@ const showcases: Showcase[] = [
   { platform: 'kotlin', label: 'Kotlin Multiplatform', descriptionKey: 'kmpDesc', repoUrl: `${GITHUB}/kmp-showcase` },
   { platform: 'android', label: 'Android', descriptionKey: 'androidDesc', repoUrl: `${GITHUB}/android-showcase` },
   { platform: 'react', label: 'React Native', descriptionKey: 'rnDesc', repoUrl: `${GITHUB}/rn-showcase` },
-  { platform: 'typescript', label: 'Web', descriptionKey: 'webDesc', repoUrl: `${GITHUB}/kmp-showcase/tree/master/web` },
+  { platform: 'typescript', label: 'Web', descriptionKey: 'webDesc', repoUrl: `${GITHUB}/web-showcase` },
 ]
 
 const SIGNALS = ['signal1', 'signal2', 'signal3', 'signal4'] as const

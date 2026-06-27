@@ -34,7 +34,7 @@ const showcases: Showcase[] = [
     platform: 'typescript',
     label: 'Web',
     descriptionKey: 'webDesc',
-    repoUrl: `${GITHUB}/kmp-showcase/tree/master/web`,
+    repoUrl: `${GITHUB}/web-showcase`,
   },
 ]
 
