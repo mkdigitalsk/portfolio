@@ -1,11 +1,13 @@
-# MK Digital — brand assets
+# MK Digital — design system (published assets)
 
-Published brand assets. The web app serves the favicon cut from `/public`
-(`favicon-adaptive.svg`, `favicon-mark-{light,dark}.png`) + `src/app/apple-icon.png`; this folder
-holds the broader logo / icon / avatar set for reuse and platform uploads.
+The published cut of the MK Digital design system. The web app serves the favicon set from `/public`
+(`favicon-adaptive.svg`, `favicon-mark-{light,dark}.png`) + `src/app/apple-icon.png`; this folder holds
+the broader logo / icon / avatar set for reuse and platform uploads. Colours/tokens and components land
+here as the system grows.
 
 > The logo is MK Digital's **trademark** — *not* covered by any code license in this repo.
-> Work-in-progress / exploration lives privately in `mkdigitalsk/brand`, never here.
+> The full design-system source (tokens, components, WIP/exploration) lives privately in
+> **`mkdigitalsk/design-system`** — the single source of truth our showcases will consume.
 
 ## Colours
 navy `#0E2A47` · blue `#2F6DB0` · blueLight `#7FB0E0` · teal `#37C2B4` · tealDark `#1796A8`

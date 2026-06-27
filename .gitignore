@@ -53,5 +53,5 @@ local.properties
 # local working notes / logo concepts
 .claude/
 
-# brand WIP / exploration — private only (mkdigitalsk/brand), never here. Published assets → public/brand/
-/brand/
+# design-system WIP / exploration — private only (mkdigitalsk/design-system), never here. Published cut → public/design-system/
+/design-system/
