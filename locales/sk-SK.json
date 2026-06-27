@@ -186,6 +186,8 @@
     "subtitle": "Produkčné vzory, ktoré dodávame — pozri zdroják.",
     "code": "Kód",
     "viewCode": "Zobraziť kód {name}",
+    "live": "Naživo",
+    "viewLive": "Otvoriť {name} naživo",
     "kmpDesc": "iOS + Android, zdieľaná biznis logika",
     "androidDesc": "Natívny Android, Jetpack Compose",
     "rnDesc": "Multiplatformový mobil",

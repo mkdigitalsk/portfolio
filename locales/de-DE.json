@@ -186,6 +186,8 @@
     "subtitle": "Produktionsreife Muster, die wir liefern — sieh dir den Code an.",
     "code": "Code",
     "viewCode": "Code von {name} ansehen",
+    "live": "Live",
+    "viewLive": "{name} live ansehen",
     "kmpDesc": "iOS + Android, gemeinsame Business-Logik",
     "androidDesc": "Natives Android, Jetpack Compose",
     "rnDesc": "Plattformübergreifend mobil",

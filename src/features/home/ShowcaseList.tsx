@@ -1,6 +1,6 @@
 'use client'
 
-import { GitHub } from '@mui/icons-material'
+import { GitHub, Launch } from '@mui/icons-material'
 import { Box, List, ListItem, ListItemIcon, ListItemText } from '@mui/material'
 import { useTranslations } from 'next-intl'
 import { Chip } from '@/shared/components'
@@ -11,6 +11,7 @@ export interface Showcase {
   label: string
   descriptionKey?: string
   repoUrl: string
+  liveUrl?: string
 }
 
 interface ShowcaseListProps {
@@ -38,6 +39,18 @@ export function ShowcaseList({ items }: ShowcaseListProps) {
             secondary={item.descriptionKey ? t(item.descriptionKey) : undefined}
             sx={{ flex: 1, my: 0 }}
           />
+          {item.liveUrl && (
+            <Box
+              component="a"
+              href={item.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t('viewLive', { name: item.label })}
+              sx={{ textDecoration: 'none', flexShrink: 0 }}
+            >
+              <Chip icon={<Launch />} label={t('live')} variant="outlined" size="small" sx={linkChipSx} />
+            </Box>
+          )}
           <Box
             component="a"
             href={item.repoUrl}

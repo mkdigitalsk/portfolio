@@ -186,6 +186,8 @@
     "subtitle": "แพตเทิร์นระดับโปรดักชันที่เราส่งมอบ — สำรวจซอร์สโค้ดได้เลย",
     "code": "โค้ด",
     "viewCode": "ดูโค้ด {name}",
+    "live": "ดูสด",
+    "viewLive": "ดู {name} แบบสด",
     "kmpDesc": "iOS + Android ใช้ลอจิกธุรกิจร่วมกัน",
     "androidDesc": "Android เนทีฟ, Jetpack Compose",
     "rnDesc": "มือถือข้ามแพลตฟอร์ม",

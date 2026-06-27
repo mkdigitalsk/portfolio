@@ -186,6 +186,8 @@
     "subtitle": "Các mô hình production chúng tôi bàn giao — khám phá mã nguồn.",
     "code": "Mã nguồn",
     "viewCode": "Xem mã {name}",
+    "live": "Trực tiếp",
+    "viewLive": "Xem {name} trực tiếp",
     "kmpDesc": "iOS + Android, logic nghiệp vụ dùng chung",
     "androidDesc": "Android native, Jetpack Compose",
     "rnDesc": "Di động đa nền tảng",

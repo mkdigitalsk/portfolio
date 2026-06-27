@@ -186,6 +186,8 @@
     "subtitle": "Production patterns we ship — explore the source.",
     "code": "Code",
     "viewCode": "View {name} code",
+    "live": "Live",
+    "viewLive": "View {name} live",
     "kmpDesc": "iOS + Android, shared business logic",
     "androidDesc": "Native Android, Jetpack Compose",
     "rnDesc": "Cross-platform mobile",

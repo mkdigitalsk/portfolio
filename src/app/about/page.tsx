@@ -35,6 +35,7 @@ const showcases: Showcase[] = [
     label: 'Web',
     descriptionKey: 'webDesc',
     repoUrl: `${GITHUB}/web-showcase`,
+    liveUrl: 'https://showcase.mkdigital.sk',
   },
 ]
 
