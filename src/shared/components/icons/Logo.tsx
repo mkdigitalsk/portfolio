@@ -1,5 +1,6 @@
 'use client'
 
+import { useId } from 'react'
 import Box from '@mui/material/Box'
 import type { SxProps, Theme } from '@mui/material/styles'
 import { Brand, Light, Dark } from '@/shared/theme/color'
@@ -12,107 +13,90 @@ interface LogoProps {
   sx?: SxProps<Theme>
 }
 
-// 2 bands clipped to text — MK is white/navy (top) + blue (bottom), mirroring the mark's top two
-// stripes. Teal lives only in the mark + the descriptor; the wordmark stays two-tone (FINAL).
-const bands = (bars: readonly string[]) =>
-  `linear-gradient(to bottom, ${bars[0]} 0 52%, ${bars[1]} 52% 100%)`
+const FONT = "'Plus Jakarta Sans','Inter','Helvetica Neue',Arial,sans-serif"
 
-// Bar/stripe colors swap light↔dark in pure CSS (applyStyles) → SSR-safe, no JS mode detection.
-function StackMark({ size }: { size: number }) {
-  return (
-    <Box
-      component="svg"
-      viewBox="0 0 64 64"
-      aria-hidden
-      sx={[
-        { width: size, height: size, display: 'block', flexShrink: 0, '--bar1': Light.stack[0], '--bar2': Light.stack[1] },
-        (theme) => theme.applyStyles('dark', { '--bar1': Dark.stack[0], '--bar2': Dark.stack[1] }),
-      ]}
-    >
-      <rect x="10" y="10" width="44" height="12" rx="3" fill="var(--bar1)" />
-      <rect x="10" y="26" width="44" height="12" rx="3" fill="var(--bar2)" />
-      <rect x="10" y="42" width="44" height="12" rx="3" fill={Brand.teal} />
-    </Box>
-  )
-}
-
+// Fixed inline SVG (NOT live HTML text) → can't wrap/reflow/collide, scales crisply, font-independent
+// layout. Colours adapt light↔dark via CSS vars (applyStyles) so the theme toggle still works.
+// Geometry = the canonical lockup (design-system mk-digital-lockup.svg): tight stripes, dual-tone MK.
 export function Logo({ variant = 'wordmark', height = 28, sx }: LogoProps) {
-  if (variant === 'mark') {
+  const uid = useId().replace(/:/g, '')
+  const isMark = variant === 'mark'
+  const isLockup = variant === 'lockup'
+  const sxArray = Array.isArray(sx) ? sx : [sx]
+
+  const scheme = [
+    { '--s0': Light.stack[0], '--s1': Light.stack[1], '--tl': Brand.tealDark },
+    (t: Theme) => t.applyStyles('dark', { '--s0': Dark.stack[0], '--s1': Dark.stack[1], '--tl': Brand.teal }),
+  ]
+
+  if (isMark) {
     return (
-      <Box role="img" aria-label="MK Digital" sx={sx}>
-        <StackMark size={height} />
+      <Box
+        component="svg"
+        role="img"
+        aria-label="MK Digital"
+        viewBox="0 0 64 64"
+        sx={[{ height, width: height, display: 'block', flexShrink: 0 }, ...scheme, ...sxArray]}
+      >
+        <rect x="10" y="10" width="44" height="12" rx="3" fill="var(--s0)" />
+        <rect x="10" y="26" width="44" height="12" rx="3" fill="var(--s1)" />
+        <rect x="10" y="42" width="44" height="12" rx="3" fill={Brand.teal} />
       </Box>
     )
   }
 
-  const isLockup = variant === 'lockup'
-  const wordSize = height * (isLockup ? 0.52 : 0.62)
+  const clip = `mk-${uid}`
+  const grad = `rf-${uid}`
 
   return (
-    <Box role="img" aria-label="MK Digital" sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, ...sx }}>
-      <StackMark size={height} />
-      <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', lineHeight: 1 }}>
-        <Box
-          component="span"
-          sx={{ fontFamily: (t) => t.typography.h6.fontFamily, fontWeight: 800, fontSize: wordSize, letterSpacing: '-0.02em' }}
-        >
-          <Box
-            component="span"
-            aria-hidden
-            sx={[
-              {
-                display: 'inline-block', // establishes a box so -webkit-background-clip: text actually paints
-                backgroundImage: bands(Light.stack),
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                color: 'transparent',
-                WebkitTextFillColor: 'transparent',
-              },
-              (t) => t.applyStyles('dark', { backgroundImage: bands(Dark.stack) }),
-            ]}
-          >
+    <Box
+      component="svg"
+      role="img"
+      aria-label="MK Digital — Software Studio"
+      viewBox="0 8 244 60"
+      sx={[{ height, width: 'auto', display: 'block', flexShrink: 0 }, ...scheme, ...sxArray]}
+    >
+      <defs>
+        <clipPath id={clip}>
+          <text x="66" y="44" fontFamily={FONT} fontWeight="800" fontSize="38" letterSpacing="-1.4">
             MK
-          </Box>
-          <Box component="span" aria-hidden sx={{ color: 'text.primary' }}>
-            Digital
-          </Box>
-        </Box>
+          </text>
+        </clipPath>
         {isLockup && (
-          <>
-            <Box
-              aria-hidden
-              sx={{
-                height: '1.5px',
-                width: '100%',
-                mt: 0.5,
-                background: `linear-gradient(to right, transparent, ${Brand.teal} 12%, ${Brand.teal} 88%, transparent)`,
-              }}
-            />
-            <Box
-              aria-hidden
-              sx={[
-                {
-                  display: 'flex',
-                  width: '100%', // stretch the descriptor edge-to-edge across the wordmark width
-                  justifyContent: 'space-between',
-                  fontFamily: (t) => t.typography.h6.fontFamily,
-                  fontWeight: 600, // subordinate to the wordmark — tagline whispers
-                  fontSize: height * 0.13,
-                  mt: 0.3,
-                  color: Brand.tealDark,
-                },
-                (t) => t.applyStyles('dark', { color: Brand.teal }),
-              ]}
-            >
-              {'SOFTWARE STUDIO'.split('').map((ch, i) => (
-                <Box component="span" key={i} sx={ch === ' ' ? { width: '0.35em' } : undefined}>
-                  {ch === ' ' ? '' : ch}
-                </Box>
-              ))}
-            </Box>
-          </>
+          <linearGradient id={grad} x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stopColor="var(--tl)" stopOpacity="0" />
+            <stop offset="0.12" stopColor="var(--tl)" />
+            <stop offset="0.88" stopColor="var(--tl)" />
+            <stop offset="1" stopColor="var(--tl)" stopOpacity="0" />
+          </linearGradient>
         )}
-      </Box>
+      </defs>
+      <rect x="8" y="16" width="44" height="12" rx="3" fill="var(--s0)" />
+      <rect x="8" y="32" width="44" height="12" rx="3" fill="var(--s1)" />
+      <rect x="8" y="48" width="44" height="12" rx="3" fill={Brand.teal} />
+      <text x="66" y="44" fontFamily={FONT} fontWeight="800" fontSize="38" letterSpacing="-1.4" fill="var(--s0)">
+        MKDigital
+      </text>
+      <g clipPath={`url(#${clip})`}>
+        <rect x="58" y="0" width="100" height="32" fill="var(--s0)" />
+        <rect x="58" y="32" width="100" height="40" fill="var(--s1)" />
+      </g>
+      {isLockup && <rect x="66" y="48" width="168" height="1.6" fill={`url(#${grad})`} />}
+      {isLockup && (
+        <text
+          x="66"
+          y="57.5"
+          fontFamily={FONT}
+          fontWeight="600"
+          fontSize="9"
+          letterSpacing="0.5"
+          textLength="168"
+          lengthAdjust="spacing"
+          fill="var(--tl)"
+        >
+          SOFTWARE STUDIO
+        </text>
+      )}
     </Box>
   )
 }
