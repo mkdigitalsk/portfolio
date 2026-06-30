@@ -21,10 +21,17 @@ import { LocaleDeepLink } from '@/shared/components/LocaleDeepLink'
 import { theme } from '@/shared/theme'
 import './globals.css'
 
+const TITLE = 'MK Digital — Cross-platform apps (mobile · web · backend)'
+const DESCRIPTION =
+  'We build cross-platform apps end to end — iOS, Android, web, and backend — with clean architecture and production-grade patterns.'
+
 export const metadata: Metadata = {
-  title: 'MK Digital — Cross-platform apps (mobile · web · backend)',
-  description:
-    'We build cross-platform apps end to end — iOS, Android, web, and backend — with clean architecture and production-grade patterns.',
+  metadataBase: new URL('https://mkdigital.sk'),
+  title: TITLE,
+  description: DESCRIPTION,
+  // og:image + twitter:image come from app/opengraph-image.png + app/twitter-image.png (file convention).
+  openGraph: { type: 'website', siteName: 'MK Digital', url: 'https://mkdigital.sk', title: TITLE, description: DESCRIPTION },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION },
   // Adaptive SVG favicon (Chrome/Firefox swap colours via prefers-color-scheme); PNG light/dark
   // fallbacks for Safari, which renders SVG favicons but ignores their embedded @media. apple-icon
   // is wired separately via the app/apple-icon.png file convention.
