@@ -87,7 +87,7 @@
       "phase2": {
         "when": "Woche 2–N",
         "title": "Entwicklung im Offenen",
-        "detail": "Wöchentliche Demos, ein transparentes Repo zum Mitverfolgen und direkter Zugang zum Engineer — kein Account-Manager dazwischen."
+        "detail": "Demos bei echten Meilensteinen, direkter Zugang zum Engineer und Open-Source-Showcases, die Sie vor der Beauftragung prüfen können — kein Account-Manager dazwischen."
       },
       "phase3": {
         "when": "Launch & danach",
@@ -96,7 +96,7 @@
       },
       "principle1": "Wöchentliche Demos",
       "principle2": "Direkter Zugang zum Engineer",
-      "principle3": "Transparentes, einsehbares Repo",
+      "principle3": "Open-Source-Code zum Prüfen",
       "principle4": "Fester Umfang, Preis und Termin",
       "riskReversal": {
         "title": "Pünktlich und im Budget — vorab vereinbart",
@@ -178,7 +178,7 @@
     },
     "continuity": {
       "title": "Kein Single Point of Failure — Sie halten jeden Schlüssel",
-      "body": "Der Bus-Faktor hängt nicht von der Teamgröße ab — eine 20-Personen-Agentur, in der ein Architekt das gesamte Wissen hält, ist genauso exponiert. Ab dem ersten Tag besitzen Sie das Repository, die Infrastruktur und die Zugänge, mit sauberer Architektur und einer Dokumentation, die vollständig genug ist, dass jeder Senior morgen weitermachen kann. Kein Lock-in ist kein Versprechen — es ist eine Architektur, die Sie in den offenen Repositories nachlesen können."
+      "body": "Der Bus-Faktor hängt nicht von der Teamgröße ab — eine 20-Personen-Agentur, in der ein Architekt das gesamte Wissen hält, ist genauso exponiert. Sie besitzen alles, wofür Sie bezahlt haben — Repository, Infrastruktur und Zugänge werden mit sauberer Architektur und einer Dokumentation übergeben, die vollständig genug ist, dass jeder Senior morgen weitermachen kann. Kein Lock-in ist kein Versprechen — es ist eine Architektur, die Sie in den offenen Repositories nachlesen können."
     }
   },
   "showcases": {

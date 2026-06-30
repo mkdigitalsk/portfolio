@@ -87,7 +87,7 @@
       "phase2": {
         "when": "2.–N. týždeň",
         "title": "Vývoj naživo",
-        "detail": "Týždenné demá, transparentné repo, ktoré vidíte, a priamy prístup k inžinierovi, čo to stavia — žiadny account manager medzi vami."
+        "detail": "Demá pri reálnych míľnikoch, priamy prístup k inžinierovi, čo to stavia, a open-source ukážky, ktoré si pred najatím preveríte — žiadny account manager medzi vami."
       },
       "phase3": {
         "when": "Spustenie a ďalej",
@@ -96,7 +96,7 @@
       },
       "principle1": "Týždenné demá",
       "principle2": "Priamy prístup k inžinierovi",
-      "principle3": "Transparentné, viditeľné repo",
+      "principle3": "Open-source kód na preverenie",
       "principle4": "Fixný rozsah, cena a termín",
       "riskReversal": {
         "title": "Načas a v rozpočte — dohodnuté vopred",
@@ -178,7 +178,7 @@
     },
     "continuity": {
       "title": "Žiaden single point of failure — všetky kľúče máte vy",
-      "body": "Bus factor nie je o veľkosti tímu — 20-členná agentúra, kde jeden architekt drží všetky vedomosti, je rovnako exponovaná. Od prvého dňa vlastníte repozitár, infraštruktúru aj prístupy, s čistou architektúrou a dokumentáciou dostatočnou na to, aby ktorýkoľvek senior pokračoval hneď zajtra. No lock-in nie je sľub — je to architektúra, ktorú si prečítate v otvorených repozitároch."
+      "body": "Bus factor nie je o veľkosti tímu — 20-členná agentúra, kde jeden architekt drží všetky vedomosti, je rovnako exponovaná. Vlastníte všetko, za čo ste zaplatili — repozitár, infraštruktúra aj prístupy sa odovzdajú s čistou architektúrou a dokumentáciou dostatočnou na to, aby ktorýkoľvek senior pokračoval hneď zajtra. No lock-in nie je sľub — je to architektúra, ktorú si prečítate v otvorených repozitároch."
     }
   },
   "showcases": {

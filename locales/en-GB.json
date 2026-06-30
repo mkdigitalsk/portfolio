@@ -87,7 +87,7 @@
       "phase2": {
         "when": "Weeks 2–N",
         "title": "Build in the open",
-        "detail": "Weekly demos, a transparent repo you can watch, and direct access to the engineer building it — no account-manager telephone."
+        "detail": "Demos at real milestones, direct access to the engineer building it, and open-source showcases you can inspect before you hire — no account-manager telephone."
       },
       "phase3": {
         "when": "Launch & beyond",
@@ -96,7 +96,7 @@
       },
       "principle1": "Weekly demos",
       "principle2": "Direct access to the engineer",
-      "principle3": "Transparent, watchable repo",
+      "principle3": "Open-source code to inspect",
       "principle4": "Fixed scope, price, and date",
       "riskReversal": {
         "title": "On time, on budget — agreed up front",
@@ -178,7 +178,7 @@
     },
     "continuity": {
       "title": "No single point of failure — you hold every key",
-      "body": "Bus factor isn't about team size — a 20-person agency where one architect holds the knowledge is just as exposed. From day one you own the repo, the infrastructure and the credentials, with clean architecture and documentation complete enough for any senior to continue tomorrow. No lock-in isn't a promise — it's an architecture you can read in the open repos."
+      "body": "Bus factor isn't about team size — a 20-person agency where one architect holds the knowledge is just as exposed. You own everything you've paid for — the repo, infrastructure and credentials are handed over with clean architecture and documentation complete enough for any senior to continue tomorrow. No lock-in isn't a promise — it's an architecture you can read in the open repos."
     }
   },
   "showcases": {
