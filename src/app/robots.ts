@@ -6,5 +6,6 @@ export default function robots(): MetadataRoute.Robots {
   const gated = Boolean(process.env.SITE_PASSWORD)
   return {
     rules: { userAgent: '*', ...(gated ? { disallow: '/' } : { allow: '/' }) },
+    sitemap: 'https://mkdigital.sk/sitemap.xml',
   }
 }
