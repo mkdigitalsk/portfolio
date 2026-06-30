@@ -171,6 +171,7 @@ export function AppDetail({ appId }: AppDetailProps) {
           ...(phoneHasNumber ? { phone: phone.trim() } : {}),
           ...(note.trim() ? { note: note.trim() } : {}),
           hasDoc,
+          locale,
         }),
       })
       const data = (await response.json()) as { success?: boolean }
