@@ -12,9 +12,10 @@ interface LogoProps {
   sx?: SxProps<Theme>
 }
 
-// 3 equal horizontal bands clipped to text — reproduces the tricolor "MK" of the mark.
+// 2 bands clipped to text — MK is white/navy (top) + blue (bottom), mirroring the mark's top two
+// stripes. Teal lives only in the mark + the descriptor; the wordmark stays two-tone (FINAL).
 const bands = (bars: readonly string[]) =>
-  `linear-gradient(to bottom, ${bars[0]} 0 33.33%, ${bars[1]} 33.33% 66.66%, ${bars[2]} 66.66% 100%)`
+  `linear-gradient(to bottom, ${bars[0]} 0 52%, ${bars[1]} 52% 100%)`
 
 // Bar/stripe colors swap light↔dark in pure CSS (applyStyles) → SSR-safe, no JS mode detection.
 function StackMark({ size }: { size: number }) {
@@ -28,9 +29,9 @@ function StackMark({ size }: { size: number }) {
         (theme) => theme.applyStyles('dark', { '--bar1': Dark.stack[0], '--bar2': Dark.stack[1] }),
       ]}
     >
-      <rect x="8" y="12" width="48" height="11" rx="3" fill="var(--bar1)" />
-      <rect x="8" y="27" width="48" height="11" rx="3" fill="var(--bar2)" />
-      <rect x="8" y="42" width="48" height="11" rx="3" fill={Brand.teal} />
+      <rect x="10" y="10" width="44" height="12" rx="3" fill="var(--bar1)" />
+      <rect x="10" y="26" width="44" height="12" rx="3" fill="var(--bar2)" />
+      <rect x="10" y="42" width="44" height="12" rx="3" fill={Brand.teal} />
     </Box>
   )
 }
@@ -77,28 +78,39 @@ export function Logo({ variant = 'wordmark', height = 28, sx }: LogoProps) {
           </Box>
         </Box>
         {isLockup && (
-          <Box
-            aria-hidden
-            sx={[
-              {
-                display: 'flex',
-                width: '100%', // stretch the descriptor edge-to-edge across the wordmark width
-                justifyContent: 'space-between',
-                fontFamily: (t) => t.typography.h6.fontFamily,
-                fontWeight: 800,
-                fontSize: height * 0.155,
-                mt: 0.4,
-                color: Brand.tealDark,
-              },
-              (t) => t.applyStyles('dark', { color: Brand.teal }),
-            ]}
-          >
-            {'SOFTWARE STUDIO'.split('').map((ch, i) => (
-              <Box component="span" key={i} sx={ch === ' ' ? { width: '0.35em' } : undefined}>
-                {ch === ' ' ? '' : ch}
-              </Box>
-            ))}
-          </Box>
+          <>
+            <Box
+              aria-hidden
+              sx={{
+                height: '1.5px',
+                width: '100%',
+                mt: 0.5,
+                background: `linear-gradient(to right, transparent, ${Brand.teal} 12%, ${Brand.teal} 88%, transparent)`,
+              }}
+            />
+            <Box
+              aria-hidden
+              sx={[
+                {
+                  display: 'flex',
+                  width: '100%', // stretch the descriptor edge-to-edge across the wordmark width
+                  justifyContent: 'space-between',
+                  fontFamily: (t) => t.typography.h6.fontFamily,
+                  fontWeight: 600, // subordinate to the wordmark — tagline whispers
+                  fontSize: height * 0.13,
+                  mt: 0.3,
+                  color: Brand.tealDark,
+                },
+                (t) => t.applyStyles('dark', { color: Brand.teal }),
+              ]}
+            >
+              {'SOFTWARE STUDIO'.split('').map((ch, i) => (
+                <Box component="span" key={i} sx={ch === ' ' ? { width: '0.35em' } : undefined}>
+                  {ch === ' ' ? '' : ch}
+                </Box>
+              ))}
+            </Box>
+          </>
         )}
       </Box>
     </Box>
