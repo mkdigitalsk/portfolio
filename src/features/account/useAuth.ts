@@ -118,7 +118,7 @@ export function useAuth() {
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({ email, password }),
     })
-    if (!res.ok) throw new Error(res.status === 401 ? 'Invalid email or password.' : 'Login failed. Try again.')
+    if (!res.ok) throw new Error(res.status === 401 ? 'invalidCredentials' : 'loginFailed')
     persist((await res.json()) as AuthResponse)
   }, [])
 

@@ -590,5 +590,59 @@
       "saveProgress": "Save progress",
       "workoutSaved": "Workout saved"
     }
+  },
+  "account": {
+    "signIn": "Sign in",
+    "signInSubtitle": "Access your MK Digital account.",
+    "email": "Email",
+    "password": "Password",
+    "admin": "Admin",
+    "yourAccount": "Your account",
+    "signOut": "Sign out",
+    "loadingLeads": "Loading leads…",
+    "noLeads": "No leads yet.",
+    "leads": "Leads ({count})",
+    "welcome": "Welcome",
+    "welcomeNamed": "Welcome, {name}",
+    "clientComingSoon": "Your engagement overview — proposals, milestones and demos — will appear here. Coming soon.",
+    "hasDoc": "Has own spec / documentation",
+    "hasDocLong": "Client attached their own spec / documentation.",
+    "allLeads": "All leads",
+    "loadingLead": "Loading lead…",
+    "leadNotFound": "Lead not found.",
+    "submission": "Submission",
+    "note": "Note",
+    "features": "Features ({count})",
+    "table": {
+      "customer": "Customer",
+      "appType": "App type",
+      "platforms": "Platforms",
+      "doc": "Doc",
+      "sent": "Sent",
+      "status": "Status"
+    },
+    "stage": {
+      "requirements": "Requirements",
+      "questions": "Questions",
+      "analysis": "Analysis",
+      "proposal": "Proposal",
+      "internalScope": "Internal scope"
+    },
+    "status": {
+      "NEW": "New",
+      "REVIEWING": "Reviewing",
+      "ANALYZED": "Analyzed",
+      "PROPOSAL_DRAFTED": "Proposal drafted",
+      "PROPOSAL_SENT": "Proposal sent",
+      "WON": "Won",
+      "LOST": "Lost"
+    },
+    "errors": {
+      "invalidCredentials": "Invalid email or password.",
+      "loginFailed": "Login failed. Try again.",
+      "notAuthorized": "Not authorized.",
+      "loadLeadsFailed": "Could not load leads.",
+      "loadLeadFailed": "Could not load this lead."
+    }
   }
 }

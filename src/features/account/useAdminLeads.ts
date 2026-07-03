@@ -28,14 +28,14 @@ export function useAdminLeads(token: string | null) {
     let active = true
     fetch(`${API_BASE}/api/v1/admin/leads`, { headers: { Authorization: `Bearer ${token}` } })
       .then(async (res) => {
-        if (!res.ok) throw new Error(res.status === 403 ? 'Not authorized.' : 'Could not load leads.')
+        if (!res.ok) throw new Error(res.status === 403 ? 'notAuthorized' : 'loadLeadsFailed')
         return (await res.json()) as AdminLead[]
       })
       .then((data) => {
         if (active) setLeads(data)
       })
       .catch((e: Error) => {
-        if (active) setError(e.message)
+        if (active) setError(e.message === 'notAuthorized' ? 'notAuthorized' : 'loadLeadsFailed')
       })
       .finally(() => {
         if (active) setLoading(false)

@@ -590,5 +590,59 @@
       "saveProgress": "Uložit pokrok",
       "workoutSaved": "Trénink uložen"
     }
+  },
+  "account": {
+    "signIn": "Přihlásit se",
+    "signInSubtitle": "Přístup k vašemu účtu MK Digital.",
+    "email": "E-mail",
+    "password": "Heslo",
+    "admin": "Administrátor",
+    "yourAccount": "Váš účet",
+    "signOut": "Odhlásit se",
+    "loadingLeads": "Načítají se poptávky…",
+    "noLeads": "Zatím žádné poptávky.",
+    "leads": "Poptávky ({count})",
+    "welcome": "Vítejte",
+    "welcomeNamed": "Vítejte, {name}",
+    "clientComingSoon": "Přehled vaší spolupráce — nabídky, milníky a ukázky — se zobrazí zde. Už brzy.",
+    "hasDoc": "Má vlastní specifikaci / dokumentaci",
+    "hasDocLong": "Klient přiložil vlastní specifikaci / dokumentaci.",
+    "allLeads": "Všechny poptávky",
+    "loadingLead": "Načítá se poptávka…",
+    "leadNotFound": "Poptávka nenalezena.",
+    "submission": "Odeslané údaje",
+    "note": "Poznámka",
+    "features": "Funkce ({count})",
+    "table": {
+      "customer": "Zákazník",
+      "appType": "Typ aplikace",
+      "platforms": "Platformy",
+      "doc": "Dok.",
+      "sent": "Odesláno",
+      "status": "Stav"
+    },
+    "stage": {
+      "requirements": "Požadavky",
+      "questions": "Otázky",
+      "analysis": "Analýza",
+      "proposal": "Nabídka",
+      "internalScope": "Interní rozsah"
+    },
+    "status": {
+      "NEW": "Nová",
+      "REVIEWING": "Kontroluje se",
+      "ANALYZED": "Analyzována",
+      "PROPOSAL_DRAFTED": "Nabídka připravena",
+      "PROPOSAL_SENT": "Nabídka odeslána",
+      "WON": "Získána",
+      "LOST": "Ztracena"
+    },
+    "errors": {
+      "invalidCredentials": "Nesprávný e-mail nebo heslo.",
+      "loginFailed": "Přihlášení selhalo. Zkuste to znovu.",
+      "notAuthorized": "Nemáte oprávnění.",
+      "loadLeadsFailed": "Poptávky se nepodařilo načíst.",
+      "loadLeadFailed": "Tuto poptávku se nepodařilo načíst."
+    }
   }
 }

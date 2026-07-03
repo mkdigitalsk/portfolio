@@ -590,5 +590,59 @@
       "saveProgress": "Fortschritt speichern",
       "workoutSaved": "Gespeichert"
     }
+  },
+  "account": {
+    "signIn": "Anmelden",
+    "signInSubtitle": "Zugriff auf Ihr MK Digital-Konto.",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "admin": "Administrator",
+    "yourAccount": "Ihr Konto",
+    "signOut": "Abmelden",
+    "loadingLeads": "Anfragen werden geladen…",
+    "noLeads": "Noch keine Anfragen.",
+    "leads": "Anfragen ({count})",
+    "welcome": "Willkommen",
+    "welcomeNamed": "Willkommen, {name}",
+    "clientComingSoon": "Ihre Projektübersicht — Angebote, Meilensteine und Demos — erscheint hier. Demnächst verfügbar.",
+    "hasDoc": "Hat eigene Spezifikation / Dokumentation",
+    "hasDocLong": "Der Kunde hat eine eigene Spezifikation / Dokumentation beigefügt.",
+    "allLeads": "Alle Anfragen",
+    "loadingLead": "Anfrage wird geladen…",
+    "leadNotFound": "Anfrage nicht gefunden.",
+    "submission": "Übermittelte Angaben",
+    "note": "Notiz",
+    "features": "Funktionen ({count})",
+    "table": {
+      "customer": "Kunde",
+      "appType": "App-Typ",
+      "platforms": "Plattformen",
+      "doc": "Dok.",
+      "sent": "Gesendet",
+      "status": "Status"
+    },
+    "stage": {
+      "requirements": "Anforderungen",
+      "questions": "Fragen",
+      "analysis": "Analyse",
+      "proposal": "Angebot",
+      "internalScope": "Interner Umfang"
+    },
+    "status": {
+      "NEW": "Neu",
+      "REVIEWING": "In Prüfung",
+      "ANALYZED": "Analysiert",
+      "PROPOSAL_DRAFTED": "Angebot erstellt",
+      "PROPOSAL_SENT": "Angebot gesendet",
+      "WON": "Gewonnen",
+      "LOST": "Verloren"
+    },
+    "errors": {
+      "invalidCredentials": "Ungültige E-Mail oder Passwort.",
+      "loginFailed": "Anmeldung fehlgeschlagen. Bitte erneut versuchen.",
+      "notAuthorized": "Nicht autorisiert.",
+      "loadLeadsFailed": "Anfragen konnten nicht geladen werden.",
+      "loadLeadFailed": "Diese Anfrage konnte nicht geladen werden."
+    }
   }
 }

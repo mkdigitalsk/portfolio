@@ -17,11 +17,11 @@ import {
   TextH4Bold,
   TextH6Bold,
 } from '@/shared/components'
+import { API_BASE } from '@/shared/api'
 import { CONTENT_MAX, PAGE_PT } from '@/shared/layout'
 import { detailApps } from './apps'
 import { scopeColor, scopeFill, scopeScore, scopeTier } from './complexity'
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://kmp-showcase-production.up.railway.app'
 const LEADS_ENDPOINT = `${API_BASE}/api/v1/leads`
 const EMAIL_ERROR_DELAY_MS = 800
 

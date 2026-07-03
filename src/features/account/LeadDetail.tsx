@@ -1,11 +1,11 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { ArrowBack, DescriptionOutlined } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import MenuItem from '@mui/material/MenuItem'
 import Paper from '@mui/material/Paper'
-import Select from '@mui/material/Select'
 import Stack from '@mui/material/Stack'
 import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
@@ -13,40 +13,41 @@ import {
   Button,
   Chip,
   Markdown,
+  Select,
   TextBody1,
   TextBody1Neutral60,
   TextCaptionNeutral60,
   TextH4Bold,
   TextH6Bold,
 } from '@/shared/components'
-import { LEAD_STATUSES, STATUS_META, type LeadStatus } from './leadStatus'
+import { LEAD_STATUSES, STATUS_COLOR, type LeadStatus } from './leadStatus'
 import { useAdminLeadDetail } from './useAdminLeadDetail'
 import type { AdminLead } from './useAdminLeads'
 
-const STAGE_ORDER = ['REQUIREMENTS', 'QUESTIONS', 'ANALYSIS', 'PROPOSAL', 'INTERNAL_SCOPE'] as const
-const STAGE_LABEL: Record<string, string> = {
-  REQUIREMENTS: 'Requirements',
-  QUESTIONS: 'Questions',
-  ANALYSIS: 'Analysis',
-  PROPOSAL: 'Proposal',
-  INTERNAL_SCOPE: 'Internal scope',
-}
+const STAGES = [
+  { stage: 'REQUIREMENTS', key: 'requirements' },
+  { stage: 'QUESTIONS', key: 'questions' },
+  { stage: 'ANALYSIS', key: 'analysis' },
+  { stage: 'PROPOSAL', key: 'proposal' },
+  { stage: 'INTERNAL_SCOPE', key: 'internalScope' },
+] as const
 
 export function LeadDetail({ token, email, onBack }: { token: string; email: string; onBack: () => void }) {
+  const t = useTranslations('account')
   const { detail, loading, error, updateStatus } = useAdminLeadDetail(token, email)
   const [tab, setTab] = useState(0)
 
-  if (loading) return <TextBody1Neutral60>Loading lead…</TextBody1Neutral60>
-  if (error) return <ErrorBack error={error} onBack={onBack} />
-  if (!detail) return <ErrorBack error="Lead not found." onBack={onBack} />
+  if (loading) return <TextBody1Neutral60>{t('loadingLead')}</TextBody1Neutral60>
+  if (error) return <ErrorBack message={t(`errors.${error}`)} onBack={onBack} />
+  if (!detail) return <ErrorBack message={t('leadNotFound')} onBack={onBack} />
 
   const { lead, artifacts } = detail
-  const present = STAGE_ORDER.filter((s) => artifacts.some((a) => a.stage === s))
+  const present = STAGES.filter((s) => artifacts.some((a) => a.stage === s.stage))
 
   return (
     <Stack spacing={3}>
       <Button variant="text" onClick={onBack} startIcon={<ArrowBack />} sx={{ alignSelf: 'flex-start' }}>
-        All leads
+        {t('allLeads')}
       </Button>
 
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 2 }}>
@@ -62,9 +63,9 @@ export function LeadDetail({ token, email, onBack }: { token: string; email: str
       </Box>
 
       <Tabs value={tab} onChange={(_, v) => setTab(v)} variant="scrollable" scrollButtons="auto">
-        <Tab label="Submission" />
+        <Tab label={t('submission')} />
         {present.map((s) => (
-          <Tab key={s} label={STAGE_LABEL[s]} />
+          <Tab key={s.stage} label={t(`stage.${s.key}`)} />
         ))}
       </Tabs>
 
@@ -72,7 +73,7 @@ export function LeadDetail({ token, email, onBack }: { token: string; email: str
         {tab === 0 ? (
           <Submission lead={lead} />
         ) : (
-          <Markdown>{artifacts.find((a) => a.stage === present[tab - 1])?.content ?? ''}</Markdown>
+          <Markdown>{artifacts.find((a) => a.stage === present[tab - 1]?.stage)?.content ?? ''}</Markdown>
         )}
       </Paper>
     </Stack>
@@ -80,16 +81,12 @@ export function LeadDetail({ token, email, onBack }: { token: string; email: str
 }
 
 function StatusControl({ value, onChange }: { value: LeadStatus; onChange: (s: LeadStatus) => void }) {
+  const t = useTranslations('account')
   return (
-    <Select
-      value={value}
-      size="small"
-      onChange={(e) => onChange(e.target.value as LeadStatus)}
-      sx={{ minWidth: 180 }}
-    >
+    <Select value={value} onChange={(e) => onChange(e.target.value as LeadStatus)} sx={{ minWidth: 180 }}>
       {LEAD_STATUSES.map((s) => (
         <MenuItem key={s} value={s}>
-          <Chip label={STATUS_META[s].label} color={STATUS_META[s].color} size="small" variant="outlined" />
+          <Chip label={t(`status.${s}`)} color={STATUS_COLOR[s]} size="small" variant="outlined" />
         </MenuItem>
       ))}
     </Select>
@@ -97,12 +94,13 @@ function StatusControl({ value, onChange }: { value: LeadStatus; onChange: (s: L
 }
 
 function Submission({ lead }: { lead: AdminLead }) {
+  const t = useTranslations('account')
   return (
     <Stack spacing={2.5}>
-      <Field label="Platforms">
+      <Field label={t('table.platforms')}>
         <TextBody1>{lead.platforms.join(' · ') || '—'}</TextBody1>
       </Field>
-      <Field label={`Features (${lead.features.length})`}>
+      <Field label={t('features', { count: lead.features.length })}>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
           {lead.features.map((f) => (
             <Chip key={f} label={f} size="small" variant="outlined" />
@@ -112,11 +110,11 @@ function Submission({ lead }: { lead: AdminLead }) {
       {lead.hasDoc && (
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.secondary' }}>
           <DescriptionOutlined fontSize="small" />
-          <TextBody1Neutral60>Client attached their own spec / documentation.</TextBody1Neutral60>
+          <TextBody1Neutral60>{t('hasDocLong')}</TextBody1Neutral60>
         </Box>
       )}
       {lead.note && (
-        <Field label="Note">
+        <Field label={t('note')}>
           <Box sx={{ fontStyle: 'italic' }}>
             <TextBody1>“{lead.note}”</TextBody1>
           </Box>
@@ -135,14 +133,15 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   )
 }
 
-function ErrorBack({ error, onBack }: { error: string; onBack: () => void }) {
+function ErrorBack({ message, onBack }: { message: string; onBack: () => void }) {
+  const t = useTranslations('account')
   return (
     <Stack spacing={2} sx={{ alignItems: 'flex-start' }}>
       <Button variant="text" onClick={onBack} startIcon={<ArrowBack />}>
-        All leads
+        {t('allLeads')}
       </Button>
       <Box sx={{ color: 'error.main' }}>
-        <TextH6Bold>{error}</TextH6Bold>
+        <TextH6Bold>{message}</TextH6Bold>
       </Box>
     </Stack>
   )

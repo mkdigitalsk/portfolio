@@ -28,14 +28,14 @@ export function useAdminLeadDetail(token: string | null, email: string | null) {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then(async (res) => {
-        if (!res.ok) throw new Error(res.status === 403 ? 'Not authorized.' : 'Could not load this lead.')
+        if (!res.ok) throw new Error(res.status === 403 ? 'notAuthorized' : 'loadLeadFailed')
         return (await res.json()) as LeadDetail
       })
       .then((data) => {
         if (active) setDetail(data)
       })
       .catch((e: Error) => {
-        if (active) setError(e.message)
+        if (active) setError(e.message === 'notAuthorized' ? 'notAuthorized' : 'loadLeadFailed')
       })
       .finally(() => {
         if (active) setLoading(false)

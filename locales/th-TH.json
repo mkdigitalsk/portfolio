@@ -590,5 +590,59 @@
       "saveProgress": "บันทึกความคืบหน้า",
       "workoutSaved": "บันทึกแล้ว"
     }
+  },
+  "account": {
+    "signIn": "เข้าสู่ระบบ",
+    "signInSubtitle": "เข้าถึงบัญชี MK Digital ของคุณ",
+    "email": "อีเมล",
+    "password": "รหัสผ่าน",
+    "admin": "ผู้ดูแลระบบ",
+    "yourAccount": "บัญชีของคุณ",
+    "signOut": "ออกจากระบบ",
+    "loadingLeads": "กำลังโหลดรายชื่อผู้สนใจ…",
+    "noLeads": "ยังไม่มีรายชื่อผู้สนใจ",
+    "leads": "ผู้สนใจ ({count})",
+    "welcome": "ยินดีต้อนรับ",
+    "welcomeNamed": "ยินดีต้อนรับ {name}",
+    "clientComingSoon": "ภาพรวมความร่วมมือของคุณ — ข้อเสนอ เหตุการณ์สำคัญ และตัวอย่าง — จะแสดงที่นี่ เร็ว ๆ นี้",
+    "hasDoc": "มีข้อกำหนด / เอกสารของตนเอง",
+    "hasDocLong": "ลูกค้าแนบข้อกำหนด / เอกสารของตนเอง",
+    "allLeads": "ผู้สนใจทั้งหมด",
+    "loadingLead": "กำลังโหลดข้อมูลผู้สนใจ…",
+    "leadNotFound": "ไม่พบข้อมูลผู้สนใจ",
+    "submission": "ข้อมูลที่ส่ง",
+    "note": "หมายเหตุ",
+    "features": "ฟีเจอร์ ({count})",
+    "table": {
+      "customer": "ลูกค้า",
+      "appType": "ประเภทแอป",
+      "platforms": "แพลตฟอร์ม",
+      "doc": "เอกสาร",
+      "sent": "ส่งเมื่อ",
+      "status": "สถานะ"
+    },
+    "stage": {
+      "requirements": "ข้อกำหนด",
+      "questions": "คำถาม",
+      "analysis": "การวิเคราะห์",
+      "proposal": "ข้อเสนอ",
+      "internalScope": "ขอบเขตภายใน"
+    },
+    "status": {
+      "NEW": "ใหม่",
+      "REVIEWING": "กำลังตรวจสอบ",
+      "ANALYZED": "วิเคราะห์แล้ว",
+      "PROPOSAL_DRAFTED": "ร่างข้อเสนอแล้ว",
+      "PROPOSAL_SENT": "ส่งข้อเสนอแล้ว",
+      "WON": "ได้งาน",
+      "LOST": "เสียงาน"
+    },
+    "errors": {
+      "invalidCredentials": "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
+      "loginFailed": "เข้าสู่ระบบไม่สำเร็จ โปรดลองอีกครั้ง",
+      "notAuthorized": "ไม่มีสิทธิ์เข้าถึง",
+      "loadLeadsFailed": "ไม่สามารถโหลดรายชื่อผู้สนใจได้",
+      "loadLeadFailed": "ไม่สามารถโหลดข้อมูลผู้สนใจนี้ได้"
+    }
   }
 }

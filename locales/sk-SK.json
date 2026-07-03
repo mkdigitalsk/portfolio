@@ -590,5 +590,59 @@
       "saveProgress": "Uložiť pokrok",
       "workoutSaved": "Tréning uložený"
     }
+  },
+  "account": {
+    "signIn": "Prihlásiť sa",
+    "signInSubtitle": "Prístup k vášmu účtu MK Digital.",
+    "email": "E-mail",
+    "password": "Heslo",
+    "admin": "Administrátor",
+    "yourAccount": "Váš účet",
+    "signOut": "Odhlásiť sa",
+    "loadingLeads": "Načítavajú sa dopyty…",
+    "noLeads": "Zatiaľ žiadne dopyty.",
+    "leads": "Dopyty ({count})",
+    "welcome": "Vitajte",
+    "welcomeNamed": "Vitajte, {name}",
+    "clientComingSoon": "Prehľad vašej spolupráce — ponuky, míľniky a ukážky — sa zobrazí tu. Už čoskoro.",
+    "hasDoc": "Má vlastnú špecifikáciu / dokumentáciu",
+    "hasDocLong": "Klient priložil vlastnú špecifikáciu / dokumentáciu.",
+    "allLeads": "Všetky dopyty",
+    "loadingLead": "Načítava sa dopyt…",
+    "leadNotFound": "Dopyt sa nenašiel.",
+    "submission": "Odoslané údaje",
+    "note": "Poznámka",
+    "features": "Funkcie ({count})",
+    "table": {
+      "customer": "Zákazník",
+      "appType": "Typ aplikácie",
+      "platforms": "Platformy",
+      "doc": "Dok.",
+      "sent": "Odoslané",
+      "status": "Stav"
+    },
+    "stage": {
+      "requirements": "Požiadavky",
+      "questions": "Otázky",
+      "analysis": "Analýza",
+      "proposal": "Ponuka",
+      "internalScope": "Interný rozsah"
+    },
+    "status": {
+      "NEW": "Nový",
+      "REVIEWING": "Kontroluje sa",
+      "ANALYZED": "Analyzovaný",
+      "PROPOSAL_DRAFTED": "Ponuka pripravená",
+      "PROPOSAL_SENT": "Ponuka odoslaná",
+      "WON": "Získaný",
+      "LOST": "Stratený"
+    },
+    "errors": {
+      "invalidCredentials": "Nesprávny e-mail alebo heslo.",
+      "loginFailed": "Prihlásenie zlyhalo. Skúste to znova.",
+      "notAuthorized": "Nemáte oprávnenie.",
+      "loadLeadsFailed": "Dopyty sa nepodarilo načítať.",
+      "loadLeadFailed": "Tento dopyt sa nepodarilo načítať."
+    }
   }
 }

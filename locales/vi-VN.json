@@ -590,5 +590,59 @@
       "saveProgress": "Lưu tiến trình",
       "workoutSaved": "Đã lưu"
     }
+  },
+  "account": {
+    "signIn": "Đăng nhập",
+    "signInSubtitle": "Truy cập tài khoản MK Digital của bạn.",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "admin": "Quản trị viên",
+    "yourAccount": "Tài khoản của bạn",
+    "signOut": "Đăng xuất",
+    "loadingLeads": "Đang tải khách hàng tiềm năng…",
+    "noLeads": "Chưa có khách hàng tiềm năng.",
+    "leads": "Khách hàng tiềm năng ({count})",
+    "welcome": "Chào mừng",
+    "welcomeNamed": "Chào mừng, {name}",
+    "clientComingSoon": "Tổng quan hợp tác của bạn — đề xuất, cột mốc và bản demo — sẽ hiển thị ở đây. Sắp ra mắt.",
+    "hasDoc": "Có tài liệu / đặc tả riêng",
+    "hasDocLong": "Khách hàng đã đính kèm tài liệu / đặc tả riêng.",
+    "allLeads": "Tất cả khách hàng tiềm năng",
+    "loadingLead": "Đang tải khách hàng tiềm năng…",
+    "leadNotFound": "Không tìm thấy khách hàng tiềm năng.",
+    "submission": "Thông tin đã gửi",
+    "note": "Ghi chú",
+    "features": "Tính năng ({count})",
+    "table": {
+      "customer": "Khách hàng",
+      "appType": "Loại ứng dụng",
+      "platforms": "Nền tảng",
+      "doc": "Tài liệu",
+      "sent": "Đã gửi",
+      "status": "Trạng thái"
+    },
+    "stage": {
+      "requirements": "Yêu cầu",
+      "questions": "Câu hỏi",
+      "analysis": "Phân tích",
+      "proposal": "Đề xuất",
+      "internalScope": "Phạm vi nội bộ"
+    },
+    "status": {
+      "NEW": "Mới",
+      "REVIEWING": "Đang xem xét",
+      "ANALYZED": "Đã phân tích",
+      "PROPOSAL_DRAFTED": "Đã soạn đề xuất",
+      "PROPOSAL_SENT": "Đã gửi đề xuất",
+      "WON": "Thắng",
+      "LOST": "Mất"
+    },
+    "errors": {
+      "invalidCredentials": "Email hoặc mật khẩu không đúng.",
+      "loginFailed": "Đăng nhập thất bại. Vui lòng thử lại.",
+      "notAuthorized": "Không có quyền.",
+      "loadLeadsFailed": "Không thể tải khách hàng tiềm năng.",
+      "loadLeadFailed": "Không thể tải khách hàng tiềm năng này."
+    }
   }
 }

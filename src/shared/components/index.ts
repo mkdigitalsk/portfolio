@@ -1,6 +1,7 @@
 export { Button } from './Button'
 export { Input } from './forms/Input'
 export { PhoneInput } from './forms/PhoneInput'
+export { Select } from './forms/Select'
 export { ThemeModeToggle } from './ThemeModeToggle'
 export { LocaleSwitcher } from './LocaleSwitcher'
 export { Reveal } from './Reveal'
@@ -23,6 +24,7 @@ export {
   TextBody1Primary,
   TextCaption,
   TextCaptionNeutral60,
+  TextTimestamp,
 } from './text'
 export { Chip, FilterChip } from './chips/Chip'
 export { Divider, DividerPrimary } from './dividers/Divider'
