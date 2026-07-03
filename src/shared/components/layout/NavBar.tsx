@@ -1,6 +1,6 @@
 'use client'
 
-import { Close, Menu as MenuIcon } from '@mui/icons-material'
+import { AccountCircleOutlined, Close, Menu as MenuIcon } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
@@ -144,6 +144,15 @@ export function NavBar() {
 
           <LocaleSwitcher />
           <ThemeModeToggle />
+          <IconButton
+            component={Link}
+            href="/account"
+            aria-label="Account"
+            aria-current={pathname.startsWith('/account') ? 'page' : undefined}
+            sx={{ color: pathname.startsWith('/account') ? 'primary.main' : 'text.primary' }}
+          >
+            <AccountCircleOutlined />
+          </IconButton>
         </Box>
       </Box>
 

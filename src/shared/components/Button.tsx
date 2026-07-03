@@ -3,7 +3,7 @@
 import { Button as MuiButton, type ButtonProps as MuiButtonProps } from '@mui/material'
 
 interface ButtonProps extends Omit<MuiButtonProps, 'variant'> {
-  variant?: 'primary' | 'secondary' | 'outline'
+  variant?: 'primary' | 'secondary' | 'outline' | 'text'
   loading?: boolean
   target?: string
   rel?: string
@@ -13,6 +13,7 @@ const variantMap = {
   primary: { variant: 'contained', color: 'primary' },
   secondary: { variant: 'contained', color: 'secondary' },
   outline: { variant: 'outlined', color: 'primary' },
+  text: { variant: 'text', color: 'primary' },
 } as const
 
 export function Button({ children, variant = 'primary', loading = false, disabled, sx, ...props }: ButtonProps) {
