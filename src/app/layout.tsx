@@ -18,6 +18,7 @@ import { InitialSchemeProvider, SchemeCookieSync } from '@/shared/theme/colorSch
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Footer, NavBar } from '@/shared/components'
 import { LocaleDeepLink } from '@/shared/components/LocaleDeepLink'
+import { QueryProvider } from '@/shared/query/QueryProvider'
 import { theme } from '@/shared/theme'
 import './globals.css'
 
@@ -56,19 +57,21 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         <InitColorSchemeScript attribute="class" defaultMode="system" />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <LocaleDeepLink />
-          <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-            <ThemeProvider theme={theme} defaultMode="system">
-              <CssBaseline />
-              <InitialSchemeProvider value={initialScheme}>
-                <SchemeCookieSync />
-                <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100dvh' }}>
-                  <NavBar />
-                  <Box sx={{ flex: 1 }}>{children}</Box>
-                  <Footer />
-                </Box>
-              </InitialSchemeProvider>
-            </ThemeProvider>
-          </AppRouterCacheProvider>
+          <QueryProvider>
+            <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+              <ThemeProvider theme={theme} defaultMode="system">
+                <CssBaseline />
+                <InitialSchemeProvider value={initialScheme}>
+                  <SchemeCookieSync />
+                  <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100dvh' }}>
+                    <NavBar />
+                    <Box sx={{ flex: 1 }}>{children}</Box>
+                    <Footer />
+                  </Box>
+                </InitialSchemeProvider>
+              </ThemeProvider>
+            </AppRouterCacheProvider>
+          </QueryProvider>
         </NextIntlClientProvider>
         <SpeedInsights />
       </body>

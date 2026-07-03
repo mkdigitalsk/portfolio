@@ -6,20 +6,22 @@ import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import Paper from '@mui/material/Paper'
 import { Button, Input, TextH4Bold, TextH6Bold, TextBody1, TextBody1Neutral60 } from '@/shared/components'
+import { httpStatus } from '@/shared/api'
 import { CONTENT_MAX, PAGE_PT } from '@/shared/layout'
 import { useAuth } from './useAuth'
-import { useAdminLeads } from './useAdminLeads'
+import { useLoginMutation } from './useLoginMutation'
+import { useLeadsQuery } from './useLeadsQuery'
 import { LeadsTable } from './LeadsTable'
 import { LeadDetail } from './LeadDetail'
 
 export function AccountPage() {
   const t = useTranslations('account')
-  const { token, user, login, logout } = useAuth()
+  const { token, user, logout } = useAuth()
 
   return (
     <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: 3, pt: PAGE_PT, pb: 10, width: '100%' }}>
       {!token || !user ? (
-        <LoginForm onLogin={login} />
+        <LoginForm />
       ) : (
         <Stack spacing={4}>
           <Box
@@ -39,31 +41,28 @@ export function AccountPage() {
               {t('signOut')}
             </Button>
           </Box>
-          {user.role === 'ADMIN' ? <AdminLeadsPanel token={token} /> : <ClientPanel name={user.name} />}
+          {user.role === 'ADMIN' ? <AdminLeadsPanel /> : <ClientPanel name={user.name} />}
         </Stack>
       )}
     </Box>
   )
 }
 
-function LoginForm({ onLogin }: { onLogin: (email: string, password: string) => Promise<void> }) {
+function LoginForm() {
   const t = useTranslations('account')
+  const loginMutation = useLoginMutation()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errorKey, setErrorKey] = useState<string | null>(null)
-  const [busy, setBusy] = useState(false)
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (busy) return
-    setBusy(true)
+    if (loginMutation.isPending) return
     setErrorKey(null)
     try {
-      await onLogin(email.trim(), password)
+      await loginMutation.mutateAsync({ email: email.trim(), password })
     } catch (err) {
-      setErrorKey(err instanceof Error && err.message === 'invalidCredentials' ? 'invalidCredentials' : 'loginFailed')
-    } finally {
-      setBusy(false)
+      setErrorKey(httpStatus(err) === 401 ? 'invalidCredentials' : 'loginFailed')
     }
   }
 
@@ -91,7 +90,7 @@ function LoginForm({ onLogin }: { onLogin: (email: string, password: string) => 
             error={!!errorKey}
             errorText={errorKey ? t(`errors.${errorKey}`) : undefined}
           />
-          <Button type="submit" loading={busy} disabled={!email || !password} sx={{ py: 1.5 }}>
+          <Button type="submit" loading={loginMutation.isPending} disabled={!email || !password} sx={{ py: 1.5 }}>
             {t('signIn')}
           </Button>
         </Stack>
@@ -112,19 +111,19 @@ function ClientPanel({ name }: { name: string }) {
   )
 }
 
-function AdminLeadsPanel({ token }: { token: string }) {
+function AdminLeadsPanel() {
   const t = useTranslations('account')
-  const { leads, loading, error } = useAdminLeads(token)
+  const { data: leads = [], isLoading, error } = useLeadsQuery()
   const [selected, setSelected] = useState<string | null>(null)
 
-  if (loading) return <TextBody1Neutral60>{t('loadingLeads')}</TextBody1Neutral60>
+  if (isLoading) return <TextBody1Neutral60>{t('loadingLeads')}</TextBody1Neutral60>
   if (error)
     return (
       <Box sx={{ color: 'error.main' }}>
-        <TextBody1>{t(`errors.${error}`)}</TextBody1>
+        <TextBody1>{t(`errors.${httpStatus(error) === 403 ? 'notAuthorized' : 'loadLeadsFailed'}`)}</TextBody1>
       </Box>
     )
-  if (selected) return <LeadDetail token={token} email={selected} onBack={() => setSelected(null)} />
+  if (selected) return <LeadDetail email={selected} onBack={() => setSelected(null)} />
   if (leads.length === 0) return <TextBody1Neutral60>{t('noLeads')}</TextBody1Neutral60>
 
   return (

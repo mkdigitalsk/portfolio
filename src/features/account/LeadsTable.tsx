@@ -10,7 +10,7 @@ import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Tooltip from '@mui/material/Tooltip'
 import { Chip, TextBody1, TextCaptionNeutral60, TextTimestamp } from '@/shared/components'
-import type { AdminLead } from './useAdminLeads'
+import type { AdminLead } from '@/shared/types'
 import { STATUS_COLOR } from './leadStatus'
 
 export function LeadsTable({ leads, onSelect }: { leads: AdminLead[]; onSelect: (email: string) => void }) {

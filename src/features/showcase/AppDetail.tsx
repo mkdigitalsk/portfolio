@@ -17,12 +17,10 @@ import {
   TextH4Bold,
   TextH6Bold,
 } from '@/shared/components'
-import { API_BASE } from '@/shared/api'
 import { CONTENT_MAX, PAGE_PT } from '@/shared/layout'
 import { detailApps } from './apps'
 import { scopeColor, scopeFill, scopeScore, scopeTier } from './complexity'
-
-const LEADS_ENDPOINT = `${API_BASE}/api/v1/leads`
+import { useSubmitLeadMutation } from './useSubmitLeadMutation'
 const EMAIL_ERROR_DELAY_MS = 800
 
 // Default phone country from the active locale (a German number usually matches a
@@ -60,11 +58,11 @@ export function AppDetail({ appId }: AppDetailProps) {
   const [phone, setPhone] = useState('')
   const [phoneHasNumber, setPhoneHasNumber] = useState(false)
   const [note, setNote] = useState('')
-  const [sending, setSending] = useState(false)
   const [error, setError] = useState(false)
   const [sent, setSent] = useState(false)
   const [errorArmedFor, setErrorArmedFor] = useState('')
   const [hasDoc, setHasDoc] = useState(false) // "I have my own documentation" — optional flag on the lead
+  const submitLead = useSubmitLeadMutation()
 
   // Reset everything to defaults when the app type changes (rail switch) — the React-recommended
   // "adjust state when a prop changes" pattern, robust even if Next reuses the instance. Each app
@@ -79,7 +77,6 @@ export function AppDetail({ appId }: AppDetailProps) {
     setPhone('')
     setPhoneHasNumber(false)
     setNote('')
-    setSending(false)
     setError(false)
     setSent(false)
     setErrorArmedFor('')
@@ -151,39 +148,28 @@ export function AppDetail({ appId }: AppDetailProps) {
   }
 
   const submit = async () => {
-    if (sending) return
+    if (submitLead.isPending) return
     if (!emailValid) {
       setErrorArmedFor(email)
       return
     }
-    setSending(true)
     setError(false)
     try {
-      const response = await fetch(LEADS_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          email,
-          appType: appLabel,
-          platforms: PLATFORMS.filter((p) => platforms.has(p.key)).map((p) => t(p.labelKey)),
-          features: selectedFeatures.map((feature) => feature.label),
-          ...(name.trim() ? { name: name.trim() } : {}),
-          ...(phoneHasNumber ? { phone: phone.trim() } : {}),
-          ...(note.trim() ? { note: note.trim() } : {}),
-          hasDoc,
-          locale,
-        }),
+      const { success } = await submitLead.mutateAsync({
+        email,
+        appType: appLabel,
+        platforms: PLATFORMS.filter((p) => platforms.has(p.key)).map((p) => t(p.labelKey)),
+        features: selectedFeatures.map((feature) => feature.label),
+        name: name.trim() || undefined,
+        phone: phoneHasNumber ? phone.trim() : undefined,
+        note: note.trim() || undefined,
+        hasDoc,
+        locale,
       })
-      const data = (await response.json()) as { success?: boolean }
-      if (response.ok && data.success) {
-        setSent(true)
-      } else {
-        setError(true)
-      }
+      if (success) setSent(true)
+      else setError(true)
     } catch {
       setError(true)
-    } finally {
-      setSending(false)
     }
   }
 
@@ -537,7 +523,7 @@ export function AppDetail({ appId }: AppDetailProps) {
                 </Alert>
               )}
 
-              <Button variant="primary" startIcon={<Send />} onClick={submit} loading={sending} disabled={!canSubmit}>
+              <Button variant="primary" startIcon={<Send />} onClick={submit} loading={submitLead.isPending} disabled={!canSubmit}>
                 {selectedFeatures.length > 0 ? `${t('home.sendCta')} (${selectedFeatures.length})` : t('home.sendCta')}
               </Button>
 

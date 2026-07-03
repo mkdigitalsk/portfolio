@@ -20,9 +20,11 @@ import {
   TextH4Bold,
   TextH6Bold,
 } from '@/shared/components'
-import { LEAD_STATUSES, STATUS_COLOR, type LeadStatus } from './leadStatus'
-import { useAdminLeadDetail } from './useAdminLeadDetail'
-import type { AdminLead } from './useAdminLeads'
+import { httpStatus } from '@/shared/api'
+import { LEAD_STATUSES, type AdminLead, type LeadStatus } from '@/shared/types'
+import { STATUS_COLOR } from './leadStatus'
+import { useLeadDetailQuery } from './useLeadDetailQuery'
+import { useUpdateStatusMutation } from './useUpdateStatusMutation'
 
 const STAGES = [
   { stage: 'REQUIREMENTS', key: 'requirements' },
@@ -32,13 +34,15 @@ const STAGES = [
   { stage: 'INTERNAL_SCOPE', key: 'internalScope' },
 ] as const
 
-export function LeadDetail({ token, email, onBack }: { token: string; email: string; onBack: () => void }) {
+export function LeadDetail({ email, onBack }: { email: string; onBack: () => void }) {
   const t = useTranslations('account')
-  const { detail, loading, error, updateStatus } = useAdminLeadDetail(token, email)
+  const { data: detail, isLoading, error } = useLeadDetailQuery(email)
+  const statusMutation = useUpdateStatusMutation(email)
   const [tab, setTab] = useState(0)
 
-  if (loading) return <TextBody1Neutral60>{t('loadingLead')}</TextBody1Neutral60>
-  if (error) return <ErrorBack message={t(`errors.${error}`)} onBack={onBack} />
+  if (isLoading) return <TextBody1Neutral60>{t('loadingLead')}</TextBody1Neutral60>
+  if (error)
+    return <ErrorBack message={t(`errors.${httpStatus(error) === 403 ? 'notAuthorized' : 'loadLeadFailed'}`)} onBack={onBack} />
   if (!detail) return <ErrorBack message={t('leadNotFound')} onBack={onBack} />
 
   const { lead, artifacts } = detail
@@ -59,7 +63,7 @@ export function LeadDetail({ token, email, onBack }: { token: string; email: str
             {lead.phone ? ` · ${lead.phone}` : ''}
           </TextBody1Neutral60>
         </Box>
-        <StatusControl value={lead.status} onChange={updateStatus} />
+        <StatusControl value={lead.status} onChange={(s) => statusMutation.mutate(s)} />
       </Box>
 
       <Tabs value={tab} onChange={(_, v) => setTab(v)} variant="scrollable" scrollButtons="auto">
