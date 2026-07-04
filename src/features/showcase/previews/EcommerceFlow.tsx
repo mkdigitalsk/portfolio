@@ -51,7 +51,18 @@ const ADD_MS = SIZE_MS + 680 // → Add to bag
 
 function BagBadge({ accent, count }: { accent: string; count: number }) {
   return (
-    <Box sx={{ position: 'relative', width: 30, height: 30, borderRadius: '50%', display: 'grid', placeItems: 'center', bgcolor: 'rgba(255,255,255,0.22)', fontSize: 14 }}>
+    <Box
+      sx={{
+        position: 'relative',
+        width: 30,
+        height: 30,
+        borderRadius: '50%',
+        display: 'grid',
+        placeItems: 'center',
+        bgcolor: 'rgba(255,255,255,0.22)',
+        fontSize: 14,
+      }}
+    >
       🛍️
       <motion.div
         key={count}
@@ -100,7 +111,15 @@ function ProductDetail({ accent, t }: { accent: string; t: ReturnType<typeof use
         component={motion.div}
         animate={{ backgroundColor: COLORWAYS[color].hex }}
         transition={{ duration: 0.4, ease: 'easeOut' }}
-        sx={{ position: 'relative', height: 60, borderRadius: `${R}px`, display: 'grid', placeItems: 'center', fontSize: 30, mb: 0.75 }}
+        sx={{
+          position: 'relative',
+          height: 60,
+          borderRadius: `${R}px`,
+          display: 'grid',
+          placeItems: 'center',
+          fontSize: 30,
+          mb: 0.75,
+        }}
       >
         {CHOSEN.emoji}
         <Box sx={{ position: 'absolute', top: 6, right: 6 }}>
@@ -109,7 +128,9 @@ function ProductDetail({ accent, t }: { accent: string; t: ReturnType<typeof use
       </Box>
 
       <Box sx={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
-        <Box sx={{ fontSize: 13.5, fontWeight: 700, color: 'text.primary', letterSpacing: '-0.01em' }}>{CHOSEN.name}</Box>
+        <Box sx={{ fontSize: 13.5, fontWeight: 700, color: 'text.primary', letterSpacing: '-0.01em' }}>
+          {CHOSEN.name}
+        </Box>
         <Box
           component={motion.div}
           key={color}
@@ -197,7 +218,12 @@ function ProductDetail({ accent, t }: { accent: string; t: ReturnType<typeof use
       >
         {added ? (
           <>
-            <motion.span initial={reduceMotion ? false : { scale: 0 }} animate={{ scale: 1 }} transition={POP_SPRING} style={{ display: 'grid' }}>
+            <motion.span
+              initial={reduceMotion ? false : { scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={POP_SPRING}
+              style={{ display: 'grid' }}
+            >
               <Check sx={{ fontSize: 16 }} />
             </motion.span>
             {t('addedToBag')}
@@ -248,7 +274,17 @@ export function EcommerceFlow({ accent, startDelay = 850 }: PreviewProps) {
               style={{ padding: '10px 14px 0' }}
             >
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                <Box sx={{ flex: 1, px: 1.25, py: 0.7, borderRadius: `${R}px`, bgcolor: 'action.hover', fontSize: 11, color: 'text.secondary' }}>
+                <Box
+                  sx={{
+                    flex: 1,
+                    px: 1.25,
+                    py: 0.7,
+                    borderRadius: `${R}px`,
+                    bgcolor: 'action.hover',
+                    fontSize: 11,
+                    color: 'text.secondary',
+                  }}
+                >
                   🔍 {t('searchProducts')}
                 </Box>
                 <BagBadge accent={accent} count={2} />
@@ -271,17 +307,41 @@ export function EcommerceFlow({ accent, startDelay = 850 }: PreviewProps) {
                     overflow: 'hidden',
                   }}
                 >
-                  <Box sx={{ width: 34, height: 34, borderRadius: `${R - 3}px`, display: 'grid', placeItems: 'center', bgcolor: 'background.paper', fontSize: 19, flexShrink: 0 }}>
+                  <Box
+                    sx={{
+                      width: 34,
+                      height: 34,
+                      borderRadius: `${R - 3}px`,
+                      display: 'grid',
+                      placeItems: 'center',
+                      bgcolor: 'background.paper',
+                      fontSize: 19,
+                      flexShrink: 0,
+                    }}
+                  >
                     {p.emoji}
                   </Box>
                   <Box sx={{ flex: 1, fontSize: 11.5, fontWeight: 600, color: 'text.primary' }}>{p.name}</Box>
-                  <Box sx={{ fontSize: 11.5, fontWeight: 800, color: accent, fontVariantNumeric: 'tabular-nums' }}>{p.price}</Box>
+                  <Box sx={{ fontSize: 11.5, fontWeight: 800, color: accent, fontVariantNumeric: 'tabular-nums' }}>
+                    {p.price}
+                  </Box>
                   {tapping && i === 0 && !reduceMotion && (
                     <motion.div
                       initial={{ scale: 0, opacity: 0.4 }}
                       animate={{ scale: 1, opacity: 0 }}
                       transition={{ duration: TAP_RIPPLE_S, ease: 'easeOut' }}
-                      style={{ position: 'absolute', left: '50%', top: '50%', width: 240, height: 240, marginLeft: -120, marginTop: -120, borderRadius: '50%', background: accent, pointerEvents: 'none' }}
+                      style={{
+                        position: 'absolute',
+                        left: '50%',
+                        top: '50%',
+                        width: 240,
+                        height: 240,
+                        marginLeft: -120,
+                        marginTop: -120,
+                        borderRadius: '50%',
+                        background: accent,
+                        pointerEvents: 'none',
+                      }}
                     />
                   )}
                 </Box>

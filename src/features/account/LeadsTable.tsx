@@ -27,7 +27,9 @@ export function LeadsTable({ leads, onSelect }: { leads: AdminLead[]; onSelect: 
             <TableCell>{t('table.customer')}</TableCell>
             <TableCell>{t('table.appType')}</TableCell>
             <TableCell>{t('table.platforms')}</TableCell>
-            <TableCell align="center" sx={SHRINK_TO_CONTENT}>{t('table.doc')}</TableCell>
+            <TableCell align="center" sx={SHRINK_TO_CONTENT}>
+              {t('table.doc')}
+            </TableCell>
             <TableCell sx={SHRINK_TO_CONTENT}>{t('table.sent')}</TableCell>
             <TableCell sx={SHRINK_TO_CONTENT}>{t('table.status')}</TableCell>
           </TableRow>

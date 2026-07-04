@@ -20,13 +20,7 @@ export function Button({ children, variant = 'primary', loading = false, disable
   const muiVariant = variantMap[variant]
 
   return (
-    <MuiButton
-      variant={muiVariant.variant}
-      color={muiVariant.color}
-      disabled={disabled || loading}
-      sx={sx}
-      {...props}
-    >
+    <MuiButton variant={muiVariant.variant} color={muiVariant.color} disabled={disabled || loading} sx={sx} {...props}>
       {loading ? 'Loading...' : children}
     </MuiButton>
   )

@@ -6,7 +6,17 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { PreviewScreen, type PreviewProps } from './PreviewKit'
-import { DETAIL_HOLD_MS, LOOP_GAP_MS, POP_SPRING, PRESS_DIP, PRESS_TRANSITION, SCREEN_FADE_S, SCREEN_SLIDE_PX, TAP_RIPPLE_S, TAP_TO_FLIP_MS } from './previewTiming'
+import {
+  DETAIL_HOLD_MS,
+  LOOP_GAP_MS,
+  POP_SPRING,
+  PRESS_DIP,
+  PRESS_TRANSITION,
+  SCREEN_FADE_S,
+  SCREEN_SLIDE_PX,
+  TAP_RIPPLE_S,
+  TAP_TO_FLIP_MS,
+} from './previewTiming'
 
 // Booking & travel micro-theme: Airbnb "Cereal" vibe — warm, soft, airy. Flow: search results ->
 // tap the featured stay -> stay detail where you set the number of NIGHTS (the total follows
@@ -100,10 +110,13 @@ function BookingDetail({ accent, t }: { accent: string; t: ReturnType<typeof use
   useEffect(() => {
     if (reduceMotion) return undefined // reduced motion: static 8 nights, not booked
     const timers = Array.from({ length: NIGHTS_CLICKS }, (_, i) =>
-      setTimeout(() => {
-        setNights(NIGHTS_START + i + 1) // 6, 7, 8
-        setClicks(i + 1)
-      }, FIRST_TAP_MS + i * TAP_STEP_MS),
+      setTimeout(
+        () => {
+          setNights(NIGHTS_START + i + 1) // 6, 7, 8
+          setClicks(i + 1)
+        },
+        FIRST_TAP_MS + i * TAP_STEP_MS,
+      ),
     )
     timers.push(setTimeout(() => setBooked(true), BOOK_MS)) // tap Book -> confirmed
     return () => timers.forEach(clearTimeout)
@@ -148,11 +161,23 @@ function BookingDetail({ accent, t }: { accent: string; t: ReturnType<typeof use
             initial={reduceMotion ? false : { scale: 0.7 }}
             animate={{ scale: 1 }}
             transition={POP_SPRING}
-            sx={{ minWidth: 16, textAlign: 'center', fontSize: 14, fontWeight: 800, color: 'text.primary', fontVariantNumeric: 'tabular-nums' }}
+            sx={{
+              minWidth: 16,
+              textAlign: 'center',
+              fontSize: 14,
+              fontWeight: 800,
+              color: 'text.primary',
+              fontVariantNumeric: 'tabular-nums',
+            }}
           >
             {nights}
           </Box>
-          <Box component={motion.div} key={clicks} animate={clicks > 0 && !reduceMotion ? { scale: [1, 1.18, 1] } : {}} transition={{ duration: 0.3 }}>
+          <Box
+            component={motion.div}
+            key={clicks}
+            animate={clicks > 0 && !reduceMotion ? { scale: [1, 1.18, 1] } : {}}
+            transition={{ duration: 0.3 }}
+          >
             <StepperButton>
               <Add sx={{ fontSize: 14, color: accent }} />
             </StepperButton>
@@ -174,7 +199,9 @@ function BookingDetail({ accent, t }: { accent: string; t: ReturnType<typeof use
         <Box sx={{ fontSize: 10, fontWeight: 500, color: 'text.secondary' }}>
           {t('nights', { count: nights })} · ✓ {t('freeCancellation')}
         </Box>
-        <Box sx={{ fontSize: 15, fontWeight: 800, color: accent, fontVariantNumeric: 'tabular-nums' }}>{formatEUR(nights * RATE)}</Box>
+        <Box sx={{ fontSize: 15, fontWeight: 800, color: accent, fontVariantNumeric: 'tabular-nums' }}>
+          {formatEUR(nights * RATE)}
+        </Box>
       </Box>
 
       <Box
@@ -197,7 +224,12 @@ function BookingDetail({ accent, t }: { accent: string; t: ReturnType<typeof use
       >
         {booked ? (
           <>
-            <motion.span initial={reduceMotion ? false : { scale: 0 }} animate={{ scale: 1 }} transition={POP_SPRING} style={{ display: 'grid' }}>
+            <motion.span
+              initial={reduceMotion ? false : { scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={POP_SPRING}
+              style={{ display: 'grid' }}
+            >
               <Check sx={{ fontSize: 16 }} />
             </motion.span>
             {t('tripBooked')}
@@ -265,10 +297,30 @@ export function BookingFlow({ accent, startDelay = 1320 }: PreviewProps) {
                   <TypedDestination accent={accent} />
                 </Box>
                 <Box sx={{ display: 'flex', gap: 0.75 }}>
-                  <Box sx={{ fontSize: 10, fontWeight: 500, color: 'text.secondary', bgcolor: 'background.paper', borderRadius: `${R - 6}px`, px: 1, py: 0.5 }}>
+                  <Box
+                    sx={{
+                      fontSize: 10,
+                      fontWeight: 500,
+                      color: 'text.secondary',
+                      bgcolor: 'background.paper',
+                      borderRadius: `${R - 6}px`,
+                      px: 1,
+                      py: 0.5,
+                    }}
+                  >
                     {DATES}
                   </Box>
-                  <Box sx={{ fontSize: 10, fontWeight: 500, color: 'text.secondary', bgcolor: 'background.paper', borderRadius: `${R - 6}px`, px: 1, py: 0.5 }}>
+                  <Box
+                    sx={{
+                      fontSize: 10,
+                      fontWeight: 500,
+                      color: 'text.secondary',
+                      bgcolor: 'background.paper',
+                      borderRadius: `${R - 6}px`,
+                      px: 1,
+                      py: 0.5,
+                    }}
+                  >
                     {t('guests', { count: 2 })}
                   </Box>
                 </Box>

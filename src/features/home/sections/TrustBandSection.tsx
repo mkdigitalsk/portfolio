@@ -25,7 +25,16 @@ export async function TrustBandSection() {
             <Box key={fact} sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1.5, sm: 2, md: 3 } }}>
               <TextBody1Neutral80>{fact}</TextBody1Neutral80>
               {i < facts.length - 1 && (
-                <Box aria-hidden sx={{ width: 4, height: 4, borderRadius: '50%', bgcolor: 'divider', display: { xs: 'none', sm: 'block' } }} />
+                <Box
+                  aria-hidden
+                  sx={{
+                    width: 4,
+                    height: 4,
+                    borderRadius: '50%',
+                    bgcolor: 'divider',
+                    display: { xs: 'none', sm: 'block' },
+                  }}
+                />
               )}
             </Box>
           ))}

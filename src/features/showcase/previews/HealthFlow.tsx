@@ -69,11 +69,20 @@ function ActiveWorkout({ accent, t }: { accent: string; t: ReturnType<typeof use
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mb: 0.75 }}>
         <DirectionsRun sx={{ fontSize: 16, color: accent }} />
-        <Box sx={{ fontSize: 12, fontWeight: 800, color: 'text.primary', letterSpacing: '-0.01em' }}>{t('morningRun')}</Box>
+        <Box sx={{ fontSize: 12, fontWeight: 800, color: 'text.primary', letterSpacing: '-0.01em' }}>
+          {t('morningRun')}
+        </Box>
       </Box>
       <Box sx={{ position: 'relative', width: RING_SIZE, height: RING_SIZE, mb: 0.75 }}>
         <svg width={RING_SIZE} height={RING_SIZE} style={{ transform: 'rotate(-90deg)' }}>
-          <circle cx={RING_SIZE / 2} cy={RING_SIZE / 2} r={RING_R} fill="none" stroke="rgba(128,128,128,0.18)" strokeWidth={RING_STROKE} />
+          <circle
+            cx={RING_SIZE / 2}
+            cy={RING_SIZE / 2}
+            r={RING_R}
+            fill="none"
+            stroke="rgba(128,128,128,0.18)"
+            strokeWidth={RING_STROKE}
+          />
           <circle
             cx={RING_SIZE / 2}
             cy={RING_SIZE / 2}
@@ -86,8 +95,26 @@ function ActiveWorkout({ accent, t }: { accent: string; t: ReturnType<typeof use
             strokeDashoffset={offset}
           />
         </svg>
-        <Box sx={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-          <Box sx={{ fontSize: 22, fontWeight: 800, color: 'text.primary', letterSpacing: '-0.02em', fontVariantNumeric: 'tabular-nums', lineHeight: 1 }}>
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Box
+            sx={{
+              fontSize: 22,
+              fontWeight: 800,
+              color: 'text.primary',
+              letterSpacing: '-0.02em',
+              fontVariantNumeric: 'tabular-nums',
+              lineHeight: 1,
+            }}
+          >
             {fmtClock(secs)}
           </Box>
           <Box sx={{ fontSize: 9, fontWeight: 700, color: 'text.secondary', mt: 0.25 }}>{t('elapsed')}</Box>
@@ -96,7 +123,9 @@ function ActiveWorkout({ accent, t }: { accent: string; t: ReturnType<typeof use
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, mb: 0.9 }}>
         {[`${distance.toFixed(1)} km`, `${Math.round(kcal)} kcal`, "5'10/km"].map((m, i, arr) => (
           <Box key={m} sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
-            <Box sx={{ fontSize: 11, fontWeight: 800, color: 'text.primary', fontVariantNumeric: 'tabular-nums' }}>{m}</Box>
+            <Box sx={{ fontSize: 11, fontWeight: 800, color: 'text.primary', fontVariantNumeric: 'tabular-nums' }}>
+              {m}
+            </Box>
             {i < arr.length - 1 && <Box sx={{ fontSize: 11, fontWeight: 700, color: 'text.disabled' }}>·</Box>}
           </Box>
         ))}
@@ -106,7 +135,11 @@ function ActiveWorkout({ accent, t }: { accent: string; t: ReturnType<typeof use
           component={motion.div}
           initial={reduceMotion ? false : { opacity: 0, y: 8 }}
           animate={reduceMotion ? {} : { opacity: 1, y: 0, scale: saved ? PRESS_DIP : 1 }}
-          transition={{ opacity: { duration: 0.2 }, y: { type: 'spring', stiffness: 400, damping: 24 }, scale: PRESS_TRANSITION }}
+          transition={{
+            opacity: { duration: 0.2 },
+            y: { type: 'spring', stiffness: 400, damping: 24 },
+            scale: PRESS_TRANSITION,
+          }}
           sx={{
             display: 'flex',
             alignItems: 'center',
@@ -124,7 +157,12 @@ function ActiveWorkout({ accent, t }: { accent: string; t: ReturnType<typeof use
         >
           {saved ? (
             <>
-              <motion.span initial={reduceMotion ? false : { scale: 0 }} animate={{ scale: 1 }} transition={POP_SPRING} style={{ display: 'grid' }}>
+              <motion.span
+                initial={reduceMotion ? false : { scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={POP_SPRING}
+                style={{ display: 'grid' }}
+              >
                 <Check sx={{ fontSize: 16 }} />
               </motion.span>
               {t('workoutSaved')}
@@ -178,13 +216,35 @@ export function HealthFlow({ accent, startDelay = 900 }: PreviewProps) {
               transition={{ duration: 0.3 }}
               style={{ padding: '0 12px' }}
             >
-              <Box sx={{ fontSize: 22, fontWeight: 800, color: 'text.primary', letterSpacing: '-0.02em' }}>{t('today')}</Box>
+              <Box sx={{ fontSize: 22, fontWeight: 800, color: 'text.primary', letterSpacing: '-0.02em' }}>
+                {t('today')}
+              </Box>
               <Box sx={{ fontSize: 10.5, fontWeight: 700, color: 'text.secondary', mb: 1.25 }}>Mon, Jun 20</Box>
               <Box sx={{ display: 'flex', gap: 0.75, mb: 1.5 }}>
                 {STATS.map((s) => (
-                  <Box key={s.key} sx={{ flex: 1, borderRadius: `${R}px`, bgcolor: 'action.hover', p: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                  <Box
+                    key={s.key}
+                    sx={{
+                      flex: 1,
+                      borderRadius: `${R}px`,
+                      bgcolor: 'action.hover',
+                      p: 1,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'flex-start',
+                    }}
+                  >
                     <s.Icon sx={{ fontSize: 14, color: accent, mb: 0.5 }} />
-                    <Box sx={{ fontSize: 18, fontWeight: 800, color: accent, letterSpacing: '-0.02em', fontVariantNumeric: 'tabular-nums', lineHeight: 1.1 }}>
+                    <Box
+                      sx={{
+                        fontSize: 18,
+                        fontWeight: 800,
+                        color: accent,
+                        letterSpacing: '-0.02em',
+                        fontVariantNumeric: 'tabular-nums',
+                        lineHeight: 1.1,
+                      }}
+                    >
                       {s.value}
                     </Box>
                     <Box sx={{ fontSize: 9.5, fontWeight: 700, color: 'text.secondary' }}>{t(s.key)}</Box>

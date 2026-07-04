@@ -99,7 +99,14 @@ export function MarketplaceFlow({ accent, startDelay = 670 }: PreviewProps) {
                   component={motion.div}
                   animate={tapping && !reduceMotion ? { scale: PRESS_DIP } : {}}
                   transition={PRESS_TRANSITION}
-                  sx={{ position: 'relative', ml: 'auto', display: 'grid', placeItems: 'center', width: 26, height: 26 }}
+                  sx={{
+                    position: 'relative',
+                    ml: 'auto',
+                    display: 'grid',
+                    placeItems: 'center',
+                    width: 26,
+                    height: 26,
+                  }}
                 >
                   <ShoppingCartOutlined sx={{ fontSize: 18, color: 'text.secondary' }} />
                   {inCart > 0 && (
@@ -132,7 +139,15 @@ export function MarketplaceFlow({ accent, startDelay = 670 }: PreviewProps) {
                       initial={{ scale: 0, opacity: 0.5 }}
                       animate={{ scale: 2.6, opacity: 0 }}
                       transition={{ duration: 0.45 }}
-                      style={{ position: 'absolute', inset: 0, margin: 'auto', width: 24, height: 24, borderRadius: '50%', background: accent }}
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        margin: 'auto',
+                        width: 24,
+                        height: 24,
+                        borderRadius: '50%',
+                        background: accent,
+                      }}
                     />
                   )}
                 </Box>
@@ -158,7 +173,13 @@ export function MarketplaceFlow({ accent, startDelay = 670 }: PreviewProps) {
                         initial={{ opacity: 0.2 }}
                         animate={{ opacity: 0 }}
                         transition={{ duration: 0.9 }}
-                        style={{ position: 'absolute', inset: 0, borderRadius: R, background: accent, pointerEvents: 'none' }}
+                        style={{
+                          position: 'absolute',
+                          inset: 0,
+                          borderRadius: R,
+                          background: accent,
+                          pointerEvents: 'none',
+                        }}
                       />
                     )}
                     <Box
@@ -181,7 +202,9 @@ export function MarketplaceFlow({ accent, startDelay = 670 }: PreviewProps) {
                         ★{l.rating} {t('seller')}
                       </Box>
                     </Box>
-                    <Box sx={{ position: 'relative', fontSize: 12, fontWeight: 800, color: accent }}>{formatEUR(l.price)}</Box>
+                    <Box sx={{ position: 'relative', fontSize: 12, fontWeight: 800, color: accent }}>
+                      {formatEUR(l.price)}
+                    </Box>
                   </Box>
                 )
               })}
@@ -214,7 +237,9 @@ export function MarketplaceFlow({ accent, startDelay = 670 }: PreviewProps) {
                     {l.emoji}
                   </Box>
                   <Box sx={{ flex: 1, fontSize: 11.5, fontWeight: 700, color: 'text.primary' }}>{t(l.key)}</Box>
-                  <Box sx={{ fontSize: 11.5, fontWeight: 800, color: 'text.primary', fontVariantNumeric: 'tabular-nums' }}>
+                  <Box
+                    sx={{ fontSize: 11.5, fontWeight: 800, color: 'text.primary', fontVariantNumeric: 'tabular-nums' }}
+                  >
                     {formatEUR(l.price)}
                   </Box>
                 </Box>

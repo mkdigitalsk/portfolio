@@ -19,7 +19,8 @@ export const PRESS_TRANSITION = { duration: 0.28, ease: 'easeOut' as const }
 // fintech/food flip in 3D (FlipRevealCard): icon flip then card flip.
 const FLIP_OPEN_MS = (ICON_FLIP_S + CARD_FLIP_S) * 1000 // ≈ 840ms
 // everything else (AppRevealCard) reveals via a clip/alpha animation with its own duration.
-const clipRevealMs = (ia: IconAnimation) => ((revealAnimations[ia].transition as { duration?: number }).duration ?? 0.55) * 1000
+const clipRevealMs = (ia: IconAnimation) =>
+  ((revealAnimations[ia].transition as { duration?: number }).duration ?? 0.55) * 1000
 
 // Per card type: `reveal` = how long that card's open animation runs (derived from the real flip /
 // clip durations, can't drift). `offset` = where the in-screen action starts relative to the reveal
@@ -36,4 +37,5 @@ export const CARD_TIMING: Record<IconAnimation, { reveal: number; offset: number
   heart: { reveal: clipRevealMs('heart'), offset: 150 }, // health — tap "Start workout" after the dashboard reveals (~1150ms)
 }
 
-export const actionStartMs = (ia: IconAnimation) => Math.max(100, Math.round(CARD_TIMING[ia].reveal + CARD_TIMING[ia].offset))
+export const actionStartMs = (ia: IconAnimation) =>
+  Math.max(100, Math.round(CARD_TIMING[ia].reveal + CARD_TIMING[ia].offset))

@@ -85,7 +85,10 @@ const EN: Policy = {
       h: '4. Recipients & international transfer',
       body: 'Your submission is received and stored by our own server at our hosting provider (Railway); the notification email is delivered by our email provider Websupport s. r. o. (Slovakia, EU). We do not share or sell your data to anyone else. Where any processing takes place outside the EU, we rely on standard contractual clauses.',
     },
-    { h: '5. Retention', body: 'We store your enquiry only as long as needed to handle it and any follow-up, then delete it.' },
+    {
+      h: '5. Retention',
+      body: 'We store your enquiry only as long as needed to handle it and any follow-up, then delete it.',
+    },
     {
       h: '6. Cookies & browser storage',
       body: 'We use no analytics, advertising, or tracking cookies, so no cookie banner is needed. We store only functional preferences in your browser — your language and theme (cookies) and your reduced-motion setting (local storage) — under § 109 of Act 452/2021 Coll. None of this identifies you or leaves your device.',
@@ -110,7 +113,10 @@ export default async function PrivacyPage() {
   const p = locale.startsWith('sk') ? SK : EN
 
   return (
-    <Box component="main" sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: { xs: 2, md: 3 }, pt: PAGE_PT, pb: { xs: 4, md: 6 } }}>
+    <Box
+      component="main"
+      sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: { xs: 2, md: 3 }, pt: PAGE_PT, pb: { xs: 4, md: 6 } }}
+    >
       <TextH4Bold sx={{ mb: 1 }}>{p.title}</TextH4Bold>
       <Box sx={{ mb: 4 }}>
         <TextCaptionNeutral60>{p.updated}</TextCaptionNeutral60>

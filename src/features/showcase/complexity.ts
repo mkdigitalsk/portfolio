@@ -17,19 +17,65 @@ const TYPE_BASE: Record<string, number> = {
 // Per-feature difficulty (1 = light, 4 = heavy). Keyed by the feature keys in apps.ts.
 const FEATURE_DIFFICULTY: Record<string, number> = {
   // food
-  liveTracking: 3, favourites: 1, payments: 3, scheduled: 2, menuFilters: 2, ratings: 1, promos: 2, multiLanguage: 1, supportChat: 4,
+  liveTracking: 3,
+  favourites: 1,
+  payments: 3,
+  scheduled: 2,
+  menuFilters: 2,
+  ratings: 1,
+  promos: 2,
+  multiLanguage: 1,
+  supportChat: 4,
   // fintech
-  biometricLogin: 2, instantTransfers: 3, cardControls: 3, spendingInsights: 3, multiCurrency: 2, savingsGoals: 2, realtimeAlerts: 2, fastOnboarding: 3, billSplitting: 2,
+  biometricLogin: 2,
+  instantTransfers: 3,
+  cardControls: 3,
+  spendingInsights: 3,
+  multiCurrency: 2,
+  savingsGoals: 2,
+  realtimeAlerts: 2,
+  fastOnboarding: 3,
+  billSplitting: 2,
   // ecommerce
-  search: 2, recommendations: 3, wishlist: 1, guestCheckout: 1, orderTracking: 3, reviews: 1, cartReminders: 2, loyalty: 2,
+  search: 2,
+  recommendations: 3,
+  wishlist: 1,
+  guestCheckout: 1,
+  orderTracking: 3,
+  reviews: 1,
+  cartReminders: 2,
+  loyalty: 2,
   // booking
-  availability: 3, instantBooking: 2, mapView: 3, manage: 2, multiLangCurrency: 2, reminders: 2,
+  availability: 3,
+  instantBooking: 2,
+  mapView: 3,
+  manage: 2,
+  multiLangCurrency: 2,
+  reminders: 2,
   // marketplace
-  sellerListings: 3, chat: 4, escrow: 4, buyerProtection: 3, verification: 3, shipping: 2, pushOffers: 1,
+  sellerListings: 3,
+  chat: 4,
+  escrow: 4,
+  buyerProtection: 3,
+  verification: 3,
+  shipping: 2,
+  pushOffers: 1,
   // health
-  activityTracking: 2, wearableSync: 4, workoutPlans: 2, nutrition: 2, progressCharts: 3, goalReminders: 2, challenges: 2, sleep: 2, privacy: 3,
+  activityTracking: 2,
+  wearableSync: 4,
+  workoutPlans: 2,
+  nutrition: 2,
+  progressCharts: 3,
+  goalReminders: 2,
+  challenges: 2,
+  sleep: 2,
+  privacy: 3,
   // custom / generic
-  accounts: 2, notifications: 1, adminDashboard: 3, analytics: 3, offline: 2,
+  accounts: 2,
+  notifications: 1,
+  adminDashboard: 3,
+  analytics: 3,
+  offline: 2,
 }
 
 // Platform is a scope MULTIPLIER. Even with KMP, mobile carries platform-specific work (push,
@@ -77,7 +123,13 @@ const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v
 
 function hexToRgb(hex: string): [number, number, number] {
   const h = hex.replace('#', '')
-  const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h
+  const full =
+    h.length === 3
+      ? h
+          .split('')
+          .map((c) => c + c)
+          .join('')
+      : h
   const n = parseInt(full, 16)
   return [(n >> 16) & 255, (n >> 8) & 255, n & 255]
 }

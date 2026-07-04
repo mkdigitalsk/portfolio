@@ -1,7 +1,14 @@
 import { Mail, Shield } from '@mui/icons-material'
 import { Box } from '@mui/material'
 import { getTranslations } from 'next-intl/server'
-import { Button, Reveal, TextBody1Neutral60, TextBody1Neutral80, TextCaptionNeutral60, TextH6Bold } from '@/shared/components'
+import {
+  Button,
+  Reveal,
+  TextBody1Neutral60,
+  TextBody1Neutral80,
+  TextCaptionNeutral60,
+  TextH6Bold,
+} from '@/shared/components'
 import { Section } from '../Section'
 
 // How we work — opinionated process + productized first step. The research is explicit: for a

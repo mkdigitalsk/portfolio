@@ -70,7 +70,18 @@ function CustomizeBurger({ accent, name, t }: { accent: string; name: string; t:
   return (
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25, mb: 1 }}>
-        <Box sx={{ width: 46, height: 46, borderRadius: `${R}px`, display: 'grid', placeItems: 'center', fontSize: 28, flexShrink: 0, bgcolor: 'action.hover' }}>
+        <Box
+          sx={{
+            width: 46,
+            height: 46,
+            borderRadius: `${R}px`,
+            display: 'grid',
+            placeItems: 'center',
+            fontSize: 28,
+            flexShrink: 0,
+            bgcolor: 'action.hover',
+          }}
+        >
           🍔
         </Box>
         <Box sx={{ flex: 1, minWidth: 0 }}>
@@ -86,10 +97,26 @@ function CustomizeBurger({ accent, name, t }: { accent: string; name: string; t:
             <motion.div
               initial={false}
               animate={{ scale: on ? [0.85, 1.22, 1] : 0.92, backgroundColor: on ? accent : 'rgba(0,0,0,0)' }}
-              transition={{ scale: { duration: 0.42, times: [0, 0.55, 1], ease: 'easeOut' }, backgroundColor: { duration: 0.2 } }}
-              style={{ width: 19, height: 19, borderRadius: '50%', display: 'grid', placeItems: 'center', border: on ? 'none' : '2px solid rgba(140,140,140,0.5)', color: '#fff' }}
+              transition={{
+                scale: { duration: 0.42, times: [0, 0.55, 1], ease: 'easeOut' },
+                backgroundColor: { duration: 0.2 },
+              }}
+              style={{
+                width: 19,
+                height: 19,
+                borderRadius: '50%',
+                display: 'grid',
+                placeItems: 'center',
+                border: on ? 'none' : '2px solid rgba(140,140,140,0.5)',
+                color: '#fff',
+              }}
             >
-              <motion.span initial={false} animate={{ scale: on ? 1 : 0 }} transition={{ duration: 0.18 }} style={{ display: 'grid' }}>
+              <motion.span
+                initial={false}
+                animate={{ scale: on ? 1 : 0 }}
+                transition={{ duration: 0.18 }}
+                style={{ display: 'grid' }}
+              >
                 <Check sx={{ fontSize: 13 }} />
               </motion.span>
             </motion.div>
@@ -120,7 +147,12 @@ function CustomizeBurger({ accent, name, t }: { accent: string; name: string; t:
       >
         {ordered ? (
           <>
-            <motion.span initial={reduceMotion ? false : { scale: 0 }} animate={{ scale: 1 }} transition={POP_SPRING} style={{ display: 'grid' }}>
+            <motion.span
+              initial={reduceMotion ? false : { scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={POP_SPRING}
+              style={{ display: 'grid' }}
+            >
               <Check sx={{ fontSize: 16 }} />
             </motion.span>
             {t('addedToOrder')}
@@ -190,7 +222,11 @@ export function FoodFlow({ accent, startDelay = 900 }: PreviewProps) {
                 <motion.div
                   initial={reduceMotion ? { y: SCROLL_Y } : { y: 0 }}
                   animate={{ y: SCROLL_Y }}
-                  transition={reduceMotion ? { duration: 0 } : { delay: SCROLL_DELAY_S, duration: SCROLL_DUR_S, ease: [0.4, 0, 0.2, 1] }}
+                  transition={
+                    reduceMotion
+                      ? { duration: 0 }
+                      : { delay: SCROLL_DELAY_S, duration: SCROLL_DUR_S, ease: [0.4, 0, 0.2, 1] }
+                  }
                 >
                   {DISHES.map((d, i) => (
                     <Box
@@ -209,11 +245,24 @@ export function FoodFlow({ accent, startDelay = 900 }: PreviewProps) {
                         bgcolor: i === BURGER_INDEX && tapping ? 'action.selected' : 'transparent',
                       }}
                     >
-                      <Box sx={{ width: 34, height: 34, borderRadius: `${R - 3}px`, display: 'grid', placeItems: 'center', fontSize: 18, flexShrink: 0, bgcolor: 'action.hover' }}>
+                      <Box
+                        sx={{
+                          width: 34,
+                          height: 34,
+                          borderRadius: `${R - 3}px`,
+                          display: 'grid',
+                          placeItems: 'center',
+                          fontSize: 18,
+                          flexShrink: 0,
+                          bgcolor: 'action.hover',
+                        }}
+                      >
                         {d.emoji}
                       </Box>
                       <Box sx={{ flex: 1, minWidth: 0 }}>
-                        <Box sx={{ fontSize: 11.5, fontWeight: 500, color: 'text.primary' }}>{d.key ? t(`dish.${d.key}`) : d.name}</Box>
+                        <Box sx={{ fontSize: 11.5, fontWeight: 500, color: 'text.primary' }}>
+                          {d.key ? t(`dish.${d.key}`) : d.name}
+                        </Box>
                         <Box sx={{ fontSize: 9.5, fontWeight: 400, color: 'text.secondary' }}>{d.meta}</Box>
                       </Box>
                       <Box sx={{ fontSize: 11.5, fontWeight: 600, color: accent }}>{d.price}</Box>
@@ -222,7 +271,16 @@ export function FoodFlow({ accent, startDelay = 900 }: PreviewProps) {
                           initial={{ scale: 0, opacity: 0.5 }}
                           animate={{ scale: 2.4, opacity: 0 }}
                           transition={{ duration: TAP_RIPPLE_S }}
-                          style={{ position: 'absolute', left: 24, top: '50%', width: 24, height: 24, marginTop: -12, borderRadius: '50%', background: accent }}
+                          style={{
+                            position: 'absolute',
+                            left: 24,
+                            top: '50%',
+                            width: 24,
+                            height: 24,
+                            marginTop: -12,
+                            borderRadius: '50%',
+                            background: accent,
+                          }}
                         />
                       )}
                     </Box>

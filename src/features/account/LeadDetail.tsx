@@ -10,7 +10,15 @@ import Stack from '@mui/material/Stack'
 import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import { Button, Chip, Markdown, TextBody1, TextBody1Neutral60, TextCaptionNeutral60, TextH6Bold } from '@/shared/components'
+import {
+  Button,
+  Chip,
+  Markdown,
+  TextBody1,
+  TextBody1Neutral60,
+  TextCaptionNeutral60,
+  TextH6Bold,
+} from '@/shared/components'
 import { httpStatus } from '@/shared/api'
 import type { AdminLead } from '@/shared/types'
 import { useLeadDetailQuery } from './useLeadDetailQuery'
@@ -36,12 +44,22 @@ export function LeadDetail({ email }: { email: string }) {
 
   if (isLoading) return <TextBody1Neutral60>{t('loadingLead')}</TextBody1Neutral60>
   if (error)
-    return <ErrorBack message={t(`errors.${httpStatus(error) === 403 ? 'notAuthorized' : 'loadLeadFailed'}`)} onBack={toList} />
+    return (
+      <ErrorBack
+        message={t(`errors.${httpStatus(error) === 403 ? 'notAuthorized' : 'loadLeadFailed'}`)}
+        onBack={toList}
+      />
+    )
   if (!detail) return <ErrorBack message={t('leadNotFound')} onBack={toList} />
 
   const { lead, artifacts } = detail
   const present = STAGES.filter((s) => artifacts.some((a) => a.stage === s.stage))
-  const content = tab === 0 ? <Submission lead={lead} /> : <Markdown>{artifacts.find((a) => a.stage === present[tab - 1]?.stage)?.content ?? ''}</Markdown>
+  const content =
+    tab === 0 ? (
+      <Submission lead={lead} />
+    ) : (
+      <Markdown>{artifacts.find((a) => a.stage === present[tab - 1]?.stage)?.content ?? ''}</Markdown>
+    )
 
   return (
     <Stack spacing={3}>

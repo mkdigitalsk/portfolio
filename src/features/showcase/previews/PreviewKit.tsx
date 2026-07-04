@@ -62,7 +62,16 @@ export function PreviewScreen({ children }: { children: ReactNode }) {
           {[5, 7, 9].map((h) => (
             <Box key={h} sx={{ width: 3, height: h, borderRadius: 0.5, bgcolor: 'text.disabled' }} />
           ))}
-          <Box sx={{ ml: 0.25, width: 14, height: 8, borderRadius: 0.5, border: '1px solid', borderColor: 'text.disabled' }} />
+          <Box
+            sx={{
+              ml: 0.25,
+              width: 14,
+              height: 8,
+              borderRadius: 0.5,
+              border: '1px solid',
+              borderColor: 'text.disabled',
+            }}
+          />
         </Box>
       </Box>
       {children}

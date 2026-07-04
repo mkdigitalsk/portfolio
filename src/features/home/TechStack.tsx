@@ -31,7 +31,10 @@ export function TechStack({ groups }: { groups: TechGroup[] }) {
                     variant="outlined"
                     label={
                       group.withIcons ? (
-                        <Box component="span" sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.75, verticalAlign: 'middle' }}>
+                        <Box
+                          component="span"
+                          sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.75, verticalAlign: 'middle' }}
+                        >
                           <TechIcon tech={tech} />
                           {tech}
                         </Box>

@@ -26,7 +26,17 @@ interface SectionProps {
 // header all live here, in one place. Change it here and every section moves together; no
 // per-section copy-paste that can drift. Content stays left-aligned (TEXT_MAX for text columns).
 // Hero and the final CTA intentionally render their own H1 (bookends) instead of `title`.
-export function Section({ children, title, subtitle, bg, divider, dividerBottom, py = SECTION_PY, pt, id }: SectionProps) {
+export function Section({
+  children,
+  title,
+  subtitle,
+  bg,
+  divider,
+  dividerBottom,
+  py = SECTION_PY,
+  pt,
+  id,
+}: SectionProps) {
   return (
     <Box
       component="section"

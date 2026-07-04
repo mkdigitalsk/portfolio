@@ -6,7 +6,16 @@ import { animate, AnimatePresence, motion, useReducedMotion } from 'motion/react
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { PreviewScreen, type PreviewProps } from './PreviewKit'
-import { DETAIL_HOLD_MS, LOOP_GAP_MS, PRESS_DIP, PRESS_TRANSITION, SCREEN_FADE_S, SCREEN_SLIDE_PX, TAP_RIPPLE_S, TAP_TO_FLIP_MS } from './previewTiming'
+import {
+  DETAIL_HOLD_MS,
+  LOOP_GAP_MS,
+  PRESS_DIP,
+  PRESS_TRANSITION,
+  SCREEN_FADE_S,
+  SCREEN_SLIDE_PX,
+  TAP_RIPPLE_S,
+  TAP_TO_FLIP_MS,
+} from './previewTiming'
 
 // Fintech micro-theme: Revolut/Monzo vibe — tighter corners, real MUI icons (not emoji),
 // tabular-nums, high contrast. Flow: accounts overview -> tap Main Account -> account detail where
@@ -39,7 +48,8 @@ const BASE_TX: Tx[] = [
   { id: 'uber', dir: 'out', name: 'Uber', amount: '−€14.30' },
 ]
 
-const fmtMoney = (symbol: string, n: number) => `${symbol}${n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+const fmtMoney = (symbol: string, n: number) =>
+  `${symbol}${n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
 const formatEUR = (n: number) => fmtMoney('€', n)
 
 function TxRow({ tx, flash }: { tx: Tx; flash: boolean }) {
@@ -50,7 +60,13 @@ function TxRow({ tx, flash }: { tx: Tx; flash: boolean }) {
           initial={{ opacity: 0.22 }}
           animate={{ opacity: 0 }}
           transition={{ duration: 1.1 }}
-          style={{ position: 'absolute', inset: 0, background: 'rgb(52,211,153)', borderRadius: R, pointerEvents: 'none' }}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'rgb(52,211,153)',
+            borderRadius: R,
+            pointerEvents: 'none',
+          }}
         />
       )}
       <Box sx={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 1, height: ROW, px: 0.5 }}>
@@ -97,7 +113,11 @@ function AccountDetail({ label, sub, incoming }: { label: string; sub: string; i
     const timer = setTimeout(() => {
       setRows([{ ...CREDIT, name: incoming }, ...BASE_TX]) // credit on top; the old last row is now the clipped 4th
       setSlideKey(1) // remount the strip → carousel slide from y:-ROW to 0
-      controls = animate(BASE_BALANCE, BASE_BALANCE + CREDIT_AMOUNT, { duration: 0.9, ease: 'easeOut', onUpdate: setBalance })
+      controls = animate(BASE_BALANCE, BASE_BALANCE + CREDIT_AMOUNT, {
+        duration: 0.9,
+        ease: 'easeOut',
+        onUpdate: setBalance,
+      })
     }, CREDIT_DROP_MS)
     return () => {
       clearTimeout(timer)
@@ -107,7 +127,9 @@ function AccountDetail({ label, sub, incoming }: { label: string; sub: string; i
 
   return (
     <>
-      <Box sx={{ fontSize: 10.5, fontWeight: 700, color: 'text.secondary', letterSpacing: '-0.01em', textAlign: 'right' }}>
+      <Box
+        sx={{ fontSize: 10.5, fontWeight: 700, color: 'text.secondary', letterSpacing: '-0.01em', textAlign: 'right' }}
+      >
         {label}
       </Box>
       <Box
@@ -176,7 +198,15 @@ export function FintechFlow({ accent, startDelay = 900 }: PreviewProps) {
               transition={{ duration: SCREEN_FADE_S }}
               style={{ padding: '0 12px' }}
             >
-              <Box sx={{ fontSize: 10.5, fontWeight: 700, color: 'text.secondary', letterSpacing: '-0.01em', textAlign: 'right' }}>
+              <Box
+                sx={{
+                  fontSize: 10.5,
+                  fontWeight: 700,
+                  color: 'text.secondary',
+                  letterSpacing: '-0.01em',
+                  textAlign: 'right',
+                }}
+              >
                 {t('accounts')}
               </Box>
               <Box
@@ -228,7 +258,9 @@ export function FintechFlow({ accent, startDelay = 900 }: PreviewProps) {
                     <Box sx={{ fontSize: 11.5, fontWeight: 700, color: 'text.primary' }}>{t(a.key)}</Box>
                     <Box sx={{ fontSize: 9.5, color: 'text.secondary' }}>{a.sub}</Box>
                   </Box>
-                  <Box sx={{ fontSize: 11.5, fontWeight: 800, color: 'text.primary', fontVariantNumeric: 'tabular-nums' }}>
+                  <Box
+                    sx={{ fontSize: 11.5, fontWeight: 800, color: 'text.primary', fontVariantNumeric: 'tabular-nums' }}
+                  >
                     {fmtMoney(a.symbol, a.amount)}
                   </Box>
                   {tapping && i === 0 && !reduceMotion && (

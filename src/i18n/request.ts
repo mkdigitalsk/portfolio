@@ -15,9 +15,7 @@ function matchBrowserLocale(supported: string[], acceptLanguage: string | null):
 
   for (const { tag } of requested) {
     const language = tag.split('-')[0]
-    const match = supported.find(
-      (code) => code.toLowerCase() === tag || code.toLowerCase().split('-')[0] === language,
-    )
+    const match = supported.find((code) => code.toLowerCase() === tag || code.toLowerCase().split('-')[0] === language)
     if (match) return match
   }
 

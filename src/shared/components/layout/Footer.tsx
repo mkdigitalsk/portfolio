@@ -50,9 +50,7 @@ export function Footer() {
       sx={{ bgcolor: Brand.navy, borderTop: '1px solid', borderColor: 'divider' }}
     >
       <Box sx={{ px: { xs: 2, md: 3 }, py: 3, display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-        <Box
-          sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, alignItems: 'center', justifyContent: 'space-between' }}
-        >
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, alignItems: 'center', justifyContent: 'space-between' }}>
           <Box component="nav" aria-label="Footer" sx={{ display: 'flex', flexWrap: 'wrap', gap: 2.5 }}>
             {FOOTER_LINKS.map((l) => (
               <Box key={l.href} component={Link} href={l.href} sx={linkSx}>
@@ -85,9 +83,7 @@ export function Footer() {
           </Box>
         </Box>
 
-        <Box
-          sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 2 }}
-        >
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 2 }}>
           <Logo variant="lockup" height={36} />
           <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', columnGap: 2, rowGap: 0.5 }}>
             <TextCaptionNeutral60>© 2026 MK Digital s. r. o. · IČO 55 450 229</TextCaptionNeutral60>

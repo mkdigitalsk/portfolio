@@ -13,7 +13,10 @@ function writeCookie(name: string, value: string) {
 }
 
 function readCookie(name: string) {
-  return document.cookie.split('; ').find((row) => row.startsWith(`${name}=`))?.split('=')[1]
+  return document.cookie
+    .split('; ')
+    .find((row) => row.startsWith(`${name}=`))
+    ?.split('=')[1]
 }
 
 function readDeepLinkParams() {

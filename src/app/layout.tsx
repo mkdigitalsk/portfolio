@@ -31,7 +31,13 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   // og:image + twitter:image come from app/opengraph-image.png + app/twitter-image.png (file convention).
-  openGraph: { type: 'website', siteName: 'MK Digital', url: 'https://mkdigital.sk', title: TITLE, description: DESCRIPTION },
+  openGraph: {
+    type: 'website',
+    siteName: 'MK Digital',
+    url: 'https://mkdigital.sk',
+    title: TITLE,
+    description: DESCRIPTION,
+  },
   twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION },
   // Adaptive SVG favicon (Chrome/Firefox swap colours via prefers-color-scheme); PNG light/dark
   // fallbacks for Safari, which renders SVG favicons but ignores their embedded @media. apple-icon
