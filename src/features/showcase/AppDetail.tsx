@@ -17,7 +17,7 @@ import {
   TextH4Bold,
   TextH6Bold,
 } from '@/shared/components'
-import { CONTENT_MAX, PAGE_PT } from '@/shared/layout'
+import { ACCOUNT_MAX, PAGE_PT } from '@/shared/layout'
 import { detailApps } from './apps'
 import { scopeColor, scopeFill, scopeScore, scopeTier } from './complexity'
 import { useSubmitLeadMutation } from './useSubmitLeadMutation'
@@ -174,7 +174,16 @@ export function AppDetail({ appId }: AppDetailProps) {
   }
 
   return (
-    <Box component="main" sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: { xs: 2, md: 3 }, pt: PAGE_PT, pb: { xs: 4, md: 6 } }}>
+    <Box
+      component="main"
+      sx={{
+        maxWidth: ACCOUNT_MAX,
+        mx: 'auto',
+        px: { xs: 2, md: 3 },
+        pt: PAGE_PT,
+        pb: { xs: 4, md: 6 },
+      }}
+    >
       <Box
         sx={{
           display: 'grid',
@@ -251,60 +260,58 @@ export function AppDetail({ appId }: AppDetailProps) {
               )
             })}
           </Box>
-          <Box component="nav" aria-label={t('home.appTypes')} sx={{ display: { xs: 'none', md: 'block' }, position: 'sticky', top: 88 }}>
-          <Box sx={{ mb: 1.5 }}>
-            <TextCaptionNeutral60>{t('home.appTypes')}</TextCaptionNeutral60>
-          </Box>
-          <Stack spacing={1}>
-            {detailApps.map((item) => {
-              const RailIcon = item.Icon
-              const isCurrent = item.id === appId
-              return (
-                <Box
-                  key={item.id}
-                  component={Link}
-                  href={`/app/${item.id}`}
-                  aria-current={isCurrent ? 'page' : undefined}
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 1.25,
-                    p: 1.25,
-                    borderRadius: 2,
-                    textDecoration: 'none',
-                    color: 'text.primary',
-                    border: '1px solid',
-                    borderColor: isCurrent ? item.accent : 'divider',
-                    bgcolor: isCurrent ? `${item.accent}14` : 'transparent',
-                    transition: 'border-color 0.15s ease, background-color 0.15s ease',
-                    '&:hover': { borderColor: item.accent, bgcolor: 'action.hover' },
-                  }}
-                >
-                  <RailIcon sx={{ fontSize: 20, color: item.accent, flexShrink: 0 }} />
-                  <TextBody1Neutral80>{t(`apps.${item.id}.label`)}</TextBody1Neutral80>
-                </Box>
-              )
-            })}
-          </Stack>
+          <Box
+            component="nav"
+            aria-label={t('home.appTypes')}
+            sx={{
+              display: { xs: 'none', md: 'block' },
+              position: 'sticky',
+              top: 88,
+            }}
+          >
+            <Box sx={{ mb: 1.5 }}>
+              <TextCaptionNeutral60>{t('home.appTypes')}</TextCaptionNeutral60>
+            </Box>
+            <Stack spacing={1}>
+              {detailApps.map((item) => {
+                const RailIcon = item.Icon
+                const isCurrent = item.id === appId
+                return (
+                  <Box
+                    key={item.id}
+                    component={Link}
+                    href={`/app/${item.id}`}
+                    aria-current={isCurrent ? 'page' : undefined}
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 1.25,
+                      p: 1.25,
+                      borderRadius: 2,
+                      textDecoration: 'none',
+                      color: 'text.primary',
+                      border: '1px solid',
+                      borderColor: isCurrent ? item.accent : 'divider',
+                      bgcolor: isCurrent ? `${item.accent}14` : 'transparent',
+                      transition: 'border-color 0.15s ease, background-color 0.15s ease',
+                      '&:hover': {
+                        borderColor: item.accent,
+                        bgcolor: 'action.hover',
+                      },
+                    }}
+                  >
+                    <RailIcon sx={{ fontSize: 20, color: item.accent, flexShrink: 0 }} />
+                    <TextBody1Neutral80>{t(`apps.${item.id}.label`)}</TextBody1Neutral80>
+                  </Box>
+                )
+              })}
+            </Stack>
           </Box>
         </Box>
 
-        {/* Right column — fills to the shared CONTENT_MAX right edge (no hardcoded width),
-            so the hero + content line up with the home sections, nav and footer. */}
+        {/* Right column — the app-surface width (ACCOUNT_MAX); interactive tool, not reading copy,
+            so it uses the screen. Splits into features · sticky summary below. */}
         <Box sx={{ minWidth: 0 }}>
-          <Box
-            sx={{
-              height: { xs: 150, md: 190 },
-              borderRadius: 3,
-              display: 'grid',
-              placeItems: 'center',
-              mb: 3,
-              background: `linear-gradient(135deg, ${accent}, ${accent}99)`,
-            }}
-          >
-            <Icon sx={{ fontSize: 72, color: 'common.white', opacity: 0.95 }} />
-          </Box>
-
           {sent ? (
             <Box sx={{ textAlign: 'center', py: 4 }}>
               <CheckCircleRounded sx={{ fontSize: 64, color: accent, mb: 2 }} />
@@ -318,77 +325,157 @@ export function AppDetail({ appId }: AppDetailProps) {
             </Box>
           ) : (
             <>
-              <TextH4Bold>{appLabel}</TextH4Bold>
-              <Box sx={{ mt: 0.5, mb: 3 }}>
-                <TextBody1Neutral60>{appTagline}</TextBody1Neutral60>
-              </Box>
-
-              <Box sx={{ mb: 3 }}>
-                <TextBody1Neutral60 sx={{ mb: 1 }}>{t('home.platformsLabel')}</TextBody1Neutral60>
-                <Box sx={{ display: 'flex', gap: 1.5 }}>
-                  {PLATFORMS.map((platform) => {
-                    const PlatformIcon = platform.Icon
-                    const isSelected = platforms.has(platform.key)
-                    return (
-                      <Box
-                        key={platform.key}
-                        role="checkbox"
-                        aria-checked={isSelected}
-                        tabIndex={0}
-                        onClick={() => togglePlatform(platform.key)}
-                        onKeyDown={(event) => onSelectableKeyDown(event, () => togglePlatform(platform.key))}
-                        sx={{
-                          flex: 1,
-                          minWidth: 0,
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: 1.25,
-                          p: 2,
-                          borderRadius: 2,
-                          cursor: 'pointer',
-                          outline: 'none',
-                          border: '1px solid',
-                          borderColor: isSelected ? accent : 'divider',
-                          bgcolor: isSelected ? `${accent}14` : 'transparent',
-                          opacity: isSelected ? 1 : 0.55,
-                          transition: 'border-color 0.15s ease, background-color 0.15s ease, opacity 0.15s ease',
-                          '&:hover': { borderColor: accent },
-                          '&:focus-visible': { borderColor: accent },
-                        }}
-                      >
-                        <PlatformIcon sx={{ fontSize: 22, color: isSelected ? accent : 'text.secondary', flexShrink: 0 }} />
-                        <Box sx={{ flex: 1 }}>
-                          <TextBody1Neutral80>{t(platform.labelKey)}</TextBody1Neutral80>
-                        </Box>
-                        {isSelected ? (
-                          <CheckCircleRounded sx={{ color: accent, fontSize: 20, flexShrink: 0 }} />
-                        ) : (
-                          <RadioButtonUnchecked sx={{ color: 'text.disabled', fontSize: 20, flexShrink: 0 }} />
-                        )}
-                      </Box>
-                    )
-                  })}
-                </Box>
-              </Box>
-
-              <Box sx={{ mb: 2 }}>
-                <TextH6Bold>{t('home.detailHeading')}</TextH6Bold>
-                <Box sx={{ mt: 0.5 }}>
-                  <TextCaptionNeutral60>{t('home.detailHint')}</TextCaptionNeutral60>
-                </Box>
-              </Box>
-
-              <Stack spacing={0.5} sx={{ mb: 4 }}>
-                {features.map((feature) => {
-                  const isSelected = selected.has(feature.key)
-                  return (
+              {/* Two-pane: what you're building (left) · live scope + contact (right, sticky). The sticky
+                  summary keeps the estimate in view while selecting features — no scrolling for feedback. */}
+              <Box
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: {
+                    xs: '1fr',
+                    md: 'minmax(0, 1fr) 420px',
+                  },
+                  gap: { xs: 3, md: 4 },
+                  alignItems: 'start',
+                }}
+              >
+                <Box sx={{ minWidth: 0 }}>
+                  {/* Compact header in the left column so the sticky summary fills the right from the top —
+                      no empty white beside a full-width header. */}
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: { xs: 3, md: 4 } }}>
                     <Box
-                      key={feature.key}
+                      sx={{
+                        width: { xs: 64, md: 80 },
+                        height: { xs: 64, md: 80 },
+                        flexShrink: 0,
+                        borderRadius: 3,
+                        display: 'grid',
+                        placeItems: 'center',
+                        background: `linear-gradient(135deg, ${accent}, ${accent}99)`,
+                      }}
+                    >
+                      <Icon sx={{ fontSize: { xs: 32, md: 40 }, color: 'common.white', opacity: 0.95 }} />
+                    </Box>
+                    <Box sx={{ minWidth: 0 }}>
+                      <TextH4Bold>{appLabel}</TextH4Bold>
+                      <TextBody1Neutral60>{appTagline}</TextBody1Neutral60>
+                    </Box>
+                  </Box>
+                  <Box sx={{ mb: 3 }}>
+                    <TextBody1Neutral60 sx={{ mb: 1 }}>{t('home.platformsLabel')}</TextBody1Neutral60>
+                    <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap' }}>
+                      {PLATFORMS.map((platform) => {
+                        const PlatformIcon = platform.Icon
+                        const isSelected = platforms.has(platform.key)
+                        return (
+                          <Box
+                            key={platform.key}
+                            role="checkbox"
+                            aria-checked={isSelected}
+                            tabIndex={0}
+                            onClick={() => togglePlatform(platform.key)}
+                            onKeyDown={(event) => onSelectableKeyDown(event, () => togglePlatform(platform.key))}
+                            sx={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: 1.25,
+                              py: 1.25,
+                              px: 2,
+                              borderRadius: 2,
+                              cursor: 'pointer',
+                              outline: 'none',
+                              border: '1px solid',
+                              borderColor: isSelected ? accent : 'divider',
+                              bgcolor: isSelected ? `${accent}14` : 'transparent',
+                              opacity: isSelected ? 1 : 0.55,
+                              transition: 'border-color 0.15s ease, background-color 0.15s ease, opacity 0.15s ease',
+                              '&:hover': { borderColor: accent },
+                              '&:focus-visible': { borderColor: accent },
+                            }}
+                          >
+                            <PlatformIcon
+                              sx={{
+                                fontSize: 22,
+                                color: isSelected ? accent : 'text.secondary',
+                                flexShrink: 0,
+                              }}
+                            />
+                            <TextBody1Neutral80>{t(platform.labelKey)}</TextBody1Neutral80>
+                          </Box>
+                        )
+                      })}
+                    </Box>
+                  </Box>
+
+                  <Box sx={{ mb: 2 }}>
+                    <TextH6Bold>{t('home.detailHeading')}</TextH6Bold>
+                    <Box sx={{ mt: 0.5 }}>
+                      <TextCaptionNeutral60>{t('home.detailHint')}</TextCaptionNeutral60>
+                    </Box>
+                  </Box>
+
+                  <Stack spacing={0.25} sx={{ mb: 4 }}>
+                    {features.map((feature) => {
+                      const isSelected = selected.has(feature.key)
+                      return (
+                        <Box
+                          key={feature.key}
+                          role="checkbox"
+                          aria-checked={isSelected}
+                          tabIndex={0}
+                          onClick={() => toggle(feature.key)}
+                          onKeyDown={(event) => onSelectableKeyDown(event, () => toggle(feature.key))}
+                          sx={{
+                            display: 'flex',
+                            gap: 1.5,
+                            alignItems: 'flex-start',
+                            cursor: 'pointer',
+                            borderRadius: 1,
+                            py: 0.75,
+                            px: 1,
+                            mx: -1,
+                            outline: 'none',
+                            opacity: isSelected ? 1 : 0.5,
+                            transition: 'background-color 0.15s ease, opacity 0.15s ease',
+                            '&:hover': { backgroundColor: 'action.hover' },
+                            '&:focus-visible': {
+                              backgroundColor: 'action.hover',
+                            },
+                          }}
+                        >
+                          {isSelected ? (
+                            <CheckCircleRounded
+                              sx={{
+                                color: accent,
+                                fontSize: 22,
+                                mt: '2px',
+                                flexShrink: 0,
+                              }}
+                            />
+                          ) : (
+                            <RadioButtonUnchecked
+                              sx={{
+                                color: 'text.disabled',
+                                fontSize: 22,
+                                mt: '2px',
+                                flexShrink: 0,
+                              }}
+                            />
+                          )}
+                          <Box>
+                            <TextBody1Neutral80>{feature.label}</TextBody1Neutral80>
+                            <TextCaptionNeutral60>{feature.benefit}</TextCaptionNeutral60>
+                          </Box>
+                        </Box>
+                      )
+                    })}
+
+                    {/* Optional meta tick at the bottom of the list — the client already has a spec/docs. */}
+                    <Box
                       role="checkbox"
-                      aria-checked={isSelected}
+                      aria-checked={hasDoc}
                       tabIndex={0}
-                      onClick={() => toggle(feature.key)}
-                      onKeyDown={(event) => onSelectableKeyDown(event, () => toggle(feature.key))}
+                      onClick={() => setHasDoc(!hasDoc)}
+                      onKeyDown={(event) => onSelectableKeyDown(event, () => setHasDoc(!hasDoc))}
                       sx={{
                         display: 'flex',
                         gap: 1.5,
@@ -397,146 +484,178 @@ export function AppDetail({ appId }: AppDetailProps) {
                         borderRadius: 1,
                         p: 1,
                         mx: -1,
+                        mt: 1,
                         outline: 'none',
-                        opacity: isSelected ? 1 : 0.5,
+                        opacity: hasDoc ? 1 : 0.6,
                         transition: 'background-color 0.15s ease, opacity 0.15s ease',
                         '&:hover': { backgroundColor: 'action.hover' },
                         '&:focus-visible': { backgroundColor: 'action.hover' },
                       }}
                     >
-                      {isSelected ? (
-                        <CheckCircleRounded sx={{ color: accent, fontSize: 22, mt: '2px', flexShrink: 0 }} />
+                      {hasDoc ? (
+                        <CheckCircleRounded
+                          sx={{
+                            color: accent,
+                            fontSize: 22,
+                            mt: '2px',
+                            flexShrink: 0,
+                          }}
+                        />
                       ) : (
-                        <RadioButtonUnchecked sx={{ color: 'text.disabled', fontSize: 22, mt: '2px', flexShrink: 0 }} />
+                        <RadioButtonUnchecked
+                          sx={{
+                            color: 'text.disabled',
+                            fontSize: 22,
+                            mt: '2px',
+                            flexShrink: 0,
+                          }}
+                        />
                       )}
                       <Box>
-                        <TextBody1Neutral80>{feature.label}</TextBody1Neutral80>
-                        <TextCaptionNeutral60>{feature.benefit}</TextCaptionNeutral60>
+                        <TextBody1Neutral80>{t('home.hasDocLabel')}</TextBody1Neutral80>
+                        <TextCaptionNeutral60>{t('home.hasDocBenefit')}</TextCaptionNeutral60>
                       </Box>
                     </Box>
-                  )
-                })}
+                  </Stack>
+                </Box>
 
-                {/* Optional meta tick at the bottom of the list — the client already has a spec/docs. */}
                 <Box
-                  role="checkbox"
-                  aria-checked={hasDoc}
-                  tabIndex={0}
-                  onClick={() => setHasDoc(!hasDoc)}
-                  onKeyDown={(event) => onSelectableKeyDown(event, () => setHasDoc(!hasDoc))}
                   sx={{
-                    display: 'flex',
-                    gap: 1.5,
-                    alignItems: 'flex-start',
-                    cursor: 'pointer',
-                    borderRadius: 1,
-                    p: 1,
-                    mx: -1,
-                    mt: 1,
-                    outline: 'none',
-                    opacity: hasDoc ? 1 : 0.6,
-                    transition: 'background-color 0.15s ease, opacity 0.15s ease',
-                    '&:hover': { backgroundColor: 'action.hover' },
-                    '&:focus-visible': { backgroundColor: 'action.hover' },
+                    position: { md: 'sticky' },
+                    top: { md: 88 },
+                    minWidth: 0,
                   }}
                 >
-                  {hasDoc ? (
-                    <CheckCircleRounded sx={{ color: accent, fontSize: 22, mt: '2px', flexShrink: 0 }} />
-                  ) : (
-                    <RadioButtonUnchecked sx={{ color: 'text.disabled', fontSize: 22, mt: '2px', flexShrink: 0 }} />
-                  )}
-                  <Box>
-                    <TextBody1Neutral80>{t('home.hasDocLabel')}</TextBody1Neutral80>
-                    <TextCaptionNeutral60>{t('home.hasDocBenefit')}</TextCaptionNeutral60>
-                  </Box>
-                </Box>
-              </Stack>
-
-              <Box sx={{ mb: 3, p: 2, borderRadius: 2, border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', mb: 1 }}>
-                  <TextCaptionNeutral60>{t('home.scope.label')}</TextCaptionNeutral60>
-                  <Box component="span" sx={{ color: accent, fontWeight: 600, fontSize: '0.95rem' }}>
-                    {t(`home.scope.${tier}`)}
-                  </Box>
-                </Box>
-                <Box sx={{ height: 6, borderRadius: 3, bgcolor: 'action.hover', overflow: 'hidden' }}>
                   <Box
                     sx={{
-                      height: '100%',
-                      width: `${fill * 100}%`,
-                      bgcolor: scopeColor(accent, tier),
-                      transition: 'width 0.3s ease, background-color 0.55s ease-in-out',
+                      mb: 3,
+                      p: 2,
+                      borderRadius: 2,
+                      border: '1px solid',
+                      borderColor: 'divider',
                     }}
-                  />
-                </Box>
-                <Box sx={{ mt: 1 }}>
-                  <TextCaptionNeutral60>{t('home.scope.hint')}</TextCaptionNeutral60>
-                </Box>
-              </Box>
-
-              <Stack spacing={2} sx={{ mb: error ? 2 : 3 }}>
-                <Input label={t('home.nameLabel')} value={name} onChange={(event) => setName(event.target.value)} />
-                <Box
-                  sx={{
-                    display: 'flex',
-                    flexDirection: { xs: 'column', md: 'row' },
-                    gap: 2,
-                    alignItems: { xs: 'stretch', md: 'flex-start' },
-                  }}
-                >
-                  <Box sx={{ flex: 1, minWidth: 0 }}>
-                    <Input
-                      type="email"
-                      label={t('home.emailLabel')}
-                      placeholder="name@email.com"
-                      value={email}
-                      onChange={(event) => setEmail(event.target.value)}
-                      required
-                      error={showEmailError}
-                      errorText={t('home.emailInvalid')}
-                    />
-                  </Box>
-                  <Box sx={{ flex: 1, minWidth: 0 }}>
-                    <PhoneInput
-                      label={t('home.phoneLabel')}
-                      value={phone}
-                      defaultCountry={phoneCountry}
-                      onChange={(value, info) => {
-                        setPhone(value)
-                        setPhoneHasNumber(Boolean(info.nationalNumber))
+                  >
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'baseline',
+                        mb: 1,
                       }}
+                    >
+                      <TextCaptionNeutral60>{t('home.scope.label')}</TextCaptionNeutral60>
+                      <Box
+                        component="span"
+                        sx={{
+                          color: accent,
+                          fontWeight: 600,
+                          fontSize: '0.95rem',
+                        }}
+                      >
+                        {t(`home.scope.${tier}`)}
+                      </Box>
+                    </Box>
+                    <Box
+                      sx={{
+                        height: 6,
+                        borderRadius: 3,
+                        bgcolor: 'action.hover',
+                        overflow: 'hidden',
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          height: '100%',
+                          width: `${fill * 100}%`,
+                          bgcolor: scopeColor(accent, tier),
+                          transition: 'width 0.3s ease, background-color 0.55s ease-in-out',
+                        }}
+                      />
+                    </Box>
+                    <Box sx={{ mt: 1 }}>
+                      <TextCaptionNeutral60>{t('home.scope.hint')}</TextCaptionNeutral60>
+                    </Box>
+                  </Box>
+
+                  <Stack spacing={2} sx={{ mb: error ? 2 : 3 }}>
+                    <Input label={t('home.nameLabel')} value={name} onChange={(event) => setName(event.target.value)} />
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 2,
+                      }}
+                    >
+                      <Box sx={{ flex: 1, minWidth: 0 }}>
+                        <Input
+                          type="email"
+                          label={t('home.emailLabel')}
+                          placeholder="name@email.com"
+                          value={email}
+                          onChange={(event) => setEmail(event.target.value)}
+                          required
+                          error={showEmailError}
+                          errorText={t('home.emailInvalid')}
+                        />
+                      </Box>
+                      <Box sx={{ flex: 1, minWidth: 0 }}>
+                        <PhoneInput
+                          label={t('home.phoneLabel')}
+                          value={phone}
+                          defaultCountry={phoneCountry}
+                          onChange={(value, info) => {
+                            setPhone(value)
+                            setPhoneHasNumber(Boolean(info.nationalNumber))
+                          }}
+                        />
+                      </Box>
+                    </Box>
+                    <Input
+                      label={t('home.messageLabel')}
+                      placeholder={t('home.messagePlaceholder')}
+                      value={note}
+                      onChange={(event) => setNote(event.target.value)}
+                      multiline
+                      minRows={3}
                     />
+                  </Stack>
+                  {error && (
+                    <Alert severity="error" sx={{ mb: 3 }}>
+                      {t('home.sendError')}
+                    </Alert>
+                  )}
+
+                  <Button
+                    variant="primary"
+                    startIcon={<Send />}
+                    onClick={submit}
+                    loading={submitLead.isPending}
+                    disabled={!canSubmit}
+                  >
+                    {selectedFeatures.length > 0
+                      ? `${t('home.sendCta')} (${selectedFeatures.length})`
+                      : t('home.sendCta')}
+                  </Button>
+
+                  <Box sx={{ mt: 1.5 }}>
+                    <TextCaptionNeutral60>
+                      {t.rich('home.consent', {
+                        link: (chunks) => (
+                          <Box
+                            component={Link}
+                            href="/privacy"
+                            sx={{
+                              color: 'primary.main',
+                              textDecoration: 'none',
+                            }}
+                          >
+                            {chunks}
+                          </Box>
+                        ),
+                      })}
+                    </TextCaptionNeutral60>
                   </Box>
                 </Box>
-                <Input
-                  label={t('home.messageLabel')}
-                  placeholder={t('home.messagePlaceholder')}
-                  value={note}
-                  onChange={(event) => setNote(event.target.value)}
-                  multiline
-                  minRows={3}
-                />
-              </Stack>
-              {error && (
-                <Alert severity="error" sx={{ mb: 3 }}>
-                  {t('home.sendError')}
-                </Alert>
-              )}
-
-              <Button variant="primary" startIcon={<Send />} onClick={submit} loading={submitLead.isPending} disabled={!canSubmit}>
-                {selectedFeatures.length > 0 ? `${t('home.sendCta')} (${selectedFeatures.length})` : t('home.sendCta')}
-              </Button>
-
-              <Box sx={{ mt: 1.5 }}>
-                <TextCaptionNeutral60>
-                  {t.rich('home.consent', {
-                    link: (chunks) => (
-                      <Box component={Link} href="/privacy" sx={{ color: 'primary.main', textDecoration: 'none' }}>
-                        {chunks}
-                      </Box>
-                    ),
-                  })}
-                </TextCaptionNeutral60>
               </Box>
             </>
           )}

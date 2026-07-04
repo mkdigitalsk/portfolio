@@ -2,8 +2,8 @@
 // content columns use it. App surface goes wider via ACCOUNT_MAX.
 export const CONTENT_MAX = 1180
 
-// /account app-surface width. Fills to the chrome's edge gutter on normal screens (content aligns with
-// the nav); caps past 1600 so tables don't spread into dead gaps on ultrawide.
+// App-surface width — interactive tools (the /account portal, the configurator), not reading copy, so
+// they use the screen. Fills to the chrome's edge gutter on normal screens; caps past 1600 on ultrawide.
 export const ACCOUNT_MAX = 1600
 
 // Body-copy measure. 66ch ≈ typographic optimum (50–75; WCAG caps at 80); `ch` holds it across font
