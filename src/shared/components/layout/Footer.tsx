@@ -5,7 +5,6 @@ import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { CONTENT_MAX } from '@/shared/layout'
 import { Brand } from '@/shared/theme/color'
 import { Logo } from '../icons/Logo'
 import { TextCaptionNeutral60 } from '../text'
@@ -50,7 +49,7 @@ export function Footer() {
       className="dark" // brand bar: force on-dark tokens so text reads on the navy surface
       sx={{ bgcolor: Brand.navy, borderTop: '1px solid', borderColor: 'divider' }}
     >
-      <Box sx={{ maxWidth: CONTENT_MAX, mx: 'auto', px: { xs: 2, md: 3 }, py: 3, display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+      <Box sx={{ px: { xs: 2, md: 3 }, py: 3, display: 'flex', flexDirection: 'column', gap: 1.5 }}>
         <Box
           sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, alignItems: 'center', justifyContent: 'space-between' }}
         >

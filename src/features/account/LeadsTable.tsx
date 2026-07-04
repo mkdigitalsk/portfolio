@@ -9,9 +9,13 @@ import TableCell from '@mui/material/TableCell'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Tooltip from '@mui/material/Tooltip'
-import { Chip, TextBody1, TextCaptionNeutral60, TextTimestamp } from '@/shared/components'
+import { TextBody1, TextCaptionNeutral60, TextTimestamp } from '@/shared/components'
 import type { AdminLead } from '@/shared/types'
-import { STATUS_COLOR } from './leadStatus'
+import { LeadStatusSelect } from './LeadStatusSelect'
+
+// Collapse a column to its content width so the slack flows to the text columns instead of dead gaps
+// (a stretched, evenly-spaced table isolates the data). Intent-based sizing, not a hardcoded px width.
+const SHRINK_TO_CONTENT = { width: '1%', whiteSpace: 'nowrap' } as const
 
 export function LeadsTable({ leads, onSelect }: { leads: AdminLead[]; onSelect: (email: string) => void }) {
   const t = useTranslations('account')
@@ -23,9 +27,9 @@ export function LeadsTable({ leads, onSelect }: { leads: AdminLead[]; onSelect: 
             <TableCell>{t('table.customer')}</TableCell>
             <TableCell>{t('table.appType')}</TableCell>
             <TableCell>{t('table.platforms')}</TableCell>
-            <TableCell align="center">{t('table.doc')}</TableCell>
-            <TableCell>{t('table.sent')}</TableCell>
-            <TableCell>{t('table.status')}</TableCell>
+            <TableCell align="center" sx={SHRINK_TO_CONTENT}>{t('table.doc')}</TableCell>
+            <TableCell sx={SHRINK_TO_CONTENT}>{t('table.sent')}</TableCell>
+            <TableCell sx={SHRINK_TO_CONTENT}>{t('table.status')}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -53,11 +57,11 @@ export function LeadsTable({ leads, onSelect }: { leads: AdminLead[]; onSelect: 
                   </Tooltip>
                 )}
               </TableCell>
-              <TableCell>
+              <TableCell sx={{ whiteSpace: 'nowrap' }}>
                 <TextTimestamp value={lead.createdAt} />
               </TableCell>
-              <TableCell>
-                <Chip label={t(`status.${lead.status}`)} color={STATUS_COLOR[lead.status]} size="small" variant="outlined" />
+              <TableCell sx={{ whiteSpace: 'nowrap' }}>
+                <LeadStatusSelect email={lead.email} value={lead.status} />
               </TableCell>
             </TableRow>
           ))}

@@ -1,11 +1,5 @@
-import type { Metadata } from 'next'
-import { AccountPage } from '@/features/account/AccountPage'
-
-export const metadata: Metadata = {
-  title: 'Account — MK Digital',
-  robots: { index: false, follow: false },
-}
+import { AccountDispatch } from '@/features/account/AccountDispatch'
 
 export default function Page() {
-  return <AccountPage />
+  return <AccountDispatch />
 }

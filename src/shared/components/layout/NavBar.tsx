@@ -2,18 +2,21 @@
 
 import { AccountCircleOutlined, Close, Menu as MenuIcon } from '@mui/icons-material'
 import Box from '@mui/material/Box'
+import Divider from '@mui/material/Divider'
 import Drawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, type ReactNode } from 'react'
 import { useScrollSpy } from '@/shared/hooks/useScrollSpy'
 import { useScrollToTop } from '@/shared/hooks/useScrollToTop'
-import { CONTENT_MAX } from '@/shared/layout'
+import { useAuth } from '@/shared/hooks/useAuth'
 import { Brand } from '@/shared/theme/color'
 import { Logo } from '../icons/Logo'
-import { TextH6Bold } from '../text'
+import { TextBody1, TextCaptionNeutral60, TextH6Bold } from '../text'
 import { ThemeModeToggle } from '../ThemeModeToggle'
 import { LocaleSwitcher } from '../LocaleSwitcher'
 
@@ -70,6 +73,67 @@ const ANCHORS: NavAnchor[] = [
 // Section ids for scroll-spy — derived once from the hash anchors above (stable reference).
 const SECTION_IDS = ANCHORS.filter((a) => a.href.startsWith('/#')).map((a) => a.href.slice(2))
 
+function AccountMenu() {
+  const t = useTranslations('account')
+  const pathname = usePathname()
+  const { user, logout } = useAuth()
+  const [anchor, setAnchor] = useState<HTMLElement | null>(null)
+  const onAccount = pathname.startsWith('/account')
+  const color = onAccount ? 'primary.main' : 'text.primary'
+
+  if (!user) {
+    return (
+      <IconButton
+        component={Link}
+        href="/account"
+        aria-label={t('yourAccount')}
+        aria-current={onAccount ? 'page' : undefined}
+        sx={{ color }}
+      >
+        <AccountCircleOutlined />
+      </IconButton>
+    )
+  }
+
+  const roleLabel = user.role === 'ADMIN' ? t('admin') : t('yourAccount')
+  const home = user.role === 'ADMIN' ? '/account/leads' : '/account'
+  const close = () => setAnchor(null)
+  return (
+    <>
+      <IconButton
+        aria-label={roleLabel}
+        aria-haspopup="menu"
+        aria-expanded={anchor ? true : undefined}
+        onClick={(e) => setAnchor(e.currentTarget)}
+        sx={{ color }}
+      >
+        <AccountCircleOutlined />
+      </IconButton>
+      <Menu
+        anchorEl={anchor}
+        open={!!anchor}
+        onClose={close}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      >
+        <MenuItem component={Link} href={home} onClick={close} sx={{ display: 'block', py: 1 }}>
+          <TextBody1>{roleLabel}</TextBody1>
+          <TextCaptionNeutral60>{user.email}</TextCaptionNeutral60>
+        </MenuItem>
+        <Divider />
+        <MenuItem
+          onClick={() => {
+            close()
+            logout()
+          }}
+        >
+          {t('signOut')}
+        </MenuItem>
+      </Menu>
+    </>
+  )
+}
+
 export function NavBar() {
   const pathname = usePathname()
   const t = useTranslations()
@@ -96,8 +160,6 @@ export function NavBar() {
     >
       <Box
         sx={{
-          maxWidth: CONTENT_MAX,
-          mx: 'auto',
           px: { xs: 2, md: 3 },
           py: 1.5,
           display: 'flex',
@@ -144,15 +206,7 @@ export function NavBar() {
 
           <LocaleSwitcher />
           <ThemeModeToggle />
-          <IconButton
-            component={Link}
-            href="/account"
-            aria-label="Account"
-            aria-current={pathname.startsWith('/account') ? 'page' : undefined}
-            sx={{ color: pathname.startsWith('/account') ? 'primary.main' : 'text.primary' }}
-          >
-            <AccountCircleOutlined />
-          </IconButton>
+          <AccountMenu />
         </Box>
       </Box>
 
