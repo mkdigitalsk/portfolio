@@ -7,6 +7,7 @@ import Drawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
+import { useColorScheme } from '@mui/material/styles'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -14,7 +15,7 @@ import { useState, type ReactNode } from 'react'
 import { useScrollSpy } from '@/shared/hooks/useScrollSpy'
 import { useScrollToTop } from '@/shared/hooks/useScrollToTop'
 import { useAuth } from '@/shared/hooks/useAuth'
-import { Brand } from '@/shared/theme/color'
+import { Light, Dark } from '@/shared/theme/color'
 import { Logo } from '../icons/Logo'
 import { TextBody1, TextCaptionNeutral60, TextH6Bold } from '../text'
 import { ThemeModeToggle } from '../ThemeModeToggle'
@@ -140,6 +141,8 @@ export function NavBar() {
   const activeSection = useScrollSpy(SECTION_IDS)
   const scrollToTop = useScrollToTop()
   const [menuOpen, setMenuOpen] = useState(false)
+  const { mode, systemMode } = useColorScheme()
+  const resolvedMode = mode === 'system' ? systemMode : mode
 
   const isAnchorActive = (a: NavAnchor) =>
     (a.activePrefix !== undefined && pathname.startsWith(a.activePrefix)) ||
@@ -153,7 +156,7 @@ export function NavBar() {
         position: 'sticky',
         top: 0,
         zIndex: (theme) => theme.zIndex.appBar,
-        bgcolor: Brand.navy,
+        bgcolor: resolvedMode === 'dark' ? Dark.brandBar : Light.brandBar,
         borderBottom: '1px solid',
         borderColor: 'divider',
       }}
