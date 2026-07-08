@@ -1,7 +1,7 @@
 import axios, { type AxiosError, type InternalAxiosRequestConfig } from 'axios'
 import { authStore } from '@/shared/auth/authStore'
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://kmp-showcase-production.up.railway.app'
+const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.mkdigital.sk'
 
 export const client = axios.create({
   baseURL: API_BASE,
