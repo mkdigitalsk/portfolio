@@ -1,6 +1,6 @@
 import { getRequestConfig } from 'next-intl/server'
 import { cookies, headers } from 'next/headers'
-import { DEFAULT_LOCALE, OTHER_LOCALES, OTHER_LOCALES_COOKIE, VISIBLE_LOCALES } from '../shared/i18n/locales'
+import { DEFAULT_LOCALE, LOCALES } from '../shared/i18n/locales'
 
 function matchBrowserLocale(supported: string[], acceptLanguage: string | null): string {
   if (!acceptLanguage) return DEFAULT_LOCALE as string
@@ -24,12 +24,7 @@ function matchBrowserLocale(supported: string[], acceptLanguage: string | null):
 
 export default getRequestConfig(async () => {
   const cookieStore = await cookies()
-
-  const otherEnabled = cookieStore.get(OTHER_LOCALES_COOKIE)?.value === 'true'
-  const supported = [
-    ...VISIBLE_LOCALES.map((l) => l.code as string),
-    ...(otherEnabled ? OTHER_LOCALES.map((l) => l.code as string) : []),
-  ]
+  const supported = LOCALES.map((l) => l.code as string)
 
   const cookieLocale = cookieStore.get('locale')?.value
   const locale =

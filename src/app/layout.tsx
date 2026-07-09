@@ -17,7 +17,6 @@ import { cookies } from 'next/headers'
 import { InitialSchemeProvider, SchemeCookieSync } from '@/shared/theme/colorSchemeCookie'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Footer, NavBar } from '@/shared/components'
-import { LocaleDeepLink } from '@/shared/components/LocaleDeepLink'
 import { QueryProvider } from '@/shared/query/QueryProvider'
 import { theme } from '@/shared/theme'
 import './globals.css'
@@ -62,7 +61,6 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
       <body>
         <InitColorSchemeScript attribute="class" defaultMode="system" />
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <LocaleDeepLink />
           <QueryProvider>
             <AppRouterCacheProvider options={{ enableCssLayer: true }}>
               <ThemeProvider theme={theme} defaultMode="system">
