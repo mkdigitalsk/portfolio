@@ -1,6 +1,6 @@
 'use client'
 
-import { GitHub, LinkedIn } from '@mui/icons-material'
+import { GitHub } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import { useTranslations } from 'next-intl'
@@ -11,12 +11,10 @@ import { TextCaptionNeutral60 } from '../text'
 import { GitHubDark, GitHubLight } from '../../theme/socialColors'
 
 const GITHUB = 'https://github.com/mkdigitalsk'
-const LINKEDIN = 'https://www.linkedin.com/in/miroslavkusnir/'
 const CONTACT_EMAIL = 'admin@mkdigital.sk'
 
 const socials = [
   { label: 'GitHub', href: GITHUB, Icon: GitHub, brand: 'github' as const },
-  { label: 'LinkedIn', href: LINKEDIN, Icon: LinkedIn, brand: '#0A66C2' as const },
 ]
 
 // Footer link row — the home sections plus About and Privacy, a second path to everything.

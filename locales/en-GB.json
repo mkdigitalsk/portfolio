@@ -29,7 +29,7 @@
     "noteLabel": "Note",
     "phoneLabel": "Phone",
     "sentHeading": "Request sent!",
-    "sentBody": "Thanks — we'll get back to you soon.",
+    "sentBody": "Thanks — we'll reply within 24 hours.",
     "sendError": "Something went wrong. Please try again.",
     "done": "Done",
     "backToApps": "All apps",
@@ -48,7 +48,7 @@
       "fact3": "Clean architecture · production patterns",
       "fact4": "Maintained after launch — not abandoned",
       "fact5": "AI-assisted, senior-built",
-      "fact6": "GDPR-compliant · SK s.r.o."
+      "fact6": "GDPR-compliant · SK s. r. o."
     },
     "services": {
       "title": "What we do",
@@ -87,7 +87,7 @@
       "phase2": {
         "when": "Weeks 2–N",
         "title": "Build in the open",
-        "detail": "Demos at real milestones, direct access to the engineer building it, and open-source showcases you can inspect before you hire — no account-manager telephone."
+        "detail": "Demos at real milestones, direct access to the engineer building it, and open-source showcases you can inspect before you hire — no account-manager relay."
       },
       "phase3": {
         "when": "Launch & beyond",
@@ -112,12 +112,12 @@
       "signal2": "Automated tests",
       "signal3": "CI/CD pipelines",
       "signal4": "Public commit history",
-      "references": "Client work is under NDA — verified references and LinkedIn recommendations are available on request."
+      "references": "Client work is under NDA — verified references are available on request."
     },
     "testimonials": {
       "title": "What clients say",
       "subtitle": "We're early and selective, and most of our work is under NDA.",
-      "placeholder": "Verified references and LinkedIn recommendations are available on request.",
+      "placeholder": "Verified references are available on request.",
       "cta": "Ask for references"
     },
     "about": {
@@ -129,7 +129,7 @@
     "contact": {
       "headline": "Have a product to build — or improve?",
       "subline": "Tell us what you're building. We reply within 24 hours — usually with first questions and a sense of scope.",
-      "company": "MK Digital s.r.o. · Banská Bystrica, Slovakia",
+      "company": "MK Digital s. r. o. · Banská Bystrica, Slovakia",
       "cta": "Let's talk"
     },
     "appTypes": "App types",
@@ -146,7 +146,7 @@
   },
   "hero": {
     "headline": "Senior-led, fintech-grade, fully accountable.",
-    "subline": "Behind MK Digital is a senior engineer with 8+ years shipping production apps — as Head of Mobile and lead engineer across fintech, payments and healthcare in the UK, Ireland and the EU. One accountable partner from first idea to launch — and the same standards are public in the open-source apps below: inspect the architecture, tests and commit history before you hire.",
+    "subline": "Behind MK Digital is Miroslav Kušnír, a senior engineer with 8+ years shipping production apps as Head of Mobile and lead engineer across fintech, payments and healthcare in the UK, Ireland and the EU. One accountable partner from first idea to launch — and the same standards are public in the open-source apps below: inspect the architecture, tests and commit history before you hire.",
     "cta": "Get in touch",
     "exp1": "Head of Mobile & lead engineer · 8+ years",
     "exp2": "Fintech · Payments · Healthcare",

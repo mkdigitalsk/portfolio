@@ -29,7 +29,7 @@
     "noteLabel": "Poznámka",
     "phoneLabel": "Telefon",
     "sentHeading": "Požadavek odeslán!",
-    "sentBody": "Děkujeme — brzy se vám ozveme.",
+    "sentBody": "Děkujeme — ozveme se do 24 hodin.",
     "sendError": "Něco se pokazilo. Zkuste to prosím znovu.",
     "done": "Hotovo",
     "backToApps": "Všechny aplikace",
@@ -48,7 +48,7 @@
       "fact3": "Čistá architektura · produkční standardy",
       "fact4": "Udržované i po spuštění — ne opuštěné",
       "fact5": "AI-assisted, postavené seniorem",
-      "fact6": "V souladu s GDPR · SK s.r.o."
+      "fact6": "V souladu s GDPR · SK s. r. o."
     },
     "services": {
       "title": "Co děláme",
@@ -112,12 +112,12 @@
       "signal2": "Automatizované testy",
       "signal3": "CI/CD pipeline",
       "signal4": "Veřejná historie commitů",
-      "references": "Klientská práce je pod NDA — ověřené reference a LinkedIn doporučení poskytneme na vyžádání."
+      "references": "Klientská práce je pod NDA — ověřené reference poskytneme na vyžádání."
     },
     "testimonials": {
       "title": "Co říkají klienti",
       "subtitle": "Jsme na začátku a vybíraví, a většina naší práce je pod NDA.",
-      "placeholder": "Ověřené reference a doporučení na LinkedInu poskytneme na požádání.",
+      "placeholder": "Ověřené reference poskytneme na požádání.",
       "cta": "Vyžádat reference"
     },
     "about": {
@@ -129,7 +129,7 @@
     "contact": {
       "headline": "Máte produkt k postavení — nebo vylepšení?",
       "subline": "Napište nám, co stavíte. Odpovíme do 24 hodin — obvykle s prvními otázkami a odhadem rozsahu.",
-      "company": "MK Digital s.r.o. · Banská Bystrica, Slovensko",
+      "company": "MK Digital s. r. o. · Banská Bystrica, Slovensko",
       "cta": "Pojďme si promluvit"
     },
     "appTypes": "Typy aplikací",
@@ -146,7 +146,7 @@
   },
   "hero": {
     "headline": "Vedené seniorem. Fintech kvalita. Plná odpovědnost.",
-    "subline": "Za MK Digital je senior inženýr s 8+ lety budování produkčních appek — jako Head of Mobile a lead engineer napříč fintechem, platbami a zdravotnictvím v UK, Irsku a EU. Jeden odpovědný partner od první myšlenky po spuštění — a stejné standardy jsou veřejné v open-source aplikacích níže: prozkoumejte architekturu, testy i historii commitů dřív, než si nás najmete.",
+    "subline": "Za MK Digital je Miroslav Kušnír, senior inženýr s 8+ lety budování produkčních appek — jako Head of Mobile a lead engineer napříč fintechem, platbami a zdravotnictvím v UK, Irsku a EU. Jeden odpovědný partner od první myšlenky po spuštění — a stejné standardy jsou veřejné v open-source aplikacích níže: prozkoumejte architekturu, testy i historii commitů dřív, než si nás najmete.",
     "cta": "Ozvěte se nám",
     "exp1": "Head of Mobile & lead engineer · 8+ let",
     "exp2": "Fintech · Platby · Zdravotnictví",

@@ -29,7 +29,7 @@
     "noteLabel": "Notiz",
     "phoneLabel": "Telefon",
     "sentHeading": "Anfrage gesendet!",
-    "sentBody": "Danke — wir melden uns in Kürze.",
+    "sentBody": "Danke — wir melden uns innerhalb von 24 Stunden.",
     "sendError": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
     "done": "Fertig",
     "backToApps": "Alle Apps",
@@ -48,7 +48,7 @@
       "fact3": "Saubere Architektur · Produktionsstandards",
       "fact4": "Auch nach dem Launch gepflegt — nicht verlassen",
       "fact5": "KI-gestützt, von Senior gebaut",
-      "fact6": "DSGVO-konform · SK s.r.o."
+      "fact6": "DSGVO-konform · SK s. r. o."
     },
     "services": {
       "title": "Was wir tun",
@@ -112,12 +112,12 @@
       "signal2": "Automatisierte Tests",
       "signal3": "CI/CD-Pipelines",
       "signal4": "Öffentliche Commit-Historie",
-      "references": "Kundenprojekte stehen unter NDA — verifizierte Referenzen und LinkedIn-Empfehlungen auf Anfrage."
+      "references": "Kundenprojekte stehen unter NDA — verifizierte Referenzen auf Anfrage."
     },
     "testimonials": {
       "title": "Was Kunden sagen",
       "subtitle": "Wir sind am Anfang und selektiv, und der Großteil unserer Arbeit unterliegt einer NDA.",
-      "placeholder": "Verifizierte Referenzen und LinkedIn-Empfehlungen stellen wir auf Anfrage bereit.",
+      "placeholder": "Verifizierte Referenzen stellen wir auf Anfrage bereit.",
       "cta": "Referenzen anfragen"
     },
     "about": {
@@ -129,7 +129,7 @@
     "contact": {
       "headline": "Ein Produkt zu bauen — oder zu verbessern?",
       "subline": "Sagen Sie uns, was Sie bauen. Wir antworten innerhalb von 24 Stunden — meist mit ersten Fragen und einer Einschätzung des Umfangs.",
-      "company": "MK Digital s.r.o. · Banská Bystrica, Slowakei",
+      "company": "MK Digital s. r. o. · Banská Bystrica, Slowakei",
       "cta": "Sprechen wir"
     },
     "appTypes": "App-Typen",
@@ -146,7 +146,7 @@
   },
   "hero": {
     "headline": "Senior-geführt. Fintech-Qualität. Voll verantwortlich.",
-    "subline": "Hinter MK Digital steht ein Senior-Engineer mit über 8 Jahren im Bau von Produktions-Apps — als Head of Mobile und Lead Engineer in Fintech, Payments und Healthcare in UK, Irland und der EU. Ein verantwortlicher Partner von der ersten Idee bis zum Launch — und dieselben Standards sind in den Open-Source-Apps unten öffentlich: prüfen Sie Architektur, Tests und Commit-Historie, bevor Sie uns beauftragen.",
+    "subline": "Hinter MK Digital steht Miroslav Kušnír, ein Senior-Engineer mit über 8 Jahren im Bau von Produktions-Apps — als Head of Mobile und Lead Engineer in Fintech, Payments und Healthcare in UK, Irland und der EU. Ein verantwortlicher Partner von der ersten Idee bis zum Launch — und dieselben Standards sind in den Open-Source-Apps unten öffentlich: prüfen Sie Architektur, Tests und Commit-Historie, bevor Sie uns beauftragen.",
     "cta": "Kontakt aufnehmen",
     "exp1": "Head of Mobile & Lead Engineer · 8+ Jahre",
     "exp2": "Fintech · Payments · Healthcare",

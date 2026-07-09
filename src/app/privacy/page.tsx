@@ -6,7 +6,7 @@ import { CONTENT_MAX, PAGE_PT, TEXT_MAX } from '@/shared/layout'
 
 export const metadata: Metadata = {
   title: 'Ochrana osobných údajov — MK Digital',
-  description: 'Ako MK Digital s.r.o. spracúva osobné údaje z kontaktného formulára (GDPR, zákon č. 18/2018 Z. z.).',
+  description: 'Ako MK Digital s. r. o. spracúva osobné údaje z kontaktného formulára (GDPR, zákon č. 18/2018 Z. z.).',
 }
 
 const CONTACT_EMAIL = 'admin@mkdigital.sk'
@@ -17,7 +17,7 @@ interface Policy {
   sections: { h: string; body: string }[]
 }
 
-// Canonical Slovak version (the controller is a Slovak s.r.o.; Slovak law applies),
+// Canonical Slovak version (the controller is a Slovak s. r. o.; Slovak law applies),
 // with an English version for the other locales. Grounded in GDPR (Reg. 2016/679),
 // the Slovak Act 18/2018 Coll. and Act 452/2021 Coll. § 109 (cookies).
 // TODO before go-live (tracked in roadmap): lawyer review; confirm the server's hosting region to
