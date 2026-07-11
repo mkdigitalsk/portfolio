@@ -4,7 +4,7 @@
       "headline": "Ihr Produkt, end-to-end geliefert.",
       "subline": "iOS, Android, Web und Backend — einmal und richtig gebaut, mit denselben Produktionsmustern, die wir in echten Kundenprojekten verwenden. Ein verantwortlicher Partner, keine Übergabekette.",
       "cta": "Sprechen wir",
-      "proof1": "Antwort innerhalb von 24 Stunden",
+      "proof1": "Meist Antwort innerhalb von 24 Stunden",
       "proof2": "4 Open-Source-Apps — prüfen Sie den echten Code",
       "proof3": "Ein Kunde nach dem anderen, volle Fokussierung"
     },
@@ -29,7 +29,7 @@
     "noteLabel": "Notiz",
     "phoneLabel": "Telefon",
     "sentHeading": "Anfrage gesendet!",
-    "sentBody": "Danke — wir melden uns innerhalb von 24 Stunden.",
+    "sentBody": "Danke — wir melden uns meist innerhalb von 24 Stunden.",
     "sendError": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
     "done": "Fertig",
     "backToApps": "Alle Apps",
@@ -82,7 +82,7 @@
       "phase1": {
         "when": "Woche 1",
         "title": "Umfang & Plan",
-        "detail": "Eine Discovery zum Festpreis: Wir definieren Umfang, Architektur und Roadmap und vereinbaren Preis und Termin im Voraus."
+        "detail": "Wir machen aus Ihrem Auftrag einen umsetzungsreifen Plan — Umfang, ein fixer Preis und ein Termin — vereinbart, bevor Sie sich zur Umsetzung verpflichten."
       },
       "phase2": {
         "when": "Woche 2–N",
@@ -94,15 +94,15 @@
         "title": "Auslieferung & Support",
         "detail": "Wir veröffentlichen, richten Monitoring ein und bleiben für Fixes und Verbesserungen — das Produkt wird bei der Übergabe nicht fallengelassen."
       },
-      "principle1": "Wöchentliche Demos",
+      "principle1": "Lauffähige Demo bei jedem Meilenstein",
       "principle2": "Direkter Zugang zum Engineer",
       "principle3": "Open-Source-Code zum Prüfen",
       "principle4": "Fester Umfang, Preis und Termin",
       "riskReversal": {
         "title": "Pünktlich und im Budget — vorab vereinbart",
-        "body": "Wir legen Umfang, Preis und Liefertermin vor jeder Zeile Code fest — und dank des öffentlichen Repos überprüfen Sie den Fortschritt jederzeit selbst."
+        "body": "Wir legen Umfang, Preis und Liefertermin vor der ersten Zeile Code fest. Bei jedem Meilenstein prüfen Sie einen lauffähigen Build, und bei der Übergabe gehört Ihnen alles — kein Lock-in."
       },
-      "cta": "Erstgespräch buchen"
+      "cta": "Kostenloses Erstgespräch buchen"
     },
     "proof": {
       "title": "Lesen Sie den Code, bevor Sie uns beauftragen",
@@ -128,7 +128,7 @@
     },
     "contact": {
       "headline": "Ein Produkt zu bauen — oder zu verbessern?",
-      "subline": "Sagen Sie uns, was Sie bauen. Wir antworten innerhalb von 24 Stunden — meist mit ersten Fragen und einer Einschätzung des Umfangs.",
+      "subline": "Sagen Sie uns, was Sie bauen. Wir antworten meist innerhalb von 24 Stunden — mit ersten Fragen und einer Einschätzung des Umfangs.",
       "company": "MK Digital s. r. o. · Banská Bystrica, Slowakei",
       "cta": "Sprechen wir"
     },

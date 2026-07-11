@@ -4,7 +4,7 @@
       "headline": "Your product, shipped end-to-end.",
       "subline": "iOS, Android, web, and backend — built once, properly, with the production patterns we use on real client work. One accountable partner, no hand-off chain.",
       "cta": "Let's talk",
-      "proof1": "Reply within 24 hours",
+      "proof1": "Usually a reply within 24 hours",
       "proof2": "4 open-source apps — inspect the real code",
       "proof3": "One client at a time, full focus"
     },
@@ -29,7 +29,7 @@
     "noteLabel": "Note",
     "phoneLabel": "Phone",
     "sentHeading": "Request sent!",
-    "sentBody": "Thanks — we'll reply within 24 hours.",
+    "sentBody": "Thanks — we usually reply within 24 hours.",
     "sendError": "Something went wrong. Please try again.",
     "done": "Done",
     "backToApps": "All apps",
@@ -74,7 +74,7 @@
         "embeddedTitle": "Embedded senior engineer",
         "embeddedDesc": "Need extra senior firepower? We join your team and ship alongside your engineers."
       },
-      "existing": "Already have a product? We also take over, stabilise and extend it — rescue legacy code, cut crash rates, ship new features — not only greenfield builds."
+      "existing": "Already have a product? We also take over, stabilise and extend it — rescue legacy code, reduce crashes, ship new features — not only greenfield builds."
     },
     "process": {
       "title": "How we work",
@@ -82,7 +82,7 @@
       "phase1": {
         "when": "Week 1",
         "title": "Scope & plan",
-        "detail": "A fixed-fee discovery: we define scope, architecture, and a roadmap, and agree the price and date up front."
+        "detail": "We turn your brief into a build-ready plan — scope, a fixed price, and a date — agreed before you commit to a build."
       },
       "phase2": {
         "when": "Weeks 2–N",
@@ -94,15 +94,15 @@
         "title": "Ship & support",
         "detail": "We release, set up monitoring, and stay on to fix and improve — the product doesn't get abandoned at handover."
       },
-      "principle1": "Weekly demos",
+      "principle1": "Working demo at every milestone",
       "principle2": "Direct access to the engineer",
       "principle3": "Open-source code to inspect",
       "principle4": "Fixed scope, price, and date",
       "riskReversal": {
         "title": "On time, on budget — agreed up front",
-        "body": "We fix scope, price, and delivery date before any code is written — and the public repo means you can verify progress yourself, any day."
+        "body": "We lock scope, price, and delivery date before a line of code. You review a working build at each milestone, and own everything at release — zero lock-in."
       },
-      "cta": "Book a discovery call"
+      "cta": "Book a free discovery call"
     },
     "proof": {
       "title": "Read the code before you hire us",
@@ -128,7 +128,7 @@
     },
     "contact": {
       "headline": "Have a product to build — or improve?",
-      "subline": "Tell us what you're building. We reply within 24 hours — usually with first questions and a sense of scope.",
+      "subline": "Tell us what you're building. We usually reply within 24 hours — often with first questions and a sense of scope.",
       "company": "MK Digital s. r. o. · Banská Bystrica, Slovakia",
       "cta": "Let's talk"
     },

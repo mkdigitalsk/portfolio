@@ -4,7 +4,7 @@
       "headline": "Váš produkt, dodaný od začiatku do konca.",
       "subline": "iOS, Android, web aj backend — postavené raz a poriadne, s produkčnými vzormi, ktoré používame na reálnych klientskych projektoch. Jeden zodpovedný partner, žiadne odovzdávanie medzi tímami.",
       "cta": "Poďme sa porozprávať",
-      "proof1": "Odpoveď do 24 hodín",
+      "proof1": "Zvyčajne odpoveď do 24 hodín",
       "proof2": "4 open-source aplikácie — pozrite si reálny kód",
       "proof3": "Jeden klient naraz, plný fokus"
     },
@@ -29,7 +29,7 @@
     "noteLabel": "Poznámka",
     "phoneLabel": "Telefón",
     "sentHeading": "Požiadavka odoslaná!",
-    "sentBody": "Ďakujeme — ozveme sa vám do 24 hodín.",
+    "sentBody": "Ďakujeme — zvyčajne sa vám ozveme do 24 hodín.",
     "sendError": "Niečo sa pokazilo. Skúste to prosím znova.",
     "done": "Hotovo",
     "backToApps": "Všetky aplikácie",
@@ -82,7 +82,7 @@
       "phase1": {
         "when": "1. týždeň",
         "title": "Rozsah a plán",
-        "detail": "Discovery za fixnú cenu: zadefinujeme rozsah, architektúru a roadmap a vopred dohodneme cenu aj termín."
+        "detail": "Z vášho zadania spravíme plán pripravený na stavbu — rozsah, pevná cena aj termín — dohodnuté ešte predtým, než sa k stavbe zaviažete."
       },
       "phase2": {
         "when": "2.–N. týždeň",
@@ -94,15 +94,15 @@
         "title": "Nasadenie a podpora",
         "detail": "Nasadíme, nastavíme monitoring a zostávame na opravy a zlepšenia — produkt sa pri odovzdaní neopustí."
       },
-      "principle1": "Týždenné demá",
+      "principle1": "Funkčné demo pri každom míľniku",
       "principle2": "Priamy prístup k inžinierovi",
       "principle3": "Open-source kód na preverenie",
       "principle4": "Fixný rozsah, cena a termín",
       "riskReversal": {
         "title": "Načas a v rozpočte — dohodnuté vopred",
-        "body": "Rozsah, cenu aj termín dohodneme pred prvým riadkom kódu — a vďaka verejnému repu si pokrok overíte sami, hocikedy."
+        "body": "Rozsah, cenu aj termín zafixujeme pred prvým riadkom kódu. Pri každom míľniku dostanete funkčný build na kontrolu a pri odovzdaní vlastníte všetko — žiadny lock-in."
       },
-      "cta": "Rezervovať úvodný hovor"
+      "cta": "Rezervovať bezplatný úvodný hovor"
     },
     "proof": {
       "title": "Prečítajte si kód skôr, než nás najmete",
@@ -128,7 +128,7 @@
     },
     "contact": {
       "headline": "Máte produkt na postavenie — alebo vylepšenie?",
-      "subline": "Napíšte nám, čo staviate. Odpovieme do 24 hodín — zvyčajne s prvými otázkami a odhadom rozsahu.",
+      "subline": "Napíšte nám, čo staviate. Zvyčajne odpovieme do 24 hodín — s prvými otázkami a odhadom rozsahu.",
       "company": "MK Digital s. r. o. · Banská Bystrica, Slovensko",
       "cta": "Poďme sa porozprávať"
     },
