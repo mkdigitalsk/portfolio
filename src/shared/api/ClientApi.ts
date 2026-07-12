@@ -1,4 +1,4 @@
-import type { ClientEngagement } from '@/shared/types'
+import type { ClientProject } from '@/shared/types'
 import { BaseApiService } from './BaseApiService'
 import { API_PREFIX } from './apiVersion'
 
@@ -6,7 +6,7 @@ import { API_PREFIX } from './apiVersion'
 export class ClientApi extends BaseApiService {
   protected readonly baseRoute = `${API_PREFIX}/me`
 
-  getEngagement(): Promise<ClientEngagement> {
-    return this._get<ClientEngagement>(`${this.baseRoute}/engagement`)
+  getProject(): Promise<ClientProject> {
+    return this._get<ClientProject>(`${this.baseRoute}/project`)
   }
 }

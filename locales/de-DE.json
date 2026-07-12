@@ -644,34 +644,6 @@
       "loadLeadsFailed": "Anfragen konnten nicht geladen werden.",
       "loadLeadFailed": "Diese Anfrage konnte nicht geladen werden."
     },
-    "engagement": {
-      "loading": "Ihr Projekt wird geladen…",
-      "loadFailed": "Projekt konnte nicht geladen werden.",
-      "none": "Noch kein aktives Projekt. Sobald wir beginnen, erscheinen hier Ihr Angebot, Meilensteine und Demos.",
-      "request": "Ihre Anfrage",
-      "platforms": "Plattformen",
-      "features": "Funktionen",
-      "note": "Ihre Notiz",
-      "proposal": "Ihr Angebot",
-      "noProposal": "Ihr Angebot erscheint hier, sobald es bereit ist.",
-      "milestones": "Meilensteine",
-      "noMilestones": "Meilensteine erscheinen hier während der Projektplanung.",
-      "demos": "Demos",
-      "noDemos": "Demo-Builds erscheinen hier, sobald sie veröffentlicht werden.",
-      "openDemo": "Öffnen",
-      "stage": {
-        "IN_REVIEW": "In Prüfung",
-        "PREPARING_PROPOSAL": "Angebot in Vorbereitung",
-        "PROPOSAL_READY": "Angebot bereit",
-        "IN_PROGRESS": "In Bearbeitung",
-        "CLOSED": "Abgeschlossen"
-      },
-      "milestoneStatus": {
-        "PENDING": "Ausstehend",
-        "IN_PROGRESS": "In Bearbeitung",
-        "DONE": "Erledigt"
-      }
-    },
     "delivery": {
       "tab": "Lieferung",
       "milestones": "Meilensteine",
@@ -684,7 +656,53 @@
       "demoUrl": "Demo-URL",
       "viewAdmin": "Admin",
       "viewClient": "Kunde",
-      "clientPreviewNote": "Schreibgeschützte Vorschau dessen, was der Kunde sieht."
+      "clientPreviewNote": "Schreibgeschützte Vorschau dessen, was der Kunde sieht.",
+      "noProject": "Noch kein Projekt — aus diesem unterzeichneten Lead starten.",
+      "startProject": "Projekt starten",
+      "startDate": "Startdatum",
+      "targetEndDate": "Ziel-Enddatum",
+      "plannedDate": "Geplantes Datum",
+      "health": "Status",
+      "complete": "Als abgeschlossen markieren",
+      "archive": "Archivieren",
+      "docTitle": "Dokumenttitel",
+      "docUrl": "Dokument-URL"
+    },
+    "project": {
+      "loading": "Ihr Projekt wird geladen…",
+      "loadFailed": "Projekt konnte nicht geladen werden.",
+      "none": "Noch kein aktives Projekt. Nach dem Start erscheinen hier Roadmap, Dokumente und Demos.",
+      "timeline": "Zeitplan",
+      "tbd": "Offen",
+      "deliveredOn": "Geliefert {date}",
+      "roadmap": "Roadmap",
+      "noMilestones": "Meilensteine erscheinen hier während der Projektplanung.",
+      "documents": "Dokumente",
+      "noDocuments": "Ihre Dokumente erscheinen hier.",
+      "demos": "Demos",
+      "noDemos": "Demo-Builds erscheinen hier, sobald sie veröffentlicht werden.",
+      "open": "Öffnen",
+      "state": {
+        "ACTIVE": "Aktiv",
+        "COMPLETED": "Abgeschlossen",
+        "ARCHIVED": "Archiviert"
+      },
+      "health": {
+        "GREEN": "Im Plan",
+        "AMBER": "Gefährdet",
+        "RED": "In Verzug"
+      },
+      "milestoneStatus": {
+        "PENDING": "Ausstehend",
+        "IN_PROGRESS": "In Bearbeitung",
+        "DONE": "Erledigt"
+      },
+      "documentType": {
+        "CONTRACT": "Vertrag",
+        "PROPOSAL": "Angebot",
+        "DOCUMENTATION": "Dokumentation",
+        "DESIGN": "Design"
+      }
     }
   }
 }

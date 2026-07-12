@@ -25,7 +25,7 @@ import { httpStatus } from '@/shared/api'
 import type { AdminLead } from '@/shared/types'
 import { useLeadDetailQuery } from './useLeadDetailQuery'
 import { LeadStatusSelect } from './LeadStatusSelect'
-import { AdminEngagement } from './AdminEngagement'
+import { AdminProject } from './AdminProject'
 import { ClientPreview } from './ClientPreview'
 
 type Perspective = 'admin' | 'client'
@@ -66,7 +66,7 @@ export function LeadDetail({ email }: { email: string }) {
     tab === 0 ? (
       <Submission lead={lead} />
     ) : tab === deliveryTab ? (
-      <AdminEngagement email={lead.email} />
+      <AdminProject email={lead.email} />
     ) : (
       <Markdown>{artifacts.find((a) => a.stage === present[tab - 1]?.stage)?.content ?? ''}</Markdown>
     )

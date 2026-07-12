@@ -644,34 +644,6 @@
       "loadLeadsFailed": "Dopyty sa nepodarilo načítať.",
       "loadLeadFailed": "Tento dopyt sa nepodarilo načítať."
     },
-    "engagement": {
-      "loading": "Načítavam váš projekt…",
-      "loadFailed": "Projekt sa nepodarilo načítať.",
-      "none": "Zatiaľ nemáte aktívny projekt. Keď začneme, zobrazí sa tu váš návrh, míľniky a ukážky.",
-      "request": "Vaša požiadavka",
-      "platforms": "Platformy",
-      "features": "Funkcie",
-      "note": "Vaša poznámka",
-      "proposal": "Váš návrh",
-      "noProposal": "Váš návrh sa tu zobrazí, keď bude pripravený.",
-      "milestones": "Míľniky",
-      "noMilestones": "Míľniky sa tu zobrazia počas plánovania projektu.",
-      "demos": "Ukážky",
-      "noDemos": "Ukážkové zostavy sa tu zobrazia po vydaní.",
-      "openDemo": "Otvoriť",
-      "stage": {
-        "IN_REVIEW": "Posudzujeme",
-        "PREPARING_PROPOSAL": "Pripravujeme návrh",
-        "PROPOSAL_READY": "Návrh pripravený",
-        "IN_PROGRESS": "Prebieha",
-        "CLOSED": "Uzavreté"
-      },
-      "milestoneStatus": {
-        "PENDING": "Čaká",
-        "IN_PROGRESS": "Prebieha",
-        "DONE": "Hotovo"
-      }
-    },
     "delivery": {
       "tab": "Dodanie",
       "milestones": "Míľniky",
@@ -684,7 +656,53 @@
       "demoUrl": "URL ukážky",
       "viewAdmin": "Admin",
       "viewClient": "Klient",
-      "clientPreviewNote": "Náhľad iba na čítanie toho, čo vidí klient."
+      "clientPreviewNote": "Náhľad iba na čítanie toho, čo vidí klient.",
+      "noProject": "Zatiaľ žiadny projekt — spustite ho z tohto podpísaného leadu.",
+      "startProject": "Spustiť projekt",
+      "startDate": "Dátum začiatku",
+      "targetEndDate": "Cieľový dátum ukončenia",
+      "plannedDate": "Plánovaný dátum",
+      "health": "Stav",
+      "complete": "Označiť ako dokončené",
+      "archive": "Archivovať",
+      "docTitle": "Názov dokumentu",
+      "docUrl": "URL dokumentu"
+    },
+    "project": {
+      "loading": "Načítavam váš projekt…",
+      "loadFailed": "Projekt sa nepodarilo načítať.",
+      "none": "Zatiaľ nemáte aktívny projekt. Po štarte sa tu zobrazí plán, dokumenty a ukážky.",
+      "timeline": "Harmonogram",
+      "tbd": "Bude určené",
+      "deliveredOn": "Dodané {date}",
+      "roadmap": "Plán",
+      "noMilestones": "Míľniky sa tu zobrazia počas plánovania projektu.",
+      "documents": "Dokumenty",
+      "noDocuments": "Vaše dokumenty sa tu zobrazia.",
+      "demos": "Ukážky",
+      "noDemos": "Ukážkové zostavy sa tu zobrazia po vydaní.",
+      "open": "Otvoriť",
+      "state": {
+        "ACTIVE": "Aktívny",
+        "COMPLETED": "Dokončený",
+        "ARCHIVED": "Archivovaný"
+      },
+      "health": {
+        "GREEN": "Na dobrej ceste",
+        "AMBER": "Ohrozené",
+        "RED": "Meškáme"
+      },
+      "milestoneStatus": {
+        "PENDING": "Čaká",
+        "IN_PROGRESS": "Prebieha",
+        "DONE": "Hotovo"
+      },
+      "documentType": {
+        "CONTRACT": "Zmluva",
+        "PROPOSAL": "Návrh",
+        "DOCUMENTATION": "Dokumentácia",
+        "DESIGN": "Dizajn"
+      }
     }
   }
 }

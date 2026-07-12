@@ -1,13 +1,17 @@
 import type {
   AdminDemo,
-  AdminEngagement,
+  AdminDocument,
   AdminLead,
   AdminMilestone,
-  ClientEngagement,
+  AdminProject,
+  ClientProject,
   DemoRequest,
+  DocumentRequest,
   LeadDetail,
   LeadStatus,
   MilestoneRequest,
+  StartProjectRequest,
+  UpdateProjectRequest,
 } from '@/shared/types'
 import { BaseApiService } from './BaseApiService'
 import { API_PREFIX } from './apiVersion'
@@ -15,6 +19,7 @@ import { API_PREFIX } from './apiVersion'
 export class AdminApi extends BaseApiService {
   protected readonly baseRoute = `${API_PREFIX}/admin`
 
+  // --- Leads (sales pipeline) ---
   getLeads(): Promise<AdminLead[]> {
     return this._get<AdminLead[]>(`${this.baseRoute}/leads`)
   }
@@ -27,40 +32,65 @@ export class AdminApi extends BaseApiService {
     return this._patch<AdminLead>(`${this.baseRoute}/leads/${encodeURIComponent(email)}/status`, { status })
   }
 
-  private lead(email: string): string {
-    return `${this.baseRoute}/leads/${encodeURIComponent(email)}`
+  // --- Project (delivery) ---
+  private project(email: string): string {
+    return `${this.baseRoute}/projects/${encodeURIComponent(email)}`
   }
 
-  getEngagement(email: string): Promise<AdminEngagement> {
-    return this._get<AdminEngagement>(`${this.lead(email)}/engagement`)
+  getProject(email: string): Promise<AdminProject> {
+    return this._get<AdminProject>(this.project(email))
   }
 
   // Read-only "view as client" — the same client-safe projection the client sees.
-  getClientPreview(email: string): Promise<ClientEngagement> {
-    return this._get<ClientEngagement>(`${this.lead(email)}/client-preview`)
+  getClientPreview(email: string): Promise<ClientProject> {
+    return this._get<ClientProject>(`${this.project(email)}/client-preview`)
+  }
+
+  startProject(email: string, req: StartProjectRequest): Promise<AdminProject> {
+    return this._post<AdminProject>(this.project(email), req)
+  }
+
+  updateProject(email: string, req: UpdateProjectRequest): Promise<AdminProject> {
+    return this._patch<AdminProject>(this.project(email), req)
+  }
+
+  completeProject(email: string): Promise<AdminProject> {
+    return this._post<AdminProject>(`${this.project(email)}/complete`)
+  }
+
+  archiveProject(email: string): Promise<AdminProject> {
+    return this._post<AdminProject>(`${this.project(email)}/archive`)
+  }
+
+  addDocument(email: string, req: DocumentRequest): Promise<AdminDocument> {
+    return this._post<AdminDocument>(`${this.project(email)}/documents`, req)
+  }
+
+  deleteDocument(email: string, id: number): Promise<void> {
+    return this._delete(`${this.project(email)}/documents/${id}`)
   }
 
   addMilestone(email: string, req: MilestoneRequest): Promise<AdminMilestone> {
-    return this._post<AdminMilestone>(`${this.lead(email)}/milestones`, req)
+    return this._post<AdminMilestone>(`${this.project(email)}/milestones`, req)
   }
 
   updateMilestone(email: string, id: number, req: MilestoneRequest): Promise<AdminMilestone> {
-    return this._patch<AdminMilestone>(`${this.lead(email)}/milestones/${id}`, req)
+    return this._patch<AdminMilestone>(`${this.project(email)}/milestones/${id}`, req)
   }
 
   deleteMilestone(email: string, id: number): Promise<void> {
-    return this._delete(`${this.lead(email)}/milestones/${id}`)
+    return this._delete(`${this.project(email)}/milestones/${id}`)
   }
 
   addDemo(email: string, req: DemoRequest): Promise<AdminDemo> {
-    return this._post<AdminDemo>(`${this.lead(email)}/demos`, req)
+    return this._post<AdminDemo>(`${this.project(email)}/demos`, req)
   }
 
   updateDemo(email: string, id: number, req: DemoRequest): Promise<AdminDemo> {
-    return this._patch<AdminDemo>(`${this.lead(email)}/demos/${id}`, req)
+    return this._patch<AdminDemo>(`${this.project(email)}/demos/${id}`, req)
   }
 
   deleteDemo(email: string, id: number): Promise<void> {
-    return this._delete(`${this.lead(email)}/demos/${id}`)
+    return this._delete(`${this.project(email)}/demos/${id}`)
   }
 }

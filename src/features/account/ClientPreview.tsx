@@ -5,18 +5,18 @@ import { InfoOutlined } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import { TextBody1Neutral60, TextCaptionNeutral60 } from '@/shared/components'
 import { httpStatus } from '@/shared/api'
-import { ClientEngagementView } from './ClientEngagement'
-import { useClientPreviewQuery } from './useAdminEngagement'
+import { ClientProjectView } from './ClientProject'
+import { useClientPreviewQuery } from './useAdminProject'
 
-// Admin-only, READ-ONLY "view as client": renders the exact client panel from the same server-side
+// Admin-only, READ-ONLY "view as client": renders the exact client project view from the same server-side
 // projection the client gets. Best practice over impersonation — no session takeover, no over-exposure.
 export function ClientPreview({ email, name }: { email: string; name: string }) {
   const t = useTranslations('account')
   const { data, isLoading, error } = useClientPreviewQuery(email)
 
-  if (isLoading) return <TextBody1Neutral60>{t('engagement.loading')}</TextBody1Neutral60>
-  if (error && httpStatus(error) === 404) return <TextBody1Neutral60>{t('engagement.none')}</TextBody1Neutral60>
-  if (error || !data) return <TextBody1Neutral60>{t('engagement.loadFailed')}</TextBody1Neutral60>
+  if (isLoading) return <TextBody1Neutral60>{t('project.loading')}</TextBody1Neutral60>
+  if (error && httpStatus(error) === 404) return <TextBody1Neutral60>{t('project.none')}</TextBody1Neutral60>
+  if (error || !data) return <TextBody1Neutral60>{t('project.loadFailed')}</TextBody1Neutral60>
 
   return (
     <Box>
@@ -24,7 +24,7 @@ export function ClientPreview({ email, name }: { email: string; name: string }) 
         <InfoOutlined fontSize="small" />
         <TextCaptionNeutral60>{t('delivery.clientPreviewNote')}</TextCaptionNeutral60>
       </Box>
-      <ClientEngagementView data={data} name={name} />
+      <ClientProjectView data={data} name={name} />
     </Box>
   )
 }

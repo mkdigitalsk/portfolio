@@ -1,5 +1,5 @@
 import { clientApi } from '../api'
 
 export const clientService = {
-  getEngagement: () => clientApi.getEngagement(),
+  getProject: () => clientApi.getProject(),
 }

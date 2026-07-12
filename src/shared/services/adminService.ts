@@ -1,13 +1,28 @@
-import type { DemoRequest, LeadStatus, MilestoneRequest } from '@/shared/types'
+import type {
+  DemoRequest,
+  DocumentRequest,
+  LeadStatus,
+  MilestoneRequest,
+  StartProjectRequest,
+  UpdateProjectRequest,
+} from '@/shared/types'
 import { adminApi } from '../api'
 
 export const adminService = {
+  // leads (sales)
   getLeads: () => adminApi.getLeads(),
   getLead: (email: string) => adminApi.getLead(email),
   updateStatus: (email: string, status: LeadStatus) => adminApi.updateStatus(email, status),
 
-  getEngagement: (email: string) => adminApi.getEngagement(email),
+  // project (delivery)
+  getProject: (email: string) => adminApi.getProject(email),
   getClientPreview: (email: string) => adminApi.getClientPreview(email),
+  startProject: (email: string, req: StartProjectRequest) => adminApi.startProject(email, req),
+  updateProject: (email: string, req: UpdateProjectRequest) => adminApi.updateProject(email, req),
+  completeProject: (email: string) => adminApi.completeProject(email),
+  archiveProject: (email: string) => adminApi.archiveProject(email),
+  addDocument: (email: string, req: DocumentRequest) => adminApi.addDocument(email, req),
+  deleteDocument: (email: string, id: number) => adminApi.deleteDocument(email, id),
   addMilestone: (email: string, req: MilestoneRequest) => adminApi.addMilestone(email, req),
   updateMilestone: (email: string, id: number, req: MilestoneRequest) => adminApi.updateMilestone(email, id, req),
   deleteMilestone: (email: string, id: number) => adminApi.deleteMilestone(email, id),
