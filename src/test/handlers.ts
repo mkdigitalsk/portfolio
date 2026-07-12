@@ -13,5 +13,12 @@ export const handlers = [
 
   http.get(`${API}/auth/me`, () => HttpResponse.json(fakeAuthResponse())),
 
+  http.post(`${API}/leads`, () => HttpResponse.json({ success: true })),
+
   http.get(`${API}/admin/leads`, () => HttpResponse.json([fakeLead()])),
+
+  http.patch(`${API}/admin/leads/:email/status`, async ({ request }) => {
+    const { status } = (await request.json()) as { status: string }
+    return HttpResponse.json(fakeLead({ status: status as never }))
+  }),
 ]
