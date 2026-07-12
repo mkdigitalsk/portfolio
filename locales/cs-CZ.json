@@ -643,6 +643,45 @@
       "notAuthorized": "Nemáte oprávnění.",
       "loadLeadsFailed": "Poptávky se nepodařilo načíst.",
       "loadLeadFailed": "Tuto poptávku se nepodařilo načíst."
+    },
+    "engagement": {
+      "loading": "Načítám váš projekt…",
+      "loadFailed": "Projekt se nepodařilo načíst.",
+      "none": "Zatím nemáte aktivní projekt. Až začneme, zobrazí se zde váš návrh, milníky a ukázky.",
+      "request": "Váš požadavek",
+      "platforms": "Platformy",
+      "features": "Funkce",
+      "note": "Vaše poznámka",
+      "proposal": "Váš návrh",
+      "noProposal": "Váš návrh se zde zobrazí, až bude připraven.",
+      "milestones": "Milníky",
+      "noMilestones": "Milníky se zde zobrazí během plánování projektu.",
+      "demos": "Ukázky",
+      "noDemos": "Ukázková sestavení se zde zobrazí po vydání.",
+      "openDemo": "Otevřít",
+      "stage": {
+        "IN_REVIEW": "Posuzujeme",
+        "PREPARING_PROPOSAL": "Připravujeme návrh",
+        "PROPOSAL_READY": "Návrh připraven",
+        "IN_PROGRESS": "Probíhá",
+        "CLOSED": "Uzavřeno"
+      },
+      "milestoneStatus": {
+        "PENDING": "Čeká",
+        "IN_PROGRESS": "Probíhá",
+        "DONE": "Hotovo"
+      }
+    },
+    "delivery": {
+      "tab": "Dodání",
+      "milestones": "Milníky",
+      "demos": "Ukázky",
+      "add": "Přidat",
+      "delete": "Odstranit",
+      "released": "Vydáno",
+      "milestoneTitle": "Název milníku",
+      "demoTitle": "Název ukázky",
+      "demoUrl": "URL ukázky"
     }
   }
 }

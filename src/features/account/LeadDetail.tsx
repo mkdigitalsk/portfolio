@@ -23,6 +23,7 @@ import { httpStatus } from '@/shared/api'
 import type { AdminLead } from '@/shared/types'
 import { useLeadDetailQuery } from './useLeadDetailQuery'
 import { LeadStatusSelect } from './LeadStatusSelect'
+import { AdminEngagement } from './AdminEngagement'
 
 const STAGES = [
   { stage: 'REQUIREMENTS', key: 'requirements' },
@@ -54,9 +55,12 @@ export function LeadDetail({ email }: { email: string }) {
 
   const { lead, artifacts } = detail
   const present = STAGES.filter((s) => artifacts.some((a) => a.stage === s.stage))
+  const deliveryTab = present.length + 1
   const content =
     tab === 0 ? (
       <Submission lead={lead} />
+    ) : tab === deliveryTab ? (
+      <AdminEngagement email={lead.email} />
     ) : (
       <Markdown>{artifacts.find((a) => a.stage === present[tab - 1]?.stage)?.content ?? ''}</Markdown>
     )
@@ -98,6 +102,7 @@ export function LeadDetail({ email }: { email: string }) {
           {present.map((s) => (
             <Tab key={s.stage} label={t(`stage.${s.key}`)} sx={{ alignItems: 'flex-start', textAlign: 'left' }} />
           ))}
+          <Tab label={t('delivery.tab')} sx={{ alignItems: 'flex-start', textAlign: 'left' }} />
         </Tabs>
         <Box sx={{ flex: 1, minWidth: 0 }}>{content}</Box>
       </Box>

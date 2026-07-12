@@ -643,6 +643,45 @@
       "notAuthorized": "Not authorized.",
       "loadLeadsFailed": "Could not load leads.",
       "loadLeadFailed": "Could not load this lead."
+    },
+    "engagement": {
+      "loading": "Loading your project…",
+      "loadFailed": "Could not load your project.",
+      "none": "No active project yet. When we begin, your proposal, milestones and demos will appear here.",
+      "request": "Your request",
+      "platforms": "Platforms",
+      "features": "Features",
+      "note": "Your note",
+      "proposal": "Your proposal",
+      "noProposal": "Your proposal will appear here once it's ready.",
+      "milestones": "Milestones",
+      "noMilestones": "Milestones will appear here as your project is planned.",
+      "demos": "Demos",
+      "noDemos": "Demo builds will appear here as they're released.",
+      "openDemo": "Open",
+      "stage": {
+        "IN_REVIEW": "In review",
+        "PREPARING_PROPOSAL": "Preparing proposal",
+        "PROPOSAL_READY": "Proposal ready",
+        "IN_PROGRESS": "In progress",
+        "CLOSED": "Closed"
+      },
+      "milestoneStatus": {
+        "PENDING": "Pending",
+        "IN_PROGRESS": "In progress",
+        "DONE": "Done"
+      }
+    },
+    "delivery": {
+      "tab": "Delivery",
+      "milestones": "Milestones",
+      "demos": "Demos",
+      "add": "Add",
+      "delete": "Delete",
+      "released": "Released",
+      "milestoneTitle": "Milestone title",
+      "demoTitle": "Demo title",
+      "demoUrl": "Demo URL"
     }
   }
 }

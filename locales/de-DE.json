@@ -643,6 +643,45 @@
       "notAuthorized": "Nicht autorisiert.",
       "loadLeadsFailed": "Anfragen konnten nicht geladen werden.",
       "loadLeadFailed": "Diese Anfrage konnte nicht geladen werden."
+    },
+    "engagement": {
+      "loading": "Ihr Projekt wird geladen…",
+      "loadFailed": "Projekt konnte nicht geladen werden.",
+      "none": "Noch kein aktives Projekt. Sobald wir beginnen, erscheinen hier Ihr Angebot, Meilensteine und Demos.",
+      "request": "Ihre Anfrage",
+      "platforms": "Plattformen",
+      "features": "Funktionen",
+      "note": "Ihre Notiz",
+      "proposal": "Ihr Angebot",
+      "noProposal": "Ihr Angebot erscheint hier, sobald es bereit ist.",
+      "milestones": "Meilensteine",
+      "noMilestones": "Meilensteine erscheinen hier während der Projektplanung.",
+      "demos": "Demos",
+      "noDemos": "Demo-Builds erscheinen hier, sobald sie veröffentlicht werden.",
+      "openDemo": "Öffnen",
+      "stage": {
+        "IN_REVIEW": "In Prüfung",
+        "PREPARING_PROPOSAL": "Angebot in Vorbereitung",
+        "PROPOSAL_READY": "Angebot bereit",
+        "IN_PROGRESS": "In Bearbeitung",
+        "CLOSED": "Abgeschlossen"
+      },
+      "milestoneStatus": {
+        "PENDING": "Ausstehend",
+        "IN_PROGRESS": "In Bearbeitung",
+        "DONE": "Erledigt"
+      }
+    },
+    "delivery": {
+      "tab": "Lieferung",
+      "milestones": "Meilensteine",
+      "demos": "Demos",
+      "add": "Hinzufügen",
+      "delete": "Löschen",
+      "released": "Veröffentlicht",
+      "milestoneTitle": "Meilenstein-Titel",
+      "demoTitle": "Demo-Titel",
+      "demoUrl": "Demo-URL"
     }
   }
 }

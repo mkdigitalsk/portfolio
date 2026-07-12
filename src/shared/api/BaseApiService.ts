@@ -18,4 +18,8 @@ export abstract class BaseApiService {
   protected _patch<T, D = unknown>(url: string, data?: D, config?: AxiosRequestConfig): Promise<T> {
     return this.http.patch<T>(url, data, config).then((r) => r.data)
   }
+
+  protected _delete(url: string, config?: AxiosRequestConfig): Promise<void> {
+    return this.http.delete(url, config).then(() => undefined)
+  }
 }
