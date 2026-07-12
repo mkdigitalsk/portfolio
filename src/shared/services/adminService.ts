@@ -7,6 +7,7 @@ export const adminService = {
   updateStatus: (email: string, status: LeadStatus) => adminApi.updateStatus(email, status),
 
   getEngagement: (email: string) => adminApi.getEngagement(email),
+  getClientPreview: (email: string) => adminApi.getClientPreview(email),
   addMilestone: (email: string, req: MilestoneRequest) => adminApi.addMilestone(email, req),
   updateMilestone: (email: string, id: number, req: MilestoneRequest) => adminApi.updateMilestone(email, id, req),
   deleteMilestone: (email: string, id: number) => adminApi.deleteMilestone(email, id),

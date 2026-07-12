@@ -3,6 +3,7 @@ import type {
   AdminEngagement,
   AdminLead,
   AdminMilestone,
+  ClientEngagement,
   DemoRequest,
   LeadDetail,
   LeadStatus,
@@ -32,6 +33,11 @@ export class AdminApi extends BaseApiService {
 
   getEngagement(email: string): Promise<AdminEngagement> {
     return this._get<AdminEngagement>(`${this.lead(email)}/engagement`)
+  }
+
+  // Read-only "view as client" — the same client-safe projection the client sees.
+  getClientPreview(email: string): Promise<ClientEngagement> {
+    return this._get<ClientEngagement>(`${this.lead(email)}/client-preview`)
   }
 
   addMilestone(email: string, req: MilestoneRequest): Promise<AdminMilestone> {

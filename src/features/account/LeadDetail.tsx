@@ -9,6 +9,8 @@ import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
+import ToggleButton from '@mui/material/ToggleButton'
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import {
   Button,
@@ -24,6 +26,9 @@ import type { AdminLead } from '@/shared/types'
 import { useLeadDetailQuery } from './useLeadDetailQuery'
 import { LeadStatusSelect } from './LeadStatusSelect'
 import { AdminEngagement } from './AdminEngagement'
+import { ClientPreview } from './ClientPreview'
+
+type Perspective = 'admin' | 'client'
 
 const STAGES = [
   { stage: 'REQUIREMENTS', key: 'requirements' },
@@ -38,6 +43,7 @@ export function LeadDetail({ email }: { email: string }) {
   const router = useRouter()
   const { data: detail, isLoading, error } = useLeadDetailQuery(email)
   const [tab, setTab] = useState(0)
+  const [perspective, setPerspective] = useState<Perspective>('admin')
   // Section nav is a left rail on wide (landscape) screens, top tabs on narrow (portrait) — a pattern
   // change, not sizing; safe with useMediaQuery since the account tree is client-only (never SSR'd).
   const railNav = useMediaQuery((theme) => theme.breakpoints.up('md'))
@@ -83,7 +89,21 @@ export function LeadDetail({ email }: { email: string }) {
         <LeadStatusSelect email={lead.email} value={lead.status} />
       </Box>
 
-      <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: { xs: 2, md: 4 } }}>
+      <ToggleButtonGroup
+        size="small"
+        exclusive
+        value={perspective}
+        onChange={(_, v: Perspective | null) => v && setPerspective(v)}
+        sx={{ alignSelf: 'flex-start' }}
+      >
+        <ToggleButton value="admin">{t('delivery.viewAdmin')}</ToggleButton>
+        <ToggleButton value="client">{t('delivery.viewClient')}</ToggleButton>
+      </ToggleButtonGroup>
+
+      {perspective === 'client' ? (
+        <ClientPreview email={lead.email} name={lead.name ?? lead.email} />
+      ) : (
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: { xs: 2, md: 4 } }}>
         <Tabs
           value={tab}
           onChange={(_, v) => setTab(v)}
@@ -105,7 +125,8 @@ export function LeadDetail({ email }: { email: string }) {
           <Tab label={t('delivery.tab')} sx={{ alignItems: 'flex-start', textAlign: 'left' }} />
         </Tabs>
         <Box sx={{ flex: 1, minWidth: 0 }}>{content}</Box>
-      </Box>
+        </Box>
+      )}
     </Stack>
   )
 }

@@ -681,7 +681,10 @@
       "released": "Vydáno",
       "milestoneTitle": "Název milníku",
       "demoTitle": "Název ukázky",
-      "demoUrl": "URL ukázky"
+      "demoUrl": "URL ukázky",
+      "viewAdmin": "Admin",
+      "viewClient": "Klient",
+      "clientPreviewNote": "Náhled pouze pro čtení toho, co vidí klient."
     }
   }
 }

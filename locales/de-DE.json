@@ -681,7 +681,10 @@
       "released": "Veröffentlicht",
       "milestoneTitle": "Meilenstein-Titel",
       "demoTitle": "Demo-Titel",
-      "demoUrl": "Demo-URL"
+      "demoUrl": "Demo-URL",
+      "viewAdmin": "Admin",
+      "viewClient": "Kunde",
+      "clientPreviewNote": "Schreibgeschützte Vorschau dessen, was der Kunde sieht."
     }
   }
 }

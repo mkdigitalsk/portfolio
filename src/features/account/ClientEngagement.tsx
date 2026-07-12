@@ -19,7 +19,7 @@ import {
   TextH6Bold,
 } from '@/shared/components'
 import { httpStatus } from '@/shared/api'
-import type { ClientDemo, ClientMilestone, ClientStage } from '@/shared/types'
+import type { ClientDemo, ClientEngagement as Engagement, ClientMilestone, ClientStage } from '@/shared/types'
 import { useEngagementQuery } from './useEngagementQuery'
 
 type T = ReturnType<typeof useTranslations<'account'>>
@@ -27,6 +27,7 @@ type T = ReturnType<typeof useTranslations<'account'>>
 // Forward path shown in the stepper — CLOSED (a dead lead) is handled separately, not a step.
 const STEPS: ClientStage[] = ['IN_REVIEW', 'PREPARING_PROPOSAL', 'PROPOSAL_READY', 'IN_PROGRESS']
 
+// The client page: fetches the caller's own engagement, then renders the shared view.
 export function ClientEngagement({ name }: { name: string }) {
   const t = useTranslations('account')
   const { data, isLoading, error } = useEngagementQuery()
@@ -36,6 +37,12 @@ export function ClientEngagement({ name }: { name: string }) {
   if (error) return <Card><TextBody1Neutral60>{t('engagement.loadFailed')}</TextBody1Neutral60></Card>
   if (!data) return <EmptyState name={name} t={t} />
 
+  return <ClientEngagementView data={data} name={name} />
+}
+
+// Presentational — the exact panel the client sees. Reused by the admin read-only "view as client".
+export function ClientEngagementView({ data, name }: { data: Engagement; name: string }) {
+  const t = useTranslations('account')
   return (
     <Stack spacing={3}>
       <Box>
@@ -50,12 +57,8 @@ export function ClientEngagement({ name }: { name: string }) {
       <Card>
         <TextH6Bold gutterBottom>{t('engagement.request')}</TextH6Bold>
         <Stack spacing={1.5}>
-          {data.platforms.length > 0 && (
-            <ChipRow label={t('engagement.platforms')} values={data.platforms} />
-          )}
-          {data.features.length > 0 && (
-            <ChipRow label={t('engagement.features')} values={data.features} />
-          )}
+          {data.platforms.length > 0 && <ChipRow label={t('engagement.platforms')} values={data.platforms} />}
+          {data.features.length > 0 && <ChipRow label={t('engagement.features')} values={data.features} />}
           {data.hasDoc && <Chip icon={<DescriptionOutlined />} label={t('hasDoc')} size="small" />}
           {data.note && (
             <Box>

@@ -10,6 +10,15 @@ export function useAdminEngagementQuery(email: string) {
   return useQuery({ queryKey: key(email), queryFn: () => adminService.getEngagement(email) })
 }
 
+// Read-only "view as client" — retry:false so a 404 (client has no engagement yet) is an empty state.
+export function useClientPreviewQuery(email: string) {
+  return useQuery({
+    queryKey: ['admin', 'client-preview', email],
+    queryFn: () => adminService.getClientPreview(email),
+    retry: false,
+  })
+}
+
 function useInvalidate(email: string) {
   const qc = useQueryClient()
   return () => qc.invalidateQueries({ queryKey: key(email) })
