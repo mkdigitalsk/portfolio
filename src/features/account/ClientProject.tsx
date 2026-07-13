@@ -425,6 +425,7 @@ function DemoRow({ demo }: { demo: ClientDemo }) {
     >
       <Box
         sx={{
+          position: 'relative',
           width: 96,
           flexShrink: 0,
           aspectRatio: '16 / 9',
@@ -436,7 +437,25 @@ function DemoRow({ demo }: { demo: ClientDemo }) {
           background: (theme) => `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
         }}
       >
-        <PlayCircle className="demo-play" sx={{ fontSize: 26, color: 'common.white', opacity: 0.92, transition: 'transform 0.15s' }} />
+        {demo.thumbnailUrl && (
+          <Box
+            component="img"
+            src={demo.thumbnailUrl}
+            alt=""
+            sx={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        )}
+        <PlayCircle
+          className="demo-play"
+          sx={{
+            position: 'relative',
+            fontSize: 26,
+            color: 'common.white',
+            opacity: 0.92,
+            transition: 'transform 0.15s',
+            filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.45))',
+          }}
+        />
       </Box>
       <TextBody1>{demo.title}</TextBody1>
     </Box>

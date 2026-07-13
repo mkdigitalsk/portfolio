@@ -676,7 +676,8 @@
       "currency": "Währung",
       "markPaid": "Bezahlt",
       "scopeHint": "Ein Eintrag pro Zeile — „Titel | Detail“ (Detail optional)",
-      "acceptanceHint": "Ein Kriterium pro Zeile"
+      "acceptanceHint": "Ein Kriterium pro Zeile",
+      "demoThumbnail": "Vorschau-URL"
     },
     "project": {
       "loading": "Ihr Projekt wird geladen…",

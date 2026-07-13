@@ -676,7 +676,8 @@
       "currency": "Currency",
       "markPaid": "Paid",
       "scopeHint": "One item per line — “title | detail” (detail optional)",
-      "acceptanceHint": "One criterion per line"
+      "acceptanceHint": "One criterion per line",
+      "demoThumbnail": "Thumbnail URL"
     },
     "project": {
       "loading": "Loading your project…",

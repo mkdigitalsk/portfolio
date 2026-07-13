@@ -42,6 +42,7 @@ export interface ClientMilestone {
 export interface ClientDemo {
   title: string
   url: string
+  thumbnailUrl: string | null
   updatedAt: string
 }
 
@@ -99,6 +100,7 @@ export interface AdminDemo {
   id: number
   title: string
   url: string
+  thumbnailUrl: string | null
   released: boolean
   updatedAt: string
 }
@@ -163,6 +165,7 @@ export interface MilestoneRequest {
 export interface DemoRequest {
   title: string
   url: string
+  thumbnailUrl?: string | null
   released: boolean
 }
 

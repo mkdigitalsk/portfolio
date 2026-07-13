@@ -14,6 +14,7 @@ import type {
   AdminProject as Project,
   Currency,
   DocumentType,
+  DemoRequest,
   MilestoneRequest,
   MilestoneStatus,
   PaymentRequest,
@@ -438,21 +439,24 @@ function AddDocumentForm({ t, onAdd }: { t: T; onAdd: (req: { type: DocumentType
   )
 }
 
-function AddDemoForm({ t, onAdd }: { t: T; onAdd: (req: { title: string; url: string; released: boolean }) => void }) {
+function AddDemoForm({ t, onAdd }: { t: T; onAdd: (req: DemoRequest) => void }) {
   const [title, setTitle] = useState('')
   const [url, setUrl] = useState('')
+  const [thumbnailUrl, setThumbnailUrl] = useState('')
 
   const submit = () => {
     if (!title.trim() || !url.trim()) return
-    onAdd({ title: title.trim(), url: url.trim(), released: false })
+    onAdd({ title: title.trim(), url: url.trim(), thumbnailUrl: thumbnailUrl.trim() || null, released: false })
     setTitle('')
     setUrl('')
+    setThumbnailUrl('')
   }
 
   return (
     <Box sx={{ display: 'flex', gap: 1, alignItems: 'flex-start', flexWrap: 'wrap', mt: 2 }}>
       <Input size="small" sx={[dense, { minWidth: 160 }]} label={t('delivery.demoTitle')} value={title} onChange={(e) => setTitle(e.target.value)} />
       <Input size="small" sx={[dense, { flex: 1, minWidth: 180 }]} label={t('delivery.demoUrl')} value={url} onChange={(e) => setUrl(e.target.value)} />
+      <Input size="small" sx={[dense, { flex: 1, minWidth: 180 }]} label={t('delivery.demoThumbnail')} value={thumbnailUrl} onChange={(e) => setThumbnailUrl(e.target.value)} />
       <Button variant="outline" startIcon={<Add />} onClick={submit}>
         {t('delivery.add')}
       </Button>

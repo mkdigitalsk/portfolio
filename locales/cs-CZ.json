@@ -676,7 +676,8 @@
       "currency": "Měna",
       "markPaid": "Zaplaceno",
       "scopeHint": "Jedna položka na řádek — „název | detail“ (detail volitelný)",
-      "acceptanceHint": "Jedno kritérium na řádek"
+      "acceptanceHint": "Jedno kritérium na řádek",
+      "demoThumbnail": "URL náhledu"
     },
     "project": {
       "loading": "Načítám váš projekt…",
