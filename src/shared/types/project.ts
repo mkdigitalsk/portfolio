@@ -32,6 +32,12 @@ export interface ClientDemo {
   updatedAt: string
 }
 
+export interface ProjectEvent {
+  type: string
+  detail: string | null
+  at: string // ISO-8601 UTC
+}
+
 export interface ClientProject {
   state: ProjectState
   health: ProjectHealth
@@ -41,6 +47,7 @@ export interface ClientProject {
   documents: ClientDocument[]
   milestones: ClientMilestone[]
   demos: ClientDemo[]
+  history: ProjectEvent[]
 }
 
 // Admin — full records (incl. unreleased demos + ids).
@@ -81,6 +88,7 @@ export interface AdminProject {
   documents: AdminDocument[]
   milestones: AdminMilestone[]
   demos: AdminDemo[]
+  history: ProjectEvent[]
 }
 
 // Requests — dates are epoch millis on the wire (the web converts date inputs to millis).

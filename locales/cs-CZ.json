@@ -702,6 +702,13 @@
         "PROPOSAL": "Návrh",
         "DOCUMENTATION": "Dokumentace",
         "DESIGN": "Design"
+      },
+      "history": "Historie",
+      "event": {
+        "STARTED": "Projekt zahájen",
+        "HEALTH_CHANGED": "Stav aktualizován",
+        "COMPLETED": "Projekt dokončen",
+        "ARCHIVED": "Projekt archivován"
       }
     }
   }

@@ -9,7 +9,7 @@ import {
   DescriptionOutlined,
   ArticleOutlined,
   BrushOutlined,
-  GavelOutlined,
+  HistoryEduOutlined,
 } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import Link from '@mui/material/Link'
@@ -17,7 +17,15 @@ import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
 import { Chip, TextBody1, TextBody1Neutral60, TextCaptionNeutral60, TextH4Bold, TextH6Bold } from '@/shared/components'
 import { httpStatus } from '@/shared/api'
-import type { ClientDemo, ClientDocument, ClientMilestone, ClientProject as Project, DocumentType, ProjectHealth } from '@/shared/types'
+import type {
+  ClientDemo,
+  ClientDocument,
+  ClientMilestone,
+  ClientProject as Project,
+  DocumentType,
+  ProjectEvent,
+  ProjectHealth,
+} from '@/shared/types'
 import { useProjectQuery } from './useProjectQuery'
 import { formatDate } from './formatDate'
 
@@ -106,7 +114,31 @@ export function ClientProjectView({ data, name }: { data: Project; name: string 
           <TextBody1Neutral60>{t('project.noDemos')}</TextBody1Neutral60>
         )}
       </Card>
+
+      {data.history.length > 0 && (
+        <Card>
+          <TextH6Bold gutterBottom>{t('project.history')}</TextH6Bold>
+          <Stack spacing={1.25}>
+            {data.history.map((e, i) => (
+              <HistoryRow key={i} event={e} t={t} />
+            ))}
+          </Stack>
+        </Card>
+      )}
     </Stack>
+  )
+}
+
+function HistoryRow({ event, t }: { event: ProjectEvent; t: T }) {
+  const health = event.type === 'HEALTH_CHANGED' && event.detail ? t(`project.health.${event.detail}`) : null
+  return (
+    <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 1, flexWrap: 'wrap' }}>
+      <TextBody1>
+        {t(`project.event.${event.type}`)}
+        {health ? `: ${health}` : ''}
+      </TextBody1>
+      <TextCaptionNeutral60>{formatDate(event.at)}</TextCaptionNeutral60>
+    </Box>
   )
 }
 
@@ -163,7 +195,7 @@ function MilestoneRow({ milestone, t }: { milestone: ClientMilestone; t: T }) {
 }
 
 const DOC_ICON: Record<DocumentType, React.ReactNode> = {
-  CONTRACT: <GavelOutlined fontSize="small" />,
+  CONTRACT: <HistoryEduOutlined fontSize="small" />,
   PROPOSAL: <ArticleOutlined fontSize="small" />,
   DOCUMENTATION: <DescriptionOutlined fontSize="small" />,
   DESIGN: <BrushOutlined fontSize="small" />,

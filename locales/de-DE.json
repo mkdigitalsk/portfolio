@@ -702,6 +702,13 @@
         "PROPOSAL": "Angebot",
         "DOCUMENTATION": "Dokumentation",
         "DESIGN": "Design"
+      },
+      "history": "Verlauf",
+      "event": {
+        "STARTED": "Projekt gestartet",
+        "HEALTH_CHANGED": "Status aktualisiert",
+        "COMPLETED": "Projekt abgeschlossen",
+        "ARCHIVED": "Projekt archiviert"
       }
     }
   }
