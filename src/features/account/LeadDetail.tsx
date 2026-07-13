@@ -72,7 +72,7 @@ export function LeadDetail({ email }: { email: string }) {
     )
 
   return (
-    <Stack spacing={3}>
+    <Stack spacing={2}>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, flexWrap: 'wrap' }}>
         <Button variant="text" onClick={toList} startIcon={<ArrowBack />} sx={{ flexShrink: 0 }}>
           {t('allLeads')}
@@ -86,19 +86,19 @@ export function LeadDetail({ email }: { email: string }) {
             {lead.phone ? ` · ${lead.phone}` : ''}
           </TextCaptionNeutral60>
         </Box>
+        {/* View-mode toggle lives in the header actions (top-right) — the Salesforce "View as" pattern —
+            not on its own row wasting vertical space. */}
+        <ToggleButtonGroup
+          size="small"
+          exclusive
+          value={perspective}
+          onChange={(_, v: Perspective | null) => v && setPerspective(v)}
+        >
+          <ToggleButton value="admin">{t('delivery.viewAdmin')}</ToggleButton>
+          <ToggleButton value="client">{t('delivery.viewClient')}</ToggleButton>
+        </ToggleButtonGroup>
         <LeadStatusSelect email={lead.email} value={lead.status} />
       </Box>
-
-      <ToggleButtonGroup
-        size="small"
-        exclusive
-        value={perspective}
-        onChange={(_, v: Perspective | null) => v && setPerspective(v)}
-        sx={{ alignSelf: 'flex-start' }}
-      >
-        <ToggleButton value="admin">{t('delivery.viewAdmin')}</ToggleButton>
-        <ToggleButton value="client">{t('delivery.viewClient')}</ToggleButton>
-      </ToggleButtonGroup>
 
       {perspective === 'client' ? (
         <ClientPreview email={lead.email} name={lead.name ?? lead.email} />
