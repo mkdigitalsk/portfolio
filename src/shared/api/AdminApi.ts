@@ -1,4 +1,5 @@
 import type {
+  AdminClient,
   AdminDemo,
   AdminDocument,
   AdminLead,
@@ -32,6 +33,11 @@ export class AdminApi extends BaseApiService {
 
   updateStatus(email: string, status: LeadStatus): Promise<AdminLead> {
     return this._patch<AdminLead>(`${this.baseRoute}/leads/${encodeURIComponent(email)}/status`, { status })
+  }
+
+  // --- Clients (won leads + delivery project summary) ---
+  getClients(): Promise<AdminClient[]> {
+    return this._get<AdminClient[]>(`${this.baseRoute}/clients`)
   }
 
   // --- Project (delivery) ---

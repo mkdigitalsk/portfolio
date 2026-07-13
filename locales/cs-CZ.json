@@ -619,7 +619,8 @@
       "platforms": "Platformy",
       "doc": "Dok.",
       "sent": "Odesláno",
-      "status": "Stav"
+      "status": "Stav",
+      "project": "Projekt"
     },
     "stage": {
       "requirements": "Požadavky",
@@ -745,6 +746,12 @@
       "lastUpdate": "Poslední změna",
       "completedOn": "Dokončeno {date}",
       "plannedOn": "Plánováno {date}"
+    },
+    "leadsTab": "Leady ({count})",
+    "clientsTab": "Klienti ({count})",
+    "clients": {
+      "notStarted": "Nezačato",
+      "none": "Zatím žádní klienti."
     }
   }
 }

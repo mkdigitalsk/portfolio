@@ -619,7 +619,8 @@
       "platforms": "Platforms",
       "doc": "Doc",
       "sent": "Sent",
-      "status": "Status"
+      "status": "Status",
+      "project": "Project"
     },
     "stage": {
       "requirements": "Requirements",
@@ -745,6 +746,12 @@
       "lastUpdate": "Last update",
       "completedOn": "Completed {date}",
       "plannedOn": "Planned {date}"
+    },
+    "leadsTab": "Leads ({count})",
+    "clientsTab": "Clients ({count})",
+    "clients": {
+      "notStarted": "Not started",
+      "none": "No clients yet."
     }
   }
 }

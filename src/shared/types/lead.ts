@@ -1,3 +1,5 @@
+import type { ProjectHealth, ProjectState } from './project'
+
 // Order + names must match the server LeadStatus enum.
 export const LEAD_STATUSES = [
   'NEW',
@@ -23,6 +25,14 @@ export interface AdminLead {
   hasDoc: boolean
   createdAt: string // ISO-8601 UTC
   status: LeadStatus
+}
+
+// A won lead (the account) joined with its delivery project summary. projectState is null when the
+// deal is won but the project hasn't been started yet.
+export interface AdminClient {
+  lead: AdminLead
+  projectState: ProjectState | null
+  projectHealth: ProjectHealth | null
 }
 
 export interface LeadArtifact {
