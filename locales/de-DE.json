@@ -666,7 +666,17 @@
       "complete": "Als abgeschlossen markieren",
       "archive": "Archivieren",
       "docTitle": "Dokumenttitel",
-      "docUrl": "Dokument-URL"
+      "docUrl": "Dokument-URL",
+      "scope": "Im Umfang",
+      "outOfScope": "Nicht im Umfang",
+      "acceptanceCriteria": "Abnahmekriterien",
+      "payments": "Zahlungsplan",
+      "paymentLabel": "Phase / Beschreibung",
+      "amount": "Betrag",
+      "currency": "Währung",
+      "markPaid": "Bezahlt",
+      "scopeHint": "Ein Eintrag pro Zeile — „Titel | Detail“ (Detail optional)",
+      "acceptanceHint": "Ein Kriterium pro Zeile"
     },
     "project": {
       "loading": "Ihr Projekt wird geladen…",
@@ -709,6 +719,27 @@
         "HEALTH_CHANGED": "Status aktualisiert",
         "COMPLETED": "Projekt abgeschlossen",
         "ARCHIVED": "Projekt archiviert"
+      },
+      "tab": {
+        "overview": "Übersicht",
+        "roadmap": "Fahrplan",
+        "documents": "Dokumente",
+        "demos": "Demos",
+        "payments": "Zahlungen",
+        "history": "Verlauf"
+      },
+      "scopeTitle": "Umfang",
+      "scope": "Im Umfang",
+      "outOfScope": "Nicht im Umfang",
+      "noScope": "Der Projektumfang erscheint hier, sobald vereinbart.",
+      "acceptanceCriteria": "Abnahmekriterien",
+      "payments": "Zahlungsplan",
+      "noPayments": "Der Zahlungsplan erscheint hier, sobald vereinbart.",
+      "paymentsTotal": "Gesamt",
+      "paymentsPaid": "Bezahlt",
+      "paymentStatus": {
+        "DUE": "Fällig",
+        "PAID": "Bezahlt"
       }
     }
   }

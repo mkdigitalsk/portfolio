@@ -666,7 +666,17 @@
       "complete": "Mark completed",
       "archive": "Archive",
       "docTitle": "Document title",
-      "docUrl": "Document URL"
+      "docUrl": "Document URL",
+      "scope": "In scope",
+      "outOfScope": "Out of scope",
+      "acceptanceCriteria": "Acceptance criteria",
+      "payments": "Payment schedule",
+      "paymentLabel": "Stage / description",
+      "amount": "Amount",
+      "currency": "Currency",
+      "markPaid": "Paid",
+      "scopeHint": "One item per line — “title | detail” (detail optional)",
+      "acceptanceHint": "One criterion per line"
     },
     "project": {
       "loading": "Loading your project…",
@@ -709,6 +719,27 @@
         "HEALTH_CHANGED": "Status updated",
         "COMPLETED": "Project completed",
         "ARCHIVED": "Project archived"
+      },
+      "tab": {
+        "overview": "Overview",
+        "roadmap": "Roadmap",
+        "documents": "Documents",
+        "demos": "Demos",
+        "payments": "Payments",
+        "history": "History"
+      },
+      "scopeTitle": "Scope",
+      "scope": "In scope",
+      "outOfScope": "Out of scope",
+      "noScope": "The project scope will appear here once agreed.",
+      "acceptanceCriteria": "Acceptance criteria",
+      "payments": "Payment schedule",
+      "noPayments": "The payment schedule will appear here once agreed.",
+      "paymentsTotal": "Total",
+      "paymentsPaid": "Paid",
+      "paymentStatus": {
+        "DUE": "Due",
+        "PAID": "Paid"
       }
     }
   }

@@ -11,6 +11,18 @@ export type MilestoneStatus = (typeof MILESTONE_STATUSES)[number]
 export const DOCUMENT_TYPES = ['CONTRACT', 'PROPOSAL', 'DOCUMENTATION', 'DESIGN'] as const
 export type DocumentType = (typeof DOCUMENT_TYPES)[number]
 
+export const PAYMENT_STATUSES = ['DUE', 'PAID'] as const
+export type PaymentStatus = (typeof PAYMENT_STATUSES)[number]
+
+export const CURRENCIES = ['EUR', 'USD', 'GBP', 'CZK'] as const
+export type Currency = (typeof CURRENCIES)[number]
+
+// A SOW deliverable / exclusion — named line + optional elaboration.
+export interface ScopeItem {
+  title: string
+  detail: string | null
+}
+
 export interface ClientDocument {
   type: DocumentType
   title: string
@@ -24,12 +36,21 @@ export interface ClientMilestone {
   plannedDate: string | null // ISO-8601 UTC
   completedDate: string | null
   position: number
+  acceptanceCriteria: string[]
 }
 
 export interface ClientDemo {
   title: string
   url: string
   updatedAt: string
+}
+
+export interface ClientPayment {
+  label: string
+  amountCents: number
+  currency: Currency
+  status: PaymentStatus
+  position: number
 }
 
 export interface ProjectEvent {
@@ -44,9 +65,12 @@ export interface ClientProject {
   startDate: string // ISO-8601 UTC
   targetEndDate: string | null
   actualEndDate: string | null
+  scope: ScopeItem[]
+  outOfScope: ScopeItem[]
   documents: ClientDocument[]
   milestones: ClientMilestone[]
   demos: ClientDemo[]
+  payments: ClientPayment[]
   history: ProjectEvent[]
 }
 
@@ -68,6 +92,7 @@ export interface AdminMilestone {
   completedDate: string | null
   position: number
   updatedAt: string
+  acceptanceCriteria: string[]
 }
 
 export interface AdminDemo {
@@ -78,6 +103,15 @@ export interface AdminDemo {
   updatedAt: string
 }
 
+export interface AdminPayment {
+  id: number
+  label: string
+  amountCents: number
+  currency: Currency
+  status: PaymentStatus
+  position: number
+}
+
 export interface AdminProject {
   email: string
   state: ProjectState
@@ -85,9 +119,12 @@ export interface AdminProject {
   startDate: string
   targetEndDate: string | null
   actualEndDate: string | null
+  scope: ScopeItem[]
+  outOfScope: ScopeItem[]
   documents: AdminDocument[]
   milestones: AdminMilestone[]
   demos: AdminDemo[]
+  payments: AdminPayment[]
   history: ProjectEvent[]
 }
 
@@ -96,11 +133,15 @@ export interface StartProjectRequest {
   startDate: number
   targetEndDate?: number | null
   health?: ProjectHealth
+  scope?: ScopeItem[]
+  outOfScope?: ScopeItem[]
 }
 
 export interface UpdateProjectRequest {
   health: ProjectHealth
   targetEndDate?: number | null
+  scope?: ScopeItem[]
+  outOfScope?: ScopeItem[]
 }
 
 export interface DocumentRequest {
@@ -116,10 +157,19 @@ export interface MilestoneRequest {
   plannedDate?: number | null
   completedDate?: number | null
   position: number
+  acceptanceCriteria?: string[]
 }
 
 export interface DemoRequest {
   title: string
   url: string
   released: boolean
+}
+
+export interface PaymentRequest {
+  label: string
+  amountCents: number
+  currency?: Currency
+  status?: PaymentStatus
+  position?: number
 }

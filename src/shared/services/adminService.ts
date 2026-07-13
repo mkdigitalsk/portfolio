@@ -3,6 +3,7 @@ import type {
   DocumentRequest,
   LeadStatus,
   MilestoneRequest,
+  PaymentRequest,
   StartProjectRequest,
   UpdateProjectRequest,
 } from '@/shared/types'
@@ -29,4 +30,7 @@ export const adminService = {
   addDemo: (email: string, req: DemoRequest) => adminApi.addDemo(email, req),
   updateDemo: (email: string, id: number, req: DemoRequest) => adminApi.updateDemo(email, id, req),
   deleteDemo: (email: string, id: number) => adminApi.deleteDemo(email, id),
+  addPayment: (email: string, req: PaymentRequest) => adminApi.addPayment(email, req),
+  updatePayment: (email: string, id: number, req: PaymentRequest) => adminApi.updatePayment(email, id, req),
+  deletePayment: (email: string, id: number) => adminApi.deletePayment(email, id),
 }

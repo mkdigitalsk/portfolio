@@ -3,6 +3,7 @@ import type {
   AdminDocument,
   AdminLead,
   AdminMilestone,
+  AdminPayment,
   AdminProject,
   ClientProject,
   DemoRequest,
@@ -10,6 +11,7 @@ import type {
   LeadDetail,
   LeadStatus,
   MilestoneRequest,
+  PaymentRequest,
   StartProjectRequest,
   UpdateProjectRequest,
 } from '@/shared/types'
@@ -92,5 +94,17 @@ export class AdminApi extends BaseApiService {
 
   deleteDemo(email: string, id: number): Promise<void> {
     return this._delete(`${this.project(email)}/demos/${id}`)
+  }
+
+  addPayment(email: string, req: PaymentRequest): Promise<AdminPayment> {
+    return this._post<AdminPayment>(`${this.project(email)}/payments`, req)
+  }
+
+  updatePayment(email: string, id: number, req: PaymentRequest): Promise<AdminPayment> {
+    return this._patch<AdminPayment>(`${this.project(email)}/payments/${id}`, req)
+  }
+
+  deletePayment(email: string, id: number): Promise<void> {
+    return this._delete(`${this.project(email)}/payments/${id}`)
   }
 }

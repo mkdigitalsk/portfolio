@@ -666,7 +666,17 @@
       "complete": "Označit jako dokončené",
       "archive": "Archivovat",
       "docTitle": "Název dokumentu",
-      "docUrl": "URL dokumentu"
+      "docUrl": "URL dokumentu",
+      "scope": "V rozsahu",
+      "outOfScope": "Mimo rozsah",
+      "acceptanceCriteria": "Akceptační kritéria",
+      "payments": "Splátkový kalendář",
+      "paymentLabel": "Fáze / popis",
+      "amount": "Částka",
+      "currency": "Měna",
+      "markPaid": "Zaplaceno",
+      "scopeHint": "Jedna položka na řádek — „název | detail“ (detail volitelný)",
+      "acceptanceHint": "Jedno kritérium na řádek"
     },
     "project": {
       "loading": "Načítám váš projekt…",
@@ -709,6 +719,27 @@
         "HEALTH_CHANGED": "Stav aktualizován",
         "COMPLETED": "Projekt dokončen",
         "ARCHIVED": "Projekt archivován"
+      },
+      "tab": {
+        "overview": "Přehled",
+        "roadmap": "Plán",
+        "documents": "Dokumenty",
+        "demos": "Ukázky",
+        "payments": "Platby",
+        "history": "Historie"
+      },
+      "scopeTitle": "Rozsah",
+      "scope": "V rozsahu",
+      "outOfScope": "Mimo rozsah",
+      "noScope": "Rozsah projektu se zobrazí po dohodě.",
+      "acceptanceCriteria": "Akceptační kritéria",
+      "payments": "Splátkový kalendář",
+      "noPayments": "Splátkový kalendář se zobrazí po dohodě.",
+      "paymentsTotal": "Celkem",
+      "paymentsPaid": "Zaplaceno",
+      "paymentStatus": {
+        "DUE": "Splatné",
+        "PAID": "Zaplaceno"
       }
     }
   }

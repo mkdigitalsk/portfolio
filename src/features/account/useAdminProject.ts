@@ -2,7 +2,14 @@
 
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { adminService } from '@/shared/services'
-import type { DemoRequest, DocumentRequest, MilestoneRequest, StartProjectRequest, UpdateProjectRequest } from '@/shared/types'
+import type {
+  DemoRequest,
+  DocumentRequest,
+  MilestoneRequest,
+  PaymentRequest,
+  StartProjectRequest,
+  UpdateProjectRequest,
+} from '@/shared/types'
 
 const key = (email: string) => ['admin', 'project', email]
 
@@ -91,4 +98,22 @@ export function useUpdateDemo(email: string) {
 export function useDeleteDemo(email: string) {
   const invalidate = useInvalidate(email)
   return useMutation({ mutationFn: (id: number) => adminService.deleteDemo(email, id), onSuccess: invalidate })
+}
+
+export function useAddPayment(email: string) {
+  const invalidate = useInvalidate(email)
+  return useMutation({ mutationFn: (req: PaymentRequest) => adminService.addPayment(email, req), onSuccess: invalidate })
+}
+
+export function useUpdatePayment(email: string) {
+  const invalidate = useInvalidate(email)
+  return useMutation({
+    mutationFn: (v: { id: number; req: PaymentRequest }) => adminService.updatePayment(email, v.id, v.req),
+    onSuccess: invalidate,
+  })
+}
+
+export function useDeletePayment(email: string) {
+  const invalidate = useInvalidate(email)
+  return useMutation({ mutationFn: (id: number) => adminService.deletePayment(email, id), onSuccess: invalidate })
 }
