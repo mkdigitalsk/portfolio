@@ -685,7 +685,7 @@
       "timeline": "Harmonogram",
       "tbd": "Bude určeno",
       "deliveredOn": "Dodáno {date}",
-      "roadmap": "Plán",
+      "roadmap": "Průběh",
       "noMilestones": "Milníky se zde zobrazí během plánování projektu.",
       "documents": "Dokumenty",
       "noDocuments": "Vaše dokumenty se zde zobrazí.",
@@ -722,7 +722,7 @@
       },
       "tab": {
         "overview": "Přehled",
-        "roadmap": "Plán",
+        "roadmap": "Průběh",
         "documents": "Dokumenty",
         "demos": "Ukázky",
         "payments": "Platby",
@@ -740,7 +740,10 @@
       "paymentStatus": {
         "DUE": "Splatné",
         "PAID": "Zaplaceno"
-      }
+      },
+      "lastUpdate": "Poslední změna",
+      "completedOn": "Dokončeno {date}",
+      "plannedOn": "Plánováno {date}"
     }
   }
 }

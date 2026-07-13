@@ -685,7 +685,7 @@
       "timeline": "Timeline",
       "tbd": "TBD",
       "deliveredOn": "Delivered {date}",
-      "roadmap": "Roadmap",
+      "roadmap": "Progress",
       "noMilestones": "Milestones will appear here as your project is planned.",
       "documents": "Documents",
       "noDocuments": "Your documents will appear here.",
@@ -722,7 +722,7 @@
       },
       "tab": {
         "overview": "Overview",
-        "roadmap": "Roadmap",
+        "roadmap": "Progress",
         "documents": "Documents",
         "demos": "Demos",
         "payments": "Payments",
@@ -740,7 +740,10 @@
       "paymentStatus": {
         "DUE": "Due",
         "PAID": "Paid"
-      }
+      },
+      "lastUpdate": "Last update",
+      "completedOn": "Completed {date}",
+      "plannedOn": "Planned {date}"
     }
   }
 }

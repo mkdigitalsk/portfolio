@@ -685,7 +685,7 @@
       "timeline": "Zeitplan",
       "tbd": "Offen",
       "deliveredOn": "Geliefert {date}",
-      "roadmap": "Roadmap",
+      "roadmap": "Fortschritt",
       "noMilestones": "Meilensteine erscheinen hier während der Projektplanung.",
       "documents": "Dokumente",
       "noDocuments": "Ihre Dokumente erscheinen hier.",
@@ -722,7 +722,7 @@
       },
       "tab": {
         "overview": "Übersicht",
-        "roadmap": "Fahrplan",
+        "roadmap": "Fortschritt",
         "documents": "Dokumente",
         "demos": "Demos",
         "payments": "Zahlungen",
@@ -740,7 +740,10 @@
       "paymentStatus": {
         "DUE": "Fällig",
         "PAID": "Bezahlt"
-      }
+      },
+      "lastUpdate": "Letzte Änderung",
+      "completedOn": "Abgeschlossen {date}",
+      "plannedOn": "Geplant {date}"
     }
   }
 }
