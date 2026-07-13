@@ -57,7 +57,12 @@ export function ClientsTable({ clients, onSelect }: { clients: AdminClient[]; on
                       variant={projectState === 'ACTIVE' ? 'filled' : 'outlined'}
                     />
                     {projectHealth && (
-                      <Chip size="small" variant="outlined" color={HEALTH_COLOR[projectHealth]} label={t(`project.health.${projectHealth}`)} />
+                      <Chip
+                        size="small"
+                        variant="outlined"
+                        color={HEALTH_COLOR[projectHealth]}
+                        label={t(`project.health.${projectHealth}`)}
+                      />
                     )}
                   </Box>
                 ) : (

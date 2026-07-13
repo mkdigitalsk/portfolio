@@ -36,12 +36,18 @@ function useInvalidate(email: string) {
 
 export function useStartProject(email: string) {
   const invalidate = useInvalidate(email)
-  return useMutation({ mutationFn: (req: StartProjectRequest) => adminService.startProject(email, req), onSuccess: invalidate })
+  return useMutation({
+    mutationFn: (req: StartProjectRequest) => adminService.startProject(email, req),
+    onSuccess: invalidate,
+  })
 }
 
 export function useUpdateProject(email: string) {
   const invalidate = useInvalidate(email)
-  return useMutation({ mutationFn: (req: UpdateProjectRequest) => adminService.updateProject(email, req), onSuccess: invalidate })
+  return useMutation({
+    mutationFn: (req: UpdateProjectRequest) => adminService.updateProject(email, req),
+    onSuccess: invalidate,
+  })
 }
 
 export function useCompleteProject(email: string) {
@@ -56,7 +62,10 @@ export function useArchiveProject(email: string) {
 
 export function useAddDocument(email: string) {
   const invalidate = useInvalidate(email)
-  return useMutation({ mutationFn: (req: DocumentRequest) => adminService.addDocument(email, req), onSuccess: invalidate })
+  return useMutation({
+    mutationFn: (req: DocumentRequest) => adminService.addDocument(email, req),
+    onSuccess: invalidate,
+  })
 }
 
 export function useDeleteDocument(email: string) {
@@ -66,7 +75,10 @@ export function useDeleteDocument(email: string) {
 
 export function useAddMilestone(email: string) {
   const invalidate = useInvalidate(email)
-  return useMutation({ mutationFn: (req: MilestoneRequest) => adminService.addMilestone(email, req), onSuccess: invalidate })
+  return useMutation({
+    mutationFn: (req: MilestoneRequest) => adminService.addMilestone(email, req),
+    onSuccess: invalidate,
+  })
 }
 
 export function useUpdateMilestone(email: string) {
@@ -102,7 +114,10 @@ export function useDeleteDemo(email: string) {
 
 export function useAddPayment(email: string) {
   const invalidate = useInvalidate(email)
-  return useMutation({ mutationFn: (req: PaymentRequest) => adminService.addPayment(email, req), onSuccess: invalidate })
+  return useMutation({
+    mutationFn: (req: PaymentRequest) => adminService.addPayment(email, req),
+    onSuccess: invalidate,
+  })
 }
 
 export function useUpdatePayment(email: string) {

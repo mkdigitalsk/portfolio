@@ -79,7 +79,10 @@ export function LeadDetail({ email }: { email: string }) {
         </Button>
         <Divider orientation="vertical" flexItem sx={{ mx: 0.5 }} />
         <Box sx={{ minWidth: 0, flex: 1 }}>
-          <TextH6Bold>{lead.email}</TextH6Bold>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
+            <TextH6Bold>{lead.email}</TextH6Bold>
+            <LeadStatusSelect email={lead.email} value={lead.status} />
+          </Box>
           <TextCaptionNeutral60>
             {lead.appType}
             {lead.name ? ` · ${lead.name}` : ''}
@@ -97,34 +100,33 @@ export function LeadDetail({ email }: { email: string }) {
           <ToggleButton value="admin">{t('delivery.viewAdmin')}</ToggleButton>
           <ToggleButton value="client">{t('delivery.viewClient')}</ToggleButton>
         </ToggleButtonGroup>
-        <LeadStatusSelect email={lead.email} value={lead.status} />
       </Box>
 
       {perspective === 'client' ? (
         <ClientPreview email={lead.email} name={lead.name ?? lead.email} />
       ) : (
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: { xs: 2, md: 4 } }}>
-        <Tabs
-          value={tab}
-          onChange={(_, v) => setTab(v)}
-          orientation={railNav ? 'vertical' : 'horizontal'}
-          variant="scrollable"
-          scrollButtons="auto"
-          sx={{
-            flexShrink: 0,
-            minWidth: { md: 200 },
-            borderRight: { md: 1 },
-            borderBottom: { xs: 1, md: 0 },
-            borderColor: 'divider',
-          }}
-        >
-          <Tab label={t('submission')} sx={{ alignItems: 'flex-start', textAlign: 'left' }} />
-          {present.map((s) => (
-            <Tab key={s.stage} label={t(`stage.${s.key}`)} sx={{ alignItems: 'flex-start', textAlign: 'left' }} />
-          ))}
-          <Tab label={t('delivery.tab')} sx={{ alignItems: 'flex-start', textAlign: 'left' }} />
-        </Tabs>
-        <Box sx={{ flex: 1, minWidth: 0 }}>{content}</Box>
+          <Tabs
+            value={tab}
+            onChange={(_, v) => setTab(v)}
+            orientation={railNav ? 'vertical' : 'horizontal'}
+            variant="scrollable"
+            scrollButtons="auto"
+            sx={{
+              flexShrink: 0,
+              minWidth: { md: 200 },
+              borderRight: { md: 1 },
+              borderBottom: { xs: 1, md: 0 },
+              borderColor: 'divider',
+            }}
+          >
+            <Tab label={t('submission')} sx={{ alignItems: 'flex-start', textAlign: 'left' }} />
+            {present.map((s) => (
+              <Tab key={s.stage} label={t(`stage.${s.key}`)} sx={{ alignItems: 'flex-start', textAlign: 'left' }} />
+            ))}
+            <Tab label={t('delivery.tab')} sx={{ alignItems: 'flex-start', textAlign: 'left' }} />
+          </Tabs>
+          <Box sx={{ flex: 1, minWidth: 0 }}>{content}</Box>
         </Box>
       )}
     </Stack>

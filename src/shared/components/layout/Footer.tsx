@@ -13,9 +13,7 @@ import { GitHubDark, GitHubLight } from '../../theme/socialColors'
 const GITHUB = 'https://github.com/mkdigitalsk'
 const CONTACT_EMAIL = 'admin@mkdigital.sk'
 
-const socials = [
-  { label: 'GitHub', href: GITHUB, Icon: GitHub, brand: 'github' as const },
-]
+const socials = [{ label: 'GitHub', href: GITHUB, Icon: GitHub, brand: 'github' as const }]
 
 // Footer link row — the home sections plus About and Privacy, a second path to everything.
 const FOOTER_LINKS = [

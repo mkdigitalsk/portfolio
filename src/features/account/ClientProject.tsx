@@ -53,7 +53,12 @@ export function ClientProject({ name }: { name: string }) {
 
   if (isLoading) return <TextBody1Neutral60>{t('project.loading')}</TextBody1Neutral60>
   if (error && httpStatus(error) === 404) return <EmptyState name={name} t={t} />
-  if (error || !data) return <Card><TextBody1Neutral60>{t('project.loadFailed')}</TextBody1Neutral60></Card>
+  if (error || !data)
+    return (
+      <Card>
+        <TextBody1Neutral60>{t('project.loadFailed')}</TextBody1Neutral60>
+      </Card>
+    )
 
   return <ClientProjectView data={data} name={name} />
 }
@@ -114,7 +119,8 @@ function OverviewTab({ data, t }: { data: Project; t: T }) {
           <Box>
             <TextCaptionNeutral60>{t('project.timeline')}</TextCaptionNeutral60>
             <TextBody1>
-              {formatDate(data.startDate)} &rarr; {data.targetEndDate ? formatDate(data.targetEndDate) : t('project.tbd')}
+              {formatDate(data.startDate)} &rarr;{' '}
+              {data.targetEndDate ? formatDate(data.targetEndDate) : t('project.tbd')}
             </TextBody1>
             {closed && data.actualEndDate && (
               <TextCaptionNeutral60>
@@ -155,7 +161,9 @@ function ScopeBlock({ label, items }: { label: string; items: ScopeItem[] }) {
       <Stack component="ul" spacing={1} sx={{ listStyle: 'none', m: 0, mt: 0.5, p: 0 }}>
         {items.map((item, i) => (
           <Box component="li" key={i} sx={{ display: 'flex', gap: 1 }}>
-            <Box aria-hidden sx={{ color: 'primary.main', lineHeight: 1.6 }}>&bull;</Box>
+            <Box aria-hidden sx={{ color: 'primary.main', lineHeight: 1.6 }}>
+              &bull;
+            </Box>
             <Box>
               <TextBody1>{item.title}</TextBody1>
               {item.detail && <TextBody1Neutral60>{item.detail}</TextBody1Neutral60>}
@@ -217,7 +225,11 @@ function DemosTab({ demos, t }: { demos: ClientDemo[]; t: T }) {
 
 function PaymentsTab({ payments, t }: { payments: ClientPayment[]; t: T }) {
   if (payments.length === 0) {
-    return <Card><TextBody1Neutral60>{t('project.noPayments')}</TextBody1Neutral60></Card>
+    return (
+      <Card>
+        <TextBody1Neutral60>{t('project.noPayments')}</TextBody1Neutral60>
+      </Card>
+    )
   }
   const currency = payments[0].currency
   const total = payments.reduce((sum, p) => sum + p.amountCents, 0)
@@ -324,13 +336,17 @@ function MilestoneItem({ milestone, last, t }: { milestone: ClientMilestone; las
             step gets a wayfinding chip. The icon already carries done / not-started. */}
         <Box sx={{ mt: 0.75 }}>
           {milestone.status === 'DONE' && milestone.completedDate && (
-            <TextCaptionNeutral60>{t('project.completedOn', { date: formatDate(milestone.completedDate) })}</TextCaptionNeutral60>
+            <TextCaptionNeutral60>
+              {t('project.completedOn', { date: formatDate(milestone.completedDate) })}
+            </TextCaptionNeutral60>
           )}
           {milestone.status === 'IN_PROGRESS' && (
             <Chip size="small" color="primary" variant="outlined" label={t('project.milestoneStatus.IN_PROGRESS')} />
           )}
           {milestone.status === 'PENDING' && milestone.plannedDate && (
-            <TextCaptionNeutral60>{t('project.plannedOn', { date: formatDate(milestone.plannedDate) })}</TextCaptionNeutral60>
+            <TextCaptionNeutral60>
+              {t('project.plannedOn', { date: formatDate(milestone.plannedDate) })}
+            </TextCaptionNeutral60>
           )}
         </Box>
         {milestone.acceptanceCriteria.length > 0 && (
@@ -434,7 +450,8 @@ function DemoRow({ demo }: { demo: ClientDemo }) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: (theme) => `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
+          background: (theme) =>
+            `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
         }}
       >
         {demo.thumbnailUrl && (
