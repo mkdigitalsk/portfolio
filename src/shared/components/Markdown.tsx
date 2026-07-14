@@ -35,7 +35,20 @@ export function Markdown({ children }: { children: string }) {
         '& hr': { border: 0, borderTop: 1, borderColor: 'divider', my: 3 },
       })}
     >
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>{children}</ReactMarkdown>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={{
+          // Every markdown link opens in a new tab — a client following a document link must never lose
+          // (and accidentally close) their portal. Applied app-wide via this shared component.
+          a: ({ href, children }) => (
+            <a href={href} target="_blank" rel="noopener noreferrer">
+              {children}
+            </a>
+          ),
+        }}
+      >
+        {children}
+      </ReactMarkdown>
     </Box>
   )
 }
