@@ -55,7 +55,7 @@
       "subtitle": "Jeden partner naprieč celým životným cyklom produktu — od prvého nápadu po dodaný a udržiavaný produkt. AI tam, kde dáva zmysel.",
       "strategy": {
         "title": "Stratégia a rozsah",
-        "outcome": "Z hrubého nápadu spravíme jasný, nacenený plán — rozsah, architektúru a reálny roadmap ešte pred prvým riadkom kódu.",
+        "outcome": "Z hrubého nápadu spravíme jasný, nacenený plán — rozsah, architektúru a reálny harmonogram ešte pred prvým riadkom kódu.",
         "credential": "Čistá architektúra od prvého dňa"
       },
       "build": {
@@ -74,7 +74,7 @@
         "embeddedTitle": "Senior inžinier vo vašom tíme",
         "embeddedDesc": "Treba seniornú posilu? Pripojíme sa k vášmu tímu a dodávame popri vašich inžinieroch."
       },
-      "existing": "Už máte produkt? Vieme ho aj prevziať, stabilizovať a rozšíriť — záchrana legacy kódu, nižší crash-rate, nové features — nielen stavať od nuly."
+      "existing": "Už máte produkt? Vieme ho aj prevziať, stabilizovať a rozšíriť — záchrana legacy kódu, menej pádov aplikácie, nové funkcie — nielen stavať od nuly."
     },
     "process": {
       "title": "Ako pracujeme",
@@ -106,7 +106,7 @@
     },
     "proof": {
       "title": "Prečítajte si kód skôr, než nás najmete",
-      "subtitle": "Kód väčšiny štúdií je zatvorený. Náš je otvorený. Toto sú kompletné showcase aplikácie v produkčnej kvalite — preskúmajte architektúru, testy aj históriu commitov sami.",
+      "subtitle": "Kód väčšiny štúdií je zatvorený. Náš je otvorený. Toto sú kompletné ukážkové aplikácie v produkčnej kvalite — preskúmajte architektúru, testy aj históriu commitov sami.",
       "inspectLine": "Čistá architektúra · automatizované testy · CI/CD · kompletná história commitov — všetko verejne na GitHube.",
       "signal1": "Čistá architektúra",
       "signal2": "Automatizované testy",
@@ -122,8 +122,8 @@
     },
     "about": {
       "title": "Partner, s ktorým reálne pracujete",
-      "para1": "MK Digital je senior-led produktový partner — postavený na 8+ rokoch dodávania produkčných appiek naprieč fintechom, platbami a zdravotníctvom v UK, Írsku a EÚ.",
-      "para2": "Senior inžinierstvo aplikované priamo na váš produkt: jeden zodpovedný partner od prvej myšlienky po spustenie, žiadny hand-off chain. Kód je čistý a verejný, takže vlastníte všetko — žiaden lock-in.",
+      "para1": "MK Digital je senior-led produktový partner — postavený na 8+ rokoch dodávania produkčných aplikácií naprieč fintechom, platbami a zdravotníctvom v UK, Írsku a EÚ.",
+      "para2": "Senior inžinierstvo aplikované priamo na váš produkt: jeden zodpovedný partner od prvej myšlienky po spustenie, žiadne odovzdávanie medzi tímami. Kód je čistý a verejný, takže vlastníte všetko — žiaden lock-in.",
       "cta": "Viac o nás"
     },
     "contact": {
@@ -146,7 +146,7 @@
   },
   "hero": {
     "headline": "Vedené seniorom. Fintech kvalita. Zodpovednosť.",
-    "subline": "Za MK Digital je Miroslav Kušnír, senior inžinier s 8+ rokmi budovania produkčných appiek — ako Head of Mobile a lead engineer naprieč fintechom, platbami a zdravotníctvom v UK, Írsku a EÚ. Jeden zodpovedný partner od prvej myšlienky po spustenie — a rovnaké štandardy sú verejné v open-source aplikáciách nižšie: preskúmajte architektúru, testy aj históriu commitov skôr, než si nás najmete.",
+    "subline": "Za MK Digital je Miroslav Kušnír, senior inžinier s 8+ rokmi budovania produkčných aplikácií — ako Head of Mobile a lead engineer naprieč fintechom, platbami a zdravotníctvom v UK, Írsku a EÚ. Jeden zodpovedný partner od prvej myšlienky po spustenie — a rovnaké štandardy sú verejné v open-source aplikáciách nižšie: preskúmajte architektúru, testy aj históriu commitov skôr, než si nás najmete.",
     "cta": "Ozvite sa nám",
     "exp1": "Head of Mobile & lead engineer · 8+ rokov",
     "exp2": "Fintech · Platby · Zdravotníctvo",
@@ -169,7 +169,7 @@
       },
       "accountability": {
         "title": "Jedno meno na linke",
-        "body": "Zodpovednosť sa dá zdieľať. Accountability nie. Dostávate jedného zodpovedného partnera na celý build — žiadne ukazovanie prstom medzi backendom a frontendom."
+        "body": "Úlohy sa dajú rozdeliť. Zodpovednosť nie. Dostávate jedného zodpovedného partnera na celý build — žiadne ukazovanie prstom medzi backendom a frontendom."
       },
       "directLine": {
         "title": "Priama linka",
@@ -177,7 +177,7 @@
       }
     },
     "continuity": {
-      "title": "Žiadny hand-off chain — všetky kľúče máte vy",
+      "title": "Žiadne odovzdávanie medzi tímami — všetky kľúče máte vy",
       "body": "Bus factor nie je o veľkosti tímu — 20-členná agentúra, kde jeden architekt drží všetky vedomosti, je rovnako exponovaná. Vlastníte všetko, za čo ste zaplatili — repozitár, infraštruktúra aj prístupy sa odovzdajú s čistou architektúrou a dokumentáciou dostatočnou na to, aby ktorýkoľvek senior pokračoval hneď zajtra. No lock-in nie je sľub — je to architektúra, ktorú si prečítate v otvorených repozitároch."
     }
   },
@@ -217,7 +217,7 @@
   "apps": {
     "custom": {
       "label": "Váš nápad",
-      "tagline": "Nie je to žiadna z appiek vyššie? Napíšte nám, čo máte v pláne — vyberte si bežné funkcie, alebo to len opíšte.",
+      "tagline": "Nie je to žiadna z aplikácií vyššie? Napíšte nám, čo máte v pláne — vyberte si bežné funkcie, alebo to len opíšte.",
       "features": {
         "accounts": {
           "label": "Používateľské účty a prihlásenie",
