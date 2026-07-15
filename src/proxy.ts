@@ -3,6 +3,15 @@ import { NextResponse, type NextRequest } from 'next/server'
 const ACCESS_COOKIE = 'site_access'
 const ONE_YEAR = 60 * 60 * 24 * 365
 
+// Vercel injects X-Vercel-IP-Country per request. Mirror it into a client-readable cookie so the
+// statically-generated pages can default the phone-number country from geo (the client falls back to
+// the locale when it's absent — e.g. local dev). Set on every pass-through response.
+function withGeo(request: NextRequest, res: NextResponse): NextResponse {
+  const country = request.headers.get('x-vercel-ip-country')
+  if (country) res.cookies.set('geo_country', country, { path: '/', sameSite: 'lax', secure: true, maxAge: ONE_YEAR })
+  return res
+}
+
 // Pre-launch privacy gate (Next.js 16 "proxy" convention). The whole site is locked behind
 // HTTP Basic Auth whenever SITE_PASSWORD is set. Unset it (locally / at launch) to make the
 // site public — no code change needed.
@@ -12,7 +21,7 @@ const ONE_YEAR = 60 * 60 * 24 * 365
 // share that magic link to grant someone access without handing out the password.
 export function proxy(request: NextRequest) {
   const password = process.env.SITE_PASSWORD
-  if (!password) return NextResponse.next()
+  if (!password) return withGeo(request, NextResponse.next())
 
   const bypass = process.env.SITE_BYPASS_TOKEN
   if (bypass) {
@@ -31,7 +40,7 @@ export function proxy(request: NextRequest) {
       return res
     }
     // This browser already holds the bypass cookie → let it through silently.
-    if (request.cookies.get(ACCESS_COOKIE)?.value === bypass) return NextResponse.next()
+    if (request.cookies.get(ACCESS_COOKIE)?.value === bypass) return withGeo(request, NextResponse.next())
   }
 
   const user = process.env.SITE_USER ?? 'mk'
@@ -40,7 +49,7 @@ export function proxy(request: NextRequest) {
     const decoded = atob(header.slice(6))
     const separator = decoded.indexOf(':')
     if (decoded.slice(0, separator) === user && decoded.slice(separator + 1) === password) {
-      return NextResponse.next()
+      return withGeo(request, NextResponse.next())
     }
   }
 

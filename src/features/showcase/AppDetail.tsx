@@ -6,7 +6,7 @@ import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import { useLocale, useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { useEffect, useState, type KeyboardEvent } from 'react'
+import { useEffect, useState, useSyncExternalStore, type KeyboardEvent } from 'react'
 import {
   Button,
   Input,
@@ -23,15 +23,26 @@ import { scopeColor, scopeFill, scopeScore, scopeTier } from './complexity'
 import { useSubmitLeadMutation } from './useSubmitLeadMutation'
 const EMAIL_ERROR_DELAY_MS = 800
 
-// Default phone country from the active locale (a German number usually matches a
-// German-speaking user better than their current IP location). Accurate server-side
-// IP geo is a deploy-time enhancement — see roadmap.
-const PHONE_COUNTRY_BY_LOCALE: Record<string, 'SK' | 'CZ' | 'DE' | 'GB'> = {
+// Phone country default: server-side IP geo (Vercel X-Vercel-IP-Country → geo_country cookie, set in
+// proxy.ts) when it resolves to a target market, else the active locale, else SK. Applied via a mount
+// effect + key-remount — mui-tel-input's defaultCountry is init-only (changing it live infinite-loops).
+type TargetCountry = 'SK' | 'CZ' | 'DE' | 'GB'
+const TARGET_COUNTRIES: readonly TargetCountry[] = ['SK', 'CZ', 'DE', 'GB']
+const PHONE_COUNTRY_BY_LOCALE: Record<string, TargetCountry> = {
   'sk-SK': 'SK',
   'cs-CZ': 'CZ',
   'de-DE': 'DE',
   'en-GB': 'GB',
 }
+
+function readGeoCountry(): TargetCountry | undefined {
+  if (typeof document === 'undefined') return undefined
+  const code = document.cookie.match(/(?:^|;\s*)geo_country=([^;]+)/)?.[1]?.toUpperCase()
+  return TARGET_COUNTRIES.find((c) => c === code)
+}
+
+// The cookie is read-once, never changes in-session — no real subscription needed.
+const subscribeGeo = () => () => {}
 
 // What the client actually wants — a whole platform, not a minor toggle, so each is a
 // full-weight selectable card (icon + label + trailing check) in the app's accent colour.
@@ -48,7 +59,10 @@ interface AppDetailProps {
 export function AppDetail({ appId }: AppDetailProps) {
   const t = useTranslations()
   const locale = useLocale()
-  const phoneCountry = PHONE_COUNTRY_BY_LOCALE[locale] ?? 'SK'
+  // Geo cookie (set in proxy.ts) beats the locale default. useSyncExternalStore keeps SSR/hydration
+  // consistent (server snapshot = undefined → locale), then the client re-reads the cookie.
+  const geoCountry = useSyncExternalStore(subscribeGeo, readGeoCountry, () => undefined)
+  const phoneCountry = geoCountry ?? PHONE_COUNTRY_BY_LOCALE[locale] ?? 'SK'
   const app = detailApps.find((item) => item.id === appId)
   const isCustom = appId === 'custom'
   const [selected, setSelected] = useState<Set<string>>(() => new Set())
@@ -600,6 +614,7 @@ export function AppDetail({ appId }: AppDetailProps) {
                       </Box>
                       <Box sx={{ flex: 1, minWidth: 0 }}>
                         <PhoneInput
+                          key={phoneCountry}
                           label={t('home.phoneLabel')}
                           value={phone}
                           defaultCountry={phoneCountry}
