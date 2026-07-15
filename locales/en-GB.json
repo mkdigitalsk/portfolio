@@ -666,6 +666,7 @@
       "health": "Health",
       "complete": "Mark completed",
       "archive": "Archive",
+      "unarchive": "Unarchive",
       "docTitle": "Document title",
       "docUrl": "Document URL",
       "scope": "In scope",
@@ -751,7 +752,9 @@
     "clientsTab": "Clients ({count})",
     "clients": {
       "notStarted": "Not started",
-      "none": "No clients yet."
+      "none": "No clients yet.",
+      "back": "All clients",
+      "deliveryCaption": "Delivery & project"
     }
   }
 }

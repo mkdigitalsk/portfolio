@@ -666,6 +666,7 @@
       "health": "Status",
       "complete": "Als abgeschlossen markieren",
       "archive": "Archivieren",
+      "unarchive": "Wiederherstellen",
       "docTitle": "Dokumenttitel",
       "docUrl": "Dokument-URL",
       "scope": "Im Umfang",
@@ -751,7 +752,9 @@
     "clientsTab": "Kunden ({count})",
     "clients": {
       "notStarted": "Nicht gestartet",
-      "none": "Noch keine Kunden."
+      "none": "Noch keine Kunden.",
+      "back": "Alle Kunden",
+      "deliveryCaption": "Lieferung & Projekt"
     }
   }
 }

@@ -666,6 +666,7 @@
       "health": "Stav",
       "complete": "Označit jako dokončené",
       "archive": "Archivovat",
+      "unarchive": "Obnovit z archivu",
       "docTitle": "Název dokumentu",
       "docUrl": "URL dokumentu",
       "scope": "V rozsahu",
@@ -751,7 +752,9 @@
     "clientsTab": "Klienti ({count})",
     "clients": {
       "notStarted": "Nezačato",
-      "none": "Zatím žádní klienti."
+      "none": "Zatím žádní klienti.",
+      "back": "Všichni klienti",
+      "deliveryCaption": "Dodávka a projekt"
     }
   }
 }

@@ -25,6 +25,7 @@ export const adminService = {
   updateProject: (email: string, req: UpdateProjectRequest) => adminApi.updateProject(email, req),
   completeProject: (email: string) => adminApi.completeProject(email),
   archiveProject: (email: string) => adminApi.archiveProject(email),
+  unarchiveProject: (email: string) => adminApi.unarchiveProject(email),
   addDocument: (email: string, req: DocumentRequest) => adminApi.addDocument(email, req),
   deleteDocument: (email: string, id: number) => adminApi.deleteDocument(email, id),
   addMilestone: (email: string, req: MilestoneRequest) => adminApi.addMilestone(email, req),

@@ -60,6 +60,11 @@ export function useArchiveProject(email: string) {
   return useMutation({ mutationFn: () => adminService.archiveProject(email), onSuccess: invalidate })
 }
 
+export function useUnarchiveProject(email: string) {
+  const invalidate = useInvalidate(email)
+  return useMutation({ mutationFn: () => adminService.unarchiveProject(email), onSuccess: invalidate })
+}
+
 export function useAddDocument(email: string) {
   const invalidate = useInvalidate(email)
   return useMutation({

@@ -46,6 +46,7 @@ import {
   useDeleteMilestone,
   useDeletePayment,
   useStartProject,
+  useUnarchiveProject,
   useUpdateDemo,
   useUpdateMilestone,
   useUpdatePayment,
@@ -56,7 +57,12 @@ import { formatMoney } from './formatMoney'
 type T = ReturnType<typeof useTranslations<'account'>>
 
 // Compact overrides on the design-system Input — the admin surface is dense, unlike the airy auth forms.
-const dense = { '& .MuiOutlinedInput-input': { py: 1.25, px: 1.75, fontSize: '0.9rem' } }
+// The height rule re-asserts one uniform single-line box so a `select` (whose .MuiSelect-select carries its
+// own min-height) never renders taller than a date/text field in the same row; multiline is excluded.
+const dense = {
+  '& .MuiOutlinedInput-input': { py: 1.25, px: 1.75, fontSize: '0.9rem' },
+  '& .MuiOutlinedInput-input:not(.MuiInputBase-inputMultiline)': { height: '1.4375em' },
+}
 
 const toDateInput = (iso: string | null) => (iso ? new Date(iso).toISOString().slice(0, 10) : '')
 const toMillis = (d: string): number | null => (d ? new Date(d).getTime() : null)
@@ -180,6 +186,7 @@ function ManageProject({ data, email, t }: { data: Project; email: string; t: T 
   const update = useUpdateProject(email)
   const complete = useCompleteProject(email)
   const archive = useArchiveProject(email)
+  const unarchive = useUnarchiveProject(email)
   const addMilestone = useAddMilestone(email)
   const updateMilestone = useUpdateMilestone(email)
   const deleteMilestone = useDeleteMilestone(email)
@@ -253,6 +260,11 @@ function ManageProject({ data, email, t }: { data: Project; email: string; t: T 
             {data.state === 'COMPLETED' && (
               <Button variant="outline" onClick={() => archive.mutate()}>
                 {t('delivery.archive')}
+              </Button>
+            )}
+            {data.state === 'ARCHIVED' && (
+              <Button variant="outline" onClick={() => unarchive.mutate()}>
+                {t('delivery.unarchive')}
               </Button>
             )}
           </Box>

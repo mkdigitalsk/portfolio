@@ -16,6 +16,7 @@ const API = 'https://api.mkdigital.sk/v1'
 
 vi.mock('next/navigation', () => ({
   useRouter: () => ({ push: vi.fn(), refresh: vi.fn() }),
+  useSearchParams: () => new URLSearchParams(),
 }))
 
 // Integration: the admin leads pipeline — useLeadsQuery + adminService + adminApi + axios + the table +

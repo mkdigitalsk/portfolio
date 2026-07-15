@@ -666,6 +666,7 @@
       "health": "Stav",
       "complete": "Označiť ako dokončené",
       "archive": "Archivovať",
+      "unarchive": "Obnoviť z archívu",
       "docTitle": "Názov dokumentu",
       "docUrl": "URL dokumentu",
       "scope": "V rozsahu",
@@ -751,7 +752,9 @@
     "clientsTab": "Klienti ({count})",
     "clients": {
       "notStarted": "Nezačaté",
-      "none": "Zatiaľ žiadni klienti."
+      "none": "Zatiaľ žiadni klienti.",
+      "back": "Všetci klienti",
+      "deliveryCaption": "Dodávka a projekt"
     }
   }
 }

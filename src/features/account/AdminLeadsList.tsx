@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import { Tabs, type TabItem, TextBody1, TextBody1Neutral60 } from '@/shared/components'
@@ -26,13 +26,17 @@ function ErrorLine({ error, t }: { error: unknown; t: T }) {
 export function AdminLeadsList() {
   const t = useTranslations('account')
   const router = useRouter()
-  const [tab, setTab] = useState('leads')
+  // Returning from a client's delivery view lands on the Clients tab (?tab=clients), not back on Leads.
+  const initialTab = useSearchParams().get('tab') === 'clients' ? 'clients' : 'leads'
+  const [tab, setTab] = useState(initialTab)
   const leadsQuery = useLeadsQuery()
   const clientsQuery = useClientsQuery()
 
   const pipeline = (leadsQuery.data ?? []).filter((l) => l.status !== 'WON')
   const clients = clientsQuery.data ?? []
-  const select = (email: string) => router.push(`/account/leads/${encodeURIComponent(email)}`)
+  // A lead opens the sales pipeline detail; a client opens the delivery view — two different surfaces.
+  const selectLead = (email: string) => router.push(`/account/leads/${encodeURIComponent(email)}`)
+  const selectClient = (email: string) => router.push(`/account/clients/${encodeURIComponent(email)}`)
 
   const tabs: TabItem[] = [
     { value: 'leads', label: t('leadsTab', { count: pipeline.length }) },
@@ -53,7 +57,7 @@ export function AdminLeadsList() {
         ) : pipeline.length === 0 ? (
           <TextBody1Neutral60>{t('noLeads')}</TextBody1Neutral60>
         ) : (
-          <LeadsTable leads={pipeline} onSelect={select} />
+          <LeadsTable leads={pipeline} onSelect={selectLead} />
         ))}
 
       {tab === 'clients' &&
@@ -64,7 +68,7 @@ export function AdminLeadsList() {
         ) : clients.length === 0 ? (
           <TextBody1Neutral60>{t('clients.none')}</TextBody1Neutral60>
         ) : (
-          <ClientsTable clients={clients} onSelect={select} />
+          <ClientsTable clients={clients} onSelect={selectClient} />
         ))}
     </Stack>
   )

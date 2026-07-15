@@ -70,6 +70,10 @@ export class AdminApi extends BaseApiService {
     return this._post<AdminProject>(`${this.project(email)}/archive`)
   }
 
+  unarchiveProject(email: string): Promise<AdminProject> {
+    return this._post<AdminProject>(`${this.project(email)}/unarchive`)
+  }
+
   addDocument(email: string, req: DocumentRequest): Promise<AdminDocument> {
     return this._post<AdminDocument>(`${this.project(email)}/documents`, req)
   }
