@@ -57,12 +57,7 @@ import { formatMoney } from './formatMoney'
 type T = ReturnType<typeof useTranslations<'account'>>
 
 // Compact overrides on the design-system Input — the admin surface is dense, unlike the airy auth forms.
-// The height rule re-asserts one uniform single-line box so a `select` (whose .MuiSelect-select carries its
-// own min-height) never renders taller than a date/text field in the same row; multiline is excluded.
-const dense = {
-  '& .MuiOutlinedInput-input': { py: 1.25, px: 1.75, fontSize: '0.9rem' },
-  '& .MuiOutlinedInput-input:not(.MuiInputBase-inputMultiline)': { height: '1.4375em' },
-}
+const dense = { '& .MuiOutlinedInput-input': { py: 1.25, px: 1.75, fontSize: '0.9rem' } }
 
 const toDateInput = (iso: string | null) => (iso ? new Date(iso).toISOString().slice(0, 10) : '')
 const toMillis = (d: string): number | null => (d ? new Date(d).getTime() : null)
