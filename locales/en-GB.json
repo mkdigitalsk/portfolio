@@ -78,11 +78,11 @@
     },
     "process": {
       "title": "How we work",
-      "subtitle": "Transparent, time-boxed, and low-risk — you always know where your money and your product stand.",
+      "subtitle": "Transparent, time-boxed, and low-risk — you can see where your money and your product stand at each milestone.",
       "phase1": {
         "when": "Week 1",
         "title": "Scope & plan",
-        "detail": "We turn your brief into a build-ready plan — scope, a fixed price, and a date — agreed before you commit to a build."
+        "detail": "We turn your brief into a build-ready plan — scope, a fixed price, and a date — set out in a written proposal before you commit to a build."
       },
       "phase2": {
         "when": "Weeks 2–N",
@@ -94,13 +94,13 @@
         "title": "Ship & support",
         "detail": "We release, set up monitoring, and stay on to fix and improve — the product doesn't get abandoned at handover."
       },
-      "principle1": "Working demo at every milestone",
+      "principle1": "A working build at each planned milestone",
       "principle2": "Direct access to the engineer",
       "principle3": "Open-source code to inspect",
       "principle4": "Fixed scope, price, and date",
       "riskReversal": {
-        "title": "On time, on budget — agreed up front",
-        "body": "We lock scope, price, and delivery date before a line of code. You review a working build at each milestone, and own everything at release — zero lock-in."
+        "title": "On time and on budget — as agreed in your proposal",
+        "body": "We agree scope, price, and delivery date in a written proposal before a line of code. You review a working build at each planned milestone, and own everything at release — no lock-in, the code's yours in open repos."
       },
       "cta": "Book a free discovery call"
     },
@@ -123,7 +123,7 @@
     "about": {
       "title": "The partner you actually work with",
       "para1": "MK Digital is a senior-led product partner — built on 8+ years delivering production apps across fintech, payments and healthcare in the UK, Ireland and the EU.",
-      "para2": "Senior engineering applied directly to your product: one accountable partner from first idea to launch, no hand-off chain. The code is clean and public, so you own everything — no lock-in, ever.",
+      "para2": "Senior engineering applied directly to your product: one accountable partner from first idea to launch, no hand-off chain. The code is clean and public, so you own everything — no lock-in.",
       "cta": "More about us"
     },
     "contact": {
@@ -145,7 +145,7 @@
     "hasDocMail": "Client has their own documentation / spec."
   },
   "hero": {
-    "headline": "Senior-led, fintech-grade, fully accountable.",
+    "headline": "Senior-led, fintech-grade, accountable.",
     "subline": "Behind MK Digital is Miroslav Kušnír, a senior engineer with 8+ years shipping production apps as Head of Mobile and lead engineer across fintech, payments and healthcare in the UK, Ireland and the EU. One accountable partner from first idea to launch — and the same standards are public in the open-source apps below: inspect the architecture, tests and commit history before you hire.",
     "cta": "Get in touch",
     "exp1": "Head of Mobile & lead engineer · 8+ years",
@@ -177,7 +177,7 @@
       }
     },
     "continuity": {
-      "title": "No single point of failure — you hold every key",
+      "title": "No hand-off chain — you hold every key",
       "body": "Bus factor isn't about team size — a 20-person agency where one architect holds the knowledge is just as exposed. You own everything you've paid for — the repo, infrastructure and credentials are handed over with clean architecture and documentation complete enough for any senior to continue tomorrow. No lock-in isn't a promise — it's an architecture you can read in the open repos."
     }
   },
