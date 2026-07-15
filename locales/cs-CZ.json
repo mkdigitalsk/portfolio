@@ -78,11 +78,11 @@
     },
     "process": {
       "title": "Jak pracujeme",
-      "subtitle": "Transparentně, v jasných termínech a s nízkým rizikem — vždy víte, kde jsou vaše peníze i váš produkt.",
+      "subtitle": "Transparentně, v jasných termínech a s nízkým rizikem — u každého milníku vidíte, kde jsou vaše peníze i váš produkt.",
       "phase1": {
         "when": "1. týden",
         "title": "Rozsah a plán",
-        "detail": "Z vašeho zadání uděláme plán připravený ke stavbě — rozsah, pevná cena i termín — dohodnuté ještě předtím, než se ke stavbě zavážete."
+        "detail": "Z vašeho zadání uděláme plán připravený ke stavbě — rozsah, pevná cena i termín — sepsané v písemné nabídce ještě předtím, než se ke stavbě zavážete."
       },
       "phase2": {
         "when": "2.–N. týden",
@@ -94,13 +94,13 @@
         "title": "Nasazení a podpora",
         "detail": "Nasadíme, nastavíme monitoring a zůstáváme na opravy a zlepšení — produkt se při předání neopustí."
       },
-      "principle1": "Funkční demo u každého milníku",
+      "principle1": "Funkční build u každého plánovaného milníku",
       "principle2": "Přímý přístup k inženýrovi",
       "principle3": "Open-source kód k prověření",
       "principle4": "Fixní rozsah, cena a termín",
       "riskReversal": {
-        "title": "Včas a v rozpočtu — dohodnuto předem",
-        "body": "Rozsah, cenu i termín zafixujeme před prvním řádkem kódu. U každého milníku dostanete funkční build ke kontrole a při předání vlastníte všechno — žádný lock-in."
+        "title": "Včas a v rozpočtu — jak dohodnuto v nabídce",
+        "body": "Rozsah, cenu i termín dohodneme v písemné nabídce před prvním řádkem kódu. U každého plánovaného milníku dostanete funkční build ke kontrole a při předání vlastníte všechno — žádný lock-in, kód je váš ve veřejných repozitářích."
       },
       "cta": "Rezervovat bezplatný úvodní hovor"
     },
@@ -123,7 +123,7 @@
     "about": {
       "title": "Partner, se kterým reálně pracujete",
       "para1": "MK Digital je senior-led produktový partner — postavený na 8+ letech dodávání produkčních appek napříč fintechem, platbami a zdravotnictvím v UK, Irsku a EU.",
-      "para2": "Senior inženýrství aplikované přímo na váš produkt: jeden odpovědný partner od první myšlenky po spuštění, žádný hand-off chain. Kód je čistý a veřejný, takže vlastníte všechno — žádný lock-in, nikdy.",
+      "para2": "Senior inženýrství aplikované přímo na váš produkt: jeden odpovědný partner od první myšlenky po spuštění, žádný hand-off chain. Kód je čistý a veřejný, takže vlastníte všechno — žádný lock-in.",
       "cta": "Více o nás"
     },
     "contact": {
@@ -145,7 +145,7 @@
     "hasDocMail": "Klient má vlastní dokumentaci / specifikaci."
   },
   "hero": {
-    "headline": "Vedené seniorem. Fintech kvalita. Plná odpovědnost.",
+    "headline": "Vedené seniorem. Fintech kvalita. Odpovědnost.",
     "subline": "Za MK Digital je Miroslav Kušnír, senior inženýr s 8+ lety budování produkčních appek — jako Head of Mobile a lead engineer napříč fintechem, platbami a zdravotnictvím v UK, Irsku a EU. Jeden odpovědný partner od první myšlenky po spuštění — a stejné standardy jsou veřejné v open-source aplikacích níže: prozkoumejte architekturu, testy i historii commitů dřív, než si nás najmete.",
     "cta": "Ozvěte se nám",
     "exp1": "Head of Mobile & lead engineer · 8+ let",
@@ -177,7 +177,7 @@
       }
     },
     "continuity": {
-      "title": "Žádný single point of failure — všechny klíče máte vy",
+      "title": "Žádný hand-off chain — všechny klíče máte vy",
       "body": "Bus factor není o velikosti týmu — 20členná agentura, kde jeden architekt drží všechny znalosti, je stejně exponovaná. Vlastníte všechno, za co jste zaplatili — repozitář, infrastruktura i přístupy se předají s čistou architekturou a dokumentací dostatečnou na to, aby kterýkoli senior pokračoval hned zítra. No lock-in není slib — je to architektura, kterou si přečtete v otevřených repozitářích."
     }
   },

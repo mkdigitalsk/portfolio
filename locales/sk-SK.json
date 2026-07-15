@@ -78,11 +78,11 @@
     },
     "process": {
       "title": "Ako pracujeme",
-      "subtitle": "Transparentne, v jasných termínoch a s nízkym rizikom — vždy viete, kde sú vaše peniaze aj váš produkt.",
+      "subtitle": "Transparentne, v jasných termínoch a s nízkym rizikom — pri každom míľniku vidíte, kde sú vaše peniaze aj váš produkt.",
       "phase1": {
         "when": "1. týždeň",
         "title": "Rozsah a plán",
-        "detail": "Z vášho zadania spravíme plán pripravený na stavbu — rozsah, pevná cena aj termín — dohodnuté ešte predtým, než sa k stavbe zaviažete."
+        "detail": "Z vášho zadania spravíme plán pripravený na stavbu — rozsah, pevná cena aj termín — spísané v písomnej ponuke ešte predtým, než sa k stavbe zaviažete."
       },
       "phase2": {
         "when": "2.–N. týždeň",
@@ -94,13 +94,13 @@
         "title": "Nasadenie a podpora",
         "detail": "Nasadíme, nastavíme monitoring a zostávame na opravy a zlepšenia — produkt sa pri odovzdaní neopustí."
       },
-      "principle1": "Funkčné demo pri každom míľniku",
+      "principle1": "Funkčný build pri každom plánovanom míľniku",
       "principle2": "Priamy prístup k inžinierovi",
       "principle3": "Open-source kód na preverenie",
       "principle4": "Fixný rozsah, cena a termín",
       "riskReversal": {
-        "title": "Načas a v rozpočte — dohodnuté vopred",
-        "body": "Rozsah, cenu aj termín zafixujeme pred prvým riadkom kódu. Pri každom míľniku dostanete funkčný build na kontrolu a pri odovzdaní vlastníte všetko — žiadny lock-in."
+        "title": "Načas a v rozpočte — ako dohodnuté v ponuke",
+        "body": "Rozsah, cenu aj termín dohodneme v písomnej ponuke pred prvým riadkom kódu. Pri každom plánovanom míľniku dostanete funkčný build na kontrolu a pri odovzdaní vlastníte všetko — žiadny lock-in, kód je váš vo verejných repozitároch."
       },
       "cta": "Rezervovať bezplatný úvodný hovor"
     },
@@ -123,7 +123,7 @@
     "about": {
       "title": "Partner, s ktorým reálne pracujete",
       "para1": "MK Digital je senior-led produktový partner — postavený na 8+ rokoch dodávania produkčných appiek naprieč fintechom, platbami a zdravotníctvom v UK, Írsku a EÚ.",
-      "para2": "Senior inžinierstvo aplikované priamo na váš produkt: jeden zodpovedný partner od prvej myšlienky po spustenie, žiadny hand-off chain. Kód je čistý a verejný, takže vlastníte všetko — žiaden lock-in, nikdy.",
+      "para2": "Senior inžinierstvo aplikované priamo na váš produkt: jeden zodpovedný partner od prvej myšlienky po spustenie, žiadny hand-off chain. Kód je čistý a verejný, takže vlastníte všetko — žiaden lock-in.",
       "cta": "Viac o nás"
     },
     "contact": {
@@ -145,7 +145,7 @@
     "hasDocMail": "Klient má vlastnú dokumentáciu / špecifikáciu."
   },
   "hero": {
-    "headline": "Vedené seniorom. Fintech kvalita. Plná zodpovednosť.",
+    "headline": "Vedené seniorom. Fintech kvalita. Zodpovednosť.",
     "subline": "Za MK Digital je Miroslav Kušnír, senior inžinier s 8+ rokmi budovania produkčných appiek — ako Head of Mobile a lead engineer naprieč fintechom, platbami a zdravotníctvom v UK, Írsku a EÚ. Jeden zodpovedný partner od prvej myšlienky po spustenie — a rovnaké štandardy sú verejné v open-source aplikáciách nižšie: preskúmajte architektúru, testy aj históriu commitov skôr, než si nás najmete.",
     "cta": "Ozvite sa nám",
     "exp1": "Head of Mobile & lead engineer · 8+ rokov",
@@ -177,7 +177,7 @@
       }
     },
     "continuity": {
-      "title": "Žiaden single point of failure — všetky kľúče máte vy",
+      "title": "Žiadny hand-off chain — všetky kľúče máte vy",
       "body": "Bus factor nie je o veľkosti tímu — 20-členná agentúra, kde jeden architekt drží všetky vedomosti, je rovnako exponovaná. Vlastníte všetko, za čo ste zaplatili — repozitár, infraštruktúra aj prístupy sa odovzdajú s čistou architektúrou a dokumentáciou dostatočnou na to, aby ktorýkoľvek senior pokračoval hneď zajtra. No lock-in nie je sľub — je to architektúra, ktorú si prečítate v otvorených repozitároch."
     }
   },

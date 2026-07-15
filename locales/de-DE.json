@@ -78,11 +78,11 @@
     },
     "process": {
       "title": "Wie wir arbeiten",
-      "subtitle": "Transparent, zeitlich getaktet und risikoarm — Sie wissen jederzeit, wo Ihr Geld und Ihr Produkt stehen.",
+      "subtitle": "Transparent, zeitlich getaktet und risikoarm — bei jedem Meilenstein sehen Sie, wo Ihr Geld und Ihr Produkt stehen.",
       "phase1": {
         "when": "Woche 1",
         "title": "Umfang & Plan",
-        "detail": "Wir machen aus Ihrem Auftrag einen umsetzungsreifen Plan — Umfang, ein fixer Preis und ein Termin — vereinbart, bevor Sie sich zur Umsetzung verpflichten."
+        "detail": "Wir machen aus Ihrem Auftrag einen umsetzungsreifen Plan — Umfang, ein fixer Preis und ein Termin — in einem schriftlichen Angebot festgehalten, bevor Sie sich zur Umsetzung verpflichten."
       },
       "phase2": {
         "when": "Woche 2–N",
@@ -94,13 +94,13 @@
         "title": "Auslieferung & Support",
         "detail": "Wir veröffentlichen, richten Monitoring ein und bleiben für Fixes und Verbesserungen — das Produkt wird bei der Übergabe nicht fallengelassen."
       },
-      "principle1": "Lauffähige Demo bei jedem Meilenstein",
+      "principle1": "Ein lauffähiger Build bei jedem geplanten Meilenstein",
       "principle2": "Direkter Zugang zum Engineer",
       "principle3": "Open-Source-Code zum Prüfen",
       "principle4": "Fester Umfang, Preis und Termin",
       "riskReversal": {
-        "title": "Pünktlich und im Budget — vorab vereinbart",
-        "body": "Wir legen Umfang, Preis und Liefertermin vor der ersten Zeile Code fest. Bei jedem Meilenstein prüfen Sie einen lauffähigen Build, und bei der Übergabe gehört Ihnen alles — kein Lock-in."
+        "title": "Pünktlich und im Budget — wie im Angebot vereinbart",
+        "body": "Wir vereinbaren Umfang, Preis und Liefertermin in einem schriftlichen Angebot vor der ersten Zeile Code. Bei jedem geplanten Meilenstein prüfen Sie einen lauffähigen Build, und bei der Übergabe gehört Ihnen alles — kein Lock-in, der Code gehört Ihnen in öffentlichen Repositories."
       },
       "cta": "Kostenloses Erstgespräch buchen"
     },
@@ -123,7 +123,7 @@
     "about": {
       "title": "Der Partner, mit dem Sie wirklich arbeiten",
       "para1": "MK Digital ist ein senior-geführter Produktpartner — aufgebaut auf über 8 Jahren Produktions-Apps in Fintech, Payments und Healthcare in UK, Irland und der EU.",
-      "para2": "Senior-Engineering direkt an Ihrem Produkt: ein verantwortlicher Partner von der ersten Idee bis zum Launch, keine Hand-off-Kette. Der Code ist sauber und öffentlich, Sie besitzen alles — kein Lock-in, niemals.",
+      "para2": "Senior-Engineering direkt an Ihrem Produkt: ein verantwortlicher Partner von der ersten Idee bis zum Launch, keine Hand-off-Kette. Der Code ist sauber und öffentlich, Sie besitzen alles — kein Lock-in.",
       "cta": "Mehr über uns"
     },
     "contact": {
@@ -145,7 +145,7 @@
     "hasDocMail": "Kunde hat eigene Dokumentation / Spezifikation."
   },
   "hero": {
-    "headline": "Senior-geführt. Fintech-Qualität. Voll verantwortlich.",
+    "headline": "Senior-geführt. Fintech-Qualität. Verantwortlich.",
     "subline": "Hinter MK Digital steht Miroslav Kušnír, ein Senior-Engineer mit über 8 Jahren im Bau von Produktions-Apps — als Head of Mobile und Lead Engineer in Fintech, Payments und Healthcare in UK, Irland und der EU. Ein verantwortlicher Partner von der ersten Idee bis zum Launch — und dieselben Standards sind in den Open-Source-Apps unten öffentlich: prüfen Sie Architektur, Tests und Commit-Historie, bevor Sie uns beauftragen.",
     "cta": "Kontakt aufnehmen",
     "exp1": "Head of Mobile & Lead Engineer · 8+ Jahre",
@@ -177,7 +177,7 @@
       }
     },
     "continuity": {
-      "title": "Kein Single Point of Failure — Sie halten jeden Schlüssel",
+      "title": "Keine Hand-off-Kette — Sie halten jeden Schlüssel",
       "body": "Der Bus-Faktor hängt nicht von der Teamgröße ab — eine 20-Personen-Agentur, in der ein Architekt das gesamte Wissen hält, ist genauso exponiert. Sie besitzen alles, wofür Sie bezahlt haben — Repository, Infrastruktur und Zugänge werden mit sauberer Architektur und einer Dokumentation übergeben, die vollständig genug ist, dass jeder Senior morgen weitermachen kann. Kein Lock-in ist kein Versprechen — es ist eine Architektur, die Sie in den offenen Repositories nachlesen können."
     }
   },
