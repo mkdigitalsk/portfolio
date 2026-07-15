@@ -15,6 +15,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
 import { cookies } from 'next/headers'
 import { InitialSchemeProvider, SchemeCookieSync } from '@/shared/theme/colorSchemeCookie'
+import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Footer, NavBar } from '@/shared/components'
 import { QueryProvider } from '@/shared/query/QueryProvider'
@@ -77,6 +78,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
             </AppRouterCacheProvider>
           </QueryProvider>
         </NextIntlClientProvider>
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
