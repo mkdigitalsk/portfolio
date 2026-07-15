@@ -1,6 +1,7 @@
 'use client'
 
 import Box from '@mui/material/Box'
+import { track } from '@vercel/analytics'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { Reveal } from '@/shared/components'
@@ -20,7 +21,10 @@ const STAGGER_MAX = 0.3
 export function AppShowcase() {
   const t = useTranslations()
   const router = useRouter()
-  const open = (id: string) => router.push(`/app/${id}`)
+  const open = (id: string) => {
+    track('app_opened', { appType: id })
+    router.push(`/app/${id}`)
+  }
 
   return (
     <Section divider id="demos" title={t('home.headline')} subtitle={t('home.subline')}>

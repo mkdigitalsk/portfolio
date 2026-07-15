@@ -1,14 +1,14 @@
-import { Mail, Shield } from '@mui/icons-material'
+import { Shield } from '@mui/icons-material'
 import { Box } from '@mui/material'
 import { getTranslations } from 'next-intl/server'
 import {
-  Button,
   Reveal,
   TextBody1Neutral60,
   TextBody1Neutral80,
   TextCaptionNeutral60,
   TextH6Bold,
 } from '@/shared/components'
+import { ContactCtaButton } from '../ContactCtaButton'
 import { Section } from '../Section'
 
 // How we work — opinionated process + productized first step. The research is explicit: for a
@@ -72,9 +72,7 @@ export async function ProcessSection() {
             <TextH6Bold sx={{ mb: 0.5 }}>{t('riskReversal.title')}</TextH6Bold>
             <TextBody1Neutral60>{t('riskReversal.body')}</TextBody1Neutral60>
           </Box>
-          <Button variant="primary" startIcon={<Mail />} href="mailto:admin@mkdigital.sk">
-            {t('cta')}
-          </Button>
+          <ContactCtaButton label={t('cta')} section="process" />
         </Box>
       </Reveal>
     </Section>

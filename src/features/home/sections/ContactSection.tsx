@@ -1,7 +1,7 @@
-import { Mail } from '@mui/icons-material'
 import { Box } from '@mui/material'
 import { getTranslations } from 'next-intl/server'
-import { Button, Reveal, TextBody1Neutral60, TextCaptionNeutral60, TextH1Bold } from '@/shared/components'
+import { Reveal, TextBody1Neutral60, TextCaptionNeutral60, TextH1Bold } from '@/shared/components'
+import { ContactCtaButton } from '../ContactCtaButton'
 import { TEXT_MAX } from '../layout'
 import { Section } from '../Section'
 
@@ -24,9 +24,7 @@ export async function ContactSection() {
       </Reveal>
       <Reveal delay={0.16}>
         <Box sx={{ mb: 3 }}>
-          <Button variant="primary" startIcon={<Mail />} href="mailto:admin@mkdigital.sk">
-            {t('cta')}
-          </Button>
+          <ContactCtaButton label={t('cta')} section="contact" />
         </Box>
       </Reveal>
       <Reveal delay={0.24}>

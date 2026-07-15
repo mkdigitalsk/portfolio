@@ -1,7 +1,8 @@
-import { CheckCircle, Mail } from '@mui/icons-material'
+import { CheckCircle } from '@mui/icons-material'
 import { Box } from '@mui/material'
 import { getTranslations } from 'next-intl/server'
-import { Button, Reveal, TextBody1Neutral60, TextH1Bold } from '@/shared/components'
+import { Reveal, TextBody1Neutral60, TextH1Bold } from '@/shared/components'
+import { ContactCtaButton } from '../ContactCtaButton'
 import { PAGE_PT, TEXT_MAX } from '../layout'
 import { Section } from '../Section'
 
@@ -25,9 +26,7 @@ export async function HeroSection() {
       </Reveal>
       <Reveal delay={0.16}>
         <Box sx={{ mb: 4 }}>
-          <Button variant="primary" startIcon={<Mail />} href="mailto:admin@mkdigital.sk">
-            {t('cta')}
-          </Button>
+          <ContactCtaButton label={t('cta')} section="hero" />
         </Box>
       </Reveal>
       <Reveal delay={0.24}>
