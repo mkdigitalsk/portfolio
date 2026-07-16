@@ -8,6 +8,7 @@ import type {
   MilestoneRequest,
   PaymentRequest,
   StartProjectRequest,
+  UpdateLinksRequest,
   UpdateProjectRequest,
 } from '@/shared/types'
 
@@ -46,6 +47,14 @@ export function useUpdateProject(email: string) {
   const invalidate = useInvalidate(email)
   return useMutation({
     mutationFn: (req: UpdateProjectRequest) => adminService.updateProject(email, req),
+    onSuccess: invalidate,
+  })
+}
+
+export function useUpdateLinks(email: string) {
+  const invalidate = useInvalidate(email)
+  return useMutation({
+    mutationFn: (req: UpdateLinksRequest) => adminService.updateLinks(email, req),
     onSuccess: invalidate,
   })
 }

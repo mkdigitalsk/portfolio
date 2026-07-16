@@ -123,6 +123,9 @@ export interface AdminProject {
   actualEndDate: string | null
   scope: ScopeItem[]
   outOfScope: ScopeItem[]
+  jiraBoardUrl: string | null
+  specUrl: string | null
+  designUrl: string | null
   documents: AdminDocument[]
   milestones: AdminMilestone[]
   demos: AdminDemo[]
@@ -144,6 +147,12 @@ export interface UpdateProjectRequest {
   targetEndDate?: number | null
   scope?: ScopeItem[]
   outOfScope?: ScopeItem[]
+}
+
+export interface UpdateLinksRequest {
+  jiraBoardUrl?: string | null
+  specUrl?: string | null
+  designUrl?: string | null
 }
 
 export interface DocumentRequest {

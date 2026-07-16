@@ -651,6 +651,10 @@
       "demos": "Demos",
       "add": "Add",
       "delete": "Delete",
+      "edit": "Edit",
+      "confirm": "Confirm",
+      "cancel": "Cancel",
+      "deleteConfirmTitle": "Delete this item?",
       "released": "Released",
       "milestoneTitle": "Milestone title",
       "demoTitle": "Demo title",
@@ -679,7 +683,10 @@
       "markPaid": "Paid",
       "scopeHint": "One item per line — “title | detail” (detail optional)",
       "acceptanceHint": "One criterion per line",
-      "demoThumbnail": "Thumbnail URL"
+      "demoThumbnail": "Thumbnail URL",
+      "jiraBoardUrl": "Jira board URL",
+      "specUrl": "Spec URL (Confluence)",
+      "designUrl": "Design file URL"
     },
     "project": {
       "loading": "Loading your project…",
@@ -732,6 +739,7 @@
         "history": "History"
       },
       "scopeTitle": "Scope",
+      "linksTitle": "Internal links",
       "scope": "In scope",
       "outOfScope": "Out of scope",
       "noScope": "The project scope will appear here once agreed.",

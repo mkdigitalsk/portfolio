@@ -651,6 +651,10 @@
       "demos": "Ukázky",
       "add": "Přidat",
       "delete": "Odstranit",
+      "edit": "Upravit",
+      "confirm": "Potvrdit",
+      "cancel": "Zrušit",
+      "deleteConfirmTitle": "Odstranit tuto položku?",
       "released": "Vydáno",
       "milestoneTitle": "Název milníku",
       "demoTitle": "Název ukázky",
@@ -679,7 +683,10 @@
       "markPaid": "Zaplaceno",
       "scopeHint": "Jedna položka na řádek — „název | detail“ (detail volitelný)",
       "acceptanceHint": "Jedno kritérium na řádek",
-      "demoThumbnail": "URL náhledu"
+      "demoThumbnail": "URL náhledu",
+      "jiraBoardUrl": "URL Jira boardu",
+      "specUrl": "URL specifikace (Confluence)",
+      "designUrl": "URL design souboru"
     },
     "project": {
       "loading": "Načítám váš projekt…",
@@ -732,6 +739,7 @@
         "history": "Historie"
       },
       "scopeTitle": "Rozsah",
+      "linksTitle": "Interní odkazy",
       "scope": "V rozsahu",
       "outOfScope": "Mimo rozsah",
       "noScope": "Rozsah projektu se zobrazí po dohodě.",

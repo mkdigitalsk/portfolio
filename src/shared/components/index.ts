@@ -28,4 +28,5 @@ export {
   TextTimestamp,
 } from './text'
 export { Chip, FilterChip } from './chips/Chip'
+export { AlertDialog } from './dialogs/Dialog'
 export { Divider, DividerPrimary } from './dividers/Divider'

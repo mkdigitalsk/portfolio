@@ -651,6 +651,10 @@
       "demos": "Demos",
       "add": "Hinzufügen",
       "delete": "Löschen",
+      "edit": "Bearbeiten",
+      "confirm": "Bestätigen",
+      "cancel": "Abbrechen",
+      "deleteConfirmTitle": "Dieses Element löschen?",
       "released": "Veröffentlicht",
       "milestoneTitle": "Meilenstein-Titel",
       "demoTitle": "Demo-Titel",
@@ -679,7 +683,10 @@
       "markPaid": "Bezahlt",
       "scopeHint": "Ein Eintrag pro Zeile — „Titel | Detail“ (Detail optional)",
       "acceptanceHint": "Ein Kriterium pro Zeile",
-      "demoThumbnail": "Vorschau-URL"
+      "demoThumbnail": "Vorschau-URL",
+      "jiraBoardUrl": "Jira-Board-URL",
+      "specUrl": "Spezifikations-URL (Confluence)",
+      "designUrl": "Design-Datei-URL"
     },
     "project": {
       "loading": "Ihr Projekt wird geladen…",
@@ -732,6 +739,7 @@
         "history": "Verlauf"
       },
       "scopeTitle": "Umfang",
+      "linksTitle": "Interne Links",
       "scope": "Im Umfang",
       "outOfScope": "Nicht im Umfang",
       "noScope": "Der Projektumfang erscheint hier, sobald vereinbart.",

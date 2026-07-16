@@ -2,12 +2,13 @@
 
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { Add, DeleteOutlined } from '@mui/icons-material'
+import { Add, DeleteOutlined, EditOutlined } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import MenuItem from '@mui/material/MenuItem'
 import Stack from '@mui/material/Stack'
 import {
+  AlertDialog,
   Button,
   Chip,
   FilterChip,
@@ -30,6 +31,7 @@ import type {
   PaymentRequest,
   ProjectHealth,
   ScopeItem,
+  UpdateLinksRequest,
   UpdateProjectRequest,
 } from '@/shared/types'
 import { CURRENCIES, DOCUMENT_TYPES, MILESTONE_STATUSES, PROJECT_HEALTH } from '@/shared/types'
@@ -48,6 +50,7 @@ import {
   useStartProject,
   useUnarchiveProject,
   useUpdateDemo,
+  useUpdateLinks,
   useUpdateMilestone,
   useUpdatePayment,
   useUpdateProject,
@@ -184,6 +187,7 @@ function StartProjectForm({ email, t }: { email: string; t: T }) {
 
 function ManageProject({ data, email, t }: { data: Project; email: string; t: T }) {
   const update = useUpdateProject(email)
+  const updateLinks = useUpdateLinks(email)
   const complete = useCompleteProject(email)
   const archive = useArchiveProject(email)
   const unarchive = useUnarchiveProject(email)
@@ -209,6 +213,10 @@ function ManageProject({ data, email, t }: { data: Project; email: string; t: T 
       outOfScope: data.outOfScope,
       ...partial,
     })
+
+  // Delete is irreversible (audit log records the removal, not the content) — every delete goes
+  // through one confirm dialog. Holds the pending action + a human-readable label of what dies.
+  const [confirmDelete, setConfirmDelete] = useState<{ label: string; action: () => void } | null>(null)
 
   const [tab, setTab] = useState('overview')
   const tabs: TabItem[] = [
@@ -270,6 +278,8 @@ function ManageProject({ data, email, t }: { data: Project; email: string; t: T 
           </Box>
 
           <ScopeEditor data={data} t={t} onSave={(scope, outOfScope) => patchProject({ scope, outOfScope })} />
+
+          <LinksEditor data={data} t={t} onSave={(req) => updateLinks.mutate(req)} />
         </Stack>
       )}
 
@@ -277,38 +287,13 @@ function ManageProject({ data, email, t }: { data: Project; email: string; t: T 
         <Box>
           <Stack spacing={1.5}>
             {data.milestones.map((m) => (
-              <Box key={m.id} sx={{ display: 'flex', gap: 1, alignItems: 'flex-start', flexWrap: 'wrap' }}>
-                <Input
-                  select
-                  size="small"
-                  sx={[dense, { minWidth: 130 }]}
-                  value={m.status}
-                  onChange={(e) =>
-                    updateMilestone.mutate({
-                      id: m.id,
-                      req: milestoneReq(m, { status: e.target.value as MilestoneStatus }),
-                    })
-                  }
-                >
-                  {MILESTONE_STATUSES.map((s) => (
-                    <MenuItem key={s} value={s}>
-                      {t(`project.milestoneStatus.${s}`)}
-                    </MenuItem>
-                  ))}
-                </Input>
-                <Box sx={{ flex: 1, minWidth: 160 }}>
-                  <TextBody1Neutral60>{m.title}</TextBody1Neutral60>
-                  {m.plannedDate && <TextCaptionNeutral60>{toDateInput(m.plannedDate)}</TextCaptionNeutral60>}
-                  {m.acceptanceCriteria.length > 0 && (
-                    <TextCaptionNeutral60>
-                      {t('delivery.acceptanceCriteria')}: {m.acceptanceCriteria.join('; ')}
-                    </TextCaptionNeutral60>
-                  )}
-                </Box>
-                <IconButton aria-label={t('delivery.delete')} onClick={() => deleteMilestone.mutate(m.id)}>
-                  <DeleteOutlined fontSize="small" />
-                </IconButton>
-              </Box>
+              <MilestoneRow
+                key={m.id}
+                m={m}
+                t={t}
+                onUpdate={(partial) => updateMilestone.mutate({ id: m.id, req: milestoneReq(m, partial) })}
+                onDelete={() => setConfirmDelete({ label: m.title, action: () => deleteMilestone.mutate(m.id) })}
+              />
             ))}
           </Stack>
           <AddMilestoneForm t={t} nextPosition={data.milestones.length} onAdd={(req) => addMilestone.mutate(req)} />
@@ -342,7 +327,10 @@ function ManageProject({ data, email, t }: { data: Project; email: string; t: T 
                     {p.label} — {formatMoney(p.amountCents, p.currency)}
                   </TextBody1Neutral60>
                 </Box>
-                <IconButton aria-label={t('delivery.delete')} onClick={() => deletePayment.mutate(p.id)}>
+                <IconButton
+                  aria-label={t('delivery.delete')}
+                  onClick={() => setConfirmDelete({ label: p.label, action: () => deletePayment.mutate(p.id) })}
+                >
                   <DeleteOutlined fontSize="small" />
                 </IconButton>
               </Box>
@@ -363,7 +351,10 @@ function ManageProject({ data, email, t }: { data: Project; email: string; t: T 
                     {d.title} — {d.url}
                   </TextBody1Neutral60>
                 </Box>
-                <IconButton aria-label={t('delivery.delete')} onClick={() => deleteDocument.mutate(d.id)}>
+                <IconButton
+                  aria-label={t('delivery.delete')}
+                  onClick={() => setConfirmDelete({ label: d.title, action: () => deleteDocument.mutate(d.id) })}
+                >
                   <DeleteOutlined fontSize="small" />
                 </IconButton>
               </Box>
@@ -394,7 +385,10 @@ function ManageProject({ data, email, t }: { data: Project; email: string; t: T 
                     {d.title} — {d.url}
                   </TextBody1Neutral60>
                 </Box>
-                <IconButton aria-label={t('delivery.delete')} onClick={() => deleteDemo.mutate(d.id)}>
+                <IconButton
+                  aria-label={t('delivery.delete')}
+                  onClick={() => setConfirmDelete({ label: d.title, action: () => deleteDemo.mutate(d.id) })}
+                >
                   <DeleteOutlined fontSize="small" />
                 </IconButton>
               </Box>
@@ -403,6 +397,20 @@ function ManageProject({ data, email, t }: { data: Project; email: string; t: T 
           <AddDemoForm t={t} onAdd={(req) => addDemo.mutate(req)} />
         </Box>
       )}
+
+      <AlertDialog
+        open={confirmDelete !== null}
+        title={t('delivery.deleteConfirmTitle')}
+        text={confirmDelete?.label}
+        confirmText={t('delivery.delete')}
+        dismissText={t('delivery.cancel')}
+        destructive
+        onConfirm={() => {
+          confirmDelete?.action()
+          setConfirmDelete(null)
+        }}
+        onDismiss={() => setConfirmDelete(null)}
+      />
     </Stack>
   )
 }
@@ -419,6 +427,112 @@ function milestoneReq(m: AdminMilestone, partial: Partial<MilestoneRequest>): Mi
     acceptanceCriteria: m.acceptanceCriteria,
     ...partial,
   }
+}
+
+// Read → edit flips on the pencil; Confirm persists (full-field PATCH via milestoneReq), Cancel discards.
+// Status stays a live dropdown in read mode — it was always immediate and needs no confirm.
+function MilestoneRow({
+  m,
+  t,
+  onUpdate,
+  onDelete,
+}: {
+  m: AdminMilestone
+  t: T
+  onUpdate: (partial: Partial<MilestoneRequest>) => void
+  onDelete: () => void
+}) {
+  const [editing, setEditing] = useState(false)
+  const [title, setTitle] = useState('')
+  const [plannedDate, setPlannedDate] = useState('')
+  const [acceptanceCriteria, setAcceptanceCriteria] = useState('')
+
+  const startEdit = () => {
+    setTitle(m.title)
+    setPlannedDate(toDateInput(m.plannedDate))
+    setAcceptanceCriteria(m.acceptanceCriteria.join('\n'))
+    setEditing(true)
+  }
+
+  const confirm = () => {
+    if (!title.trim()) return
+    onUpdate({
+      title: title.trim(),
+      plannedDate: toMillis(plannedDate),
+      acceptanceCriteria: linesToList(acceptanceCriteria),
+    })
+    setEditing(false)
+  }
+
+  return (
+    <Box sx={{ display: 'flex', gap: 1, alignItems: 'flex-start', flexWrap: 'wrap' }}>
+      <Input
+        select
+        size="small"
+        sx={[dense, { minWidth: 130 }]}
+        value={m.status}
+        onChange={(e) => onUpdate({ status: e.target.value as MilestoneStatus })}
+      >
+        {MILESTONE_STATUSES.map((s) => (
+          <MenuItem key={s} value={s}>
+            {t(`project.milestoneStatus.${s}`)}
+          </MenuItem>
+        ))}
+      </Input>
+      {editing ? (
+        <>
+          <Input
+            size="small"
+            sx={[dense, { flex: 1, minWidth: 180 }]}
+            label={t('delivery.milestoneTitle')}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <Input
+            type="date"
+            size="small"
+            sx={dense}
+            label={t('delivery.plannedDate')}
+            value={plannedDate}
+            onChange={(e) => setPlannedDate(e.target.value)}
+          />
+          <Input
+            multiline
+            size="small"
+            sx={[dense, { flex: 1, minWidth: 200 }]}
+            label={t('delivery.acceptanceCriteria')}
+            placeholder={t('delivery.acceptanceHint')}
+            value={acceptanceCriteria}
+            onChange={(e) => setAcceptanceCriteria(e.target.value)}
+          />
+          <Button disabled={!title.trim()} onClick={confirm}>
+            {t('delivery.confirm')}
+          </Button>
+          <Button variant="outline" onClick={() => setEditing(false)}>
+            {t('delivery.cancel')}
+          </Button>
+        </>
+      ) : (
+        <>
+          <Box sx={{ flex: 1, minWidth: 160 }}>
+            <TextBody1Neutral60>{m.title}</TextBody1Neutral60>
+            {m.plannedDate && <TextCaptionNeutral60>{toDateInput(m.plannedDate)}</TextCaptionNeutral60>}
+            {m.acceptanceCriteria.length > 0 && (
+              <TextCaptionNeutral60>
+                {t('delivery.acceptanceCriteria')}: {m.acceptanceCriteria.join('; ')}
+              </TextCaptionNeutral60>
+            )}
+          </Box>
+          <IconButton aria-label={t('delivery.edit')} onClick={startEdit}>
+            <EditOutlined fontSize="small" />
+          </IconButton>
+          <IconButton aria-label={t('delivery.delete')} onClick={onDelete}>
+            <DeleteOutlined fontSize="small" />
+          </IconButton>
+        </>
+      )}
+    </Box>
+  )
 }
 
 function ScopeEditor({
@@ -464,6 +578,53 @@ function ScopeEditor({
           sx={{ alignSelf: 'flex-start' }}
         >
           {t('delivery.add')}
+        </Button>
+      </Stack>
+    </Box>
+  )
+}
+
+// Internal tooling links (admin-only — the client projection never carries them): Jira board,
+// Confluence spec root, design file. Dirty-gated save; blank clears a link (server nulls it).
+function LinksEditor({ data, t, onSave }: { data: Project; t: T; onSave: (req: UpdateLinksRequest) => void }) {
+  const [jira, setJira] = useState(data.jiraBoardUrl ?? '')
+  const [spec, setSpec] = useState(data.specUrl ?? '')
+  const [design, setDesign] = useState(data.designUrl ?? '')
+  const dirty =
+    jira !== (data.jiraBoardUrl ?? '') || spec !== (data.specUrl ?? '') || design !== (data.designUrl ?? '')
+
+  return (
+    <Box>
+      <TextH6Bold gutterBottom>{t('project.linksTitle')}</TextH6Bold>
+      <Stack spacing={1.5} sx={{ maxWidth: 720 }}>
+        <Input
+          size="small"
+          sx={dense}
+          label={t('delivery.jiraBoardUrl')}
+          value={jira}
+          onChange={(e) => setJira(e.target.value)}
+        />
+        <Input
+          size="small"
+          sx={dense}
+          label={t('delivery.specUrl')}
+          value={spec}
+          onChange={(e) => setSpec(e.target.value)}
+        />
+        <Input
+          size="small"
+          sx={dense}
+          label={t('delivery.designUrl')}
+          value={design}
+          onChange={(e) => setDesign(e.target.value)}
+        />
+        <Button
+          variant="outline"
+          disabled={!dirty}
+          onClick={() => onSave({ jiraBoardUrl: jira, specUrl: spec, designUrl: design })}
+          sx={{ alignSelf: 'flex-start' }}
+        >
+          {t('delivery.confirm')}
         </Button>
       </Stack>
     </Box>

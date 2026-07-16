@@ -14,6 +14,7 @@ import type {
   MilestoneRequest,
   PaymentRequest,
   StartProjectRequest,
+  UpdateLinksRequest,
   UpdateProjectRequest,
 } from '@/shared/types'
 import { BaseApiService } from './BaseApiService'
@@ -60,6 +61,10 @@ export class AdminApi extends BaseApiService {
 
   updateProject(email: string, req: UpdateProjectRequest): Promise<AdminProject> {
     return this._patch<AdminProject>(this.project(email), req)
+  }
+
+  updateLinks(email: string, req: UpdateLinksRequest): Promise<AdminProject> {
+    return this._patch<AdminProject>(`${this.project(email)}/links`, req)
   }
 
   completeProject(email: string): Promise<AdminProject> {
