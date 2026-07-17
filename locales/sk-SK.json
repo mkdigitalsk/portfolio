@@ -607,6 +607,12 @@
     "clientComingSoon": "Prehľad vašej spolupráce — ponuky, míľniky a ukážky — sa zobrazí tu. Už čoskoro.",
     "hasDoc": "Má vlastnú špecifikáciu / dokumentáciu",
     "hasDocLong": "Klient priložil vlastnú špecifikáciu / dokumentáciu.",
+    "leadDocs": {
+      "title": "Dokumentácia",
+      "empty": "Zatiaľ žiadne súbory",
+      "upload": "Nahrať súbor",
+      "uploadFailed": "Nahratie zlyhalo — skúste znova"
+    },
     "allLeads": "Všetky dopyty",
     "loadingLead": "Načítava sa dopyt…",
     "leadNotFound": "Dopyt sa nenašiel.",

@@ -607,6 +607,12 @@
     "clientComingSoon": "Your engagement overview — proposals, milestones and demos — will appear here. Coming soon.",
     "hasDoc": "Has own spec / documentation",
     "hasDocLong": "Client attached their own spec / documentation.",
+    "leadDocs": {
+      "title": "Documentation",
+      "empty": "No files yet",
+      "upload": "Upload file",
+      "uploadFailed": "Upload failed — try again"
+    },
     "allLeads": "All leads",
     "loadingLead": "Loading lead…",
     "leadNotFound": "Lead not found.",

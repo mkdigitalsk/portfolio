@@ -22,6 +22,10 @@ export const adminService = {
 
   inviteClient: (email: string) => adminApi.inviteClient(email),
 
+  // client-scoped documents (lead files — before any project exists)
+  getDocuments: (email: string) => adminApi.getDocuments(email),
+  uploadClientDocument: (email: string, req: UploadDocumentRequest) => adminApi.uploadClientDocument(email, req),
+
   // project (delivery)
   getProject: (email: string) => adminApi.getProject(email),
   getClientPreview: (email: string) => adminApi.getClientPreview(email),

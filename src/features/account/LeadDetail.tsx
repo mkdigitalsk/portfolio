@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
-import { ArrowBack, DescriptionOutlined } from '@mui/icons-material'
+import { ArrowBack } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
@@ -27,6 +27,7 @@ import { useLeadDetailQuery } from './useLeadDetailQuery'
 import { LeadStatusSelect } from './LeadStatusSelect'
 import { AdminProject } from './AdminProject'
 import { ClientPreview } from './ClientPreview'
+import { LeadDocuments } from './LeadDocuments'
 
 type Perspective = 'admin' | 'client'
 
@@ -127,6 +128,11 @@ export function LeadDetail({ email }: { email: string }) {
             <Tab label={t('delivery.tab')} sx={{ alignItems: 'flex-start', textAlign: 'left' }} />
           </Tabs>
           <Box sx={{ flex: 1, minWidth: 0 }}>{content}</Box>
+          {/* Documentation rail — always in view regardless of the active tab: the client's spec is
+              the working material of every stage. */}
+          <Box sx={{ width: { xs: '100%', md: 300 }, flexShrink: 0 }}>
+            <LeadDocuments email={lead.email} claimsDocs={lead.hasDoc} />
+          </Box>
         </Box>
       )}
     </Stack>
@@ -147,12 +153,6 @@ function Submission({ lead }: { lead: AdminLead }) {
           ))}
         </Box>
       </Field>
-      {lead.hasDoc && (
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.secondary' }}>
-          <DescriptionOutlined fontSize="small" />
-          <TextBody1Neutral60>{t('hasDocLong')}</TextBody1Neutral60>
-        </Box>
-      )}
       {lead.note && (
         <Field label={t('note')}>
           <Box sx={{ fontStyle: 'italic' }}>

@@ -607,6 +607,12 @@
     "clientComingSoon": "Ihre Projektübersicht — Angebote, Meilensteine und Demos — erscheint hier. Demnächst verfügbar.",
     "hasDoc": "Hat eigene Spezifikation / Dokumentation",
     "hasDocLong": "Der Kunde hat eine eigene Spezifikation / Dokumentation beigefügt.",
+    "leadDocs": {
+      "title": "Unterlagen",
+      "empty": "Noch keine Dateien",
+      "upload": "Datei hochladen",
+      "uploadFailed": "Upload fehlgeschlagen — bitte erneut versuchen"
+    },
     "allLeads": "Alle Anfragen",
     "loadingLead": "Anfrage wird geladen…",
     "leadNotFound": "Anfrage nicht gefunden.",

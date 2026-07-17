@@ -46,6 +46,15 @@ export class AdminApi extends BaseApiService {
     return this._post<void>(`${this.baseRoute}/clients/${encodeURIComponent(email)}/invite`)
   }
 
+  // --- Client-scoped documents (a lead's files arrive before any project exists) ---
+  getDocuments(email: string): Promise<AdminDocument[]> {
+    return this._get<AdminDocument[]>(`${this.baseRoute}/documents/${encodeURIComponent(email)}`)
+  }
+
+  uploadClientDocument(email: string, req: UploadDocumentRequest): Promise<AdminDocument> {
+    return this._post<AdminDocument>(`${this.baseRoute}/documents/${encodeURIComponent(email)}/upload`, req)
+  }
+
   // --- Project (delivery) ---
   private project(email: string): string {
     return `${this.baseRoute}/projects/${encodeURIComponent(email)}`

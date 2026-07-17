@@ -607,6 +607,12 @@
     "clientComingSoon": "Přehled vaší spolupráce — nabídky, milníky a ukázky — se zobrazí zde. Už brzy.",
     "hasDoc": "Má vlastní specifikaci / dokumentaci",
     "hasDocLong": "Klient přiložil vlastní specifikaci / dokumentaci.",
+    "leadDocs": {
+      "title": "Dokumentace",
+      "empty": "Zatím žádné soubory",
+      "upload": "Nahrát soubor",
+      "uploadFailed": "Nahrání selhalo — zkuste znovu"
+    },
     "allLeads": "Všechny poptávky",
     "loadingLead": "Načítá se poptávka…",
     "leadNotFound": "Poptávka nenalezena.",
