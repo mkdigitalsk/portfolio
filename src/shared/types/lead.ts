@@ -23,6 +23,7 @@ export interface AdminLead {
   phone: string | null
   note: string | null
   hasDoc: boolean
+  hasDesign: boolean
   createdAt: string // ISO-8601 UTC
   status: LeadStatus
 }
@@ -55,5 +56,6 @@ export interface LeadDraft {
   phone?: string
   note?: string
   hasDoc: boolean
+  hasDesign: boolean
   locale: string
 }

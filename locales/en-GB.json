@@ -142,6 +142,9 @@
     },
     "hasDocLabel": "I have my own documentation",
     "hasDocBenefit": "Send it over — or we'll go through it on the discovery call.",
+    "materialsLabel": "What you already have",
+    "hasDesignLabel": "I have my own design",
+    "hasDesignBenefit": "Figma, wireframes or finished screens.",
     "hasDocMail": "Client has their own documentation / spec."
   },
   "hero": {
@@ -606,12 +609,13 @@
     "welcomeNamed": "Welcome, {name}",
     "clientComingSoon": "Your engagement overview — proposals, milestones and demos — will appear here. Coming soon.",
     "hasDoc": "Has own spec / documentation",
-    "hasDocLong": "Client attached their own spec / documentation.",
+    "hasDocLong": "Client states they have their own spec / documentation.",
     "leadDocs": {
-      "title": "Documentation",
+      "title": "Materials",
       "empty": "No files yet",
       "upload": "Upload file",
-      "uploadFailed": "Upload failed — try again"
+      "uploadFailed": "Upload failed — try again",
+      "designClaim": "Client states they have their own design."
     },
     "allLeads": "All leads",
     "loadingLead": "Loading lead…",

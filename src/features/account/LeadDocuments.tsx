@@ -2,16 +2,24 @@
 
 import { useTranslations } from 'next-intl'
 import type { AdminDocument } from '@/shared/types'
-import { DescriptionOutlined, UploadFileOutlined } from '@mui/icons-material'
+import { BrushOutlined, DescriptionOutlined, UploadFileOutlined } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import { Button, TextBody1Neutral60, TextCaption, TextCaptionNeutral60, TextH6Bold } from '@/shared/components'
 import { downloadFile, isServedDocument } from '@/shared/api'
 import { useLeadDocumentsQuery, useUploadLeadDocumentMutation } from './useLeadDocuments'
 
-// Right-rail documentation card on the lead detail: the lead's claimed-docs note (configurator
-// checkbox — a claim, not a file) + the real stored files (admin uploads what the client emails in).
-export function LeadDocuments({ email, claimsDocs }: { email: string; claimsDocs: boolean }) {
+// Right-rail materials card on the lead detail: the lead's claims (configurator ticks — docs/design,
+// a claim, not a file) + the real stored files (admin uploads what the client emails in).
+export function LeadDocuments({
+  email,
+  claimsDocs,
+  claimsDesign,
+}: {
+  email: string
+  claimsDocs: boolean
+  claimsDesign: boolean
+}) {
   const t = useTranslations('account')
   const { data: documents = [] } = useLeadDocumentsQuery(email)
   const upload = useUploadLeadDocumentMutation(email)
@@ -42,6 +50,12 @@ export function LeadDocuments({ email, claimsDocs }: { email: string; claimsDocs
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.secondary' }}>
             <DescriptionOutlined fontSize="small" />
             <TextCaptionNeutral60>{t('hasDocLong')}</TextCaptionNeutral60>
+          </Box>
+        )}
+        {claimsDesign && (
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.secondary' }}>
+            <BrushOutlined fontSize="small" />
+            <TextCaptionNeutral60>{t('leadDocs.designClaim')}</TextCaptionNeutral60>
           </Box>
         )}
         {documents.length === 0 ? (

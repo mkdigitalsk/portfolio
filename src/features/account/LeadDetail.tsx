@@ -131,7 +131,7 @@ export function LeadDetail({ email }: { email: string }) {
           {/* Documentation rail — always in view regardless of the active tab: the client's spec is
               the working material of every stage. */}
           <Box sx={{ width: { xs: '100%', md: 300 }, flexShrink: 0 }}>
-            <LeadDocuments email={lead.email} claimsDocs={lead.hasDoc} />
+            <LeadDocuments email={lead.email} claimsDocs={lead.hasDoc} claimsDesign={lead.hasDesign} />
           </Box>
         </Box>
       )}

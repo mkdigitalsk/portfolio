@@ -142,6 +142,9 @@
     },
     "hasDocLabel": "Mám vlastnú dokumentáciu",
     "hasDocBenefit": "Pošlete nám ju — alebo ju prejdeme na úvodnom hovore.",
+    "materialsLabel": "Vaše podklady",
+    "hasDesignLabel": "Mám vlastný design",
+    "hasDesignBenefit": "Figma, wireframy alebo hotové obrazovky.",
     "hasDocMail": "Klient má vlastnú dokumentáciu / špecifikáciu."
   },
   "hero": {
@@ -606,12 +609,13 @@
     "welcomeNamed": "Vitajte, {name}",
     "clientComingSoon": "Prehľad vašej spolupráce — ponuky, míľniky a ukážky — sa zobrazí tu. Už čoskoro.",
     "hasDoc": "Má vlastnú špecifikáciu / dokumentáciu",
-    "hasDocLong": "Klient priložil vlastnú špecifikáciu / dokumentáciu.",
+    "hasDocLong": "Klient uvádza vlastnú špecifikáciu / dokumentáciu.",
     "leadDocs": {
-      "title": "Dokumentácia",
+      "title": "Podklady",
       "empty": "Zatiaľ žiadne súbory",
       "upload": "Nahrať súbor",
-      "uploadFailed": "Nahratie zlyhalo — skúste znova"
+      "uploadFailed": "Nahratie zlyhalo — skúste znova",
+      "designClaim": "Klient uvádza vlastný design."
     },
     "allLeads": "Všetky dopyty",
     "loadingLead": "Načítava sa dopyt…",

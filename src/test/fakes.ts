@@ -16,6 +16,7 @@ export function fakeLead(overrides?: Partial<AdminLead>): AdminLead {
     phone: null,
     note: null,
     hasDoc: false,
+    hasDesign: false,
     createdAt: '2026-01-01T00:00:00Z',
     status: 'NEW',
     ...overrides,

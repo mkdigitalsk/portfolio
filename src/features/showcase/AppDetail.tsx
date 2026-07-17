@@ -1,6 +1,15 @@
 'use client'
 
-import { ArrowBack, CheckCircleRounded, Language, RadioButtonUnchecked, Send, Smartphone } from '@mui/icons-material'
+import {
+  ArrowBack,
+  BrushOutlined,
+  CheckCircleRounded,
+  DescriptionOutlined,
+  Language,
+  RadioButtonUnchecked,
+  Send,
+  Smartphone,
+} from '@mui/icons-material'
 import Alert from '@mui/material/Alert'
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
@@ -76,6 +85,7 @@ export function AppDetail({ appId }: AppDetailProps) {
   const [sent, setSent] = useState(false)
   const [errorArmedFor, setErrorArmedFor] = useState('')
   const [hasDoc, setHasDoc] = useState(false) // "I have my own documentation" — optional flag on the lead
+  const [hasDesign, setHasDesign] = useState(false) // "I have my own design" — decides whether scope needs a design phase
   const submitLead = useSubmitLeadMutation()
 
   // Reset everything to defaults when the app type changes (rail switch) — the React-recommended
@@ -95,6 +105,7 @@ export function AppDetail({ appId }: AppDetailProps) {
     setSent(false)
     setErrorArmedFor('')
     setHasDoc(false)
+    setHasDesign(false)
   }
 
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
@@ -178,6 +189,7 @@ export function AppDetail({ appId }: AppDetailProps) {
         phone: phoneHasNumber ? phone.trim() : undefined,
         note: note.trim() || undefined,
         hasDoc,
+        hasDesign,
         locale,
       })
       if (success) setSent(true)
@@ -482,54 +494,6 @@ export function AppDetail({ appId }: AppDetailProps) {
                         </Box>
                       )
                     })}
-
-                    {/* Optional meta tick at the bottom of the list — the client already has a spec/docs. */}
-                    <Box
-                      role="checkbox"
-                      aria-checked={hasDoc}
-                      tabIndex={0}
-                      onClick={() => setHasDoc(!hasDoc)}
-                      onKeyDown={(event) => onSelectableKeyDown(event, () => setHasDoc(!hasDoc))}
-                      sx={{
-                        display: 'flex',
-                        gap: 1.5,
-                        alignItems: 'flex-start',
-                        cursor: 'pointer',
-                        borderRadius: 1,
-                        p: 1,
-                        mx: -1,
-                        mt: 1,
-                        outline: 'none',
-                        opacity: hasDoc ? 1 : 0.6,
-                        transition: 'background-color 0.15s ease, opacity 0.15s ease',
-                        '&:hover': { backgroundColor: 'action.hover' },
-                        '&:focus-visible': { backgroundColor: 'action.hover' },
-                      }}
-                    >
-                      {hasDoc ? (
-                        <CheckCircleRounded
-                          sx={{
-                            color: accent,
-                            fontSize: 22,
-                            mt: '2px',
-                            flexShrink: 0,
-                          }}
-                        />
-                      ) : (
-                        <RadioButtonUnchecked
-                          sx={{
-                            color: 'text.disabled',
-                            fontSize: 22,
-                            mt: '2px',
-                            flexShrink: 0,
-                          }}
-                        />
-                      )}
-                      <Box>
-                        <TextBody1Neutral80>{t('home.hasDocLabel')}</TextBody1Neutral80>
-                        <TextCaptionNeutral60>{t('home.hasDocBenefit')}</TextCaptionNeutral60>
-                      </Box>
-                    </Box>
                   </Stack>
                 </Box>
 
@@ -589,6 +553,32 @@ export function AppDetail({ appId }: AppDetailProps) {
                     <Box sx={{ mt: 1 }}>
                       <TextCaptionNeutral60>{t('home.scope.hint')}</TextCaptionNeutral60>
                     </Box>
+                  </Box>
+
+                  {/* Materials — engagement qualifiers (docs/design), deliberately outside the features
+                      list: they describe what the client brings, not what the app contains. */}
+                  <Box sx={{ mb: 3 }}>
+                    <Box sx={{ mb: 1 }}>
+                      <TextCaptionNeutral60>{t('home.materialsLabel')}</TextCaptionNeutral60>
+                    </Box>
+                    <Stack spacing={1}>
+                      <MaterialTick
+                        checked={hasDoc}
+                        accent={accent}
+                        Icon={DescriptionOutlined}
+                        label={t('home.hasDocLabel')}
+                        benefit={t('home.hasDocBenefit')}
+                        onToggle={() => setHasDoc(!hasDoc)}
+                      />
+                      <MaterialTick
+                        checked={hasDesign}
+                        accent={accent}
+                        Icon={BrushOutlined}
+                        label={t('home.hasDesignLabel')}
+                        benefit={t('home.hasDesignBenefit')}
+                        onToggle={() => setHasDesign(!hasDesign)}
+                      />
+                    </Stack>
                   </Box>
 
                   <Stack spacing={2} sx={{ mb: error ? 2 : 3 }}>
@@ -675,6 +665,61 @@ export function AppDetail({ appId }: AppDetailProps) {
             </>
           )}
         </Box>
+      </Box>
+    </Box>
+  )
+}
+
+// Bordered toggle row in the platform-chip visual language — selectable things carry a border.
+function MaterialTick({
+  checked,
+  accent,
+  Icon,
+  label,
+  benefit,
+  onToggle,
+}: {
+  checked: boolean
+  accent: string
+  Icon: typeof DescriptionOutlined
+  label: string
+  benefit: string
+  onToggle: () => void
+}) {
+  return (
+    <Box
+      role="checkbox"
+      aria-checked={checked}
+      tabIndex={0}
+      onClick={onToggle}
+      onKeyDown={(event: KeyboardEvent) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault()
+          onToggle()
+        }
+      }}
+      sx={{
+        display: 'flex',
+        gap: 1.25,
+        alignItems: 'flex-start',
+        cursor: 'pointer',
+        borderRadius: 2,
+        py: 1,
+        px: 1.5,
+        outline: 'none',
+        border: '1px solid',
+        borderColor: checked ? accent : 'divider',
+        bgcolor: checked ? `${accent}14` : 'transparent',
+        opacity: checked ? 1 : 0.7,
+        transition: 'border-color 0.15s ease, background-color 0.15s ease, opacity 0.15s ease',
+        '&:hover': { borderColor: accent },
+        '&:focus-visible': { borderColor: accent },
+      }}
+    >
+      <Icon sx={{ fontSize: 20, mt: '2px', color: checked ? accent : 'text.secondary', flexShrink: 0 }} />
+      <Box>
+        <TextBody1Neutral80>{label}</TextBody1Neutral80>
+        <TextCaptionNeutral60>{benefit}</TextCaptionNeutral60>
       </Box>
     </Box>
   )
