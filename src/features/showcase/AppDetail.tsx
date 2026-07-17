@@ -128,11 +128,9 @@ export function AppDetail({ appId }: AppDetailProps) {
     benefit: t(`apps.${id}.features.${key}.benefit`),
   }))
   const selectedFeatures = features.filter((feature) => selected.has(feature.key))
-  const canSubmit = hasDoc
-    ? true
-    : isCustom
-      ? selectedFeatures.length > 0 || note.trim().length > 0
-      : selectedFeatures.length > 0
+  // Sendable = a valid email AND some content (features, or own docs, or — for custom — a note).
+  const hasContent = hasDoc || selectedFeatures.length > 0 || (isCustom && note.trim().length > 0)
+  const canSubmit = emailValid && hasContent
 
   // Public scope signal — complexity only, never a price (price = difficulty × country stays internal).
   const maxScore = scopeScore(appId, app.featureKeys, ['web', 'mobile'])
