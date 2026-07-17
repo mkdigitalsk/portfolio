@@ -9,6 +9,7 @@ import type {
   PaymentRequest,
   StartProjectRequest,
   UpdateLinksRequest,
+  UploadDocumentRequest,
   UpdateProjectRequest,
 } from '@/shared/types'
 
@@ -76,6 +77,14 @@ export function useArchiveProject(email: string) {
 export function useUnarchiveProject(email: string) {
   const invalidate = useInvalidate(email)
   return useMutation({ mutationFn: () => adminService.unarchiveProject(email), onSuccess: invalidate })
+}
+
+export function useUploadDocument(email: string) {
+  const invalidate = useInvalidate(email)
+  return useMutation({
+    mutationFn: (req: UploadDocumentRequest) => adminService.uploadDocument(email, req),
+    onSuccess: invalidate,
+  })
 }
 
 export function useAddDocument(email: string) {

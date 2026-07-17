@@ -26,7 +26,7 @@ import {
   TextCaptionNeutral60,
   TextH6Bold,
 } from '@/shared/components'
-import { httpStatus } from '@/shared/api'
+import { downloadFile, isServedDocument, httpStatus } from '@/shared/api'
 import { PANEL } from '@/shared/layout'
 import type {
   ClientDemo,
@@ -378,13 +378,16 @@ const DOC_ICON: Record<DocumentType, React.ReactNode> = {
 }
 
 function DocumentRow({ doc, t }: { doc: ClientDocument; t: T }) {
+  // Server-stored files need the auth header — download through the API client instead of a plain link.
+  const served = isServedDocument(doc.url)
   return (
     // Whole row is the link — the type icon labels it; a muted external-link glyph is the only affordance.
     <Box
       component={Link}
-      href={doc.url}
-      target="_blank"
+      href={served ? '#' : doc.url}
+      target={served ? undefined : '_blank'}
       rel="noopener"
+      onClick={served ? (e: React.MouseEvent) => { e.preventDefault(); void downloadFile(doc.url, doc.title) } : undefined}
       sx={{
         display: 'flex',
         alignItems: 'center',

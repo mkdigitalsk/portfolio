@@ -15,6 +15,7 @@ import type {
   PaymentRequest,
   StartProjectRequest,
   UpdateLinksRequest,
+  UploadDocumentRequest,
   UpdateProjectRequest,
 } from '@/shared/types'
 import { BaseApiService } from './BaseApiService'
@@ -81,6 +82,10 @@ export class AdminApi extends BaseApiService {
 
   unarchiveProject(email: string): Promise<AdminProject> {
     return this._post<AdminProject>(`${this.project(email)}/unarchive`)
+  }
+
+  uploadDocument(email: string, req: UploadDocumentRequest): Promise<AdminDocument> {
+    return this._post<AdminDocument>(`${this.project(email)}/documents/upload`, req)
   }
 
   addDocument(email: string, req: DocumentRequest): Promise<AdminDocument> {

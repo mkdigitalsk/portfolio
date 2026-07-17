@@ -10,3 +10,4 @@ export const clientApi = new ClientApi(client)
 export const leadApi = new LeadApi(client)
 
 export { httpStatus } from './httpStatus'
+export { downloadFile, isServedDocument } from './downloadFile'

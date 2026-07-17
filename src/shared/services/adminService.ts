@@ -6,6 +6,7 @@ import type {
   PaymentRequest,
   StartProjectRequest,
   UpdateLinksRequest,
+  UploadDocumentRequest,
   UpdateProjectRequest,
 } from '@/shared/types'
 import { adminApi } from '../api'
@@ -31,6 +32,7 @@ export const adminService = {
   archiveProject: (email: string) => adminApi.archiveProject(email),
   unarchiveProject: (email: string) => adminApi.unarchiveProject(email),
   addDocument: (email: string, req: DocumentRequest) => adminApi.addDocument(email, req),
+  uploadDocument: (email: string, req: UploadDocumentRequest) => adminApi.uploadDocument(email, req),
   deleteDocument: (email: string, id: number) => adminApi.deleteDocument(email, id),
   addMilestone: (email: string, req: MilestoneRequest) => adminApi.addMilestone(email, req),
   updateMilestone: (email: string, id: number, req: MilestoneRequest) => adminApi.updateMilestone(email, id, req),

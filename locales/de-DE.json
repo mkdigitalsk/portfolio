@@ -675,6 +675,7 @@
       "unarchive": "Wiederherstellen",
       "docTitle": "Dokumenttitel",
       "docUrl": "Dokument-URL",
+      "chooseFile": "Datei anhängen…",
       "scope": "Im Umfang",
       "outOfScope": "Nicht im Umfang",
       "acceptanceCriteria": "Abnahmekriterien",

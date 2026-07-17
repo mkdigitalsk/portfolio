@@ -675,6 +675,7 @@
       "unarchive": "Obnovit z archivu",
       "docTitle": "Název dokumentu",
       "docUrl": "URL dokumentu",
+      "chooseFile": "Přiložit soubor…",
       "scope": "V rozsahu",
       "outOfScope": "Mimo rozsah",
       "acceptanceCriteria": "Akceptační kritéria",

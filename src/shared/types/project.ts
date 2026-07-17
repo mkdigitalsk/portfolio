@@ -155,6 +155,14 @@ export interface UpdateLinksRequest {
   designUrl?: string | null
 }
 
+export interface UploadDocumentRequest {
+  type: DocumentType
+  title: string
+  filename: string
+  contentType: string
+  base64: string
+}
+
 export interface DocumentRequest {
   type: DocumentType
   title: string

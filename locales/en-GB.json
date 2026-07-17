@@ -675,6 +675,7 @@
       "unarchive": "Unarchive",
       "docTitle": "Document title",
       "docUrl": "Document URL",
+      "chooseFile": "Attach file…",
       "scope": "In scope",
       "outOfScope": "Out of scope",
       "acceptanceCriteria": "Acceptance criteria",

@@ -19,7 +19,7 @@ import {
   TextCaptionNeutral60,
   TextH6Bold,
 } from '@/shared/components'
-import { httpStatus } from '@/shared/api'
+import { downloadFile, httpStatus, isServedDocument } from '@/shared/api'
 import type {
   AdminMilestone,
   AdminProject as Project,
@@ -27,6 +27,7 @@ import type {
   DocumentType,
   DemoRequest,
   MilestoneRequest,
+  UploadDocumentRequest,
   MilestoneStatus,
   PaymentRequest,
   ProjectHealth,
@@ -51,6 +52,7 @@ import {
   useStartProject,
   useUnarchiveProject,
   useUpdateDemo,
+  useUploadDocument,
   useUpdateLinks,
   useUpdateMilestone,
   useUpdatePayment,
@@ -197,6 +199,7 @@ function ManageProject({ data, email, t }: { data: Project; email: string; t: T 
   const updateMilestone = useUpdateMilestone(email)
   const deleteMilestone = useDeleteMilestone(email)
   const addDocument = useAddDocument(email)
+  const uploadDocument = useUploadDocument(email)
   const deleteDocument = useDeleteDocument(email)
   const addDemo = useAddDemo(email)
   const updateDemo = useUpdateDemo(email)
@@ -352,9 +355,15 @@ function ManageProject({ data, email, t }: { data: Project; email: string; t: T 
               <Box key={d.id} sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
                 <Chip size="small" variant="outlined" label={t(`project.documentType.${d.type}`)} />
                 <Box sx={{ flex: 1, minWidth: 160 }}>
-                  <TextBody1Neutral60>
-                    {d.title} — {d.url}
-                  </TextBody1Neutral60>
+                  {isServedDocument(d.url) ? (
+                    <Button variant="text" sx={{ px: 0.5 }} onClick={() => downloadFile(d.url, d.title)}>
+                      {d.title}
+                    </Button>
+                  ) : (
+                    <Button variant="text" sx={{ px: 0.5 }} href={d.url} target="_blank" rel="noopener">
+                      {d.title}
+                    </Button>
+                  )}
                 </Box>
                 <IconButton
                   aria-label={t('delivery.delete')}
@@ -365,7 +374,7 @@ function ManageProject({ data, email, t }: { data: Project; email: string; t: T 
               </Box>
             ))}
           </Stack>
-          <AddDocumentForm t={t} onAdd={(req) => addDocument.mutate(req)} />
+          <AddDocumentForm t={t} onAdd={(req) => addDocument.mutate(req)} onUpload={(req) => uploadDocument.mutate(req)} />
         </Box>
       )}
 
@@ -772,22 +781,42 @@ function AddPaymentForm({
   )
 }
 
+// A document is either a LINK (url — long documentation lives in its own home) or a small signed
+// FILE (uploaded, stored server-side). Attaching a file supersedes the url field.
 function AddDocumentForm({
   t,
   onAdd,
+  onUpload,
 }: {
   t: T
   onAdd: (req: { type: DocumentType; title: string; url: string }) => void
+  onUpload: (req: UploadDocumentRequest) => void
 }) {
   const [type, setType] = useState<DocumentType>('CONTRACT')
   const [title, setTitle] = useState('')
   const [url, setUrl] = useState('')
+  const [file, setFile] = useState<{ filename: string; contentType: string; base64: string } | null>(null)
+
+  const pickFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const picked = e.target.files?.[0]
+    if (!picked) return
+    const reader = new FileReader()
+    reader.onload = () => {
+      const base64 = (reader.result as string).split(',')[1] ?? ''
+      setFile({ filename: picked.name, contentType: picked.type || 'application/octet-stream', base64 })
+      if (!title.trim()) setTitle(picked.name.replace(/\.[^.]+$/, ''))
+    }
+    reader.readAsDataURL(picked)
+    e.target.value = ''
+  }
 
   const submit = () => {
-    if (!title.trim() || !url.trim()) return
-    onAdd({ type, title: title.trim(), url: url.trim() })
+    if (!title.trim() || (!file && !url.trim())) return
+    if (file) onUpload({ type, title: title.trim(), ...file })
+    else onAdd({ type, title: title.trim(), url: url.trim() })
     setTitle('')
     setUrl('')
+    setFile(null)
   }
 
   return (
@@ -817,8 +846,13 @@ function AddDocumentForm({
         sx={[dense, { flex: 1, minWidth: 180 }]}
         label={t('delivery.docUrl')}
         value={url}
+        disabled={file !== null}
         onChange={(e) => setUrl(e.target.value)}
       />
+      <Button variant="outline" component="label">
+        {file ? file.filename : t('delivery.chooseFile')}
+        <input type="file" hidden onChange={pickFile} />
+      </Button>
       <Button variant="outline" startIcon={<Add />} onClick={submit}>
         {t('delivery.add')}
       </Button>
