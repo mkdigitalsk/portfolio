@@ -374,7 +374,11 @@ function ManageProject({ data, email, t }: { data: Project; email: string; t: T 
               </Box>
             ))}
           </Stack>
-          <AddDocumentForm t={t} onAdd={(req) => addDocument.mutate(req)} onUpload={(req) => uploadDocument.mutate(req)} />
+          <AddDocumentForm
+            t={t}
+            onAdd={(req) => addDocument.mutate(req)}
+            onUpload={(req) => uploadDocument.mutate(req)}
+          />
         </Box>
       )}
 
@@ -604,8 +608,7 @@ function LinksEditor({ data, t, onSave }: { data: Project; t: T; onSave: (req: U
   const [jira, setJira] = useState(data.jiraBoardUrl ?? '')
   const [spec, setSpec] = useState(data.specUrl ?? '')
   const [design, setDesign] = useState(data.designUrl ?? '')
-  const dirty =
-    jira !== (data.jiraBoardUrl ?? '') || spec !== (data.specUrl ?? '') || design !== (data.designUrl ?? '')
+  const dirty = jira !== (data.jiraBoardUrl ?? '') || spec !== (data.specUrl ?? '') || design !== (data.designUrl ?? '')
 
   return (
     <Box>

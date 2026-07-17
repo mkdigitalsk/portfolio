@@ -1,13 +1,7 @@
 import { Shield } from '@mui/icons-material'
 import { Box } from '@mui/material'
 import { getTranslations } from 'next-intl/server'
-import {
-  Reveal,
-  TextBody1Neutral60,
-  TextBody1Neutral80,
-  TextCaptionNeutral60,
-  TextH6Bold,
-} from '@/shared/components'
+import { Reveal, TextBody1Neutral60, TextBody1Neutral80, TextCaptionNeutral60, TextH6Bold } from '@/shared/components'
 import { ContactCtaButton } from '../ContactCtaButton'
 import { Section } from '../Section'
 

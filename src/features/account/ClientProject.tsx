@@ -387,7 +387,14 @@ function DocumentRow({ doc, t }: { doc: ClientDocument; t: T }) {
       href={served ? '#' : doc.url}
       target={served ? undefined : '_blank'}
       rel="noopener"
-      onClick={served ? (e: React.MouseEvent) => { e.preventDefault(); void downloadFile(doc.url, doc.title) } : undefined}
+      onClick={
+        served
+          ? (e: React.MouseEvent) => {
+              e.preventDefault()
+              void downloadFile(doc.url, doc.title)
+            }
+          : undefined
+      }
       sx={{
         display: 'flex',
         alignItems: 'center',

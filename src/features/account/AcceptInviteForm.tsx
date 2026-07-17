@@ -53,7 +53,12 @@ export function AcceptInviteForm() {
       </Stack>
       <form onSubmit={submit}>
         <Stack spacing={2}>
-          <Input label={t('acceptInvite.name')} autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} />
+          <Input
+            label={t('acceptInvite.name')}
+            autoComplete="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
           <Input
             label={t('acceptInvite.password')}
             type="password"
