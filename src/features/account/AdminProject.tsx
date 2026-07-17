@@ -47,6 +47,7 @@ import {
   useDeleteDocument,
   useDeleteMilestone,
   useDeletePayment,
+  useInviteClient,
   useStartProject,
   useUnarchiveProject,
   useUpdateDemo,
@@ -188,6 +189,7 @@ function StartProjectForm({ email, t }: { email: string; t: T }) {
 function ManageProject({ data, email, t }: { data: Project; email: string; t: T }) {
   const update = useUpdateProject(email)
   const updateLinks = useUpdateLinks(email)
+  const invite = useInviteClient(email)
   const complete = useCompleteProject(email)
   const archive = useArchiveProject(email)
   const unarchive = useUnarchiveProject(email)
@@ -260,6 +262,9 @@ function ManageProject({ data, email, t }: { data: Project; email: string; t: T 
               onChange={(e) => patchProject({ targetEndDate: toMillis(e.target.value) })}
             />
             <Box sx={{ flex: 1 }} />
+            <Button variant="outline" loading={invite.isPending} onClick={() => invite.mutate()}>
+              {invite.isSuccess ? t('delivery.inviteSent') : t('delivery.invite')}
+            </Button>
             {data.state === 'ACTIVE' && (
               <Button variant="outline" onClick={() => complete.mutate()}>
                 {t('delivery.complete')}

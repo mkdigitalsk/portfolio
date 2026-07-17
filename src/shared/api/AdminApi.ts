@@ -41,6 +41,10 @@ export class AdminApi extends BaseApiService {
     return this._get<AdminClient[]>(`${this.baseRoute}/clients`)
   }
 
+  inviteClient(email: string): Promise<void> {
+    return this._post<void>(`${this.baseRoute}/clients/${encodeURIComponent(email)}/invite`)
+  }
+
   // --- Project (delivery) ---
   private project(email: string): string {
     return `${this.baseRoute}/projects/${encodeURIComponent(email)}`

@@ -655,6 +655,8 @@
       "confirm": "Potvrdit",
       "cancel": "Zrušit",
       "deleteConfirmTitle": "Odstranit tuto položku?",
+      "invite": "Poslat pozvánku do portálu",
+      "inviteSent": "Pozvánka odeslána ✓",
       "released": "Vydáno",
       "milestoneTitle": "Název milníku",
       "demoTitle": "Název ukázky",
@@ -763,6 +765,18 @@
       "none": "Zatím žádní klienti.",
       "back": "Všichni klienti",
       "deliveryCaption": "Dodávka a projekt"
+    },
+    "acceptInvite": {
+      "title": "Vítejte ve vašem klientském portálu",
+      "subtitle": "Nastavte si heslo a aktivujte přístup.",
+      "name": "Vaše jméno",
+      "password": "Heslo",
+      "confirm": "Potvrzení hesla",
+      "passwordHint": "Min. 8 znaků, velké/malé písmeno, číslice a speciální znak (@$!%*?&)",
+      "submit": "Aktivovat a přihlásit se",
+      "mismatch": "Hesla se neshodují",
+      "invalid": "Pozvánka je neplatná nebo vypršela — požádejte nás o novou.",
+      "missing": "Odkazu chybí zvací token — použijte odkaz z e-mailu."
     }
   }
 }

@@ -51,6 +51,10 @@ export function useUpdateProject(email: string) {
   })
 }
 
+export function useInviteClient(email: string) {
+  return useMutation({ mutationFn: () => adminService.inviteClient(email) })
+}
+
 export function useUpdateLinks(email: string) {
   const invalidate = useInvalidate(email)
   return useMutation({

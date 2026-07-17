@@ -19,6 +19,8 @@ export const adminService = {
   // clients (won leads + delivery)
   getClients: () => adminApi.getClients(),
 
+  inviteClient: (email: string) => adminApi.inviteClient(email),
+
   // project (delivery)
   getProject: (email: string) => adminApi.getProject(email),
   getClientPreview: (email: string) => adminApi.getClientPreview(email),

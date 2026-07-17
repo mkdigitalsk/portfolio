@@ -11,6 +11,12 @@ export interface LoginRequest {
   password: string
 }
 
+export interface AcceptInviteRequest {
+  token: string
+  password: string
+  name?: string
+}
+
 export interface AuthResponse {
   token: string
   user: { email: string; name: string }

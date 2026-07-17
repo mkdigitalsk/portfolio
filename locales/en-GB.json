@@ -655,6 +655,8 @@
       "confirm": "Confirm",
       "cancel": "Cancel",
       "deleteConfirmTitle": "Delete this item?",
+      "invite": "Send portal invite",
+      "inviteSent": "Invite sent ✓",
       "released": "Released",
       "milestoneTitle": "Milestone title",
       "demoTitle": "Demo title",
@@ -763,6 +765,18 @@
       "none": "No clients yet.",
       "back": "All clients",
       "deliveryCaption": "Delivery & project"
+    },
+    "acceptInvite": {
+      "title": "Welcome to your client portal",
+      "subtitle": "Set your password to activate access.",
+      "name": "Your name",
+      "password": "Password",
+      "confirm": "Confirm password",
+      "passwordHint": "Min. 8 characters with upper/lower case, a digit and a special character (@$!%*?&)",
+      "submit": "Activate & sign in",
+      "mismatch": "Passwords do not match",
+      "invalid": "This invitation is invalid or expired — ask us for a new one.",
+      "missing": "This link is missing its invitation token — use the link from your email."
     }
   }
 }
