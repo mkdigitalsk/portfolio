@@ -22,7 +22,6 @@
     "consent": "Odoslaním súhlasíte s našimi <link>zásadami ochrany osobných údajov</link>.",
     "back": "Späť",
     "emailLabel": "Váš e-mail",
-    "emailInvalid": "Zadajte platnú e-mailovú adresu.",
     "nameLabel": "Meno alebo firma",
     "messageLabel": "Ešte niečo?",
     "messagePlaceholder": "Nie je to v zozname? Aj to vieme — napíšte nám.",
@@ -789,5 +788,10 @@
       "invalid": "Pozvánka je neplatná alebo expirovala — požiadajte nás o novú.",
       "missing": "Odkazu chýba pozývací token — použite odkaz z e-mailu."
     }
+  },
+  "validation": {
+    "required": "Toto pole je povinné",
+    "invalidEmail": "Zadajte platný e-mail",
+    "contentRequired": "Vyberte aspoň jednu funkciu, alebo označte, že máte dokumentáciu"
   }
 }

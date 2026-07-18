@@ -15,7 +15,9 @@ import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import { useLocale, useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { useEffect, useState, useSyncExternalStore, type KeyboardEvent } from 'react'
+import { useMemo, useState, useSyncExternalStore, type KeyboardEvent } from 'react'
+import { Controller, useForm, useWatch } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Button,
   Input,
@@ -29,8 +31,8 @@ import {
 import { ACCOUNT_MAX, PAGE_PT } from '@/shared/layout'
 import { detailApps } from './apps'
 import { scopeColor, scopeFill, scopeScore, scopeTier } from './complexity'
+import { LEAD_FORM_DEFAULTS, makeLeadSchema, type LeadFormData } from './schemas'
 import { useSubmitLeadMutation } from './useSubmitLeadMutation'
-const EMAIL_ERROR_DELAY_MS = 800
 
 // Phone country default: server-side IP geo (Vercel X-Vercel-IP-Country → geo_country cookie, set in
 // proxy.ts) when it resolves to a target market, else the active locale, else SK. Applied via a mount
@@ -65,7 +67,13 @@ interface AppDetailProps {
   appId: string
 }
 
+// key={appId} remounts the whole configurator on app-type switch — every piece of state (form,
+// selections, sent/error) starts fresh; no manual reset choreography.
 export function AppDetail({ appId }: AppDetailProps) {
+  return <AppDetailContent key={appId} appId={appId} />
+}
+
+function AppDetailContent({ appId }: AppDetailProps) {
   const t = useTranslations()
   const locale = useLocale()
   // Geo cookie (set in proxy.ts) beats the locale default. useSyncExternalStore keeps SSR/hydration
@@ -74,48 +82,23 @@ export function AppDetail({ appId }: AppDetailProps) {
   const phoneCountry = geoCountry ?? PHONE_COUNTRY_BY_LOCALE[locale] ?? 'SK'
   const app = detailApps.find((item) => item.id === appId)
   const isCustom = appId === 'custom'
-  const [selected, setSelected] = useState<Set<string>>(() => new Set())
-  const [platforms, setPlatforms] = useState<Set<string>>(() => new Set(['web']))
-  const [email, setEmail] = useState('')
-  const [name, setName] = useState('')
-  const [phone, setPhone] = useState('')
   const [phoneHasNumber, setPhoneHasNumber] = useState(false)
-  const [note, setNote] = useState('')
   const [error, setError] = useState(false)
   const [sent, setSent] = useState(false)
-  const [errorArmedFor, setErrorArmedFor] = useState('')
-  const [hasDoc, setHasDoc] = useState(false) // "I have my own documentation" — optional flag on the lead
-  const [hasDesign, setHasDesign] = useState(false) // "I have my own design" — decides whether scope needs a design phase
   const submitLead = useSubmitLeadMutation()
 
-  // Reset everything to defaults when the app type changes (rail switch) — the React-recommended
-  // "adjust state when a prop changes" pattern, robust even if Next reuses the instance. Each app
-  // is independent: re-opening a tab starts fresh, no bleed from the previous one.
-  const [activeAppId, setActiveAppId] = useState(appId)
-  if (appId !== activeAppId) {
-    setActiveAppId(appId)
-    setSelected(new Set())
-    setPlatforms(new Set(['web']))
-    setEmail('')
-    setName('')
-    setPhone('')
-    setPhoneHasNumber(false)
-    setNote('')
-    setError(false)
-    setSent(false)
-    setErrorArmedFor('')
-    setHasDoc(false)
-    setHasDesign(false)
-  }
-
-  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-  useEffect(() => {
-    if (!email || emailValid) return
-    const timer = setTimeout(() => setErrorArmedFor(email), EMAIL_ERROR_DELAY_MS)
-    return () => clearTimeout(timer)
-  }, [email, emailValid])
-  // Keyed to the email string so it re-arms each keystroke and the effect needs no synchronous setState.
-  const showEmailError = !!email && !emailValid && errorArmedFor === email
+  // The schema is THE required-fields list — the send button gates purely on formState.isValid;
+  // no requirement lives outside it (see schemas.ts).
+  const schema = useMemo(() => makeLeadSchema(isCustom), [isCustom])
+  const { control, handleSubmit, setValue, formState } = useForm<LeadFormData>({
+    resolver: zodResolver(schema),
+    defaultValues: LEAD_FORM_DEFAULTS,
+    mode: 'onChange',
+  })
+  const [selectedFeatureKeys, selectedPlatforms, hasDoc, hasDesign] = useWatch({
+    control,
+    name: ['features', 'platforms', 'hasDoc', 'hasDesign'],
+  })
 
   if (!app) return null
 
@@ -127,40 +110,32 @@ export function AppDetail({ appId }: AppDetailProps) {
     label: t(`apps.${id}.features.${key}.label`),
     benefit: t(`apps.${id}.features.${key}.benefit`),
   }))
-  const selectedFeatures = features.filter((feature) => selected.has(feature.key))
-  // Sendable = a valid email AND some content (features, or own docs, or — for custom — a note).
-  const hasContent = hasDoc || selectedFeatures.length > 0 || (isCustom && note.trim().length > 0)
-  const canSubmit = emailValid && hasContent
+  const selectedFeatures = features.filter((feature) => selectedFeatureKeys.includes(feature.key))
 
   // Public scope signal — complexity only, never a price (price = difficulty × country stays internal).
   const maxScore = scopeScore(appId, app.featureKeys, ['web', 'mobile'])
-  const scopeValue = scopeScore(appId, selected, platforms)
+  const scopeValue = scopeScore(appId, selectedFeatureKeys, selectedPlatforms)
   const fill = scopeFill(scopeValue, maxScore)
   const tier = scopeTier(fill)
 
   const toggle = (key: string) => {
-    setSelected((prev) => {
-      const next = new Set(prev)
-      if (next.has(key)) {
-        next.delete(key)
-      } else {
-        next.add(key)
-      }
-      return next
-    })
+    const next = selectedFeatureKeys.includes(key)
+      ? selectedFeatureKeys.filter((k) => k !== key)
+      : [...selectedFeatureKeys, key]
+    setValue('features', next, { shouldValidate: true })
   }
 
   const togglePlatform = (key: string) => {
-    setPlatforms((prev) => {
-      const next = new Set(prev)
-      if (next.has(key)) {
-        if (next.size === 1) return prev // keep at least one
-        next.delete(key)
-      } else {
-        next.add(key)
-      }
-      return next
-    })
+    if (selectedPlatforms.includes(key)) {
+      if (selectedPlatforms.length === 1) return // keep at least one
+      setValue(
+        'platforms',
+        selectedPlatforms.filter((k) => k !== key),
+        { shouldValidate: true },
+      )
+    } else {
+      setValue('platforms', [...selectedPlatforms, key], { shouldValidate: true })
+    }
   }
 
   const onSelectableKeyDown = (event: KeyboardEvent, action: () => void) => {
@@ -170,24 +145,20 @@ export function AppDetail({ appId }: AppDetailProps) {
     }
   }
 
-  const submit = async () => {
+  const submit = handleSubmit(async (data) => {
     if (submitLead.isPending) return
-    if (!emailValid) {
-      setErrorArmedFor(email)
-      return
-    }
     setError(false)
     try {
       const { success } = await submitLead.mutateAsync({
-        email,
+        email: data.email,
         appType: appLabel,
-        platforms: PLATFORMS.filter((p) => platforms.has(p.key)).map((p) => t(p.labelKey)),
-        features: selectedFeatures.map((feature) => feature.label),
-        name: name.trim() || undefined,
-        phone: phoneHasNumber ? phone.trim() : undefined,
-        note: note.trim() || undefined,
-        hasDoc,
-        hasDesign,
+        platforms: PLATFORMS.filter((p) => data.platforms.includes(p.key)).map((p) => t(p.labelKey)),
+        features: features.filter((f) => data.features.includes(f.key)).map((f) => f.label),
+        name: data.name.trim() || undefined,
+        phone: phoneHasNumber ? data.phone.trim() : undefined,
+        note: data.note.trim() || undefined,
+        hasDoc: data.hasDoc,
+        hasDesign: data.hasDesign,
         locale,
       })
       if (success) setSent(true)
@@ -195,7 +166,7 @@ export function AppDetail({ appId }: AppDetailProps) {
     } catch {
       setError(true)
     }
-  }
+  })
 
   return (
     <Box
@@ -389,7 +360,7 @@ export function AppDetail({ appId }: AppDetailProps) {
                     <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap' }}>
                       {PLATFORMS.map((platform) => {
                         const PlatformIcon = platform.Icon
-                        const isSelected = platforms.has(platform.key)
+                        const isSelected = selectedPlatforms.includes(platform.key)
                         return (
                           <Box
                             key={platform.key}
@@ -439,7 +410,7 @@ export function AppDetail({ appId }: AppDetailProps) {
 
                   <Stack spacing={0.25} sx={{ mb: 4 }}>
                     {features.map((feature) => {
-                      const isSelected = selected.has(feature.key)
+                      const isSelected = selectedFeatureKeys.includes(feature.key)
                       return (
                         <Box
                           key={feature.key}
@@ -566,7 +537,7 @@ export function AppDetail({ appId }: AppDetailProps) {
                         Icon={DescriptionOutlined}
                         label={t('home.hasDocLabel')}
                         benefit={t('home.hasDocBenefit')}
-                        onToggle={() => setHasDoc(!hasDoc)}
+                        onToggle={() => setValue('hasDoc', !hasDoc, { shouldValidate: true })}
                       />
                       <MaterialTick
                         checked={hasDesign}
@@ -574,13 +545,19 @@ export function AppDetail({ appId }: AppDetailProps) {
                         Icon={BrushOutlined}
                         label={t('home.hasDesignLabel')}
                         benefit={t('home.hasDesignBenefit')}
-                        onToggle={() => setHasDesign(!hasDesign)}
+                        onToggle={() => setValue('hasDesign', !hasDesign, { shouldValidate: true })}
                       />
                     </Stack>
                   </Box>
 
                   <Stack spacing={2} sx={{ mb: error ? 2 : 3 }}>
-                    <Input label={t('home.nameLabel')} value={name} onChange={(event) => setName(event.target.value)} />
+                    <Controller
+                      name="name"
+                      control={control}
+                      render={({ field: { ref, ...field } }) => (
+                        <Input label={t('home.nameLabel')} inputRef={ref} {...field} />
+                      )}
+                    />
                     <Box
                       sx={{
                         display: 'flex',
@@ -589,37 +566,55 @@ export function AppDetail({ appId }: AppDetailProps) {
                       }}
                     >
                       <Box sx={{ flex: 1, minWidth: 0 }}>
-                        <Input
-                          type="email"
-                          label={t('home.emailLabel')}
-                          placeholder="name@email.com"
-                          value={email}
-                          onChange={(event) => setEmail(event.target.value)}
-                          required
-                          error={showEmailError}
-                          errorText={t('home.emailInvalid')}
+                        <Controller
+                          name="email"
+                          control={control}
+                          render={({ field: { ref, ...field }, fieldState }) => (
+                            <Input
+                              type="email"
+                              label={t('home.emailLabel')}
+                              placeholder="name@email.com"
+                              required
+                              inputRef={ref}
+                              {...field}
+                              error={!!fieldState.error && (fieldState.isTouched || formState.submitCount > 0)}
+                              errorText={fieldState.error ? t(`validation.${fieldState.error.message}`) : undefined}
+                            />
+                          )}
                         />
                       </Box>
                       <Box sx={{ flex: 1, minWidth: 0 }}>
-                        <PhoneInput
-                          key={phoneCountry}
-                          label={t('home.phoneLabel')}
-                          value={phone}
-                          defaultCountry={phoneCountry}
-                          onChange={(value, info) => {
-                            setPhone(value)
-                            setPhoneHasNumber(Boolean(info.nationalNumber))
-                          }}
+                        <Controller
+                          name="phone"
+                          control={control}
+                          render={({ field }) => (
+                            <PhoneInput
+                              key={phoneCountry}
+                              label={t('home.phoneLabel')}
+                              value={field.value}
+                              defaultCountry={phoneCountry}
+                              onChange={(value, info) => {
+                                field.onChange(value)
+                                setPhoneHasNumber(Boolean(info.nationalNumber))
+                              }}
+                            />
+                          )}
                         />
                       </Box>
                     </Box>
-                    <Input
-                      label={t('home.messageLabel')}
-                      placeholder={t('home.messagePlaceholder')}
-                      value={note}
-                      onChange={(event) => setNote(event.target.value)}
-                      multiline
-                      minRows={3}
+                    <Controller
+                      name="note"
+                      control={control}
+                      render={({ field: { ref, ...field } }) => (
+                        <Input
+                          label={t('home.messageLabel')}
+                          placeholder={t('home.messagePlaceholder')}
+                          multiline
+                          minRows={3}
+                          inputRef={ref}
+                          {...field}
+                        />
+                      )}
                     />
                   </Stack>
                   {error && (
@@ -633,7 +628,7 @@ export function AppDetail({ appId }: AppDetailProps) {
                     startIcon={<Send />}
                     onClick={submit}
                     loading={submitLead.isPending}
-                    disabled={!canSubmit}
+                    disabled={!formState.isValid}
                   >
                     {selectedFeatures.length > 0
                       ? `${t('home.sendCta')} (${selectedFeatures.length})`

@@ -22,7 +22,6 @@
     "consent": "By sending, you agree to our <link>Privacy Policy</link>.",
     "back": "Back",
     "emailLabel": "Your email",
-    "emailInvalid": "Please enter a valid email address.",
     "nameLabel": "Name or company",
     "messageLabel": "Anything else?",
     "messagePlaceholder": "Not in the list? We can build that too — tell us.",
@@ -789,5 +788,10 @@
       "invalid": "This invitation is invalid or expired — ask us for a new one.",
       "missing": "This link is missing its invitation token — use the link from your email."
     }
+  },
+  "validation": {
+    "required": "This field is required",
+    "invalidEmail": "Enter a valid email address",
+    "contentRequired": "Select at least one feature, or tick that you have documentation"
   }
 }

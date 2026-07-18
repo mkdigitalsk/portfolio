@@ -22,7 +22,6 @@
     "consent": "Mit dem Senden stimmen Sie unserer <link>Datenschutzerklärung</link> zu.",
     "back": "Zurück",
     "emailLabel": "Ihre E-Mail",
-    "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
     "nameLabel": "Name oder Firma",
     "messageLabel": "Sonst noch etwas?",
     "messagePlaceholder": "Nicht in der Liste? Können wir auch bauen — schreiben Sie uns.",
@@ -789,5 +788,10 @@
       "invalid": "Diese Einladung ist ungültig oder abgelaufen — fragen Sie uns nach einer neuen.",
       "missing": "Dem Link fehlt das Einladungs-Token — verwenden Sie den Link aus Ihrer E-Mail."
     }
+  },
+  "validation": {
+    "required": "Pflichtfeld",
+    "invalidEmail": "Geben Sie eine gültige E-Mail-Adresse ein",
+    "contentRequired": "Wählen Sie mindestens eine Funktion oder geben Sie an, dass Sie Unterlagen haben"
   }
 }
