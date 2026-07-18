@@ -102,15 +102,17 @@ function AppDetailContent({ appId }: AppDetailProps) {
   const emailError = formState.errors.email
 
   // Debounced error display while typing: the schema flags an invalid email instantly (mode:
-  // onChange), but the message arms only after a typing pause — keyed to the value so it re-arms
-  // each keystroke. Blur/submit still show it immediately.
-  const [errorArmedFor, setErrorArmedFor] = useState('')
+  // onChange), but the message arms only after a typing pause. Keyed to a change SEQUENCE (bumped in
+  // the field's onChange), not the value — re-entering a previously flagged value (paste) must wait
+  // the full pause again.
+  const [emailChangeSeq, setEmailChangeSeq] = useState(0)
+  const [armedSeq, setArmedSeq] = useState(0)
   useEffect(() => {
     if (!emailValue || !emailError) return
-    const timer = setTimeout(() => setErrorArmedFor(emailValue), EMAIL_ERROR_DELAY_MS)
+    const timer = setTimeout(() => setArmedSeq(emailChangeSeq), EMAIL_ERROR_DELAY_MS)
     return () => clearTimeout(timer)
-  }, [emailValue, emailError])
-  const showEmailError = !!emailValue && !!emailError && errorArmedFor === emailValue
+  }, [emailChangeSeq, emailValue, emailError])
+  const showEmailError = !!emailValue && !!emailError && armedSeq === emailChangeSeq
 
   if (!app) return null
 
@@ -589,6 +591,10 @@ function AppDetailContent({ appId }: AppDetailProps) {
                               required
                               inputRef={ref}
                               {...field}
+                              onChange={(event) => {
+                                field.onChange(event)
+                                setEmailChangeSeq((seq) => seq + 1) // restart the debounce countdown
+                              }}
                               error={showEmailError}
                               errorText={fieldState.error ? t(`validation.${fieldState.error.message}`) : undefined}
                             />

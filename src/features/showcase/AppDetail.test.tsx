@@ -99,6 +99,47 @@ describe('AppDetail lead form', () => {
       expect(errorMsg()).toBeInTheDocument()
     })
 
+    it('typing char by char never shows the error before a full pause', async () => {
+      renderWithProviders(<AppDetail appId="fintech" />)
+      const value = 'testujem@gmail.c'
+      for (let i = 1; i <= value.length; i++) {
+        await setEmail(value.slice(0, i))
+        await pause(DEBOUNCE_MS - 100) // keeps typing — pause never completes
+        expect(errorMsg()).not.toBeInTheDocument()
+      }
+      await pause(DEBOUNCE_MS)
+      expect(errorMsg()).toBeInTheDocument()
+    })
+
+    it('paste (single change with full value) waits for the pause too', async () => {
+      renderWithProviders(<AppDetail appId="fintech" />)
+      await setEmail('pasted@invalid.c')
+      expect(errorMsg()).not.toBeInTheDocument()
+
+      await pause(DEBOUNCE_MS)
+      expect(errorMsg()).toBeInTheDocument()
+    })
+
+    it('re-pasting a previously flagged value waits for the pause again', async () => {
+      renderWithProviders(<AppDetail appId="fintech" />)
+      await setEmail('a@b')
+      await pause(DEBOUNCE_MS)
+      expect(errorMsg()).toBeInTheDocument()
+
+      // Clear the field, let the exit animation finish on real time.
+      vi.useRealTimers()
+      await setEmail('')
+      await waitForElementToBeRemoved(errorMsg)
+
+      // Paste the SAME invalid value back — must wait the full pause again, no instant flash.
+      vi.useFakeTimers({ toFake: ['setTimeout', 'clearTimeout'] })
+      await setEmail('a@b')
+      expect(errorMsg()).not.toBeInTheDocument()
+
+      await pause(DEBOUNCE_MS)
+      expect(errorMsg()).toBeInTheDocument()
+    })
+
     it('never shows an error for an empty email while idle', async () => {
       renderWithProviders(<AppDetail appId="fintech" />)
       fireEvent.focus(emailField())
