@@ -589,10 +589,7 @@ function AppDetailContent({ appId }: AppDetailProps) {
                               required
                               inputRef={ref}
                               {...field}
-                              error={
-                                !!fieldState.error &&
-                                (showEmailError || fieldState.isTouched || formState.submitCount > 0)
-                              }
+                              error={showEmailError}
                               errorText={fieldState.error ? t(`validation.${fieldState.error.message}`) : undefined}
                             />
                           )}
