@@ -143,7 +143,7 @@
     "hasDocBenefit": "Send it over — or we'll go through it on the discovery call.",
     "materialsLabel": "What you already have",
     "hasDesignLabel": "I have my own design",
-    "hasDesignBenefit": "Figma, wireframes or finished screens.",
+    "hasDesignBenefit": "Wireframes or finished screens — e.g. in Figma.",
     "hasDocMail": "Client has their own documentation / spec."
   },
   "hero": {
