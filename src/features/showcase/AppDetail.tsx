@@ -15,7 +15,7 @@ import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import { useLocale, useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { useState, useSyncExternalStore, type KeyboardEvent } from 'react'
+import { useEffect, useState, useSyncExternalStore, type KeyboardEvent } from 'react'
 import { Controller, useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
@@ -33,6 +33,8 @@ import { detailApps } from './apps'
 import { scopeColor, scopeFill, scopeScore, scopeTier } from './complexity'
 import { LEAD_FORM_DEFAULTS, leadSchema, type LeadFormData } from './schemas'
 import { useSubmitLeadMutation } from './useSubmitLeadMutation'
+
+const EMAIL_ERROR_DELAY_MS = 800
 
 // Phone country default: server-side IP geo (Vercel X-Vercel-IP-Country → geo_country cookie, set in
 // proxy.ts) when it resolves to a target market, else the active locale, else SK. Applied via a mount
@@ -93,10 +95,22 @@ function AppDetailContent({ appId }: AppDetailProps) {
     defaultValues: LEAD_FORM_DEFAULTS,
     mode: 'onChange',
   })
-  const [selectedFeatureKeys, selectedPlatforms, hasDoc, hasDesign] = useWatch({
+  const [selectedFeatureKeys, selectedPlatforms, hasDoc, hasDesign, emailValue] = useWatch({
     control,
-    name: ['features', 'platforms', 'hasDoc', 'hasDesign'],
+    name: ['features', 'platforms', 'hasDoc', 'hasDesign', 'email'],
   })
+  const emailError = formState.errors.email
+
+  // Debounced error display while typing: the schema flags an invalid email instantly (mode:
+  // onChange), but the message arms only after a typing pause — keyed to the value so it re-arms
+  // each keystroke. Blur/submit still show it immediately.
+  const [errorArmedFor, setErrorArmedFor] = useState('')
+  useEffect(() => {
+    if (!emailValue || !emailError) return
+    const timer = setTimeout(() => setErrorArmedFor(emailValue), EMAIL_ERROR_DELAY_MS)
+    return () => clearTimeout(timer)
+  }, [emailValue, emailError])
+  const showEmailError = !!emailValue && !!emailError && errorArmedFor === emailValue
 
   if (!app) return null
 
@@ -575,7 +589,10 @@ function AppDetailContent({ appId }: AppDetailProps) {
                               required
                               inputRef={ref}
                               {...field}
-                              error={!!fieldState.error && (fieldState.isTouched || formState.submitCount > 0)}
+                              error={
+                                !!fieldState.error &&
+                                (showEmailError || fieldState.isTouched || formState.submitCount > 0)
+                              }
                               errorText={fieldState.error ? t(`validation.${fieldState.error.message}`) : undefined}
                             />
                           )}
