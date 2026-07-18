@@ -738,9 +738,22 @@
       "history": "History",
       "event": {
         "STARTED": "Project started",
-        "HEALTH_CHANGED": "Status updated",
+        "HEALTH_CHANGED": "Health changed",
+        "LINKS_UPDATED": "Tooling links updated",
+        "MILESTONE_ADDED": "Milestone added",
+        "MILESTONE_UPDATED": "Milestone updated",
+        "MILESTONE_REMOVED": "Milestone removed",
+        "DOCUMENT_ADDED": "Document added",
+        "DOCUMENT_REMOVED": "Document removed",
+        "DEMO_ADDED": "Demo added",
+        "DEMO_UPDATED": "Demo updated",
+        "DEMO_REMOVED": "Demo removed",
+        "PAYMENT_ADDED": "Payment added",
+        "PAYMENT_UPDATED": "Payment updated",
+        "PAYMENT_REMOVED": "Payment removed",
         "COMPLETED": "Project completed",
-        "ARCHIVED": "Project archived"
+        "ARCHIVED": "Project archived",
+        "UNARCHIVED": "Project reopened"
       },
       "tab": {
         "overview": "Overview",
@@ -748,7 +761,7 @@
         "documents": "Documents",
         "demos": "Demos",
         "payments": "Payments",
-        "history": "History"
+        "history": "Activity"
       },
       "scopeTitle": "Scope",
       "linksTitle": "Internal links",
@@ -766,7 +779,8 @@
       },
       "lastUpdate": "Last update",
       "completedOn": "Completed {date}",
-      "plannedOn": "Planned {date}"
+      "plannedOn": "Planned {date}",
+      "historyEmpty": "No activity yet"
     },
     "leadsTab": "Leads ({count})",
     "clientsTab": "Clients ({count})",

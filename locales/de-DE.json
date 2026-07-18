@@ -738,9 +738,22 @@
       "history": "Verlauf",
       "event": {
         "STARTED": "Projekt gestartet",
-        "HEALTH_CHANGED": "Status aktualisiert",
+        "HEALTH_CHANGED": "Status (Health) geändert",
+        "LINKS_UPDATED": "Tool-Links aktualisiert",
+        "MILESTONE_ADDED": "Meilenstein hinzugefügt",
+        "MILESTONE_UPDATED": "Meilenstein aktualisiert",
+        "MILESTONE_REMOVED": "Meilenstein entfernt",
+        "DOCUMENT_ADDED": "Dokument hinzugefügt",
+        "DOCUMENT_REMOVED": "Dokument entfernt",
+        "DEMO_ADDED": "Demo hinzugefügt",
+        "DEMO_UPDATED": "Demo aktualisiert",
+        "DEMO_REMOVED": "Demo entfernt",
+        "PAYMENT_ADDED": "Zahlung hinzugefügt",
+        "PAYMENT_UPDATED": "Zahlung aktualisiert",
+        "PAYMENT_REMOVED": "Zahlung entfernt",
         "COMPLETED": "Projekt abgeschlossen",
-        "ARCHIVED": "Projekt archiviert"
+        "ARCHIVED": "Projekt archiviert",
+        "UNARCHIVED": "Projekt wieder geöffnet"
       },
       "tab": {
         "overview": "Übersicht",
@@ -748,7 +761,7 @@
         "documents": "Dokumente",
         "demos": "Demos",
         "payments": "Zahlungen",
-        "history": "Verlauf"
+        "history": "Aktivität"
       },
       "scopeTitle": "Umfang",
       "linksTitle": "Interne Links",
@@ -766,7 +779,8 @@
       },
       "lastUpdate": "Letzte Änderung",
       "completedOn": "Abgeschlossen {date}",
-      "plannedOn": "Geplant {date}"
+      "plannedOn": "Geplant {date}",
+      "historyEmpty": "Noch keine Aktivität"
     },
     "leadsTab": "Leads ({count})",
     "clientsTab": "Kunden ({count})",

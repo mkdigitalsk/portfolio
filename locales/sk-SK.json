@@ -737,10 +737,23 @@
       },
       "history": "História",
       "event": {
-        "STARTED": "Projekt spustený",
-        "HEALTH_CHANGED": "Stav aktualizovaný",
+        "STARTED": "Projekt založený",
+        "HEALTH_CHANGED": "Zmena stavu (health)",
+        "LINKS_UPDATED": "Aktualizované nástrojové linky",
+        "MILESTONE_ADDED": "Pridaný míľnik",
+        "MILESTONE_UPDATED": "Upravený míľnik",
+        "MILESTONE_REMOVED": "Odstránený míľnik",
+        "DOCUMENT_ADDED": "Pridaný dokument",
+        "DOCUMENT_REMOVED": "Odstránený dokument",
+        "DEMO_ADDED": "Pridané demo",
+        "DEMO_UPDATED": "Upravené demo",
+        "DEMO_REMOVED": "Odstránené demo",
+        "PAYMENT_ADDED": "Pridaná platba",
+        "PAYMENT_UPDATED": "Upravená platba",
+        "PAYMENT_REMOVED": "Odstránená platba",
         "COMPLETED": "Projekt dokončený",
-        "ARCHIVED": "Projekt archivovaný"
+        "ARCHIVED": "Projekt archivovaný",
+        "UNARCHIVED": "Projekt znovu otvorený"
       },
       "tab": {
         "overview": "Prehľad",
@@ -748,7 +761,7 @@
         "documents": "Dokumenty",
         "demos": "Ukážky",
         "payments": "Platby",
-        "history": "História"
+        "history": "Aktivita"
       },
       "scopeTitle": "Rozsah",
       "linksTitle": "Interné odkazy",
@@ -766,7 +779,8 @@
       },
       "lastUpdate": "Posledná zmena",
       "completedOn": "Dokončené {date}",
-      "plannedOn": "Plánované {date}"
+      "plannedOn": "Plánované {date}",
+      "historyEmpty": "Zatiaľ žiadna aktivita"
     },
     "leadsTab": "Leady ({count})",
     "clientsTab": "Klienti ({count})",

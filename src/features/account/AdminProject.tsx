@@ -58,6 +58,7 @@ import {
   useUpdatePayment,
   useUpdateProject,
 } from './useAdminProject'
+import { formatDateTime } from './formatDate'
 import { formatMoney } from './formatMoney'
 
 type T = ReturnType<typeof useTranslations<'account'>>
@@ -230,6 +231,7 @@ function ManageProject({ data, email, t }: { data: Project; email: string; t: T 
     { value: 'documents', label: t('project.tab.documents') },
     { value: 'demos', label: t('project.tab.demos') },
     { value: 'payments', label: t('project.tab.payments') },
+    { value: 'history', label: t('project.tab.history') },
   ]
 
   return (
@@ -414,6 +416,27 @@ function ManageProject({ data, email, t }: { data: Project; email: string; t: T 
           </Stack>
           <AddDemoForm t={t} onAdd={(req) => addDemo.mutate(req)} />
         </Box>
+      )}
+
+      {/* Read-only render of the server-side audit trail (project_events) — newest first. */}
+      {tab === 'history' && (
+        <Stack spacing={1.5}>
+          {data.history.length === 0 && <TextBody1Neutral60>{t('project.historyEmpty')}</TextBody1Neutral60>}
+          {data.history.map((event, index) => (
+            <Box
+              key={`${event.at}-${index}`}
+              sx={{ display: 'flex', gap: 1.5, alignItems: 'baseline', flexWrap: 'wrap' }}
+            >
+              <Box sx={{ flexShrink: 0 }}>
+                <TextCaptionNeutral60>{formatDateTime(event.at)}</TextCaptionNeutral60>
+              </Box>
+              <TextBody1Neutral60>
+                {t(`project.event.${event.type}`)}
+                {event.detail ? ` — ${event.detail}` : ''}
+              </TextBody1Neutral60>
+            </Box>
+          ))}
+        </Stack>
       )}
 
       <AlertDialog
