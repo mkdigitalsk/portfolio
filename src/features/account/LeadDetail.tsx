@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
-import { ArrowBack } from '@mui/icons-material'
+import { Android, ArrowBack, CheckRounded, DevicesOther, Language, PhoneIphone } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
@@ -24,7 +24,8 @@ import {
 import { httpStatus } from '@/shared/api'
 import type { AdminLead } from '@/shared/types'
 import { useLeadDetailQuery } from './useLeadDetailQuery'
-import { LeadStatusSelect } from './LeadStatusSelect'
+import { LeadStatusChip } from './LeadStatusChip'
+import { LeadTransitions } from './LeadTransitions'
 import { AdminProject } from './AdminProject'
 import { ClientPreview } from './ClientPreview'
 import { LeadDocuments } from './LeadDocuments'
@@ -62,11 +63,15 @@ export function LeadDetail({ email }: { email: string }) {
 
   const { lead, artifacts } = detail
   const present = STAGES.filter((s) => artifacts.some((a) => a.stage === s.stage))
+  // The screen speaks the status's language: delivery exists only for a WON lead; document uploads
+  // start once qualification starts (a NEW lead only carries the configurator claims).
+  const showDelivery = lead.status === 'WON'
+  const uploadsEnabled = lead.status !== 'NEW'
   const deliveryTab = present.length + 1
   const content =
     tab === 0 ? (
       <Submission lead={lead} />
-    ) : tab === deliveryTab ? (
+    ) : showDelivery && tab === deliveryTab ? (
       <AdminProject email={lead.email} />
     ) : (
       <Markdown>{artifacts.find((a) => a.stage === present[tab - 1]?.stage)?.content ?? ''}</Markdown>
@@ -82,7 +87,8 @@ export function LeadDetail({ email }: { email: string }) {
         <Box sx={{ minWidth: 0, flex: 1 }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
             <TextH6Bold>{lead.email}</TextH6Bold>
-            <LeadStatusSelect email={lead.email} value={lead.status} />
+            <LeadStatusChip value={lead.status} />
+            <LeadTransitions email={lead.email} status={lead.status} />
           </Box>
           <TextCaptionNeutral60>
             {lead.appType}
@@ -125,13 +131,18 @@ export function LeadDetail({ email }: { email: string }) {
             {present.map((s) => (
               <Tab key={s.stage} label={t(`stage.${s.key}`)} sx={{ alignItems: 'flex-start', textAlign: 'left' }} />
             ))}
-            <Tab label={t('delivery.tab')} sx={{ alignItems: 'flex-start', textAlign: 'left' }} />
+            {showDelivery && <Tab label={t('delivery.tab')} sx={{ alignItems: 'flex-start', textAlign: 'left' }} />}
           </Tabs>
           <Box sx={{ flex: 1, minWidth: 0 }}>{content}</Box>
           {/* Documentation rail — always in view regardless of the active tab: the client's spec is
               the working material of every stage. */}
           <Box sx={{ width: { xs: '100%', md: 300 }, flexShrink: 0 }}>
-            <LeadDocuments email={lead.email} claimsDocs={lead.hasDoc} claimsDesign={lead.hasDesign} />
+            <LeadDocuments
+              email={lead.email}
+              claimsDocs={lead.hasDoc}
+              claimsDesign={lead.hasDesign}
+              uploadsEnabled={uploadsEnabled}
+            />
           </Box>
         </Box>
       )}
@@ -139,19 +150,36 @@ export function LeadDetail({ email }: { email: string }) {
   )
 }
 
+// Platform strings are free-form (localized configurator labels) — map by keyword to the icon.
+function platformIcon(platform: string) {
+  const p = platform.toLowerCase()
+  if (p.includes('ios')) return <PhoneIphone fontSize="small" />
+  if (p.includes('android')) return <Android fontSize="small" />
+  if (p.includes('web')) return <Language fontSize="small" />
+  return <DevicesOther fontSize="small" />
+}
+
 function Submission({ lead }: { lead: AdminLead }) {
   const t = useTranslations('account')
   return (
     <Stack spacing={2.5}>
       <Field label={t('table.platforms')}>
-        <TextBody1>{lead.platforms.join(' · ') || '—'}</TextBody1>
-      </Field>
-      <Field label={t('features', { count: lead.features.length })}>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-          {lead.features.map((f) => (
-            <Chip key={f} label={f} size="small" variant="outlined" />
+          {lead.platforms.length === 0 && <TextBody1>—</TextBody1>}
+          {lead.platforms.map((p) => (
+            <Chip key={p} icon={platformIcon(p)} label={p} size="small" variant="outlined" />
           ))}
         </Box>
+      </Field>
+      <Field label={t('features', { count: lead.features.length })}>
+        <Stack spacing={0.75}>
+          {lead.features.map((f) => (
+            <Box key={f} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <CheckRounded fontSize="small" sx={{ color: 'text.disabled' }} />
+              <TextBody1>{f}</TextBody1>
+            </Box>
+          ))}
+        </Stack>
       </Field>
       {lead.note && (
         <Field label={t('note')}>

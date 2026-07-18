@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { DescriptionOutlined } from '@mui/icons-material'
+import { BrushOutlined, DescriptionOutlined } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -11,7 +11,7 @@ import TableRow from '@mui/material/TableRow'
 import Tooltip from '@mui/material/Tooltip'
 import { TextBody1, TextCaptionNeutral60, TextTimestamp } from '@/shared/components'
 import type { AdminLead } from '@/shared/types'
-import { LeadStatusSelect } from './LeadStatusSelect'
+import { LeadStatusChip } from './LeadStatusChip'
 
 // Collapse a column to its content width so the slack flows to the text columns instead of dead gaps
 // (a stretched, evenly-spaced table isolates the data). Intent-based sizing, not a hardcoded px width.
@@ -53,17 +53,24 @@ export function LeadsTable({ leads, onSelect }: { leads: AdminLead[]; onSelect: 
                 <TextCaptionNeutral60>{lead.platforms.join(' · ')}</TextCaptionNeutral60>
               </TableCell>
               <TableCell align="center">
-                {lead.hasDoc && (
-                  <Tooltip title={t('hasDoc')}>
-                    <DescriptionOutlined fontSize="small" sx={{ color: 'text.secondary', verticalAlign: 'middle' }} />
-                  </Tooltip>
-                )}
+                <Box sx={{ display: 'inline-flex', gap: 0.5, verticalAlign: 'middle' }}>
+                  {lead.hasDoc && (
+                    <Tooltip title={t('hasDoc')}>
+                      <DescriptionOutlined fontSize="small" sx={{ color: 'text.secondary' }} />
+                    </Tooltip>
+                  )}
+                  {lead.hasDesign && (
+                    <Tooltip title={t('leadDocs.designClaim')}>
+                      <BrushOutlined fontSize="small" sx={{ color: 'text.secondary' }} />
+                    </Tooltip>
+                  )}
+                </Box>
               </TableCell>
               <TableCell sx={{ whiteSpace: 'nowrap' }}>
                 <TextTimestamp value={lead.createdAt} />
               </TableCell>
               <TableCell sx={{ whiteSpace: 'nowrap' }}>
-                <LeadStatusSelect email={lead.email} value={lead.status} />
+                <LeadStatusChip value={lead.status} />
               </TableCell>
             </TableRow>
           ))}

@@ -801,6 +801,18 @@
       "mismatch": "Passwords do not match",
       "invalid": "This invitation is invalid or expired — ask us for a new one.",
       "missing": "This link is missing its invitation token — use the link from your email."
+    },
+    "transition": {
+      "REVIEWING": "Start review",
+      "ANALYZED": "Complete analysis",
+      "PROPOSAL_DRAFTED": "Proposal ready",
+      "PROPOSAL_SENT": "Proposal sent",
+      "WON": "Won",
+      "LOST": "Decline",
+      "conflict": "That change is not allowed from the current status — refresh the page",
+      "failed": "The change failed — try again",
+      "declineConfirmTitle": "Decline this lead?",
+      "declineConfirmText": "The lead will be marked as lost. A lost lead can be reopened later."
     }
   },
   "validation": {

@@ -11,6 +11,7 @@ import {
 } from '@/test/test-utils'
 import type { LeadStatus } from '@/shared/types'
 import { AdminLeadsList } from './AdminLeadsList'
+import { LeadTransitions } from './LeadTransitions'
 
 const API = 'https://api.mkdigital.sk/v1'
 
@@ -36,25 +37,59 @@ describe('admin leads pipeline', () => {
     expect(screen.getByText('Leads (1)')).toBeInTheDocument()
   })
 
-  it('changes a lead status and reflects the new value', async () => {
+  it('shows status as a read-only chip — no inline editing in the list', async () => {
+    server.use(http.get(`${API}/admin/leads`, () => HttpResponse.json([fakeLead({ status: 'NEW' })])))
+    renderWithProviders(<AdminLeadsList />)
+
+    expect(await screen.findByText('New')).toBeInTheDocument()
+    expect(screen.queryByRole('combobox')).not.toBeInTheDocument()
+  })
+
+  it('transitions: only the legal next actions render and the primary one advances the status', async () => {
     let status: LeadStatus = 'NEW'
     server.use(
-      http.get(`${API}/admin/leads`, () => HttpResponse.json([fakeLead({ status })])),
       http.patch(`${API}/admin/leads/:email/status`, async ({ request }) => {
         status = ((await request.json()) as { status: LeadStatus }).status
         return HttpResponse.json(fakeLead({ status }))
       }),
     )
     const user = userEvent.setup()
-    renderWithProviders(<AdminLeadsList />)
+    renderWithProviders(<LeadTransitions email="lead@example.com" status="NEW" />)
 
-    expect(await screen.findByText('New')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Start review' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Decline' })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'Won' })).not.toBeInTheDocument()
 
-    await user.click(screen.getByRole('combobox'))
-    await user.click(screen.getByRole('option', { name: 'Reviewing' }))
-
-    expect(await screen.findByText('Reviewing')).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: 'Start review' }))
     await waitFor(() => expect(status).toBe('REVIEWING'))
+  })
+
+  it('decline asks for confirmation before marking the lead lost', async () => {
+    let status: LeadStatus = 'PROPOSAL_SENT'
+    server.use(
+      http.patch(`${API}/admin/leads/:email/status`, async ({ request }) => {
+        status = ((await request.json()) as { status: LeadStatus }).status
+        return HttpResponse.json(fakeLead({ status }))
+      }),
+    )
+    const user = userEvent.setup()
+    renderWithProviders(<LeadTransitions email="lead@example.com" status="PROPOSAL_SENT" />)
+
+    await user.click(screen.getByRole('button', { name: 'Decline' }))
+    expect(await screen.findByText('Decline this lead?')).toBeInTheDocument()
+    expect(status).toBe('PROPOSAL_SENT')
+
+    await user.click(screen.getAllByRole('button', { name: 'Decline' }).at(-1)!)
+    await waitFor(() => expect(status).toBe('LOST'))
+  })
+
+  it('shows the conflict message when the server rejects a transition with 409', async () => {
+    server.use(http.patch(`${API}/admin/leads/:email/status`, () => new HttpResponse(null, { status: 409 })))
+    const user = userEvent.setup()
+    renderWithProviders(<LeadTransitions email="lead@example.com" status="NEW" />)
+
+    await user.click(screen.getByRole('button', { name: 'Start review' }))
+    expect(await screen.findByText(/not allowed from the current status/)).toBeInTheDocument()
   })
 
   it('shows a not-authorized message on a 403', async () => {

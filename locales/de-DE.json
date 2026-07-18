@@ -801,6 +801,18 @@
       "mismatch": "Passwörter stimmen nicht überein",
       "invalid": "Diese Einladung ist ungültig oder abgelaufen — fragen Sie uns nach einer neuen.",
       "missing": "Dem Link fehlt das Einladungs-Token — verwenden Sie den Link aus Ihrer E-Mail."
+    },
+    "transition": {
+      "REVIEWING": "Prüfung starten",
+      "ANALYZED": "Analyse abschließen",
+      "PROPOSAL_DRAFTED": "Angebot vorbereitet",
+      "PROPOSAL_SENT": "Angebot gesendet",
+      "WON": "Gewonnen",
+      "LOST": "Ablehnen",
+      "conflict": "Dieser Übergang ist vom aktuellen Status nicht erlaubt — Seite aktualisieren",
+      "failed": "Änderung fehlgeschlagen — bitte erneut versuchen",
+      "declineConfirmTitle": "Diesen Lead ablehnen?",
+      "declineConfirmText": "Der Lead wird als verloren markiert. Ein verlorener Lead kann später wieder geöffnet werden."
     }
   },
   "validation": {

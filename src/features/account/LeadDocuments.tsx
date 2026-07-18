@@ -11,14 +11,17 @@ import { useLeadDocumentsQuery, useUploadLeadDocumentMutation } from './useLeadD
 
 // Right-rail materials card on the lead detail: the lead's claims (configurator ticks — docs/design,
 // a claim, not a file) + the real stored files (admin uploads what the client emails in).
+// uploadsEnabled follows the status: a NEW lead shows claims only — files start with qualification.
 export function LeadDocuments({
   email,
   claimsDocs,
   claimsDesign,
+  uploadsEnabled,
 }: {
   email: string
   claimsDocs: boolean
   claimsDesign: boolean
+  uploadsEnabled: boolean
 }) {
   const t = useTranslations('account')
   const { data: documents = [] } = useLeadDocumentsQuery(email)
@@ -58,9 +61,10 @@ export function LeadDocuments({
             <TextCaptionNeutral60>{t('leadDocs.designClaim')}</TextCaptionNeutral60>
           </Box>
         )}
-        {documents.length === 0 ? (
+        {uploadsEnabled && documents.length === 0 && (
           <TextBody1Neutral60>{t('leadDocs.empty')}</TextBody1Neutral60>
-        ) : (
+        )}
+        {documents.length > 0 && (
           <Stack spacing={0.5} sx={{ alignSelf: 'stretch' }}>
             {documents.map((d: AdminDocument) => (
               <Box key={d.id} sx={{ display: 'flex', alignItems: 'center', minWidth: 0 }}>
@@ -77,10 +81,12 @@ export function LeadDocuments({
             ))}
           </Stack>
         )}
-        <Button variant="outline" component="label" startIcon={<UploadFileOutlined />} loading={upload.isPending}>
-          {t('leadDocs.upload')}
-          <input type="file" hidden onChange={pickFile} />
-        </Button>
+        {uploadsEnabled && (
+          <Button variant="outline" component="label" startIcon={<UploadFileOutlined />} loading={upload.isPending}>
+            {t('leadDocs.upload')}
+            <input type="file" hidden onChange={pickFile} />
+          </Button>
+        )}
         {upload.isError && (
           <Box sx={{ color: 'error.main' }}>
             <TextCaption>{t('leadDocs.uploadFailed')}</TextCaption>

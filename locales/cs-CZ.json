@@ -801,6 +801,18 @@
       "mismatch": "Hesla se neshodují",
       "invalid": "Pozvánka je neplatná nebo vypršela — požádejte nás o novou.",
       "missing": "Odkazu chybí zvací token — použijte odkaz z e-mailu."
+    },
+    "transition": {
+      "REVIEWING": "Zahájit posouzení",
+      "ANALYZED": "Dokončit analýzu",
+      "PROPOSAL_DRAFTED": "Nabídka připravena",
+      "PROPOSAL_SENT": "Nabídka odeslána",
+      "WON": "Získán",
+      "LOST": "Zamítnout",
+      "conflict": "Tento přechod není z aktuálního stavu povolen — obnovte stránku",
+      "failed": "Změna se nezdařila — zkuste znovu",
+      "declineConfirmTitle": "Zamítnout tento lead?",
+      "declineConfirmText": "Lead bude označen jako ztracený. Ztraceného lze později znovu otevřít."
     }
   },
   "validation": {
