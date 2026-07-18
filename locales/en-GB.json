@@ -791,7 +791,6 @@
   },
   "validation": {
     "required": "This field is required",
-    "invalidEmail": "Enter a valid email address",
-    "contentRequired": "Select at least one feature, or tick that you have documentation"
+    "invalidEmail": "Enter a valid email address"
   }
 }

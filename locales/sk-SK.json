@@ -791,7 +791,6 @@
   },
   "validation": {
     "required": "Toto pole je povinné",
-    "invalidEmail": "Zadajte platný e-mail",
-    "contentRequired": "Vyberte aspoň jednu funkciu, alebo označte, že máte dokumentáciu"
+    "invalidEmail": "Zadajte platný e-mail"
   }
 }

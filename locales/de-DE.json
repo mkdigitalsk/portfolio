@@ -791,7 +791,6 @@
   },
   "validation": {
     "required": "Pflichtfeld",
-    "invalidEmail": "Geben Sie eine gültige E-Mail-Adresse ein",
-    "contentRequired": "Wählen Sie mindestens eine Funktion oder geben Sie an, dass Sie Unterlagen haben"
+    "invalidEmail": "Geben Sie eine gültige E-Mail-Adresse ein"
   }
 }

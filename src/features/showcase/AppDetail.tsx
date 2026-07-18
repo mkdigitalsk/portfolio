@@ -15,7 +15,7 @@ import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import { useLocale, useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { useMemo, useState, useSyncExternalStore, type KeyboardEvent } from 'react'
+import { useState, useSyncExternalStore, type KeyboardEvent } from 'react'
 import { Controller, useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
@@ -31,7 +31,7 @@ import {
 import { ACCOUNT_MAX, PAGE_PT } from '@/shared/layout'
 import { detailApps } from './apps'
 import { scopeColor, scopeFill, scopeScore, scopeTier } from './complexity'
-import { LEAD_FORM_DEFAULTS, makeLeadSchema, type LeadFormData } from './schemas'
+import { LEAD_FORM_DEFAULTS, leadSchema, type LeadFormData } from './schemas'
 import { useSubmitLeadMutation } from './useSubmitLeadMutation'
 
 // Phone country default: server-side IP geo (Vercel X-Vercel-IP-Country → geo_country cookie, set in
@@ -81,7 +81,6 @@ function AppDetailContent({ appId }: AppDetailProps) {
   const geoCountry = useSyncExternalStore(subscribeGeo, readGeoCountry, () => undefined)
   const phoneCountry = geoCountry ?? PHONE_COUNTRY_BY_LOCALE[locale] ?? 'SK'
   const app = detailApps.find((item) => item.id === appId)
-  const isCustom = appId === 'custom'
   const [phoneHasNumber, setPhoneHasNumber] = useState(false)
   const [error, setError] = useState(false)
   const [sent, setSent] = useState(false)
@@ -89,9 +88,8 @@ function AppDetailContent({ appId }: AppDetailProps) {
 
   // The schema is THE required-fields list — the send button gates purely on formState.isValid;
   // no requirement lives outside it (see schemas.ts).
-  const schema = useMemo(() => makeLeadSchema(isCustom), [isCustom])
   const { control, handleSubmit, setValue, formState } = useForm<LeadFormData>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(leadSchema),
     defaultValues: LEAD_FORM_DEFAULTS,
     mode: 'onChange',
   })
