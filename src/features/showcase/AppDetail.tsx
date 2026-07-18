@@ -34,7 +34,7 @@ import { scopeColor, scopeFill, scopeScore, scopeTier } from './complexity'
 import { LEAD_FORM_DEFAULTS, leadSchema, type LeadFormData } from './schemas'
 import { useSubmitLeadMutation } from './useSubmitLeadMutation'
 
-const EMAIL_ERROR_DELAY_MS = 1000
+export const EMAIL_ERROR_DELAY_MS = 800
 
 // Phone country default: server-side IP geo (Vercel X-Vercel-IP-Country → geo_country cookie, set in
 // proxy.ts) when it resolves to a target market, else the active locale, else SK. Applied via a mount

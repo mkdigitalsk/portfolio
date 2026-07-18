@@ -1,11 +1,11 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { act, fireEvent, waitForElementToBeRemoved } from '@testing-library/react'
 import { HttpResponse, http, renderWithProviders, screen, server, userEvent } from '@/test/test-utils'
-import { AppDetail } from './AppDetail'
+import { AppDetail, EMAIL_ERROR_DELAY_MS } from './AppDetail'
 
 const API = 'https://api.mkdigital.sk/v1'
 const INVALID_EMAIL_MSG = 'Enter a valid email address'
-const DEBOUNCE_MS = 1000
+const DEBOUNCE_MS = EMAIL_ERROR_DELAY_MS
 
 // next/link + the configurator read the app router context; a light mock keeps them mounted in jsdom.
 vi.mock('next/navigation', () => ({
