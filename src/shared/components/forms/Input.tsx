@@ -31,7 +31,7 @@ export function Input({ error = false, errorText, slotProps, sx, ...props }: Inp
         ]}
         {...props}
       />
-      <Box sx={{ overflow: 'hidden', minHeight: errorText ? 26 : undefined }}>
+      <Box sx={{ overflow: 'hidden', minHeight: error && errorText ? 26 : undefined }}>
         <AnimatePresence initial={false}>
           {error && errorText && (
             <motion.div
