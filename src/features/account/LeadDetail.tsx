@@ -24,6 +24,7 @@ import {
 import { httpStatus } from '@/shared/api'
 import type { AdminLead } from '@/shared/types'
 import { useLeadDetailQuery } from './useLeadDetailQuery'
+import { formatDateTime } from './formatDate'
 import { LeadStatusChip } from './LeadStatusChip'
 import { LeadTransitions } from './LeadTransitions'
 import { AdminProject } from './AdminProject'
@@ -63,8 +64,6 @@ export function LeadDetail({ email }: { email: string }) {
 
   const { lead, artifacts } = detail
   const present = STAGES.filter((s) => artifacts.some((a) => a.stage === s.stage))
-  // The screen speaks the status's language: delivery exists only for a WON lead; document uploads
-  // start once qualification starts (a NEW lead only carries the configurator claims).
   const showDelivery = lead.status === 'WON'
   const uploadsEnabled = lead.status !== 'NEW'
   const deliveryTab = present.length + 1
@@ -94,6 +93,7 @@ export function LeadDetail({ email }: { email: string }) {
             {lead.appType}
             {lead.name ? ` · ${lead.name}` : ''}
             {lead.phone ? ` · ${lead.phone}` : ''}
+            {` · ${formatDateTime(lead.createdAt)}`}
           </TextCaptionNeutral60>
         </Box>
         {/* View-mode toggle lives in the header actions (top-right) — the Salesforce "View as" pattern —
