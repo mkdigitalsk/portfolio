@@ -6,6 +6,10 @@ export const CONTENT_MAX = 1180
 // they use the screen. Fills to the chrome's edge gutter on normal screens; caps past 1600 on ultrawide.
 export const ACCOUNT_MAX = 1600
 
+// Minimum touch-target size (px) for primary/header controls. 44 = WCAG 2.5.5 (AAA) / Apple HIG 44pt;
+// clears the 24px WCAG 2.5.8 (AA) floor with room to spare. (web accessibility.md → touch targets.)
+export const TOUCH_TARGET_MIN = 44
+
 // Body-copy measure. 66ch ≈ typographic optimum (50–75; WCAG caps at 80); `ch` holds it across font
 // sizes. Cap body copy to this so lines never run too wide.
 export const TEXT_MAX = '66ch'

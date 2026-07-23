@@ -8,6 +8,8 @@ const eslintConfig = defineConfig([
   ...nextTs,
   // Last: turn off ESLint stylistic rules that would fight Prettier (formatting is Prettier's job).
   eslintConfigPrettier,
+  // `.cjs` tooling scripts (e.g. e2e/qa-smoke.cjs) are CommonJS — require() is their native import, not an error.
+  { files: ['**/*.cjs'], rules: { '@typescript-eslint/no-require-imports': 'off' } },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:

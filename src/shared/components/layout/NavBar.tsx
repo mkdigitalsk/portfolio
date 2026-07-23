@@ -15,6 +15,7 @@ import { useState, type ReactNode } from 'react'
 import { useScrollSpy } from '@/shared/hooks/useScrollSpy'
 import { useScrollToTop } from '@/shared/hooks/useScrollToTop'
 import { useAuth } from '@/shared/hooks/useAuth'
+import { TOUCH_TARGET_MIN } from '@/shared/layout'
 import { Light, Dark } from '@/shared/theme/color'
 import { Logo } from '../icons/Logo'
 import { TextBody1, TextCaptionNeutral60, TextH6Bold } from '../text'
@@ -182,7 +183,8 @@ export function NavBar() {
           <Logo variant="mark" height={34} sx={{ display: { xs: 'block', md: 'none' } }} />
           <Logo variant="lockup" height={40} sx={{ display: { xs: 'none', md: 'block' } }} />
         </NavItem>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, md: 1.5 } }}>
+        {/* ≥44px touch targets for the header controls (WCAG 2.5.5 / Apple HIG), scoped to the header. */}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, md: 1.5 }, '& .MuiIconButton-root': { minWidth: TOUCH_TARGET_MIN, minHeight: TOUCH_TARGET_MIN } }}>
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2.5 }}>
             {ANCHORS.map((a) => (
               <NavItem key={a.href} href={a.href} active={isAnchorActive(a)}>
@@ -203,6 +205,7 @@ export function NavBar() {
           </Box>
           <IconButton
             aria-label={t('common.menu')}
+            aria-expanded={menuOpen}
             onClick={() => setMenuOpen(true)}
             sx={{ display: { xs: 'inline-flex', md: 'none' }, color: 'text.primary' }}
           >
