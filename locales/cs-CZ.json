@@ -640,7 +640,7 @@
     },
     "status": {
       "NEW": "Nová",
-      "GATHERING": "Podklady",
+      "INTAKE": "Podklady",
       "DISCOVERY": "Analýza",
       "PROPOSAL": "Nabídka",
       "WON": "Získána",
@@ -802,7 +802,7 @@
       "missing": "Odkazu chybí zvací token — použijte odkaz z e-mailu."
     },
     "transition": {
-      "GATHERING": "Sbírat podklady",
+      "INTAKE": "Sbírat podklady",
       "DISCOVERY": "Zahájit analýzu",
       "PROPOSAL": "Odeslat nabídku",
       "WON": "Označit jako získáno",

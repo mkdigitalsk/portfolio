@@ -61,7 +61,7 @@ describe('admin leads pipeline', () => {
     expect(screen.queryByRole('button', { name: 'Mark won' })).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Start intake' }))
-    await waitFor(() => expect(status).toBe('GATHERING'))
+    await waitFor(() => expect(status).toBe('INTAKE'))
   })
 
   it('decline asks for confirmation before marking the lead declined', async () => {

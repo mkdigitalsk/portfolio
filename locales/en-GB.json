@@ -640,7 +640,7 @@
     },
     "status": {
       "NEW": "New",
-      "GATHERING": "Intake",
+      "INTAKE": "Intake",
       "DISCOVERY": "Discovery",
       "PROPOSAL": "Proposal",
       "WON": "Won",
@@ -802,7 +802,7 @@
       "missing": "This link is missing its invitation token — use the link from your email."
     },
     "transition": {
-      "GATHERING": "Start intake",
+      "INTAKE": "Start intake",
       "DISCOVERY": "Start discovery",
       "PROPOSAL": "Send proposal",
       "WON": "Mark won",

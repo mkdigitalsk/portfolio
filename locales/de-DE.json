@@ -640,7 +640,7 @@
     },
     "status": {
       "NEW": "Neu",
-      "GATHERING": "Unterlagen",
+      "INTAKE": "Unterlagen",
       "DISCOVERY": "Analyse",
       "PROPOSAL": "Angebot",
       "WON": "Gewonnen",
@@ -802,7 +802,7 @@
       "missing": "Dem Link fehlt das Einladungs-Token — verwenden Sie den Link aus Ihrer E-Mail."
     },
     "transition": {
-      "GATHERING": "Unterlagen anfordern",
+      "INTAKE": "Unterlagen anfordern",
       "DISCOVERY": "Analyse starten",
       "PROPOSAL": "Angebot senden",
       "WON": "Als gewonnen markieren",

@@ -4,7 +4,7 @@ type MuiColor = 'default' | 'info' | 'warning' | 'secondary' | 'primary' | 'succ
 
 export const STATUS_COLOR: Record<LeadStatus, MuiColor> = {
   NEW: 'info',
-  GATHERING: 'warning',
+  INTAKE: 'warning',
   DISCOVERY: 'secondary',
   PROPOSAL: 'primary',
   WON: 'success',
@@ -15,18 +15,18 @@ export const STATUS_COLOR: Record<LeadStatus, MuiColor> = {
 // render; the server remains the authority (an illegal jump would 409). Order = primary first.
 // DECLINED sits under a separate destructive control, never in this list; from it, the primary action reopens.
 export const NEXT_TRANSITIONS: Record<LeadStatus, LeadStatus[]> = {
-  NEW: ['GATHERING'],
-  GATHERING: ['DISCOVERY'],
+  NEW: ['INTAKE'],
+  INTAKE: ['DISCOVERY'],
   DISCOVERY: ['PROPOSAL'],
   PROPOSAL: ['WON'],
   WON: [],
-  DECLINED: ['GATHERING'],
+  DECLINED: ['INTAKE'],
 }
 
 // Decline (→ DECLINED) is available from every active status; terminal WON and DECLINED itself have none.
 export const CAN_DECLINE: Record<LeadStatus, boolean> = {
   NEW: true,
-  GATHERING: true,
+  INTAKE: true,
   DISCOVERY: true,
   PROPOSAL: true,
   WON: false,
