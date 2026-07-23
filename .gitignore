@@ -55,3 +55,6 @@ local.properties
 
 # design-system WIP / exploration — private only (mkdigitalsk/design-system), never here. Published cut → public/design-system/
 /design-system/
+
+# QA smoke run artifacts (screenshots + report)
+/e2e/screenshots/
