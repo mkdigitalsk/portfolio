@@ -56,16 +56,16 @@ describe('admin leads pipeline', () => {
     const user = userEvent.setup()
     renderWithProviders(<LeadTransitions email="lead@example.com" status="NEW" />)
 
-    expect(screen.getByRole('button', { name: 'Start review' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Start intake' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Decline' })).toBeInTheDocument()
-    expect(screen.queryByRole('button', { name: 'Won' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'Mark won' })).not.toBeInTheDocument()
 
-    await user.click(screen.getByRole('button', { name: 'Start review' }))
-    await waitFor(() => expect(status).toBe('REVIEWING'))
+    await user.click(screen.getByRole('button', { name: 'Start intake' }))
+    await waitFor(() => expect(status).toBe('GATHERING'))
   })
 
-  it('decline asks for confirmation before marking the lead lost', async () => {
-    let status: LeadStatus = 'PROPOSAL_SENT'
+  it('decline asks for confirmation before marking the lead declined', async () => {
+    let status: LeadStatus = 'PROPOSAL'
     server.use(
       http.patch(`${API}/admin/leads/:email/status`, async ({ request }) => {
         status = ((await request.json()) as { status: LeadStatus }).status
@@ -73,14 +73,14 @@ describe('admin leads pipeline', () => {
       }),
     )
     const user = userEvent.setup()
-    renderWithProviders(<LeadTransitions email="lead@example.com" status="PROPOSAL_SENT" />)
+    renderWithProviders(<LeadTransitions email="lead@example.com" status="PROPOSAL" />)
 
     await user.click(screen.getByRole('button', { name: 'Decline' }))
     expect(await screen.findByText('Decline this lead?')).toBeInTheDocument()
-    expect(status).toBe('PROPOSAL_SENT')
+    expect(status).toBe('PROPOSAL')
 
     await user.click(screen.getAllByRole('button', { name: 'Decline' }).at(-1)!)
-    await waitFor(() => expect(status).toBe('LOST'))
+    await waitFor(() => expect(status).toBe('DECLINED'))
   })
 
   it('shows the conflict message when the server rejects a transition with 409', async () => {
@@ -88,7 +88,7 @@ describe('admin leads pipeline', () => {
     const user = userEvent.setup()
     renderWithProviders(<LeadTransitions email="lead@example.com" status="NEW" />)
 
-    await user.click(screen.getByRole('button', { name: 'Start review' }))
+    await user.click(screen.getByRole('button', { name: 'Start intake' }))
     expect(await screen.findByText(/not allowed from the current status/)).toBeInTheDocument()
   })
 

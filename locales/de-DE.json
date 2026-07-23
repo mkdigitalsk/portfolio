@@ -640,12 +640,11 @@
     },
     "status": {
       "NEW": "Neu",
-      "REVIEWING": "In Prüfung",
-      "ANALYZED": "Analysiert",
-      "PROPOSAL_DRAFTED": "Angebot erstellt",
-      "PROPOSAL_SENT": "Angebot gesendet",
+      "GATHERING": "Unterlagen",
+      "DISCOVERY": "Analyse",
+      "PROPOSAL": "Angebot",
       "WON": "Gewonnen",
-      "LOST": "Verloren"
+      "DECLINED": "Abgelehnt"
     },
     "errors": {
       "invalidCredentials": "Ungültige E-Mail oder Passwort.",
@@ -803,16 +802,15 @@
       "missing": "Dem Link fehlt das Einladungs-Token — verwenden Sie den Link aus Ihrer E-Mail."
     },
     "transition": {
-      "REVIEWING": "Prüfung starten",
-      "ANALYZED": "Analyse abschließen",
-      "PROPOSAL_DRAFTED": "Angebot vorbereitet",
-      "PROPOSAL_SENT": "Angebot gesendet",
-      "WON": "Gewonnen",
-      "LOST": "Ablehnen",
+      "GATHERING": "Unterlagen anfordern",
+      "DISCOVERY": "Analyse starten",
+      "PROPOSAL": "Angebot senden",
+      "WON": "Als gewonnen markieren",
+      "DECLINED": "Ablehnen",
       "conflict": "Dieser Übergang ist vom aktuellen Status nicht erlaubt — Seite aktualisieren",
       "failed": "Änderung fehlgeschlagen — bitte erneut versuchen",
       "declineConfirmTitle": "Diesen Lead ablehnen?",
-      "declineConfirmText": "Der Lead wird als verloren markiert. Ein verlorener Lead kann später wieder geöffnet werden."
+      "declineConfirmText": "Der Lead wird als abgelehnt markiert. Ein abgelehnter Lead kann später wieder geöffnet werden."
     }
   },
   "validation": {

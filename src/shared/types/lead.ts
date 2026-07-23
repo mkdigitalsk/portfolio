@@ -3,12 +3,11 @@ import type { ProjectHealth, ProjectState } from './project'
 // Order + names must match the server LeadStatus enum.
 export const LEAD_STATUSES = [
   'NEW',
-  'REVIEWING',
-  'ANALYZED',
-  'PROPOSAL_DRAFTED',
-  'PROPOSAL_SENT',
+  'GATHERING',
+  'DISCOVERY',
+  'PROPOSAL',
   'WON',
-  'LOST',
+  'DECLINED',
 ] as const
 
 export type LeadStatus = (typeof LEAD_STATUSES)[number]

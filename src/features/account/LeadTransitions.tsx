@@ -39,7 +39,7 @@ export function LeadTransitions({ email, status }: { email: string; status: Lead
           disabled={mutation.isPending}
           onClick={() => setConfirmDecline(true)}
         >
-          {t('transition.LOST')}
+          {t('transition.DECLINED')}
         </Button>
       )}
       {mutation.isError && (
@@ -54,11 +54,11 @@ export function LeadTransitions({ email, status }: { email: string; status: Lead
         open={confirmDecline}
         title={t('transition.declineConfirmTitle')}
         text={t('transition.declineConfirmText')}
-        confirmText={t('transition.LOST')}
+        confirmText={t('transition.DECLINED')}
         dismissText={t('delivery.cancel')}
         destructive
         onConfirm={() => {
-          mutation.mutate('LOST')
+          mutation.mutate('DECLINED')
           setConfirmDecline(false)
         }}
         onDismiss={() => setConfirmDecline(false)}

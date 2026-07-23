@@ -640,12 +640,11 @@
     },
     "status": {
       "NEW": "New",
-      "REVIEWING": "Reviewing",
-      "ANALYZED": "Analyzed",
-      "PROPOSAL_DRAFTED": "Proposal drafted",
-      "PROPOSAL_SENT": "Proposal sent",
+      "GATHERING": "Intake",
+      "DISCOVERY": "Discovery",
+      "PROPOSAL": "Proposal",
       "WON": "Won",
-      "LOST": "Lost"
+      "DECLINED": "Declined"
     },
     "errors": {
       "invalidCredentials": "Invalid email or password.",
@@ -803,16 +802,15 @@
       "missing": "This link is missing its invitation token — use the link from your email."
     },
     "transition": {
-      "REVIEWING": "Start review",
-      "ANALYZED": "Complete analysis",
-      "PROPOSAL_DRAFTED": "Proposal ready",
-      "PROPOSAL_SENT": "Proposal sent",
-      "WON": "Won",
-      "LOST": "Decline",
+      "GATHERING": "Start intake",
+      "DISCOVERY": "Start discovery",
+      "PROPOSAL": "Send proposal",
+      "WON": "Mark won",
+      "DECLINED": "Decline",
       "conflict": "That change is not allowed from the current status — refresh the page",
       "failed": "The change failed — try again",
       "declineConfirmTitle": "Decline this lead?",
-      "declineConfirmText": "The lead will be marked as lost. A lost lead can be reopened later."
+      "declineConfirmText": "The lead will be marked as declined. A declined lead can be reopened later."
     }
   },
   "validation": {

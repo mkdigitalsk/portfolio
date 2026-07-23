@@ -4,34 +4,31 @@ type MuiColor = 'default' | 'info' | 'warning' | 'secondary' | 'primary' | 'succ
 
 export const STATUS_COLOR: Record<LeadStatus, MuiColor> = {
   NEW: 'info',
-  REVIEWING: 'warning',
-  ANALYZED: 'secondary',
-  PROPOSAL_DRAFTED: 'primary',
-  PROPOSAL_SENT: 'primary',
+  GATHERING: 'warning',
+  DISCOVERY: 'secondary',
+  PROPOSAL: 'primary',
   WON: 'success',
-  LOST: 'error',
+  DECLINED: 'error',
 }
 
 // UI mirror of the server's ALLOWED_TRANSITIONS (LeadStatus.kt) — decides which transition ACTIONS
 // render; the server remains the authority (an illegal jump would 409). Order = primary first.
-// LOST sits under a separate destructive control, never in this list.
+// DECLINED sits under a separate destructive control, never in this list; from it, the primary action reopens.
 export const NEXT_TRANSITIONS: Record<LeadStatus, LeadStatus[]> = {
-  NEW: ['REVIEWING'],
-  REVIEWING: ['ANALYZED'],
-  ANALYZED: ['PROPOSAL_SENT', 'PROPOSAL_DRAFTED'],
-  PROPOSAL_DRAFTED: ['PROPOSAL_SENT'],
-  PROPOSAL_SENT: ['WON'],
+  NEW: ['GATHERING'],
+  GATHERING: ['DISCOVERY'],
+  DISCOVERY: ['PROPOSAL'],
+  PROPOSAL: ['WON'],
   WON: [],
-  LOST: ['REVIEWING'],
+  DECLINED: ['GATHERING'],
 }
 
-// Decline (→ LOST) is available from every active stage; terminal states have no decline.
+// Decline (→ DECLINED) is available from every active status; terminal WON and DECLINED itself have none.
 export const CAN_DECLINE: Record<LeadStatus, boolean> = {
   NEW: true,
-  REVIEWING: true,
-  ANALYZED: true,
-  PROPOSAL_DRAFTED: true,
-  PROPOSAL_SENT: true,
+  GATHERING: true,
+  DISCOVERY: true,
+  PROPOSAL: true,
   WON: false,
-  LOST: false,
+  DECLINED: false,
 }

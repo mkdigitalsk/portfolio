@@ -640,12 +640,11 @@
     },
     "status": {
       "NEW": "Nový",
-      "REVIEWING": "Kontroluje sa",
-      "ANALYZED": "Analyzovaný",
-      "PROPOSAL_DRAFTED": "Ponuka pripravená",
-      "PROPOSAL_SENT": "Ponuka odoslaná",
+      "GATHERING": "Podklady",
+      "DISCOVERY": "Analýza",
+      "PROPOSAL": "Ponuka",
       "WON": "Získaný",
-      "LOST": "Stratený"
+      "DECLINED": "Zamietnutý"
     },
     "errors": {
       "invalidCredentials": "Nesprávny e-mail alebo heslo.",
@@ -803,16 +802,15 @@
       "missing": "Odkazu chýba pozývací token — použite odkaz z e-mailu."
     },
     "transition": {
-      "REVIEWING": "Začať posudzovanie",
-      "ANALYZED": "Dokončiť analýzu",
-      "PROPOSAL_DRAFTED": "Ponuka pripravená",
-      "PROPOSAL_SENT": "Ponuka odoslaná",
-      "WON": "Získaný",
-      "LOST": "Zamietnuť",
+      "GATHERING": "Zbierať podklady",
+      "DISCOVERY": "Začať analýzu",
+      "PROPOSAL": "Odoslať ponuku",
+      "WON": "Označiť ako získaný",
+      "DECLINED": "Zamietnuť",
       "conflict": "Tento prechod nie je z aktuálneho stavu povolený — obnovte stránku",
       "failed": "Zmena sa nepodarila — skúste znova",
       "declineConfirmTitle": "Zamietnuť tento lead?",
-      "declineConfirmText": "Lead sa označí ako stratený. Strateného sa dá neskôr znovu otvoriť."
+      "declineConfirmText": "Lead sa označí ako zamietnutý. Zamietnutý sa dá neskôr znovu otvoriť."
     }
   },
   "validation": {
