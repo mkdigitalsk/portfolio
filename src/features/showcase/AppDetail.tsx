@@ -203,7 +203,7 @@ function AppDetailContent({ appId }: AppDetailProps) {
       >
         {/* Left column: back link (always) sits at the same top as the right column's hero,
             then the app-type switcher rail (desktop only; mobile keeps just the back link). */}
-        <Box>
+        <Box sx={{ minWidth: 0 }}>
           <Box
             component={Link}
             href="/"

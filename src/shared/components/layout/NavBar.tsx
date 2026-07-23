@@ -178,7 +178,9 @@ export function NavBar() {
             if (pathname === '/') scrollToTop()
           }}
         >
-          <Logo variant="lockup" height={40} />
+          {/* Compact mark on phones (frees the crowded mobile bar), full lockup from md up. */}
+          <Logo variant="mark" height={34} sx={{ display: { xs: 'block', md: 'none' } }} />
+          <Logo variant="lockup" height={40} sx={{ display: { xs: 'none', md: 'block' } }} />
         </NavItem>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, md: 1.5 } }}>
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2.5 }}>
